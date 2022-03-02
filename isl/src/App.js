@@ -1,23 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import UnlockPad from './unlockPad';
+import egg from './egg.jpg';
+import { useState } from 'react';
 
 function App() {
+  const [state, setState] = useState();
+  let property = {correctSolution: "egg", letters: ["e","g","g","a","b","c","d","f","h"], image: egg}
+  console.log(property)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UnlockPad input={property} />
     </div>
   );
 }
