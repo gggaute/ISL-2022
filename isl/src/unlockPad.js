@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import SingleLetter from './singleLetter';
 import './App.css';
 import Button from "@mui/material/Button";
-import { render } from "react-dom";
 import egg from './egg.jpg';
 
 const UnlockPad = (input) => {
@@ -31,21 +30,28 @@ const UnlockPad = (input) => {
     const [userAnswer, setUserAnswer] = useState("");
     const [solutionLength, setSolutionLength] = useState(correctSolution.length);
     const [letters, setLetters] = useState(input.input.letters)
+    let isFinished = false
+
+   let feedback
 
     function checkAnswer(){
+        let tilbakemelding
         if(userAnswer.length === solutionLength){
             if(userAnswer === correctSolution){
                 console.log("correct!")
-                return <p>CORRECT</p>
+                tilbakemelding = "riktig"
+                
             }
             else{
                 console.log("WRONG!! L + ration + nobody asked")
-                return <p>WRONG</p>
+                tilbakemelding = "feil"
             }
+            isFinished = true
         }
         else{
             console.log("Wrong amount of letters yet or wrong answer")
         }
+        feedback = tilbakemelding
     }
 
     //count for id til css, vet ikke om det funker
@@ -59,10 +65,8 @@ const UnlockPad = (input) => {
         }
     
     }
-    checkAnswer()
-    console.log(userAnswer)
     
-
+    
     const answerList = []
     function presentAnswer(){
         for(let i = 0; i <= userAnswerList.length; i++){
@@ -80,7 +84,7 @@ const UnlockPad = (input) => {
 
 
     presentAnswer()
-
+    
     let itemList = answerList.map((item, index) => {
         return <p>{item}</p>
     })
@@ -90,7 +94,13 @@ const UnlockPad = (input) => {
         event.target.disabled = true       
         
     }
+
+    let setDisabled = false
     
+    checkAnswer()
+    if(isFinished){
+        setDisabled = true
+    }
     
 
     return(
@@ -106,7 +116,7 @@ const UnlockPad = (input) => {
                 {letters.map((letter, count) => (
                     <>
                     
-                    <button key={count} id={count.toString()} onClick ={(event) => {
+                    <button key={count} id={count.toString()} disabled = {setDisabled} onClick ={(event) => {
                         handleEvent(event)
                         registerLetterinAnswer(letter)
                     }}>
@@ -115,6 +125,10 @@ const UnlockPad = (input) => {
                     </> 
                 ))}
             </div>
+        <div>
+            {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
+            <h1>{feedback}</h1>
+        </div>
         </>
     )
 }
