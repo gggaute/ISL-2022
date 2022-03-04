@@ -19,7 +19,7 @@ const UnlockPad = (input) => {
     // presentere antall bokstaver i fasit
     // for her knapp som trykkes skal bokstaven vises i over rett "plasserings-strek"
     // når rett antall bokstaver er skrevet inn vil det være en sjekk av svaret og spilleren skal få en tilbakemelding
-    // så rett tilbakemelding 
+    // så rett tilbakemelding (eget isssue)
     // feilhåndtering (eget issue)
     // resette (eget issue?)
 
@@ -51,49 +51,70 @@ const UnlockPad = (input) => {
     //count for id til css, vet ikke om det funker
     let count = 0;
 
+    const [userAnswerList, setUserAnswerList] = useState([])
     function registerLetterinAnswer(buttonLetter){
         if(userAnswer.length < solutionLength){
             setUserAnswer(userAnswer+buttonLetter)
+            userAnswerList.push(buttonLetter)
         }
+    
     }
     checkAnswer()
     console.log(userAnswer)
+    
+
+    const answerList = []
+    function presentAnswer(){
+        for(let i = 0; i <= userAnswerList.length; i++){
+            answerList.push(userAnswerList[i])
+        }
+        answerList.pop()
+        console.log(answerList)
+        if(answerList.length < solutionLength){
+            for(let i = answerList.length; i < solutionLength; i++){
+                answerList.push("_")
+            }
+        }
+        console.log(answerList)
+    }
 
 
+    presentAnswer()
+
+    let itemList = answerList.map((item, index) => {
+        return <p>{item}</p>
+    })
+
+    function handleEvent(event){
+        console.log(event.target.value)
+        event.target.disabled = true       
+        
+    }
+    
+    
 
     return(
         <>
-            <img src={input.input.image} alt="solutionImage"></img>
+            {/* <img src={input.input.image} alt="solutionImage"></img> */}
             <div>
                 <p>Antall bokstaver: {solutionLength}</p>
                 <p>Svar: {userAnswer} </p>
+            <div>{itemList}</div>
+            
             </div>
             <div>
-                {letters.map((letter) => (
+                {letters.map((letter, count) => (
                     <>
-                    <Button key={count+1} onClick ={() => registerLetterinAnswer(letter)}>{letter} </Button>
+                    
+                    <button key={count} id={count.toString()} onClick ={(event) => {
+                        handleEvent(event)
+                        registerLetterinAnswer(letter)
+                    }}>
+                    {letter} </button>
+                        {() => count++}
                     </> 
                 ))}
             </div>
-            {/* <div className="numpad">
-                <div className="row">
-                    <Button onClick={() => {rekkefølge += "e"}}>E</Button>
-                    <Button onClick={() => {rekkefølge += "g"}}>G</Button>
-                    <Button onClick={() => {rekkefølge += "h"; console.log(rekkefølge)}}>H</Button>
-                </div>
-                <div className="row">
-                    <Button onClick={() => {rekkefølge += "a"}}>A</Button>
-                    <Button onClick={() => {rekkefølge += "g"}}>G</Button>
-                    <Button onClick={() => {rekkefølge += "c"}}>C</Button>
-                </div>
-                <div className="row">
-                    <Button onClick={() => {rekkefølge += "d"}}>D</Button>
-                    <Button onClick={() => {rekkefølge += "f"}}>F</Button>
-                    <Button onClick={() => {rekkefølge += "h"}}>H</Button>
-                </div>
-                <Button onClick={() => {sjekkSvar()}}>Sjekk</Button>
-
-            </div> */}
         </>
     )
 }
