@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from "./img/logo.png"
+import { FcPrevious, FcNext } from 'react-icons/fc'
 
 const Navbar = () => {
   return (
@@ -11,8 +12,8 @@ const Navbar = () => {
         <h1 id="navbarTitle">Nytt Navn</h1>
       </div>
       <div className='right-div'>
-        <button id="previousQ">{"<-- Forrige"}</button>
-        <button id="nextQ">{"Neste -->"}</button>
+        <button id="previousQ"><FcPrevious/> {"Forrige"}</button>
+        <button id="nextQ">{"Neste"} <FcNext/></button>
       </div>
     </div>
   )
