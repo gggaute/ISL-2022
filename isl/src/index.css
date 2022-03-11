@@ -1,7 +1,9 @@
 body {
   font-family: Arial;
 }
-
+#root {
+  width: 100%;
+}
 
 /* NAVBAR */
 
@@ -12,14 +14,14 @@ body {
   width: 100%;
   margin-top: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
 }
 
 .left-div {
   /* border: 1px solid purple; */
   display: grid;
-  grid-template-columns: 0.7fr 1fr;
+  grid-template-columns: repeat(1, 1fr);
   margin-left: 1em;
   align-items: center;
   height: 100%;
@@ -277,3 +279,12 @@ p {
 /* #goToNext.visible{
   visibility: visible;
 } */
+
+/* SCALING */
+
+@media (max-width: 700px) {
+  
+}
+@media (max-width: 400px) {
+  
+}
