@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
-import SingleLetter from './singleLetter';
+// import SingleLetter from './singleLetter';
 import './App.css';
-import Button from "@mui/material/Button";
-import egg from './egg.jpg';
+// import Button from "@mui/material/Button";
+import egg from './components/img/egg.png';
 
 const UnlockPad = (input) => {
 
