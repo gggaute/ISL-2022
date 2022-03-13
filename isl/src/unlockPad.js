@@ -29,10 +29,10 @@ const UnlockPad = (input) => {
     const [userAnswer, setUserAnswer] = useState("");
     const [solutionLength, setSolutionLength] = useState(correctSolution.length);
     const [letters, setLetters] = useState(input.input.letters)
-    
+
     let isFinished = false
     let setDisabled = false
-    
+
     let feedback
 
     function checkAnswer() {
@@ -61,7 +61,7 @@ const UnlockPad = (input) => {
     function registerLetterinAnswer(buttonLetter) {
         if (userAnswer.length < solutionLength) {
             setUserAnswer(userAnswer + buttonLetter)
-            userAnswerList.push(buttonLetter)
+            userAnswerList.push(buttonLetter.toUpperCase())
         }
 
     }
@@ -83,59 +83,57 @@ const UnlockPad = (input) => {
     presentAnswer()
 
     let itemList = answerList.map((item, index) => {
-        return <p>{item}</p>
+        return <p id={index}>{item}</p>
     })
 
     function handleEvent(event) {
-        event.target.disabled = true  
+        event.target.disabled = true
     }
 
     checkAnswer()
-    
-    function resetCode(){
-        if(setDisabled){
+
+    function resetCode() {
+        if (setDisabled) {
             isFinished = false
             setUserAnswer("")
             setUserAnswerList([])
         }
     }
-    
-    function resetButton(){
-        if(setDisabled)
-            return <Button onClick={resetCode}>Try again</Button>
+
+    function resetButton() {
+        if (setDisabled)
+            return <Button id="tryAgainButton" onClick={resetCode}>Prøv igjen</Button>
+    }
+
+    function setButtonID() {
+        count++
+        return "numpadButton" + count.toString()
     }
 
 
     return (
         <>
-            {/* <img src={input.input.image} alt="solutionImage"></img> */}
-            <div>
-                {/* <p>Antall bokstaver: {solutionLength}</p>
-                <p>Svar: {userAnswer} </p> */}
-                <div>{itemList}</div>
+            <div id="content">
+                <img src={input.input.image} alt="solutionImage"></img>
+                <div id="guess">{itemList}</div>
+                <div className="grid">
+                    {letters.map((letter, count) => (
+                        <>
+                            <button key={count} id={setButtonID()} disabled={setDisabled} onClick={(event) => {
+                                handleEvent(event)
+                                registerLetterinAnswer(letter)
+                            }}>
+                                {letter.toUpperCase()} </button>
+                            {() => count++}
+                        </>
+                    ))}
+                </div>
+                <div id="feedBackAndReset">
+                    {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
+                    <h1>{feedback}</h1>
+                    {resetButton()}
+                </div>
 
-            </div>
-            <div>
-                {letters.map((letter, count) => (
-                    <>
-                        <button key={count} id={count.toString()} disabled={setDisabled} onClick={(event) => {
-                            handleEvent(event)
-                            registerLetterinAnswer(letter)
-                        }}>
-                            {letter} </button>
-                        {() => count++}
-                    </>
-                ))}
-            </div>
-            <div>
-                {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
-                <h1>{feedback}</h1>
-                {resetButton()}
-                
-                {/* {resetCode} */}
-                {/* <Feedback totalScore={totalScore}
-            totalExercises={totalExercises}
-            feedbackState={feedbackState}/> */}
             </div>
         </>
     )
