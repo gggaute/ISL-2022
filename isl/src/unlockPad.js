@@ -3,6 +3,8 @@ import SingleLetter from './singleLetter';
 import './App.css';
 import Button from "@mui/material/Button";
 import egg from './egg.jpg';
+import Feedback from './feedback'
+import './unlockPadStyle.css'
 
 const UnlockPad = (input) => {
 
@@ -23,112 +25,118 @@ const UnlockPad = (input) => {
     // resette (eget issue?)
 
 
-    
-
-
     const [correctSolution, setCorrectSolution] = useState(input.input.correctSolution);
     const [userAnswer, setUserAnswer] = useState("");
     const [solutionLength, setSolutionLength] = useState(correctSolution.length);
     const [letters, setLetters] = useState(input.input.letters)
+    
     let isFinished = false
+    let setDisabled = false
+    
+    let feedback
 
-   let feedback
-
-    function checkAnswer(){
+    function checkAnswer() {
         let tilbakemelding
-        if(userAnswer.length === solutionLength){
-            if(userAnswer === correctSolution){
-                console.log("correct!")
+        if (userAnswer.length === solutionLength) {
+            if (userAnswer === correctSolution) {
+
                 tilbakemelding = "riktig"
-                
+
             }
-            else{
-                console.log("WRONG!! L + ration + nobody asked")
+            else {
                 tilbakemelding = "feil"
             }
             isFinished = true
         }
-        else{
-            console.log("Wrong amount of letters yet or wrong answer")
-        }
         feedback = tilbakemelding
+        if (isFinished) {
+            setDisabled = true
+        }
     }
 
     //count for id til css, vet ikke om det funker
     let count = 0;
 
     const [userAnswerList, setUserAnswerList] = useState([])
-    function registerLetterinAnswer(buttonLetter){
-        if(userAnswer.length < solutionLength){
-            setUserAnswer(userAnswer+buttonLetter)
+    function registerLetterinAnswer(buttonLetter) {
+        if (userAnswer.length < solutionLength) {
+            setUserAnswer(userAnswer + buttonLetter)
             userAnswerList.push(buttonLetter)
         }
-    
+
     }
-    
-    
+
+
     const answerList = []
-    function presentAnswer(){
-        for(let i = 0; i <= userAnswerList.length; i++){
+    function presentAnswer() {
+        for (let i = 0; i <= userAnswerList.length; i++) {
             answerList.push(userAnswerList[i])
         }
         answerList.pop()
-        console.log(answerList)
-        if(answerList.length < solutionLength){
-            for(let i = answerList.length; i < solutionLength; i++){
+        if (answerList.length < solutionLength) {
+            for (let i = answerList.length; i < solutionLength; i++) {
                 answerList.push("_")
             }
         }
-        console.log(answerList)
     }
 
-
     presentAnswer()
-    
+
     let itemList = answerList.map((item, index) => {
         return <p>{item}</p>
     })
 
-    function handleEvent(event){
-        console.log(event.target.value)
-        event.target.disabled = true       
-        
+    function handleEvent(event) {
+        event.target.disabled = true  
     }
 
-    let setDisabled = false
-    
     checkAnswer()
-    if(isFinished){
-        setDisabled = true
+    
+    function resetCode(){
+        if(setDisabled){
+            isFinished = false
+            setUserAnswer("")
+            setUserAnswerList([])
+        }
     }
     
+    function resetButton(){
+        if(setDisabled)
+            return <Button onClick={resetCode}>Try again</Button>
+    }
 
-    return(
+
+    return (
         <>
             {/* <img src={input.input.image} alt="solutionImage"></img> */}
             <div>
-                <p>Antall bokstaver: {solutionLength}</p>
-                <p>Svar: {userAnswer} </p>
-            <div>{itemList}</div>
-            
+                {/* <p>Antall bokstaver: {solutionLength}</p>
+                <p>Svar: {userAnswer} </p> */}
+                <div>{itemList}</div>
+
             </div>
             <div>
                 {letters.map((letter, count) => (
                     <>
-                    
-                    <button key={count} id={count.toString()} disabled = {setDisabled} onClick ={(event) => {
-                        handleEvent(event)
-                        registerLetterinAnswer(letter)
-                    }}>
-                    {letter} </button>
+                        <button key={count} id={count.toString()} disabled={setDisabled} onClick={(event) => {
+                            handleEvent(event)
+                            registerLetterinAnswer(letter)
+                        }}>
+                            {letter} </button>
                         {() => count++}
-                    </> 
+                    </>
                 ))}
             </div>
-        <div>
-            {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
-            <h1>{feedback}</h1>
-        </div>
+            <div>
+                {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
+                <h1>{feedback}</h1>
+                {resetButton()}
+                
+                {/* {resetCode} */}
+                {/* <Feedback totalScore={totalScore}
+            totalExercises={totalExercises}
+            feedbackState={feedbackState}/> */}
+            </div>
         </>
     )
 }
