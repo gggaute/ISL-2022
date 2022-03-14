@@ -10,15 +10,18 @@ import FeedbackBox from './FeedbackBox'
 import $ from "jquery"
 import { FcPrevious, FcNext } from 'react-icons/fc'
 import ExerciseContainer from './ExerciseContainer'
+import UnlockPad from './unlockPad'
+import egg from './img/egg.jpg'
 
 
 const ContentContainer = () => {
+  let property = {correctSolution: "egg", letters: ["e","g","g","a","b","c","d","f","h"], image: egg}
 
   return (
     <div className='wrapper'>
       <ContentHeader></ContentHeader>
       <ProgressBar></ProgressBar>
-      <ExerciseContainer></ExerciseContainer>
+      <UnlockPad input={property}/>
     </div>
   )
 }

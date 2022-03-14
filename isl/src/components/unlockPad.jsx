@@ -1,10 +1,6 @@
-import React, { useState, useRef } from "react";
-import SingleLetter from './singleLetter';
-import './App.css';
+import React, { useState } from "react"
 import Button from "@mui/material/Button";
-import egg from './egg.jpg';
-import Feedback from './feedback'
-import './unlockPadStyle.css'
+import './styling/unlockPadStyle.css'
 
 const UnlockPad = (input) => {
 
@@ -39,9 +35,7 @@ const UnlockPad = (input) => {
         let tilbakemelding
         if (userAnswer.length === solutionLength) {
             if (userAnswer === correctSolution) {
-
                 tilbakemelding = "riktig"
-
             }
             else {
                 tilbakemelding = "feil"
@@ -63,7 +57,6 @@ const UnlockPad = (input) => {
             setUserAnswer(userAnswer + buttonLetter)
             userAnswerList.push(buttonLetter.toUpperCase())
         }
-
     }
 
 
@@ -79,7 +72,6 @@ const UnlockPad = (input) => {
             }
         }
     }
-
     presentAnswer()
 
     let itemList = answerList.map((item, index) => {
@@ -110,23 +102,24 @@ const UnlockPad = (input) => {
         return "numpadButton" + count.toString()
     }
 
-
     return (
         <>
             <div id="content">
                 <img src={input.input.image} alt="solutionImage"></img>
-                <div id="guess">{itemList}</div>
-                <div className="grid">
-                    {letters.map((letter, count) => (
-                        <>
-                            <button key={count} id={setButtonID()} disabled={setDisabled} onClick={(event) => {
-                                handleEvent(event)
-                                registerLetterinAnswer(letter)
-                            }}>
-                                {letter.toUpperCase()} </button>
-                            {() => count++}
-                        </>
-                    ))}
+                <div id="contentRow">
+                    <div id="guess">{itemList}</div>
+                    <div className="grid">
+                        {letters.map((letter, count) => (
+                            <>
+                                <button key={count} id={setButtonID()} disabled={setDisabled} onClick={(event) => {
+                                    handleEvent(event)
+                                    registerLetterinAnswer(letter)
+                                }}>
+                                    {letter.toUpperCase()} </button>
+                                {() => count++}
+                            </>
+                        ))}
+                    </div>
                 </div>
                 <div id="feedBackAndReset">
                     {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}

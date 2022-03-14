@@ -1,18 +1,30 @@
 img{
-    width: 50%;
-    height: 50%;
+    width: 90%;
+    height: 90%;
+    margin: auto;
+}
+
+#content{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: lawngreen 2px solid;
+}
+
+#contentRow{
+    display: flex;
+    flex-direction: column;
+    border: #7CA3EE 2px solid;
 }
 
 button {
     background-color: white;
     border-radius: 100%;
-    /* padding: 8px 14px; */
     padding: 10px;
     box-shadow: 1px 1px 10px #7CA3EE;
     margin: 5px;
     border: 1px #7CA3EE;
-    height: 3em;
-    width: 3em;
+    height: 3.5em;
+    width: 3.5em;
 }
 
 button:disabled{
@@ -33,10 +45,8 @@ button:disabled{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    /* margin: 1em 50%; */
-    margin: 3em auto;
+    margin: 0 auto;
     border: red 1px solid;
-    /* padding: 10px */
 }
 
 .grid{
@@ -49,10 +59,7 @@ button:disabled{
     margin: 10px;
     padding: 15px;
     justify-content: center;
-    
-    
 }
-
 
 #numpadButton1 {
     grid-row: 1;
@@ -95,13 +102,4 @@ button:disabled{
 #numpadButton9 {
     grid-row: 3;
     grid-column: 3;
-}
-
-
-
-@media  (min-width: 1000px) {
-    #content{
-        grid-template-columns: 1fr;
-    }
-    
 }
