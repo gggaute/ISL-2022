@@ -8,10 +8,12 @@ urlpatterns = [
     path('api/', include('chat.urls')),
     path('api/', include('rydde_setninger.urls')),
     path('api/', include('sets.urls')),
+    path("api/", include('unlock.urls')),
+    path("api/", include('dra_inn_manglende_ord.urls')),
 ]
 
-urlpatterns += [ re_path(r'^.*', TemplateView.as_view(template_name='index.html'))
-]
+"""urlpatterns += [ re_path(r'^.*', TemplateView.as_view(template_name='index.html'))
+]"""
 
 
 """path('admin/', admin.site.urls),

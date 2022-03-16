@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'rydde_setninger',
     'sets',
     'rest_framework',
+    'unlock',
+    'dra_inn_manglende_ord'
 ]
 
 MIDDLEWARE = [
