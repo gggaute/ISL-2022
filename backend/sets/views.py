@@ -18,3 +18,11 @@ class SetsView(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = SetsSerializer
+
+"""class GetSetsView(viewsets.ModelViewSet):
+    def get(self, pk):
+        getSet = Sets.objects.get(pk=pk)
+        permission_classes = [
+        permissions.AllowAny
+        ]
+        serializer_class = SetsSerializer(getSet)"""

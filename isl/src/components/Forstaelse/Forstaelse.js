@@ -58,10 +58,10 @@ const Forstaelse = ({
 
   // Gets the exercise content with {id} from backend.
   function getContent() {
-      fetch(`${process.env.REACT_APP_API_URL}/api/forstaelse/${id}`)
-      .then((res) => {
-        setFormData(res.data);
-      })
+      fetch(`http://localhost:8000/api/forstaelse/1`)
+      .then((response) => response.json())
+      .then((data) =>
+        setFormData(data))
       .catch((e) => {
         return e;
       });
