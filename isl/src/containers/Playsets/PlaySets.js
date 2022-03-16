@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Button, Grid } from '@mui/material';
-import ReplayIcon from '@mui/icons-material/Replay';
-import Forstaelse from '../../components/Forstaelse/Forstaelse';
-import Chat from '../../components/Chat/Chat';
-import RyddeSetninger from '../../components/RyddeSetninger/RyddeSetninger';
-import Feedback from '../../components/feedback/Feedback';
-import FinishedSet from '../../components/finishedSet/FinishedSet';
-import OverviewPage from '../../components/OverviewPage/OverviewPage';
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { Button, Grid } from "@mui/material";
+import ReplayIcon from "@mui/icons-material/Replay";
+import Forstaelse from "../../components/Forstaelse/Forstaelse";
+import Chat from "../../components/Chat/Chat";
+import RyddeSetninger from "../../components/RyddeSetninger/RyddeSetninger";
+import Feedback from "../../components/feedback/Feedback";
+//import FinishedSet from "../../components/finishedSet/FinishedSet";
+import OverviewPage from "../../components/OverviewPage/OverviewPage";
+
 /**
  * This is the container for playing exercise sets.
  * @author Maja, Julie, Simen
@@ -17,7 +18,7 @@ const PlaySets = () => {
   const location = useLocation();
 
   // Stepper for switching between exercises in the set.
-  const [step, setStep] = useState('menu');
+  const [step, setStep] = useState("menu");
 
   // Id for the exercise being played.
   const [exerciseId, setExerciseId] = useState(0);
@@ -29,9 +30,8 @@ const PlaySets = () => {
   const [feedbackState, setFeedbackState] = useState(false);
   const [exerciseProgress, setExerciseProgress] = useState(0);
 
-  const [redirected, setRedirected] = useState(false);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   // Lists of id's for the exercises in the set.
   const [formDataExercises] = useState({
@@ -40,7 +40,7 @@ const PlaySets = () => {
     ryddeSetninger: [],
   });
 
-/*   // Hooks to get access to the Redux store and obtain user and auth info.
+  /*   // Hooks to get access to the Redux store and obtain user and auth info.
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.auth.user);
  */
@@ -53,15 +53,16 @@ const PlaySets = () => {
    * @param {object} sets An object containing sets from backend.
    */
   function createPlayList(sets) {
+
     formDataExercises.chat.length = 0;
     formDataExercises.forstaelse.length = 0;
     formDataExercises.ryddeSetninger.length = 0;
     Object.entries(sets).forEach(([exercise, id]) => {
-      if (exercise.substring(0, 4) === 'chat' && id) {
+      if (exercise.substring(0, 4) === "chat" && id) {
         formDataExercises.chat.push(id);
-      } else if (exercise.substring(0, 4) === 'fors' && id) {
+      } else if (exercise.substring(0, 4) === "fors" && id) {
         formDataExercises.forstaelse.push(id);
-      } else if (exercise.substring(0, 4) === 'rydd' && id) {
+      } else if (exercise.substring(0, 4) === "rydd" && id) {
         formDataExercises.ryddeSetninger.push(id);
       }
     });
@@ -70,6 +71,20 @@ const PlaySets = () => {
         formDataExercises.forstaelse.length +
         formDataExercises.ryddeSetninger.length
     );
+  }
+
+  function getContent(id) {
+    fetch(`http://localhost:8000/api/sets/${id}`)
+      .then((response) => response.json())
+      .then((data) => createPlayList(data))
+      .then((data) => setTitle(data.title))
+      .then((data) => setDescription(data.description))
+      .then(setTotalScore(0))
+      .then(setExerciseProgress(0))
+      .then(setStep("overview"))
+      .catch((e) => {
+        return e;
+      });
   }
 
   /**
@@ -83,34 +98,21 @@ const PlaySets = () => {
     if (formDataExercises.chat[0]) {
       setExerciseProgress(exerciseProgress + 1);
       setExerciseId(formDataExercises.chat.shift());
-      setStep('chat');
+      setStep("chat");
     } else if (formDataExercises.forstaelse[0]) {
       setExerciseProgress(exerciseProgress + 1);
       setExerciseId(formDataExercises.forstaelse.shift());
-      setStep('forstaelse');
+      setStep("forstaelse");
     } else if (formDataExercises.ryddeSetninger[0]) {
       setExerciseProgress(exerciseProgress + 1);
       setExerciseId(formDataExercises.ryddeSetninger.shift());
-      setStep('ryddeSetninger');
-    } else {
-      setStep('finish');
-    }
+      setStep("ryddeSetninger");
+    } //else {
+     // setStep("finish");
+    //}
   }
 
- function getContent(id) {
-    fetch(`${process.env.REACT_APP_API_URL}/api/sets/${id}`)
-      .then((res) => {
-        createPlayList(res.data);
-        setTitle(res.data.title);
-        setDescription(res.data.description);
-        setTotalScore(0);
-        setExerciseProgress(0);
-        setStep('overview');
-      })
-      .catch((e) => {
-        return e;
-      });
-  }
+
 
   // Keeps track of scores and decides what feedback to show accordingly.
   function showFeedback(score, totalPossibleScore) {
@@ -120,19 +122,9 @@ const PlaySets = () => {
     } else {
       setFeedbackState(false);
     }
-    setStep('feedback');
+    setStep("feedback");
   }
 
-/*function getCompleted(id) {
-    fetch(`${process.env.REACT_APP_API_URL}/api/completed/${id}`)
-      .then((res) => {
-        setCompleted(res.data);
-      })
-      .catch((e) => {
-        return e;
-      });
-  }
-*/
   /**
    * Retrieves the information related to the exercise set being played from backend
    * and changes step to "overview" when the restart button is clicked. This enables the user to
@@ -146,8 +138,8 @@ const PlaySets = () => {
           color="secondary"
           startIcon={<ReplayIcon />}
           onClick={() => {
-            //getContent(id);
-            setStep('overview');
+            getContent(id);
+            setStep("overview");
           }}
         >
           Restart sett
@@ -165,16 +157,13 @@ const PlaySets = () => {
    * I.e search bar on front page.
    */
   useEffect(() => {
-    if (location.state?.id && !redirected) {
-      //getCompleted(location.state?.id);
-      getContent(location.state?.id);
-      setRedirected(true);
-      setId(location.state?.id);
-    }
+      console.log(location.state.playId);
+      getContent(location.state.playId);
+      setId(location.state.playId);
   }, []);
 
   switch (step) {
-    case 'overview':
+    case "overview":
       return (
         <div>
           <OverviewPage
@@ -185,7 +174,7 @@ const PlaySets = () => {
           />
         </div>
       );
-    case 'forstaelse':
+    case "forstaelse":
       return (
         <Forstaelse
           id={exerciseId}
@@ -196,7 +185,7 @@ const PlaySets = () => {
           playAudio={(url) => playAudio(url)}
         />
       );
-    case 'feedback':
+    case "feedback":
       return (
         <div>
           <Feedback
@@ -207,29 +196,29 @@ const PlaySets = () => {
           />
         </div>
       );
-      case 'chat':
-        return (
-          <Chat
-            id={exerciseId}
-            showFeedback={showFeedback}
-            progress={exerciseProgress}
-            possible={totalExercises}
-            restartSet={() => restartSet()}
-            playAudio={(url) => playAudio(url)}
-          />
-        );
-      case 'ryddeSetninger':
-        return (
-          <RyddeSetninger
-            id={exerciseId}
-            showFeedback={showFeedback}
-            progress={exerciseProgress}
-            possible={totalExercises}
-            restartSet={() => restartSet()}
-            playAudio={(url) => playAudio(url)}
-          />
-        );
-    case 'finish':
+    case "chat":
+      return (
+        <Chat
+          id={exerciseId}
+          showFeedback={showFeedback}
+          progress={exerciseProgress}
+          possible={totalExercises}
+          restartSet={() => restartSet()}
+          playAudio={(url) => playAudio(url)}
+        />
+      );
+    case "ryddeSetninger":
+      return (
+        <RyddeSetninger
+          id={exerciseId}
+          showFeedback={showFeedback}
+          progress={exerciseProgress}
+          possible={totalExercises}
+          restartSet={() => restartSet()}
+          playAudio={(url) => playAudio(url)}
+        />
+      );
+    /* case "finish":
       return (
         <div>
           <FinishedSet
@@ -241,9 +230,9 @@ const PlaySets = () => {
             setSteps={setStep}
           />
         </div>
-      );
+      );*/
     default:
-      return null;
+      return null; 
   }
 };
 

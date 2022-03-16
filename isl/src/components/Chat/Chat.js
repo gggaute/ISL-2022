@@ -69,13 +69,17 @@ const Chat = ({
   // Data for the chat exercise from backend.
   const [formData, setFormData] = useState({});
 
+  
+  const [transformIcon, setTransformIcon] = useState({});
+
   /**
    * Function that checks if the input argument corresponds to a case
    * with a similar name, in order to return the right image object.
    * @param {string} iconName Icon name from the database.
    * @returns The image object corresponding the input argument.
    */
-  const transformIcon = (iconName) => {
+  
+  transformIcon = (iconName) => {
     switch (iconName) {
       case 'gingerMan':
         return gingerMan;
@@ -95,21 +99,15 @@ const Chat = ({
   };
 
   function getContent() {
-    fetch(`${process.env.REACT_APP_API_URL}/api/chat/${id}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          accept: 'application/json',
-        },
-      })
-      .then((res) => {
-        chatHistory.push(res.data.chatquestion1);
-        setFormData(res.data);
-        const avatarS = transformIcon(res.data.sendericon);
-        setSendericon(avatarS);
-        const avatarR = transformIcon(res.data.receivericon);
-        setReceivericon(avatarR);
-      });
-  }
+    fetch(`http://localhost:8000/api/chat/${id}`)
+      .then((response) => response.json())
+      .then((data) => chatHistory.push(data.chatquestion1))
+      .then((data) => setFormData(data))
+      .then( (data) => setTransformIcon(data.sendericon))
+      .then(setSendericon(transformIcon))
+      .then( (data) => setTransformIcon(data.receivericon))
+      .then(setReceivericon(transformIcon))
+  };
 
   const handleNextTask = () => {
     setAnswerstate(null);
