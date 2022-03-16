@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 import {
   AppBar,
@@ -10,11 +10,11 @@ import {
   Paper,
   Button,
   IconButton,
-} from '@mui/material';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import ryddaudio from '../../assets/audiofiles/ryddeSetningerVoice.mp3';
-import ProgressBar from '../ProgressBar';
-import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
+} from "@mui/material";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import ryddaudio from "../../assets/audiofiles/ryddeSetningerVoice.mp3";
+import ProgressBar from "../ProgressBar";
+import NextExerciseBtn from "../NextExerciseBtn/NextExerciseBtn";
 
 /**
  * This is the ryddeSetninger exercise component that is playable from Playsets.
@@ -69,7 +69,7 @@ const RyddeSetninger = ({
   // Splits the words in the sentence from their wordclasses and into their respective states.
   const splitData = (el) => {
     counter += 1;
-    if (!(el === '' || typeof el === 'number')) {
+    if (!(el === "" || typeof el === "number")) {
       if (counter % 2 === 0) {
         words.push(el);
       } else {
@@ -86,28 +86,28 @@ const RyddeSetninger = ({
   css backgroundColor object with its the colors HEX code. */
   const colorCodeTransform = (wordClass) => {
     switch (wordClass) {
-      case 'det':
-        return { backgroundColor: '#FDFF95' };
-      case 'prp':
-        return { backgroundColor: '#8EE7EF' };
-      case 'pron':
-        return { backgroundColor: '#9EFFFA' };
-      case 'adv':
-        return { backgroundColor: '#8EEF98' };
-      case 'intj':
-        return { backgroundColor: '#CDFFC0' };
-      case 'v':
-        return { backgroundColor: '#FA9D48' };
-      case 'conj':
-        return { backgroundColor: '#F3BB88' };
-      case 'n':
-        return { backgroundColor: '#EC6F6F' };
-      case 'subj':
-        return { backgroundColor: '#FF9E9E' };
-      case 'adj':
-        return { backgroundColor: '#D08EEF' };
+      case "det":
+        return { backgroundColor: "#FDFF95" };
+      case "prp":
+        return { backgroundColor: "#8EE7EF" };
+      case "pron":
+        return { backgroundColor: "#9EFFFA" };
+      case "adv":
+        return { backgroundColor: "#8EEF98" };
+      case "intj":
+        return { backgroundColor: "#CDFFC0" };
+      case "v":
+        return { backgroundColor: "#FA9D48" };
+      case "conj":
+        return { backgroundColor: "#F3BB88" };
+      case "n":
+        return { backgroundColor: "#EC6F6F" };
+      case "subj":
+        return { backgroundColor: "#FF9E9E" };
+      case "adj":
+        return { backgroundColor: "#D08EEF" };
       default:
-        return { backgroundColor: '#E0E0E0' };
+        return { backgroundColor: "#E0E0E0" };
     }
   };
 
@@ -138,16 +138,10 @@ const RyddeSetninger = ({
   };
 
   function getContent() {
-    fetch(`${process.env.REACT_APP_API_URL}/api/rydde_setninger/${id}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          accept: 'application/json',
-        },
-      })
-      .then((res) => {
-        filterData(res.data);
-        setRenderPage(renderPage + 1);
-      })
+    fetch(`http://localhost:8000/api/rydde_setninger/${id}`)
+      .then((response) => response.json())
+      .then((data) => filterData(data))
+      .then(setRenderPage(renderPage + 1))
       .catch((e) => {
         return e;
       });
@@ -190,11 +184,11 @@ const RyddeSetninger = ({
     setDisableButton(true);
     const finalSentence = chosenWords.map((el) => el[0]);
     if (JSON.stringify(finalSentence) === JSON.stringify(rightAnswer)) {
-      setAnswerState('correct');
+      setAnswerState("correct");
       setScore(1);
       setTotalPossibleScore(totalPossibleScore + 1);
     } else {
-      setAnswerState('incorrect');
+      setAnswerState("incorrect");
       setScore(0);
       setTotalPossibleScore(totalPossibleScore + 1);
     }
@@ -217,14 +211,12 @@ const RyddeSetninger = ({
   }, []);
 
   return (
-    <Paper >
+    <Paper>
       <AppBar position="static">
-        <Toolbar component="nav" >
-          {restartSet()}
-        </Toolbar>
+        <Toolbar component="nav">{restartSet()}</Toolbar>
       </AppBar>
-      <div >
-        <div >
+      <div>
+        <div>
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <Card>
@@ -236,10 +228,7 @@ const RyddeSetninger = ({
             >
               <VolumeUpIcon />
             </IconButton>
-            <Typography
-              variant="body2"
-              component="p"
-            >
+            <Typography variant="body2" component="p">
               Trykk på ordene sånn at de kommer i riktig rekkefølge. Husk å
               sjekke tegnsettingen!
             </Typography>
@@ -249,7 +238,7 @@ const RyddeSetninger = ({
       <Paper elevation={0}>
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            <div style={{ alignSelf: 'center' }}>
+            <div style={{ alignSelf: "center" }}>
               {wordWithColorCode.map((el, index) => (
                 <Button
                   key={index}
@@ -266,7 +255,7 @@ const RyddeSetninger = ({
             </div>
           </Grid>
           <Grid item xs={12}>
-            <div >
+            <div>
               {chosenWords.map((el, index) => (
                 <Button
                   key={index}
