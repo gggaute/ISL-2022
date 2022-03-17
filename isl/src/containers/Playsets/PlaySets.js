@@ -162,6 +162,7 @@ const PlaySets = () => {
    * I.e search bar on front page.
    */
   useEffect(() => {
+    console.log('newbranchmfs');
     getContent(location.state.playId);
     setId(location.state.playId);
   }, []);
