@@ -1,5 +1,6 @@
 from chat.models import Chat
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, status
+from rest_framework.response import Response
 from .serializers import ChatSerializer
 
 # Foreståelse Viewset
