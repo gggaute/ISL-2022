@@ -23,6 +23,7 @@ import defaultMan from '../../assets/images/defaultMan.png';
 import ChatBubble from '../ChatBubble/ChatBubble';
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import ProgressBar from '../ProgressBar';
+import axios from 'axios';
 
 /**
  * This is the chat exercise component that is playable from Playsets.
@@ -99,16 +100,22 @@ const Chat = ({
   };
 
   function getContent() {
-    fetch(`http://localhost:8000/api/chat/${id}`)
-      .then((response) => response.json())
-      .then((data) => chatHistory.push(data.chatquestion1))
-      .then((data) => setFormData(data))
-      .then( (data) => setTransformIcon(data.sendericon))
-      .then(setSendericon(transformIcon))
-      .then( (data) => setTransformIcon(data.receivericon))
-      .then(setReceivericon(transformIcon))
-  };
-
+    axios
+      .get('http://localhost:8000/api/chat/${id}', {
+        headers: {
+          'Content-Type': 'application/json',
+          accept: 'application/json',
+        },
+      })
+      .then((res) => {
+        chatHistory.push(res.data.chatquestion1);
+        setFormData(res.data);
+        const avatarS = transformIcon(res.data.sendericon);
+        setSendericon(avatarS);
+        const avatarR = transformIcon(res.data.receivericon);
+        setReceivericon(avatarR);
+      });
+  }
   const handleNextTask = () => {
     setAnswerstate(null);
     if (!formData[`chatquestion${taskStep}`]) {

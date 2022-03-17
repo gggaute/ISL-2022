@@ -15,6 +15,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+REAL_BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -43,8 +45,7 @@ INSTALLED_APPS = [
     'rydde_setninger',
     'sets',
     'rest_framework',
-    'unlock',
-    'dra_inn_manglende_ord'
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -59,10 +60,16 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'leadManager.urls'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication'
+    ]
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'build')],
+        'DIRS': [os.path.join(REAL_BASE_DIR, 'isl', 'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,9 +134,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'build/static')
+    os.path.join(REAL_BASE_DIR, 'isl', 'build', 'static')
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(REAL_BASE_DIR, 'isl', 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

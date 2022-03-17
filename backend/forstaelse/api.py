@@ -9,3 +9,13 @@ class ForstaelseViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = ForstaelseSerializer
+
+class GetForstaelseView(viewsets.ModelViewSet):
+    def get(self, pk):
+        try:
+            getForstaelse = Forstaelse.objects.get(pk=pk)
+        except Forstaelse.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = ForstaelseSerializer(getForstaelse)
+        return Response(serializer.data)

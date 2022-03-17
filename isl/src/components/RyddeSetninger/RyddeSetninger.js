@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import axios from 'axios';
 import {
   AppBar,
   Card,
@@ -138,10 +138,17 @@ const RyddeSetninger = ({
   };
 
   function getContent() {
-    fetch(`http://localhost:8000/api/rydde_setninger/${id}`)
-      .then((response) => response.json())
-      .then((data) => filterData(data))
-      .then(setRenderPage(renderPage + 1))
+    axios
+      .get('http://localhost:8000/api/rydde_setninger/${id}', {
+        headers: {
+          'Content-Type': 'application/json',
+          accept: 'application/json',
+        },
+      })
+      .then((res) => {
+        filterData(res.data);
+        setRenderPage(renderPage + 1);
+      })
       .catch((e) => {
         return e;
       });

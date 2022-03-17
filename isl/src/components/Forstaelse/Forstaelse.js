@@ -16,6 +16,7 @@ import ChatBubble from '../ChatBubble/ChatBubble';
 import forsaudio from '../../assets/audiofiles/forstaelseVoice.mp3';
 import ProgressBar from '../ProgressBar';
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
+import axios from 'axios';
 
 /**
  * This is the forstaelse exercise component that is playable from Playsets.
@@ -58,14 +59,20 @@ const Forstaelse = ({
 
   // Gets the exercise content with {id} from backend.
   function getContent() {
-      fetch(`http://localhost:8000/api/forstaelse/1`)
-      .then((response) => response.json())
-      .then((data) =>
-        setFormData(data))
+    axios
+      .get('http://localhost:8000/api/forstaelse/${id}', {
+        headers: {
+          'Content-Type': 'application/json',
+          accept: 'application/json',
+        },
+      })
+      .then((res) => {
+        setFormData(res.data);
+      })
       .catch((e) => {
         return e;
       });
-  } 
+  }
 
   // Updates states after a user has clicked on an answer.
   function onClickAnswer(userAnswer) {

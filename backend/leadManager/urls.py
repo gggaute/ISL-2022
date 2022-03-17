@@ -2,8 +2,10 @@
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.generic import TemplateView
+from core.views import front
 
 urlpatterns = [
+    path("", front, name="front"),
     path('api/', include('forstaelse.urls')),
     path('api/', include('chat.urls')),
     path('api/', include('rydde_setninger.urls')),

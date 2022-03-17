@@ -6,7 +6,8 @@ import Forstaelse from "../../components/Forstaelse/Forstaelse";
 import Chat from "../../components/Chat/Chat";
 import RyddeSetninger from "../../components/RyddeSetninger/RyddeSetninger";
 import Feedback from "../../components/feedback/Feedback";
-//import FinishedSet from "../../components/finishedSet/FinishedSet";
+import axios from 'axios';
+import FinishedSet from "../../components/finishedSet/FinishedSet";
 import OverviewPage from "../../components/OverviewPage/OverviewPage";
 
 /**
@@ -44,7 +45,6 @@ const PlaySets = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.auth.user);
  */
-
   /**
    * The function will turn the response object from the API endpoint into a
    * playlist with exercise IDs. The playlist will be stored as an object with
@@ -53,7 +53,7 @@ const PlaySets = () => {
    * @param {object} sets An object containing sets from backend.
    */
   function createPlayList(sets) {
-
+    console.log(sets);
     formDataExercises.chat.length = 0;
     formDataExercises.forstaelse.length = 0;
     formDataExercises.ryddeSetninger.length = 0;
@@ -74,14 +74,21 @@ const PlaySets = () => {
   }
 
   function getContent(id) {
-    fetch(`http://localhost:8000/api/sets/${id}`)
-      .then((response) => response.json())
-      .then((data) => createPlayList(data))
-      .then((data) => setTitle(data.title))
-      .then((data) => setDescription(data.description))
-      .then(setTotalScore(0))
-      .then(setExerciseProgress(0))
-      .then(setStep("overview"))
+    axios
+      .get(`http://localhost:8000/api/sets/${id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          accept: 'application/json',
+        },
+      })
+      .then((res) => {
+        createPlayList(res.data);
+        setTitle(res.data.title);
+        setDescription(res.data.description);
+        setTotalScore(0);
+        setExerciseProgress(0);
+        setStep('overview');
+      })
       .catch((e) => {
         return e;
       });
@@ -107,12 +114,10 @@ const PlaySets = () => {
       setExerciseProgress(exerciseProgress + 1);
       setExerciseId(formDataExercises.ryddeSetninger.shift());
       setStep("ryddeSetninger");
-    } //else {
-     // setStep("finish");
-    //}
+    } else {
+     setStep("finish");
+    }
   }
-
-
 
   // Keeps track of scores and decides what feedback to show accordingly.
   function showFeedback(score, totalPossibleScore) {
@@ -157,9 +162,8 @@ const PlaySets = () => {
    * I.e search bar on front page.
    */
   useEffect(() => {
-      console.log(location.state.playId);
-      getContent(location.state.playId);
-      setId(location.state.playId);
+    getContent(location.state.playId);
+    setId(location.state.playId);
   }, []);
 
   switch (step) {
@@ -218,7 +222,7 @@ const PlaySets = () => {
           playAudio={(url) => playAudio(url)}
         />
       );
-    /* case "finish":
+    case "finish":
       return (
         <div>
           <FinishedSet
@@ -230,9 +234,9 @@ const PlaySets = () => {
             setSteps={setStep}
           />
         </div>
-      );*/
+      );
     default:
-      return null; 
+      return null;
   }
 };
 

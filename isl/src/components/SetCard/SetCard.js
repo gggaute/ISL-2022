@@ -1,6 +1,8 @@
 import React from 'react';
 import { Avatar, Card, CardHeader, IconButton } from '@mui/material';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
+import { Link } from 'react-router-dom';
+
 /**
  * Reusable card component for exercise sets with icon buttons for playing, saving,
  * editing and deleting exercise sets.
@@ -13,7 +15,7 @@ import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
  * @property {function} onClick3 Lets user play the set.
  * @returns Card component for given exercise set.
  */
-function SetCard({ type, formData, onClick }) {
+function SetCard({ type, formData, playId, onClick }) {
 
   // Returns different buttons depending on the type of card.
   function iconButtons() {
@@ -23,6 +25,11 @@ function SetCard({ type, formData, onClick }) {
           <IconButton data-testid="playButton" onClick={() => onClick()}>
             <PlayCircleOutlineIcon />
           </IconButton>
+          <Link to='/sets' state = {{playId : playId}}>
+          <IconButton data-testid="idButton">
+            <PlayCircleOutlineIcon />
+          </IconButton>
+          </Link>
         </>
       );
     }

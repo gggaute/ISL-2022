@@ -9,3 +9,13 @@ class RyddeSetningerViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = RyddeSetningerSerializer
+
+class GetRyddeSetningerView(viewsets.ModelViewSet):
+    def get(self, pk):
+        try:
+            getRyddeSetninger = RyddeSetninger.objects.get(pk=pk)
+        except RyddeSetninger.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = RyddeSetningerSerializer(getRyddeSetninger)
+        return Response(serializer.data)
