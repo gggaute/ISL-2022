@@ -71,10 +71,7 @@ const Chat = ({
   const [formData, setFormData] = useState({});
 
   
-<<<<<<< HEAD
-=======
   const [transformIcon, setTransformIcon] = useState({});
->>>>>>> 5d868ba031335c0e8f3218ca07952f4daf9c1b1f
 
   /**
    * Function that checks if the input argument corresponds to a case
@@ -83,11 +80,7 @@ const Chat = ({
    * @returns The image object corresponding the input argument.
    */
   
-<<<<<<< HEAD
-  const transformIcon = (iconName) => {
-=======
   transformIcon = (iconName) => {
->>>>>>> 5d868ba031335c0e8f3218ca07952f4daf9c1b1f
     switch (iconName) {
       case 'gingerMan':
         return gingerMan;
