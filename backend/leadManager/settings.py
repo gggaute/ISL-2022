@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'sets',
     'rest_framework',
     'core',
+    'dra_inn_manglende_ord',
+    'unlock'
 ]
 
 MIDDLEWARE = [
