@@ -1,5 +1,6 @@
 from rydde_setninger.models import RyddeSetninger
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, status
+from rest_framework.response import Response
 from .serializers import RyddeSetningerSerializer
 
 # Foreståelse Viewset
