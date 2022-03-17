@@ -64,8 +64,13 @@ const PlaySets = () => {
         formDataExercises.forstaelse.push(id);
       } else if (exercise.substring(0, 4) === "rydd" && id) {
         formDataExercises.ryddeSetninger.push(id);
+      } /* nye oppgavene else if (exercise.substring(0, 4) === "laso" && id) {
+        formDataExercises..push(id);
+      } else if (exercise.substring(0, 4) === "drai" && id) {
+        formDataExercises.ryddeSetninger.push(id);
       }
-    });
+      */
+      });
     setTotalExercises(
       formDataExercises.chat.length +
         formDataExercises.forstaelse.length +
