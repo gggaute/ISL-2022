@@ -18,11 +18,13 @@ class SetsView(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = SetsSerializer
-
-"""class GetSetsView(viewsets.ModelViewSet):
+    
+class GetSetsView(viewsets.ModelViewSet):
     def get(self, pk):
-        getSet = Sets.objects.get(pk=pk)
-        permission_classes = [
-        permissions.AllowAny
-        ]
-        serializer_class = SetsSerializer(getSet)"""
+        try:
+            getSet = Sets.objects.get(pk=pk)
+        except Sets.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = SetsSerializer(getSet)
+        return Response(serializer.data)
