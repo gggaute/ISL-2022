@@ -102,10 +102,10 @@ const UnlockPad = (input) => {
         setDisabled = true
     }
     
+    const renderHtml = () => {
+        return (
+            <>
 
-    return(
-        <>
-        
             {/* <img src={input.input.image} alt="solutionImage"></img> */}
             <div>
                 <p>Antall bokstaver: {solutionLength}</p>
@@ -131,6 +131,14 @@ const UnlockPad = (input) => {
             <h1>{feedback}</h1>
         </div>
         </>
+        )
+    }
+
+    return(
+        <div>
+            <Navbar></Navbar>
+            {renderHtml()}
+        </div>
     )
 }
 
