@@ -21,6 +21,7 @@ const ContentContainer = () => {
 
   return (
     <div className='wrapper'>
+      <Navbar></Navbar>
       <ContentHeader></ContentHeader>
       <ProgressBar></ProgressBar>
       {/* <UnlockPad input={property}></UnlockPad> */}

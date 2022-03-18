@@ -9,6 +9,8 @@ import Feedback from "../../components/feedback/Feedback";
 import axios from 'axios';
 import FinishedSet from "../../components/finishedSet/FinishedSet";
 import OverviewPage from "../../components/OverviewPage/OverviewPage";
+import ContentContainer from '../../components/Fill-In-Word/ContentContainer'
+import UnlockPad from '../../components/UnlockPad/UnlockPad'
 
 /**
  * This is the container for playing exercise sets.
@@ -119,7 +121,16 @@ const PlaySets = () => {
       setExerciseProgress(exerciseProgress + 1);
       setExerciseId(formDataExercises.ryddeSetninger.shift());
       setStep("ryddeSetninger");
-    } else {
+    } else if (formDataExercises.lasoppmobil[0]) {
+      setExerciseProgress(exerciseProgress + 1);
+      setExerciseId(formDataExercises.lasoppmobil.shift());
+      setStep("lasoppmobil");
+    } else if (formDataExercises.drainnmanglendeord[0]) {
+      setExerciseProgress(exerciseProgress + 1);
+      setExerciseId(formDataExercises.drainnmanglendeord.shift());
+      setStep("drainnmanglendeord");
+    }
+     else {
      setStep("finish");
     }
   }
@@ -220,6 +231,28 @@ const PlaySets = () => {
     case "ryddeSetninger":
       return (
         <RyddeSetninger
+          id={exerciseId}
+          showFeedback={showFeedback}
+          progress={exerciseProgress}
+          possible={totalExercises}
+          restartSet={() => restartSet()}
+          playAudio={(url) => playAudio(url)}
+        />
+      );
+      case "lasoppmobil":
+      return (
+        <UnlockPad
+          id={exerciseId}
+          showFeedback={showFeedback}
+          progress={exerciseProgress}
+          possible={totalExercises}
+          restartSet={() => restartSet()}
+          playAudio={(url) => playAudio(url)}
+        />
+      );
+      case "drainnmanglendeord":
+      return (
+        <ContentContainer
           id={exerciseId}
           showFeedback={showFeedback}
           progress={exerciseProgress}

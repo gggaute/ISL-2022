@@ -105,6 +105,7 @@ const UnlockPad = (input) => {
 
     return(
         <>
+        
             {/* <img src={input.input.image} alt="solutionImage"></img> */}
             <div>
                 <p>Antall bokstaver: {solutionLength}</p>
