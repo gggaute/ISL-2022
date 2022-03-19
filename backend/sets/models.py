@@ -2,6 +2,8 @@ from django.db import models
 from forstaelse.models import Forstaelse
 from chat.models import Chat
 from rydde_setninger.models import RyddeSetninger
+from unlock.models import LåsOppMobil
+from dra_inn_manglende_ord.models import DraInnManglendeOrd
 
 
 """
@@ -50,4 +52,26 @@ class Sets(models.Model):
         RyddeSetninger, on_delete=models.SET_NULL, related_name='ryddeSetninger4', blank=True, null=True)
     ryddeSetninger5 = models.ForeignKey(
         RyddeSetninger, on_delete=models.SET_NULL, related_name='ryddeSetninger5', blank=True, null=True)
+
+    LåsOppMobil1 = models.ForeignKey(
+        LåsOppMobil, on_delete=models.SET_NULL, related_name='LåsOppMobil1', blank=True, null=True)
+    LåsOppMobil2 = models.ForeignKey(
+        LåsOppMobil, on_delete=models.SET_NULL, related_name='LåsOppMobil2', blank=True, null=True)
+    LåsOppMobil3 = models.ForeignKey(
+        LåsOppMobil, on_delete=models.SET_NULL, related_name='LåsOppMobil3', blank=True, null=True)
+    LåsOppMobil4 = models.ForeignKey(
+        LåsOppMobil, on_delete=models.SET_NULL, related_name='LåsOppMobil4', blank=True, null=True)
+    LåsOppMobil5 = models.ForeignKey(
+        LåsOppMobil, on_delete=models.SET_NULL, related_name='LåsOppMobil5', blank=True, null=True)
+
+    DraInnManglendeOrd1 = models.ForeignKey(
+        DraInnManglendeOrd, on_delete=models.SET_NULL, related_name='DraInnManglendeOrd1', blank=True, null=True)
+    DraInnManglendeOrd2 = models.ForeignKey(
+        DraInnManglendeOrd, on_delete=models.SET_NULL, related_name='DraInnManglendeOrd2', blank=True, null=True)
+    DraInnManglendeOrd3 = models.ForeignKey(
+        DraInnManglendeOrd, on_delete=models.SET_NULL, related_name='DraInnManglendeOrd3', blank=True, null=True)
+    DraInnManglendeOrd4 = models.ForeignKey(
+        DraInnManglendeOrd, on_delete=models.SET_NULL, related_name='DraInnManglendeOrd4', blank=True, null=True)
+    DraInnManglendeOrd5 = models.ForeignKey(
+        DraInnManglendeOrd, on_delete=models.SET_NULL, related_name='DraInnManglendeOrd5', blank=True, null=True)
 

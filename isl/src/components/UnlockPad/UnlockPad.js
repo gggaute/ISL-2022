@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 // import SingleLetter from './singleLetter';
 // import Button from "@mui/material/Button";
-import egg from '../Fill-In-Word/img/egg.png';
+import egg from '../../assets/img/egg.png';
 import Navbar from "../Fill-In-Word/Navbar";
 
 const UnlockPad = (input) => {
