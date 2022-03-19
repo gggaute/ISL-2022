@@ -1,6 +1,5 @@
 import React from 'react'
 import ContentHeader from './ContentHeader'
-import ProgressBar from './ProgressBar'
 import Question from './Question'
 import Task from './Task'
 import Words from './Words'
@@ -10,7 +9,6 @@ import FeedbackBox from './FeedbackBox'
 import $ from "jquery"
 // import { FcPrevious, FcNext } from 'react-icons/fc'
 import ExerciseContainer from './ExerciseContainer'
-import UnlockPad from '../unlockPad'
 import egg from './img/egg.png'
 import Navbar from './Navbar'
 
@@ -23,7 +21,6 @@ const ContentContainer = () => {
     <div className='wrapper'>
       <Navbar></Navbar>
       <ContentHeader></ContentHeader>
-      <ProgressBar></ProgressBar>
       {/* <UnlockPad input={property}></UnlockPad> */}
       <ExerciseContainer></ExerciseContainer>
     </div>
