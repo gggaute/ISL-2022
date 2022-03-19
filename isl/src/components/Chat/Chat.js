@@ -70,9 +70,6 @@ const Chat = ({
   // Data for the chat exercise from backend.
   const [formData, setFormData] = useState({});
 
-  
-  const [transformIcon, setTransformIcon] = useState({});
-
   /**
    * Function that checks if the input argument corresponds to a case
    * with a similar name, in order to return the right image object.
@@ -80,7 +77,7 @@ const Chat = ({
    * @returns The image object corresponding the input argument.
    */
   
-  transformIcon = (iconName) => {
+  const transformIcon = (iconName) => {
     switch (iconName) {
       case 'gingerMan':
         return gingerMan;
@@ -101,7 +98,7 @@ const Chat = ({
 
   function getContent() {
     axios
-      .get('http://localhost:8000/api/chat/${id}', {
+      .get(`http://localhost:8000/api/chat/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           accept: 'application/json',
