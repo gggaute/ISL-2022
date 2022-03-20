@@ -1,10 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from 'react';
+
 // import SingleLetter from './singleLetter';
 // import Button from "@mui/material/Button";
 import egg from '../Fill-In-Word/img/egg.png';
 import Navbar from "../Fill-In-Word/Navbar";
+import axios from 'axios';
 
-const UnlockPad = (input) => {
+const UnlockPad = ({id,}) => {
 
     //henter inn en oppgave fra databasen, må inneholde:
     // - bilde av fasit svar
@@ -22,14 +24,30 @@ const UnlockPad = (input) => {
     // feilhåndtering (eget issue)
     // resette (eget issue?)
 
-
+    useEffect(() => {
+        getContent();
+      });
     
+    function getContent() {
+        axios
+          .get(`http://localhost:8000/api/unlock/${id}`, {
+            headers: {
+              'Content-Type': 'application/json',
+              accept: 'application/json',
+            },
+          })
+          .then((res) => {
+            setCorrectSolution(res.data.correctSolution);
+            setSolutionLength(correctSolution.length)
+            //forloop av slag for å iterere gjennom letters og legge de til i "letters"
+            setLetters(res.data.letter)
+          });
+      }
 
-
-    const [correctSolution, setCorrectSolution] = useState(input.input.correctSolution);
+    const [correctSolution, setCorrectSolution] = useState();
     const [userAnswer, setUserAnswer] = useState("");
-    const [solutionLength, setSolutionLength] = useState(correctSolution.length);
-    const [letters, setLetters] = useState(input.input.letters)
+    const [solutionLength, setSolutionLength] = useState();
+    const [letters, setLetters] = useState()
     let isFinished = false
 
    let feedback
@@ -58,6 +76,7 @@ const UnlockPad = (input) => {
     let count = 0;
 
     const [userAnswerList, setUserAnswerList] = useState([])
+    
     function registerLetterinAnswer(buttonLetter){
         if(userAnswer.length < solutionLength){
             setUserAnswer(userAnswer+buttonLetter)

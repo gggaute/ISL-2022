@@ -60,7 +60,7 @@ const Forstaelse = ({
   // Gets the exercise content with {id} from backend.
   function getContent() {
     axios
-      .get('http://localhost:8000/api/forstaelse/${id}', {
+      .get(`http://localhost:8000/api/forstaelse/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           accept: 'application/json',
