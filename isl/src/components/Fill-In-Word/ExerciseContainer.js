@@ -11,24 +11,12 @@ import { FcPrevious, FcNext } from "react-icons/fc";
 import axios from "axios";
 
 const ExerciseContainer = ({ id }) => {
+  let backendSentence = []
+  let backendwords = []
   const [onload, setOnload] = useState(true);
-  const [words, setWords] = useState([
-    "familie",
-    "har",
-    "fornøyd",
-    "leilighet",
-    "mange",
-    "med",
-  ]);
+  const [words, setWords] = useState([]);
 
-  const [sentence, setSentence] = useState([
-    "Yosef",
-    "sin",
-    "familie",
-    "bor",
-    "i",
-    "Eritrea",
-  ]);
+  const [sentence, setSentence] = useState([]);
 
   function getContent() {
     axios
@@ -39,8 +27,35 @@ const ExerciseContainer = ({ id }) => {
         },
       })
       .then((res) => {
-
-        
+        backendSentence.push(res.data.sentenceWord1)
+        backendSentence.push(res.data.sentenceWord2)
+        backendSentence.push(res.data.sentenceWord3)
+        backendSentence.push(res.data.sentenceWord4)
+        backendSentence.push(res.data.sentenceWord5)
+        backendSentence.push(res.data.sentenceWord6)
+        backendSentence.push(res.data.sentenceWord7)
+        backendSentence.push(res.data.sentenceWord8)
+        backendSentence.push(res.data.sentenceWord9)
+        backendSentence.push(res.data.sentenceWord10)
+        backendSentence.push(res.data.sentenceWord11)
+        backendSentence.push(res.data.sentenceWord12)
+        backendSentence.push(res.data.sentenceWord13)
+        backendSentence.push(res.data.sentenceWord14)
+        backendSentence.push(res.data.sentenceWord15)
+        backendwords.push(res.data.answerWord1)
+        backendwords.push(res.data.answerWord2)
+        backendwords.push(res.data.answerWord3)
+        backendwords.push(res.data.answerWord4)
+        backendwords.push(res.data.answerWord5)
+        backendwords.push(res.data.answerWord6)
+        for (let index = 0; index < backendSentence.length; index++) {
+          if (backendSentence[index] === null) {
+            backendSentence.splice(index)
+          }
+        }
+        setSentence(backendSentence)
+        setWords(backendwords)
+        setMissingWord(res.data.CorrectSolution)
       });
   }
 
@@ -91,7 +106,7 @@ const ExerciseContainer = ({ id }) => {
 
   const question = "Hvilket ord mangler?";
 
-  const missingWord = "familie";
+  const [missingWord, setMissingWord] = useState("");
 
   const [missingWordIndex] = useState(sentence.indexOf(missingWord));
   return (
