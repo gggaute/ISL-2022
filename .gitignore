@@ -1,4 +1,4 @@
 #Environments
 env
-
 *.pyc
+\build

@@ -4,7 +4,8 @@ import React, { useState, useEffect } from "react";
 // import Button from "@mui/material/Button";
 import egg from "../../assets/img/egg.png";
 import Navbar from "../Fill-In-Word/Navbar";
-import axios from "axios";
+import axios from "axios"
+import { Button } from "@mui/material/Button";
 
 const UnlockPad = ({ id }) => {
   //henter inn en oppgave fra databasen, må inneholde:
@@ -22,6 +23,7 @@ const UnlockPad = ({ id }) => {
   // så rett tilbakemelding (eget isssue)
   // feilhåndtering (eget issue)
   // resette (eget issue?)
+  let setDisabled = false
 
   function getContent() {
     axios
@@ -79,21 +81,21 @@ letters.push(res.data.letter1);
   let feedback;
 
   function checkAnswer() {
-    let tilbakemelding;
+    let tilbakemelding
     if (userAnswer.length === solutionLength) {
-      if (userAnswer === correctSolution) {
-        console.log("correct!");
-        tilbakemelding = "riktig";
-      } else {
-        console.log("WRONG!! L + ration + nobody asked");
-        tilbakemelding = "feil";
-      }
-      isFinished = true;
-    } else {
-      console.log("Wrong amount of letters yet or wrong answer");
+        if (userAnswer === correctSolution) {
+            tilbakemelding = "riktig"
+        }
+        else {
+            tilbakemelding = "feil"
+        }
+        isFinished = true
     }
-    feedback = tilbakemelding;
-  }
+    feedback = tilbakemelding
+    if (isFinished) {
+        setDisabled = true
+    }
+}
 
   //count for id til css, vet ikke om det funker
   let count = 0;
@@ -129,60 +131,59 @@ letters.push(res.data.letter1);
   });
 
   function handleEvent(event) {
-    console.log(event.target.value);
-    event.target.disabled = true;
-  }
+    event.target.disabled = true
+}
 
-  let setDisabled = false;
+checkAnswer()
 
-  checkAnswer();
-  if (isFinished) {
-    setDisabled = true;
-  }
+// function resetCode() {
+//     if (setDisabled) {
+//         isFinished = false
+//         setUserAnswer("")
+//         setUserAnswerList([])
+//     }
+// }
 
-  const renderHtml = () => {
-    return (
-      <>
-      {getContent()}
+// function resetButton() {
+//     if (setDisabled)
+//         return <Button id="tryAgainButton" onClick={resetCode}>Prøv igjen</Button>
+// }
 
-        {/*<img src={image} alt="solutionImage"></img>*/}
-        <div>
-          <p>Antall bokstaver: {solutionLength}</p>
-          <p>Svar: {userAnswer} </p>
-          <div>{itemList}</div>
+function setButtonID() {
+    count++
+    return "numpadButton" + count.toString()
+}
+
+return (
+    <>
+    <Navbar></Navbar>
+    {getContent()}
+        <div id="content">
+            <img src= {egg} alt="solutionImage"></img>
+            <div id="contentRow">
+                <div id="guess">{itemList}</div>
+                <div className="grid">
+                    {letters.map((letter, count) => (
+                        <>
+                            <button className="gridButton" key={count} id={setButtonID()} disabled={setDisabled} onClick={(event) => {
+                                handleEvent(event)
+                                registerLetterinAnswer(letter)
+                            }}>
+                                {letter.toUpperCase()} </button>
+                            {() => count++}
+                        </>
+                    ))}
+                </div>
+            </div>
+            <div id="feedBackAndReset">
+                {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
+                <h1>{feedback}</h1>
+                {/* {resetButton()} */}
+            </div>
+
         </div>
-        <div>
-          {letters.map((letter, count) => (
-            <>
-              <button
-                key={count}
-                id={count.toString()}
-                disabled={setDisabled}
-                onClick={(event) => {
-                  handleEvent(event);
-                  registerLetterinAnswer(letter);
-                }}
-              >
-                {letter}{" "}
-              </button>
-              {() => count++}
-            </>
-          ))}
-        </div>
-        <div>
-          {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
-          <h1>{feedback}</h1>
-        </div>
-      </>
-    );
-  };
-
-  return (
-    <div>
-      <Navbar></Navbar>
-      {renderHtml()}
-    </div>
-  );
-};
+    </>
+)
+}
 
 export default UnlockPad;

@@ -17,6 +17,8 @@ import forsaudio from '../../assets/audiofiles/forstaelseVoice.mp3';
 import ProgressBar from '../ProgressBar';
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import axios from 'axios';
+import useStyles from './styles';
+import exerciseStyles from '../exerciseStyle';
 
 /**
  * This is the forstaelse exercise component that is playable from Playsets.
@@ -56,6 +58,9 @@ const Forstaelse = ({
   /* Objects that take both the component style and a common style between all
   exercises, to finally integrate both style objects into the classes object
   to be used in the component */
+  const className = useStyles();
+  const classesBase = exerciseStyles();
+  const classes = { ...className, ...classesBase };
 
   // Gets the exercise content with {id} from backend.
   function getContent() {
@@ -110,18 +115,18 @@ const Forstaelse = ({
   });
 
   return (
-    <Paper >
-      <AppBar position="static">
-        <Toolbar component="nav">
+    <Paper className={classes.root}>
+      <AppBar className={classes.navbar} position="static">
+        <Toolbar component="nav" className={classes.toolbar}>
           {restartSet()}
         </Toolbar>
       </AppBar>
-      <div >
-        <div >
+      <div className={classes.topContent}>
+        <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <Card>
-          <CardContent >
+          <CardContent className={classes.cardcontent}>
             <IconButton
               onClick={() => fireAudio()}
               disabled={disabled}
@@ -132,18 +137,19 @@ const Forstaelse = ({
             <Typography
               variant="body2"
               component="p"
+              className={classes.audiotext}
             >
               Les hva meldingen sier. Svar på spørsmålet.
             </Typography>
           </CardContent>
         </Card>
       </div>
-      <Paper elevation={0}>
+      <Paper className={classes.layout} elevation={0}>
         <Grid container spacing={3}>
           <ChatBubble chat={formData[`chat${taskStep}`]} />
-          <Grid item xs={12}>
+          <Grid className={classes.gridText} item xs={12}>
             <hr />
-            <Typography>
+            <Typography className={classes.text}>
               {formData[`question${taskStep}`]}
             </Typography>
           </Grid>
@@ -172,7 +178,7 @@ const Forstaelse = ({
             </>
           )}
           {answerState !== null && (
-            <Typography >
+            <Typography className={classes.explanation}>
               {formData[`explanation${taskStep}`]}
             </Typography>
           )}
