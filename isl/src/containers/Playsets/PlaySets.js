@@ -41,6 +41,8 @@ const PlaySets = () => {
     chat: [],
     forstaelse: [],
     ryddeSetninger: [],
+    lasoppmobil: [],
+    drainnmanglendeord: []
   });
 
   /*   // Hooks to get access to the Redux store and obtain user and auth info.
@@ -59,6 +61,8 @@ const PlaySets = () => {
     formDataExercises.chat.length = 0;
     formDataExercises.forstaelse.length = 0;
     formDataExercises.ryddeSetninger.length = 0;
+    formDataExercises.lasoppmobil.length = 0;
+    formDataExercises.drainnmanglendeord.length = 0;
     Object.entries(sets).forEach(([exercise, id]) => {
       if (exercise.substring(0, 4) === "chat" && id) {
         formDataExercises.chat.push(id);
@@ -66,17 +70,18 @@ const PlaySets = () => {
         formDataExercises.forstaelse.push(id);
       } else if (exercise.substring(0, 4) === "rydd" && id) {
         formDataExercises.ryddeSetninger.push(id);
-      } /* nye oppgavene else if (exercise.substring(0, 4) === "laso" && id) {
-        formDataExercises..push(id);
-      } else if (exercise.substring(0, 4) === "drai" && id) {
-        formDataExercises.ryddeSetninger.push(id);
+      } else if (exercise.substring(0, 4) === "LåsO" && id) {
+        formDataExercises.lasoppmobil.push(id);
+      } else if (exercise.substring(0, 4) === "DraI" && id) {
+        formDataExercises.drainnmanglendeord.push(id);
       }
-      */
       });
     setTotalExercises(
       formDataExercises.chat.length +
         formDataExercises.forstaelse.length +
-        formDataExercises.ryddeSetninger.length
+        formDataExercises.ryddeSetninger.length +
+        formDataExercises.lasoppmobil.length +
+        formDataExercises.drainnmanglendeord.length
     );
   }
 
@@ -178,7 +183,6 @@ const PlaySets = () => {
    * I.e search bar on front page.
    */
   useEffect(() => {
-    console.log('newbranchmfs');
     getContent(location.state.playId);
     setId(location.state.playId);
   }, []);

@@ -9,7 +9,7 @@ import FeedbackBox from './FeedbackBox'
 import $ from "jquery"
 // import { FcPrevious, FcNext } from 'react-icons/fc'
 import ExerciseContainer from './ExerciseContainer'
-import egg from './img/egg.png'
+import egg from '../../assets/img/egg.png'
 import Navbar from './Navbar'
 
 
