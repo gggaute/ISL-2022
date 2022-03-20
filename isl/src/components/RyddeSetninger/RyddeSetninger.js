@@ -86,26 +86,22 @@ const RyddeSetninger = ({
   css backgroundColor object with its the colors HEX code. */
   const colorCodeTransform = (wordClass) => {
     switch (wordClass) {
-      case "det":
-        return { backgroundColor: "#FDFF95" };
-      case "prp":
-        return { backgroundColor: "#8EE7EF" };
-      case "pron":
-        return { backgroundColor: "#9EFFFA" };
+      case "sub":
+        return { backgroundColor: "#3366FF" };
+      case "ob":
+        return { backgroundColor: "#99CCFF" };
       case "adv":
-        return { backgroundColor: "#8EEF98" };
-      case "intj":
-        return { backgroundColor: "#CDFFC0" };
-      case "v":
-        return { backgroundColor: "#FA9D48" };
+        return { backgroundColor: "#FFFFCC" };
+      case "set":
+        return { backgroundColor: "#FFCC00" };
       case "conj":
-        return { backgroundColor: "#F3BB88" };
-      case "n":
-        return { backgroundColor: "#EC6F6F" };
+        return { backgroundColor: "#33CC33" };
       case "subj":
-        return { backgroundColor: "#FF9E9E" };
-      case "adj":
-        return { backgroundColor: "#D08EEF" };
+        return { backgroundColor: "#CCFFCC" };
+      case "fin":
+        return { backgroundColor: "#CC0000" };
+      case "infin":
+        return { backgroundColor: "#FF6699" };
       default:
         return { backgroundColor: "#E0E0E0" };
     }
