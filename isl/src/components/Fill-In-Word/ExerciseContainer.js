@@ -96,6 +96,7 @@ const ExerciseContainer = ({ id }) => {
   const [missingWordIndex] = useState(sentence.indexOf(missingWord));
   return (
     <div className="game-wrapper">
+      {getContent()}
       <Question question={question}></Question>
       <Task
         missingWord={missingWord}
