@@ -84,18 +84,18 @@ const UnlockPad = (input) => {
 
     checkAnswer()
 
-    function resetCode() {
-        if (setDisabled) {
-            isFinished = false
-            setUserAnswer("")
-            setUserAnswerList([])
-        }
-    }
+    // function resetCode() {
+    //     if (setDisabled) {
+    //         isFinished = false
+    //         setUserAnswer("")
+    //         setUserAnswerList([])
+    //     }
+    // }
 
-    function resetButton() {
-        if (setDisabled)
-            return <Button id="tryAgainButton" onClick={resetCode}>Prøv igjen</Button>
-    }
+    // function resetButton() {
+    //     if (setDisabled)
+    //         return <Button id="tryAgainButton" onClick={resetCode}>Prøv igjen</Button>
+    // }
 
     function setButtonID() {
         count++
@@ -124,7 +124,7 @@ const UnlockPad = (input) => {
                 <div id="feedBackAndReset">
                     {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
                     <h1>{feedback}</h1>
-                    {resetButton()}
+                    {/* {resetButton()} */}
                 </div>
 
             </div>
