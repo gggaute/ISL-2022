@@ -29,3 +29,8 @@ class Forstaelse(models.Model):
     question3 = models.CharField(max_length=1000, blank=True)
     answer3 = models.CharField(max_length=5, choices=ANSWER_STATE, blank=True)
     explanation3 = models.CharField(max_length=1000, blank=True)
+
+    chat4 = models.CharField(max_length=1000, blank=True)
+    question4 = models.CharField(max_length=1000, blank=True)
+    answer4 = models.CharField(max_length=5, choices=ANSWER_STATE, blank=True)
+    explanation4 = models.CharField(max_length=1000, blank=True)

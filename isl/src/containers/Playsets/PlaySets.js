@@ -64,15 +64,15 @@ const PlaySets = () => {
     formDataExercises.lasoppmobil.length = 0;
     formDataExercises.drainnmanglendeord.length = 0;
     Object.entries(sets).forEach(([exercise, id]) => {
-      if (exercise.substring(0, 4) === "chat" && id) {
+      if (exercise.substring(0, 5) === "chat" && id) {
         formDataExercises.chat.push(id);
-      } else if (exercise.substring(0, 4) === "fors" && id) {
+      } else if (exercise.substring(0, 5) === "fors" && id) {
         formDataExercises.forstaelse.push(id);
-      } else if (exercise.substring(0, 4) === "rydd" && id) {
+      } else if (exercise.substring(0, 5) === "rydd" && id) {
         formDataExercises.ryddeSetninger.push(id);
-      } else if (exercise.substring(0, 4) === "LåsO" && id) {
+      } else if (exercise.substring(0, 5) === "LåsO" && id) {
         formDataExercises.lasoppmobil.push(id);
-      } else if (exercise.substring(0, 4) === "DraI" && id) {
+      } else if (exercise.substring(0, 5) === "DraI" && id) {
         formDataExercises.drainnmanglendeord.push(id);
       }
       });

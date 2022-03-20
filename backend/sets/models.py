@@ -30,6 +30,9 @@ class Sets(models.Model):
         Forstaelse, on_delete=models.SET_NULL, related_name='forstaelse4', blank=True, null=True)
     forstaelse5 = models.ForeignKey(
         Forstaelse, on_delete=models.SET_NULL, related_name='forstaelse5', blank=True, null=True)
+    forstaelse6 = models.ForeignKey(
+        Forstaelse, on_delete=models.SET_NULL, related_name='forstaelse6', blank=True, null=True)
+
 
     chat1 = models.ForeignKey(
         Chat, on_delete=models.SET_NULL, related_name='chat1', blank=True, null=True)
@@ -41,6 +44,8 @@ class Sets(models.Model):
         Chat, on_delete=models.SET_NULL, related_name='chat4', blank=True, null=True)
     chat5 = models.ForeignKey(
         Chat, on_delete=models.SET_NULL, related_name='chat5', blank=True, null=True)
+    chat6 = models.ForeignKey(
+        Chat, on_delete=models.SET_NULL, related_name='chat6', blank=True, null=True)
 
     ryddeSetninger1 = models.ForeignKey(
         RyddeSetninger, on_delete=models.SET_NULL, related_name='ryddeSetninger1', blank=True, null=True)
@@ -52,6 +57,8 @@ class Sets(models.Model):
         RyddeSetninger, on_delete=models.SET_NULL, related_name='ryddeSetninger4', blank=True, null=True)
     ryddeSetninger5 = models.ForeignKey(
         RyddeSetninger, on_delete=models.SET_NULL, related_name='ryddeSetninger5', blank=True, null=True)
+    ryddeSetninger6 = models.ForeignKey(
+        RyddeSetninger, on_delete=models.SET_NULL, related_name='ryddeSetninger6', blank=True, null=True)
 
     LåsOppMobil1 = models.ForeignKey(
         LåsOppMobil, on_delete=models.SET_NULL, related_name='LåsOppMobil1', blank=True, null=True)
@@ -63,6 +70,8 @@ class Sets(models.Model):
         LåsOppMobil, on_delete=models.SET_NULL, related_name='LåsOppMobil4', blank=True, null=True)
     LåsOppMobil5 = models.ForeignKey(
         LåsOppMobil, on_delete=models.SET_NULL, related_name='LåsOppMobil5', blank=True, null=True)
+    LåsOppMobil6 = models.ForeignKey(
+        LåsOppMobil, on_delete=models.SET_NULL, related_name='LåsOppMobil6', blank=True, null=True)
 
     DraInnManglendeOrd1 = models.ForeignKey(
         DraInnManglendeOrd, on_delete=models.SET_NULL, related_name='DraInnManglendeOrd1', blank=True, null=True)
@@ -74,4 +83,6 @@ class Sets(models.Model):
         DraInnManglendeOrd, on_delete=models.SET_NULL, related_name='DraInnManglendeOrd4', blank=True, null=True)
     DraInnManglendeOrd5 = models.ForeignKey(
         DraInnManglendeOrd, on_delete=models.SET_NULL, related_name='DraInnManglendeOrd5', blank=True, null=True)
+    DraInnManglendeOrd6 = models.ForeignKey(
+        DraInnManglendeOrd, on_delete=models.SET_NULL, related_name='DraInnManglendeOrd6', blank=True, null=True)
 
