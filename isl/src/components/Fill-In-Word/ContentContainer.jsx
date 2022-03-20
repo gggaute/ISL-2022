@@ -13,7 +13,7 @@ import egg from '../../assets/img/egg.png'
 import Navbar from './Navbar'
 
 
-const ContentContainer = () => {
+const ContentContainer = ({id}) => {
   let property = {correctSolution: "egg", letters: ["e","g","g","a","b","c","d","f","h"], image: egg}
 
 
@@ -22,7 +22,7 @@ const ContentContainer = () => {
       <Navbar></Navbar>
       <ContentHeader></ContentHeader>
       {/* <UnlockPad input={property}></UnlockPad> */}
-      <ExerciseContainer></ExerciseContainer>
+      <ExerciseContainer id = {id}></ExerciseContainer>
     </div>
   )
 }

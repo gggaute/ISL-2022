@@ -6,7 +6,7 @@ from django.db import models
 
 class LåsOppMobil(models.Model):
     solutionImage = models.ImageField(upload_to='unlock')
-    correctSolution = models.CharField(max_length=9, blank=False);
+    correctSolution = models.CharField(max_length=9, blank=False)
     
     letter1 = models.CharField(max_length=1, blank=False)
     letter2 = models.CharField(max_length=1, blank=False)
