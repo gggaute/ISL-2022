@@ -56,9 +56,7 @@ const StartPage = () => {
               type="mySet"
               formData={set}
               playId={playId}
-              onClick={() => {
-                setPlayId(set.id);
-              }}
+              setId={set.id}
             />
           );
         })}

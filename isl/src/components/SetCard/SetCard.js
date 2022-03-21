@@ -15,18 +15,15 @@ import { Link } from 'react-router-dom';
  * @property {function} onClick3 Lets user play the set.
  * @returns Card component for given exercise set.
  */
-function SetCard({ type, formData, playId, onClick }) {
+function SetCard({ type, formData, setId }) {
 
   // Returns different buttons depending on the type of card.
   function iconButtons() {
     if (type === 'mySet') {
       return (
         <>
-          <IconButton data-testid="playButton" onClick={() => onClick()}>
-            <PlayCircleOutlineIcon />
-          </IconButton>
-          <Link to='/sets' state = {{playId : playId}}>
-          <IconButton data-testid="idButton">
+          <Link to='/sets' state = {{playId : setId}}>
+          <IconButton className="routeButton" data-testid="idButton">
             <PlayCircleOutlineIcon />
           </IconButton>
           </Link>
