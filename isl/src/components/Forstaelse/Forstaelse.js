@@ -114,7 +114,7 @@ const Forstaelse = ({
 
   useEffect(() => {
     getContent();
-  });
+  }, []);
 
   return (
     <Paper className={classes.root}>

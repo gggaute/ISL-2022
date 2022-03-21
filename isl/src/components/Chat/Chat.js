@@ -128,9 +128,7 @@ const Chat = ({
     setAnswerstate(null);
     if (!formData[`chatquestion${taskStep}`]) {
       // If there are no more tasks then showfeedback is fired.
-      // showFeedback(score, totalPossibleScore);
-      console.log('feedback')
-      nextExercise();
+      showFeedback(score, totalPossibleScore);
     } else {
       // Else it adds the new task to the chat history list.
       chatHistory.push(formData[`chatquestion${taskStep}`]);
