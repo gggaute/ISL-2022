@@ -36,7 +36,6 @@ import exerciseStyles from '../exerciseStyle';
  */
 const RyddeSetninger = ({
   id,
-  nextExercise,
   showFeedback,
   progress,
   possible,
@@ -205,9 +204,9 @@ const RyddeSetninger = ({
     }
   };
 
-  // const nextExercise = () => {
-  //   nextExercise()
-  // };
+  const nextExercise = () => {
+    showFeedback(score, totalPossibleScore);
+  };
 
   function fireAudio() {
     setDisabled(true);
