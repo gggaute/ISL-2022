@@ -6,10 +6,14 @@ import egg from "../../assets/img/egg.png";
 import Navbar from "../Fill-In-Word/Navbar";
 import axios from "axios"
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
+import ProgressBar from '../ProgressBar';
+import exerciseStyles from '../exerciseStyle';
 
 const UnlockPad = ({ 
   id,
-  nextExercise
+  showFeedback,
+  progress,
+  possible
 }) => {
   
   let setDisabled = false
@@ -22,7 +26,8 @@ const UnlockPad = ({
   const [image, setImg] = useState(null)
   let isFinished = false;
 
-   
+  const classesBase = exerciseStyles();
+  const classes = { ...classesBase };
 
   function getContent() {
     axios
@@ -50,10 +55,6 @@ const UnlockPad = ({
       });
   }
 
-
-
-
-  let feedback;
   let tilbakemelding
 
   function checkAnswer() {
@@ -69,7 +70,6 @@ const UnlockPad = ({
         isFinished = true
         console.log(correctSolution, solutionLength)
     }
-    feedback = tilbakemelding
     if (isFinished) {
         setDisabled = true
     }
@@ -119,6 +119,15 @@ function setButtonID() {
     return "numpadButton" + count.toString()
 }
 
+const handleNextTask = () => {
+  if (tilbakemelding === 'correct') {
+    showFeedback(1, 1);
+  } else {
+    showFeedback(0, 1);
+  }
+};
+
+
 useEffect(() => {
   getContent()
 },[])
@@ -126,6 +135,9 @@ useEffect(() => {
 return (
     <>
     <Navbar></Navbar>
+    <div className={classes.progresscontainer}>
+          <ProgressBar progress={progress} possible={possible} />
+        </div>
         <div id="content">
             <img src= {image} alt="solutionImage"></img>
             <div id="contentRow">
@@ -148,8 +160,7 @@ return (
                 {/* <h1>{feedback}</h1> */}
                 <NextExerciseBtn 
                     answerState={tilbakemelding}
-                    handleNextTask={nextExercise}
-                
+                    handleNextTask={handleNextTask}
                 />
               
             </div>

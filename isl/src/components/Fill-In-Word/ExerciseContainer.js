@@ -11,15 +11,28 @@ import $ from "jquery";
 import { FcPrevious, FcNext } from "react-icons/fc";
 import axios from "axios";
 import { useEffect } from "react";
+import ProgressBar from '../ProgressBar';
+import exerciseStyles from '../exerciseStyle';
 
-const ExerciseContainer = ({ id, nextExercise }) => {
-  const [answerstate, setAnswerstate] = useState(null);
+const ExerciseContainer = ({  
+  id,
+  showFeedback,
+  progress,
+  possible,
+  nextExercise, 
+}) => {
+  const [answerState, setAnswerState] = useState(null);
   let backendSentence = []
   let backendwords = []
   const [onload, setOnload] = useState(true);
   const [words, setWords] = useState([]);
 
   const [sentence, setSentence] = useState([]);
+  const [score, setScore] = useState(0);
+  const [totalPossibleScore, setTotalPossibleScore] = useState(0);
+
+  const classesBase = exerciseStyles();
+  const classes = { ...classesBase };
 
   useEffect(() => {
     getContent()
@@ -104,7 +117,9 @@ const ExerciseContainer = ({ id, nextExercise }) => {
   const checkAnswer = () => {
     if (sentence.includes(missingWord)) {
       answer = '';
-      setAnswerstate('correct')
+      setAnswerState('correct')
+      setScore(score + 1);
+      setTotalPossibleScore(totalPossibleScore + 1);
       // $("#resultBox").removeClass();
       // $("#resultBox").addClass("riktig");
       // $("#resultText").text("Riktig!"); //TODO: Set correct icon
@@ -112,7 +127,8 @@ const ExerciseContainer = ({ id, nextExercise }) => {
       // // $("#goToNext").addClass("visible");
       setDisabled(true);
     } else {
-      setAnswerstate('incorrect')
+      setAnswerState('incorrect')
+      setTotalPossibleScore(totalPossibleScore + 1);
       answer = 'prøv igjen!';
       // $("#resultBox").removeClass();
       // $("#resultBox").addClass("feil");
@@ -126,8 +142,17 @@ const ExerciseContainer = ({ id, nextExercise }) => {
   const [missingWord, setMissingWord] = useState("");
 
   const [missingWordIndex, setMissingWordIndex] = useState(-1)
+
+  const handleNextTask = () => {
+    setAnswerState(null);
+    showFeedback(score, totalPossibleScore);
+  };
+  
   return (
     <>
+    <div className={classes.progresscontainer}>
+          <ProgressBar progress={progress} possible={possible} />
+        </div>
       <div className="game-wrapper">
         {/* <p>{answer}</p> */}
         <Question question={question}></Question>
@@ -146,8 +171,8 @@ const ExerciseContainer = ({ id, nextExercise }) => {
         ></Words>
         <CheckAnswer onClick={checkAnswer} disabled={disabled}></CheckAnswer>
         <NextExerciseBtn
-            answerState={answerstate}
-            handleNextTask={nextExercise}
+            answerState={answerState}
+            handleNextTask={handleNextTask}
           />
       </div>
     </>

@@ -6,16 +6,20 @@ import Words from './Words'
 import { useState } from 'react'
 import CheckAnswer from './CheckAnswer'
 import FeedbackBox from './FeedbackBox'
-import $ from "jquery"
+import $ from 'jquery'
 // import { FcPrevious, FcNext } from 'react-icons/fc'
 import ExerciseContainer from './ExerciseContainer'
 import egg from '../../assets/img/egg.png'
 import Navbar from './Navbar'
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 
-
-
-const ContentContainer = ({ id, nextExercise }) => {
+const ContentContainer = ({
+  id,
+  showFeedback,
+  progress,
+  possible,
+  nextExercise,
+}) => {
   return (
     <div className='wrapper'>
       <Navbar></Navbar>
@@ -23,13 +27,17 @@ const ContentContainer = ({ id, nextExercise }) => {
       {/* <UnlockPad input={property}></UnlockPad> */}
       <ExerciseContainer
         id={id}
-        nextExercise={nextExercise} />
-        {/* <NextExerciseBtn
+        showFeedback={showFeedback}
+        progress={progress}
+        possible={possible}
+        nextExercise={nextExercise}
+      />
+      {/* <NextExerciseBtn
             answerState={'correct'}
             handleNextTask={nextExercise}
           /> */}
     </div>
-  )
-}
+  );
+};
 
-export default ContentContainer
+export default ContentContainer;
