@@ -5,33 +5,24 @@ import React, { useState, useEffect } from "react";
 import egg from "../../assets/img/egg.png";
 import Navbar from "../Fill-In-Word/Navbar";
 import axios from "axios"
-import { Button } from "@mui/material/Button";
-import NextExerciseBtn from "../NextExerciseBtn/NextExerciseBtn";
+import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 
 const UnlockPad = ({ 
   id,
-  nextExercise,
-  }) => {
-  //henter inn en oppgave fra databasen, må inneholde:
-  // - bilde av fasit svar
-  // - fasit svar (ordet som skal skrives inn)
-  // - resterende bokstaver til å fylle knappene
-
-  // presentere bilde --> direkte i return
-  // lagre fasit svar i variabel
-  // finne antall bokstaver i fasit
-  // lage knapper med fasit bokstaver + lage resterende knapper for å fylle 9 (fiksa)
-  // presentere antall bokstaver i fasit
-  // for her knapp som trykkes skal bokstaven vises i over rett "plasserings-strek"
-  // når rett antall bokstaver er skrevet inn vil det være en sjekk av svaret og spilleren skal få en tilbakemelding
-  // så rett tilbakemelding (eget isssue)
-  // feilhåndtering (eget issue)
-  // resette (eget issue?)
+  nextExercise
+}) => {
+  
   let setDisabled = false
+  // const [answerstate, setAnswerstate] = useState(null);
+  const [correctSolution, setCorrectSolution] = useState("");
+  const [userAnswer, setUserAnswer] = useState("");
+  const [solutionLength, setSolutionLength] = useState(0);
+  const backendLetters = []
+  const [letters, setLetters] = useState([]);
+  const [image, setImg] = useState(null)
+  let isFinished = false;
 
-    useEffect(() => {
-      getContent()
-    },[])
+   
 
   function getContent() {
     axios
@@ -43,7 +34,7 @@ const UnlockPad = ({
       })
       .then((res) => {
         setCorrectSolution(res.data.correctSolution);
-        setSolutionLength(correctSolution.length);
+        setSolutionLength(res.data.correctSolution.length);
         //forloop av slag for å iterere gjennom letters og legge de til i "letters"
         backendLetters.push(res.data.letter1);
         backendLetters.push(res.data.letter2);
@@ -58,52 +49,25 @@ const UnlockPad = ({
         setImg(res.data.solutionImage)
       });
   }
-/*
-letters.push(res.data.letter1);
-        letters.push(res.data.letter2);
-        letters.push(res.data.letter3);
-        letters.push(res.data.letter4);
-        letters.push(res.data.letter5);
-        letters.push(res.data.letter6);
-        letters.push(res.data.letter7);
-        letters.push(res.data.letter8);
-        letters.push(res.data.letter9);
 
-    setLetters([...letters, res.data.letter1]);
-    setLetters([...letters, res.data.letter2]);
-    setLetters([...letters, res.data.letter3]);
-    setLetters([...letters, res.data.letter4]);
-    setLetters([...letters, res.data.letter5]);
-    setLetters([...letters, res.data.letter6]);
-    setLetters([...letters, res.data.letter7]);
-    setLetters([...letters, res.data.letter8]);
-    setLetters([...letters, res.data.letter9]);
-*/
 
-const [answerState, setAnswerState] = useState(null);
 
-  const [correctSolution, setCorrectSolution] = useState("");
-  const [userAnswer, setUserAnswer] = useState("");
-  const [solutionLength, setSolutionLength] = useState(0);
-  const backendLetters = []
-  const [letters, setLetters] = useState([]);
-  const [image, setImg] = useState(null)
-  let isFinished = false;
 
   let feedback;
+  let tilbakemelding
 
   function checkAnswer() {
-    let tilbakemelding
     if (userAnswer.length === solutionLength) {
         if (userAnswer === correctSolution) {
-            tilbakemelding = "riktig"
-            setAnswerState(true)
+            tilbakemelding = "correct"
+            // setAnswerstate('correct')
         }
         else {
-            tilbakemelding = "feil"
-            setAnswerState(false)
+            tilbakemelding = "incorrect"
+            // setAnswerstate('incorrect')
         }
         isFinished = true
+        console.log(correctSolution, solutionLength)
     }
     feedback = tilbakemelding
     if (isFinished) {
@@ -119,7 +83,7 @@ const [answerState, setAnswerState] = useState(null);
   function registerLetterinAnswer(buttonLetter) {
     if (userAnswer.length < solutionLength) {
       setUserAnswer(userAnswer + buttonLetter);
-      userAnswerList.push(buttonLetter);
+      userAnswerList.push(buttonLetter.toUpperCase());
     }
   }
 
@@ -129,13 +93,13 @@ const [answerState, setAnswerState] = useState(null);
       answerList.push(userAnswerList[i]);
     }
     answerList.pop();
-    console.log(answerList);
+    // console.log(answerList);
     if (answerList.length < solutionLength) {
       for (let i = answerList.length; i < solutionLength; i++) {
         answerList.push("_");
       }
     }
-    console.log(answerList);
+    // console.log(answerList);
   }
 
   presentAnswer();
@@ -150,23 +114,14 @@ const [answerState, setAnswerState] = useState(null);
 
 checkAnswer()
 
-// function resetCode() {
-//     if (setDisabled) {
-//         isFinished = false
-//         setUserAnswer("")
-//         setUserAnswerList([])
-//     }
-// }
-
-// function resetButton() {
-//     if (setDisabled)
-//         return <Button id="tryAgainButton" onClick={resetCode}>Prøv igjen</Button>
-// }
-
 function setButtonID() {
     count++
     return "numpadButton" + count.toString()
 }
+
+useEffect(() => {
+  getContent()
+},[])
 
 return (
     <>
@@ -190,13 +145,13 @@ return (
             </div>
             <div id="feedBackAndReset">
                 {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
-                <h1>{feedback}</h1>
-                {/* {resetButton()} */}
+                {/* <h1>{feedback}</h1> */}
                 <NextExerciseBtn 
-                answerState={answerState}
-                nextExercise={nextExercise()}
+                    answerState={tilbakemelding}
+                    handleNextTask={nextExercise}
+                
                 />
-
+              
             </div>
 
         </div>
