@@ -29,6 +29,10 @@ const UnlockPad = ({
   // resette (eget issue?)
   let setDisabled = false
 
+    useEffect(() => {
+      getContent()
+    },[])
+
   function getContent() {
     axios
       .get(`http://localhost:8000/api/unlock/${id}`, {
@@ -51,6 +55,7 @@ const UnlockPad = ({
         backendLetters.push(res.data.letter8);
         backendLetters.push(res.data.letter9);
         setLetters(backendLetters);
+        setImg(res.data.solutionImage)
       });
   }
 /*
@@ -82,6 +87,7 @@ const [answerState, setAnswerState] = useState(null);
   const [solutionLength, setSolutionLength] = useState(0);
   const backendLetters = []
   const [letters, setLetters] = useState([]);
+  const [image, setImg] = useState(null)
   let isFinished = false;
 
   let feedback;
@@ -165,9 +171,8 @@ function setButtonID() {
 return (
     <>
     <Navbar></Navbar>
-    {getContent()}
         <div id="content">
-            <img src= {egg} alt="solutionImage"></img>
+            <img src= {image} alt="solutionImage"></img>
             <div id="contentRow">
                 <div id="guess">{itemList}</div>
                 <div className="grid">
