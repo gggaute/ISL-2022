@@ -36,6 +36,7 @@ import exerciseStyles from '../exerciseStyle';
  */
 const Forstaelse = ({
   id,
+  nextExercise,
   showFeedback,
   progress,
   possible,
@@ -97,6 +98,7 @@ const Forstaelse = ({
     // Checks if there are more tasks in the exercise before incrementing the task count.
     if (!formData[`chat${taskStep + 1}`]) {
       showFeedback(score, totalPossibleScore);
+      // nextExercise();
     } else {
       setTaskStep(taskStep + 1);
     }

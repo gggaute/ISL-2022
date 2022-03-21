@@ -36,6 +36,7 @@ import exerciseStyles from '../exerciseStyle';
  */
 const RyddeSetninger = ({
   id,
+  nextExercise,
   showFeedback,
   progress,
   possible,
@@ -204,9 +205,9 @@ const RyddeSetninger = ({
     }
   };
 
-  const nextExercise = () => {
-    showFeedback(score, totalPossibleScore);
-  };
+  // const nextExercise = () => {
+  //   nextExercise()
+  // };
 
   function fireAudio() {
     setDisabled(true);
@@ -302,7 +303,7 @@ const RyddeSetninger = ({
           </Grid>
           <NextExerciseBtn
             answerState={answerState}
-            handleNextTask={nextExercise}
+            handleNextTask={() => nextExercise()}
           />
         </Grid>
       </Paper>

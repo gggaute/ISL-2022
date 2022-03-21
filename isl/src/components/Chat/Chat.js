@@ -44,6 +44,7 @@ import exerciseStyles from '../exerciseStyle';
  */
 const Chat = ({
   id,
+  nextExercise,
   showFeedback,
   progress,
   possible,
@@ -122,11 +123,14 @@ const Chat = ({
         setReceivericon(avatarR);
       });
   }
+
   const handleNextTask = () => {
     setAnswerstate(null);
     if (!formData[`chatquestion${taskStep}`]) {
       // If there are no more tasks then showfeedback is fired.
-      showFeedback(score, totalPossibleScore);
+      // showFeedback(score, totalPossibleScore);
+      console.log('feedback')
+      nextExercise();
     } else {
       // Else it adds the new task to the chat history list.
       chatHistory.push(formData[`chatquestion${taskStep}`]);

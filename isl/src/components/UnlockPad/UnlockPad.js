@@ -6,8 +6,12 @@ import egg from "../../assets/img/egg.png";
 import Navbar from "../Fill-In-Word/Navbar";
 import axios from "axios"
 import { Button } from "@mui/material/Button";
+import NextExerciseBtn from "../NextExerciseBtn/NextExerciseBtn";
 
-const UnlockPad = ({ id }) => {
+const UnlockPad = ({ 
+  id,
+  nextExercise,
+  }) => {
   //henter inn en oppgave fra databasen, må inneholde:
   // - bilde av fasit svar
   // - fasit svar (ordet som skal skrives inn)
@@ -71,6 +75,8 @@ letters.push(res.data.letter1);
     setLetters([...letters, res.data.letter9]);
 */
 
+const [answerState, setAnswerState] = useState(null);
+
   const [correctSolution, setCorrectSolution] = useState("");
   const [userAnswer, setUserAnswer] = useState("");
   const [solutionLength, setSolutionLength] = useState(0);
@@ -85,9 +91,11 @@ letters.push(res.data.letter1);
     if (userAnswer.length === solutionLength) {
         if (userAnswer === correctSolution) {
             tilbakemelding = "riktig"
+            setAnswerState(true)
         }
         else {
             tilbakemelding = "feil"
+            setAnswerState(false)
         }
         isFinished = true
     }
@@ -179,6 +187,11 @@ return (
                 {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
                 <h1>{feedback}</h1>
                 {/* {resetButton()} */}
+                <NextExerciseBtn 
+                answerState={answerState}
+                nextExercise={nextExercise()}
+                />
+
             </div>
 
         </div>

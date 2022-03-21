@@ -208,6 +208,7 @@ const PlaySets = () => {
           possible={totalExercises}
           restartSet={() => restartSet()}
           playAudio={(url) => playAudio(url)}
+          nextExercise={nextExercise}
         />
       );
     case "feedback":
@@ -230,6 +231,7 @@ const PlaySets = () => {
           possible={totalExercises}
           restartSet={() => restartSet()}
           playAudio={(url) => playAudio(url)}
+          nextExercise = {nextExercise}
         />
       );
     case "ryddeSetninger":
@@ -241,6 +243,7 @@ const PlaySets = () => {
           possible={totalExercises}
           restartSet={() => restartSet()}
           playAudio={(url) => playAudio(url)}
+          nextExercise = {nextExercise}
         />
       );
       case "lasoppmobil":
@@ -252,6 +255,7 @@ const PlaySets = () => {
           possible={totalExercises}
           restartSet={() => restartSet()}
           playAudio={(url) => playAudio(url)}
+          nextExercise = {nextExercise}
         />
       );
       case "drainnmanglendeord":
@@ -263,6 +267,7 @@ const PlaySets = () => {
           possible={totalExercises}
           restartSet={() => restartSet()}
           playAudio={(url) => playAudio(url)}
+          nextExercise = {nextExercise}
         />
       );
     case "finish":
