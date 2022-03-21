@@ -9,6 +9,7 @@ import FeedbackBox from "./FeedbackBox";
 import $ from "jquery";
 import { FcPrevious, FcNext } from "react-icons/fc";
 import axios from "axios";
+import { useEffect } from "react";
 
 const ExerciseContainer = ({ id }) => {
   let backendSentence = []
@@ -17,6 +18,10 @@ const ExerciseContainer = ({ id }) => {
   const [words, setWords] = useState([]);
 
   const [sentence, setSentence] = useState([]);
+
+  useEffect(() => {
+    getContent()
+  },[])
 
   function getContent() {
     axios
@@ -48,14 +53,22 @@ const ExerciseContainer = ({ id }) => {
         backendwords.push(res.data.answerWord4)
         backendwords.push(res.data.answerWord5)
         backendwords.push(res.data.answerWord6)
+        let count = 0
         for (let index = 0; index < backendSentence.length; index++) {
-          if (backendSentence[index] === null) {
-            backendSentence.splice(index)
+          if (backendSentence[index] === '') {
+            count += 1
           }
         }
+        for (let i = 0; i < count; i++) {
+          backendSentence.pop()
+        }
+        console.log("sentence: ", backendSentence);
+        console.log("words: ", backendwords);
+        console.log(res.data.correctSolution);
         setSentence(backendSentence)
         setWords(backendwords)
-        setMissingWord(res.data.CorrectSolution)
+        setMissingWord(res.data.correctSolution)
+        setMissingWordIndex(backendSentence.indexOf(res.data.correctSolution));
       });
   }
 
@@ -108,10 +121,9 @@ const ExerciseContainer = ({ id }) => {
 
   const [missingWord, setMissingWord] = useState("");
 
-  const [missingWordIndex] = useState(sentence.indexOf(missingWord));
+  const [missingWordIndex, setMissingWordIndex] = useState(-1)
   return (
     <div className="game-wrapper">
-      {getContent()}
       <Question question={question}></Question>
       <Task
         missingWord={missingWord}
