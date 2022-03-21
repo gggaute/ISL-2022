@@ -11,18 +11,23 @@ import $ from "jquery"
 import ExerciseContainer from './ExerciseContainer'
 import egg from '../../assets/img/egg.png'
 import Navbar from './Navbar'
+import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 
 
-const ContentContainer = ({id}) => {
-  let property = {correctSolution: "egg", letters: ["e","g","g","a","b","c","d","f","h"], image: egg}
 
-
+const ContentContainer = ({ id, nextExercise }) => {
   return (
     <div className='wrapper'>
       <Navbar></Navbar>
       <ContentHeader></ContentHeader>
       {/* <UnlockPad input={property}></UnlockPad> */}
-      <ExerciseContainer id = {id}></ExerciseContainer>
+      <ExerciseContainer
+        id={id}
+        nextExercise={nextExercise} />
+        {/* <NextExerciseBtn
+            answerState={'correct'}
+            handleNextTask={nextExercise}
+          /> */}
     </div>
   )
 }
