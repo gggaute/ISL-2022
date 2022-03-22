@@ -12,6 +12,10 @@ import ExerciseContainer from './ExerciseContainer'
 import egg from '../../assets/img/egg.png'
 import Navbar from './Navbar'
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
+import {
+  Paper,
+} from '@mui/material';
+import exerciseStyles from '../exerciseStyle';
 
 const ContentContainer = ({
   id,
@@ -20,8 +24,13 @@ const ContentContainer = ({
   possible,
   nextExercise,
 }) => {
+
+  const classesBase = exerciseStyles();
+  const classes = { ...classesBase };
+
   return (
     <div className='wrapper'>
+    <Paper className={classes.root}>
       <Navbar></Navbar>
       <ContentHeader></ContentHeader>
       {/* <UnlockPad input={property}></UnlockPad> */}
@@ -36,6 +45,7 @@ const ContentContainer = ({
             answerState={'correct'}
             handleNextTask={nextExercise}
           /> */}
+    </Paper>
     </div>
   );
 };

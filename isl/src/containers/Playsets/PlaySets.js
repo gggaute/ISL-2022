@@ -149,9 +149,11 @@ const PlaySets = () => {
   function showFeedback(score, totalPossibleScore) {
     if (score === totalPossibleScore) {
       setTotalScore(totalScore + 1);
-      setStep("");
+      setFeedbackState(true);
+    } else {
+      setFeedbackState(false);
     }
-    setStep("newExercise");
+    setStep("feedback");
   }
 
   /**
@@ -200,23 +202,13 @@ const PlaySets = () => {
       return (
         <div>
           <Feedback
-            totalScore={totalScore}
-            totalExercises={totalExercises}
+            progress={exerciseProgress}
+            possible={totalExercises}
             feedbackState={feedbackState}
             nextExercise={nextExercise}
           />
         </div>
       );
-      case "newExercise":
-        return (
-          <div>
-            <NextExerciseBtn
-              handleNextTask= {nextExercise} 
-              answerState= {'correct'}
-            />
-          {console.log(":)")}
-          </div>
-        );
     case "chat":
       return (
         <Chat

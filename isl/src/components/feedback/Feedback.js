@@ -1,48 +1,35 @@
-import React from 'react';
-import { Paper, Typography, Button } from '@mui/material';
-// import sadPickle from '../../assets/images/sadPickle.png';
-// import mariusPickle from '../../assets/images/mariusPickle.png';
-import useStyles from './styles'
+import React from "react";
+import { Paper, Typography, Button } from "@mui/material";
+import useStyles from "./styles";
+import Navbar from "../Fill-In-Word/Navbar";
+//Denne importen må endres etter strukturen blir endret
+import exerciseStyles from '../exerciseStyle';
+import ProgressBar from '../ProgressBar';
 
-/**
- * This is the feedback page between exercises.
- * @author Julie
- * @param {object} props
- * @property {integer} totalScore Keeps track of the players total score.
- * @property {integer} totalExercises Total number of exercises in a set.
- * @property {boolean} feedbackState True if the player answered correctly, false if not.
- * @property {function} nextExercise Button that takes the player to the next exercise.
- * @returns A feedback page.
- */
 const Feedback = ({
-  totalScore,
-  totalExercises,
+  progress,
+  possible,
   feedbackState,
   nextExercise,
 }) => {
-  const style = useStyles();
+  const className = useStyles();
+  const classesBase = exerciseStyles();
+  const classes = { ...className, ...classesBase };
+
   // Returns a different feedback page if the player succeeded or not.
   switch (feedbackState) {
     case true:
       return (
-        <Paper elevation={0} >
-          {/* <img
-            src={mariusPickle}
-            alt="Marius pickle"
-          /> */}
+        <Paper className={classes.root}>
+        <Navbar></Navbar>
+        <div className={classes.progresscontainer}>
+          <ProgressBar progress={progress} possible={possible} />
+        </div>
           <div>
-            <Typography variant="h1" className={style.text}>
+            <Typography variant="h1" className={classes.text}>
               Hurra, du klarte det!
             </Typography>
             <br />
-            {/* <Typography variant="h2" >
-              Poengsummen din er
-              {` ${totalScore} `}
-              <br />
-              av totalt
-              {` ${totalExercises} `}
-              mulige!
-            </Typography> */}
           </div>
           <Button
             variant="contained"
@@ -56,21 +43,16 @@ const Feedback = ({
       );
     case false:
       return (
-        <Paper elevation={0}>
-          {/* <img src={sadPickle} alt="sad pickle"  /> */}
-          <div >
-            <Typography variant="h1" className={style.text}>
+        <Paper className={classes.root}>
+        <Navbar></Navbar>
+        <div className={classes.progresscontainer}>
+          <ProgressBar progress={progress} possible={possible} />
+        </div>
+          <div>
+            <Typography variant="h1" className={classes.text}>
               Bedre lykke neste gang!
             </Typography>
             <br />
-            {/* <Typography variant="h2" >
-              Poengsummen din er
-              {` ${totalScore} `}
-              <br />
-              Av totalt
-              {` ${totalExercises} `}
-              mulige!
-            </Typography> */}
           </div>
           <Button
             variant="contained"
@@ -84,11 +66,9 @@ const Feedback = ({
       );
     default:
       return (
-        <Paper>
+        <Paper className={classes.root}>
           <div>
-            <Typography variant="h3" >
-              Noe gikk galt
-            </Typography>
+            <Typography variant="h3">Noe gikk galt</Typography>
           </div>
         </Paper>
       );

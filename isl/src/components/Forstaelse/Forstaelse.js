@@ -20,6 +20,8 @@ import axios from 'axios';
 import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 
+import Navbar from "../Fill-In-Word/Navbar";
+
 /**
  * This is the forstaelse exercise component that is playable from Playsets.
  * @author Simen, Phajsi
@@ -119,10 +121,7 @@ const Forstaelse = ({
 
   return (
     <Paper className={classes.root}>
-      <AppBar className={classes.navbar} position="static">
-        <Toolbar component="nav" className={classes.toolbar}>
-        </Toolbar>
-      </AppBar>
+       <Navbar></Navbar>
       <div className={classes.topContent}>
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
