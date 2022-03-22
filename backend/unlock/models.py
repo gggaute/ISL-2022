@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 
 class LåsOppMobil(models.Model):
-    solutionImage = models.ImageField(upload_to='unlock')
+    solutionImage = models.ImageField(upload_to='images/')
     correctSolution = models.CharField(max_length=9, blank=False)
     
     letter1 = models.CharField(max_length=1, blank=False)

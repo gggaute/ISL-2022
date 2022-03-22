@@ -51,7 +51,8 @@ const UnlockPad = ({
         backendLetters.push(res.data.letter8);
         backendLetters.push(res.data.letter9);
         setLetters(backendLetters);
-        setImg(res.data.solutionImage)
+        setImg(res.data.solutionImage);
+        console.log(res.data.solutionImage)
       });
   }
 
