@@ -9,6 +9,9 @@ import FeedbackBox from './FeedbackBox'
 import $ from 'jquery'
 // import { FcPrevious, FcNext } from 'react-icons/fc'
 import ExerciseContainer from './ExerciseContainer'
+import egg from '../../assets/img/egg.png'
+import Navbar from './Navbar'
+import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 
 const ContentContainer = ({
   id,
@@ -17,10 +20,9 @@ const ContentContainer = ({
   possible,
   nextExercise,
 }) => {
-
-
   return (
     <div className='wrapper'>
+      <Navbar></Navbar>
       <ContentHeader></ContentHeader>
       {/* <UnlockPad input={property}></UnlockPad> */}
       <ExerciseContainer

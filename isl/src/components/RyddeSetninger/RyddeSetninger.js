@@ -223,10 +223,6 @@ const RyddeSetninger = ({
 
   return (
     <Paper className={classes.root}>
-      <AppBar className={classes.navbar} position="static">
-        <Toolbar component="nav" className={classes.toolbar}>
-        </Toolbar>
-      </AppBar>
       <div className={classes.topContent}>
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
