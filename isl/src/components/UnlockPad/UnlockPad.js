@@ -9,13 +9,13 @@ import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import ContentHeader from "../ContentHeader/ContentHeader";
 
-const UnlockPad = ({ 
+const UnlockPad = ({
   id,
   showFeedback,
   progress,
   possible
 }) => {
-  
+
   let setDisabled = false
   // const [answerstate, setAnswerstate] = useState(null);
   const [correctSolution, setCorrectSolution] = useState("");
@@ -60,21 +60,21 @@ const UnlockPad = ({
 
   function checkAnswer() {
     if (userAnswer.length === solutionLength) {
-        if (userAnswer === correctSolution) {
-            tilbakemelding = "correct"
-            // setAnswerstate('correct')
-        }
-        else {
-            tilbakemelding = "incorrect"
-            // setAnswerstate('incorrect')
-        }
-        isFinished = true
-        console.log(correctSolution, solutionLength)
+      if (userAnswer === correctSolution) {
+        tilbakemelding = "correct"
+        // setAnswerstate('correct')
+      }
+      else {
+        tilbakemelding = "incorrect"
+        // setAnswerstate('incorrect')
+      }
+      isFinished = true
+      console.log(correctSolution, solutionLength)
     }
     if (isFinished) {
-        setDisabled = true
+      setDisabled = true
     }
-}
+  }
 
   //count for id til css, vet ikke om det funker
   let count = 0;
@@ -111,65 +111,65 @@ const UnlockPad = ({
 
   function handleEvent(event) {
     event.target.disabled = true
-}
+  }
 
-checkAnswer()
+  checkAnswer()
 
-function setButtonID() {
+  function setButtonID() {
     count++
     return "numpadButton" + count.toString()
-}
-
-const handleNextTask = () => {
-  if (tilbakemelding === 'correct') {
-    showFeedback(1, 1);
-  } else {
-    showFeedback(0, 1);
   }
-};
+
+  const handleNextTask = () => {
+    if (tilbakemelding === 'correct') {
+      showFeedback(1, 1);
+    } else {
+      showFeedback(0, 1);
+    }
+  };
 
 
-useEffect(() => {
-  getContent()
-},[])
+  useEffect(() => {
+    getContent()
+  }, [])
 
-return (
-  <>
-  <NavBar></NavBar>
-  <ContentHeader></ContentHeader>
-    <div className={classes.progresscontainer}>
-          <ProgressBar progress={progress} possible={possible} />
+  return (
+    <>
+      <NavBar></NavBar>
+      <ContentHeader></ContentHeader>
+      <div className={classes.progresscontainer}>
+        <ProgressBar progress={progress} possible={possible} />
+      </div>
+      <div id="content">
+        <img src={image} alt="solutionImage"></img>
+        <div id="contentRow">
+          <div id="guess">{itemList}</div>
+          <div className="grid">
+            {letters.map((letter, count) => (
+              <>
+                <button className="gridButton" key={count} id={setButtonID()} disabled={setDisabled} onClick={(event) => {
+                  handleEvent(event)
+                  registerLetterinAnswer(letter)
+                }}>
+                  {letter.toUpperCase()} </button>
+                {() => count++}
+              </>
+            ))}
+          </div>
         </div>
-        <div id="content">
-            <img src= {image} alt="solutionImage"></img>
-            <div id="contentRow">
-                <div id="guess">{itemList}</div>
-                <div className="grid">
-                    {letters.map((letter, count) => (
-                        <>
-                            <button className="gridButton" key={count} id={setButtonID()} disabled={setDisabled} onClick={(event) => {
-                                handleEvent(event)
-                                registerLetterinAnswer(letter)
-                            }}>
-                                {letter.toUpperCase()} </button>
-                            {() => count++}
-                        </>
-                    ))}
-                </div>
-            </div>
-            <div id="feedBackAndReset">
-                {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
-                {/* <h1>{feedback}</h1> */}
-                <NextExerciseBtn 
-                    answerState={tilbakemelding}
-                    handleNextTask={handleNextTask}
-                />
-              
-            </div>
+        <div id="feedBackAndReset">
+          {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
+          {/* <h1>{feedback}</h1> */}
+          <NextExerciseBtn
+            answerState={tilbakemelding}
+            handleNextTask={handleNextTask}
+          />
 
         </div>
+
+      </div>
     </>
-)
+  )
 }
 
 export default UnlockPad;

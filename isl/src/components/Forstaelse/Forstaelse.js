@@ -128,13 +128,15 @@ const Forstaelse = ({
           <Toolbar component="nav" className={classes.toolbar}>
           </Toolbar>
         </AppBar>
-        <div className={classes.topContent}>
-          <div className={classes.progresscontainer}>
-            <ProgressBar progress={progress} possible={possible} />
-          </div>
-          <Card>
-            <CardContent className={classes.cardcontent}>
-              {/*<IconButton
+        {/*<IconButton
+    <Paper className={classes.root}>
+      <div className={classes.topContent}>
+        <div className={classes.progresscontainer}>
+          <ProgressBar progress={progress} possible={possible} />
+        </div>
+        <Card>
+          <CardContent className={classes.cardcontent}>
+            {/*<IconButton
               onClick={() => fireAudio()}
               disabled={disabled}
               data-testid="volumeForstaelse"
@@ -142,16 +144,16 @@ const Forstaelse = ({
               <VolumeUpIcon />
             </IconButton>
             */}
-              <Typography
-                variant="body2"
-                component="p"
-                className={classes.audiotext}
-              >
-                Les hva meldingen sier. Svar på spørsmålet.
-              </Typography>
-            </CardContent>
+        <Typography
+          variant="body2"
+          component="p"
+          className={classes.audiotext}
+        >
+          Les hva meldingen sier. Svar på spørsmålet.
+        </Typography>
+        {/* </CardContent>
           </Card>
-        </div>
+        </div> */}
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={3}>
             <ChatBubble chat={formData[`chat${taskStep}`]} />

@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { Button, Grid } from "@mui/material";
-import ReplayIcon from "@mui/icons-material/Replay";
 import Forstaelse from "../../components/Forstaelse/Forstaelse";
 import Chat from "../../components/Chat/Chat";
 import RyddeSetninger from "../../components/RyddeSetninger/RyddeSetninger";
 import Feedback from "../../components/feedback/Feedback";
 import axios from "axios";
 import FinishedSet from "../../components/finishedSet/FinishedSet";
-import OverviewPage from "../../components/OverviewPage/OverviewPage";
 import FillInWord from "../../components/Fill-In-Word/FillInWord";
 import UnlockPad from "../../components/UnlockPad/UnlockPad";
-import StartPage from "../StartPage/StartPage";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NextExerciseBtn from "../../components/NextExerciseBtn/NextExerciseBtn";
-
 /**
  * This is the container for playing exercise sets.
  * @author Maja, Julie, Simen
@@ -35,9 +28,6 @@ const PlaySets = () => {
   const [totalExercises, setTotalExercises] = useState(0);
   const [feedbackState, setFeedbackState] = useState(false);
   const [exerciseProgress, setExerciseProgress] = useState(0);
-
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
 
   // Lists of id's for the exercises in the set.
   const [formDataExercises] = useState({
@@ -81,10 +71,10 @@ const PlaySets = () => {
     });
     setTotalExercises(
       formDataExercises.chat.length +
-        formDataExercises.forstaelse.length +
-        formDataExercises.ryddeSetninger.length +
-        formDataExercises.lasoppmobil.length +
-        formDataExercises.drainnmanglendeord.length
+      formDataExercises.forstaelse.length +
+      formDataExercises.ryddeSetninger.length +
+      formDataExercises.lasoppmobil.length +
+      formDataExercises.drainnmanglendeord.length
     );
   }
 
@@ -98,8 +88,6 @@ const PlaySets = () => {
       })
       .then((res) => {
         createPlayList(res.data);
-        setTitle(res.data.title);
-        setDescription(res.data.description);
         setTotalScore(0);
         setExerciseProgress(0);
         nextExercise()
@@ -149,9 +137,13 @@ const PlaySets = () => {
   function showFeedback(score, totalPossibleScore) {
     if (score === totalPossibleScore) {
       setTotalScore(totalScore + 1);
-      setStep("");
     }
-    setStep("newExercise");
+    if (exerciseProgress === totalExercises) {
+      setFeedbackState('finished');
+    } else {
+      setFeedbackState('playing');
+    }
+    setStep("feedback");
   }
 
   /**
@@ -174,17 +166,6 @@ const PlaySets = () => {
   }, []);
 
   switch (step) {
-    case "overview":
-      return (
-        <div>
-          <OverviewPage
-            title={title}
-            description={description}
-            id={id}
-            nextExercise={nextExercise}
-          />
-        </div>
-      );
     case "forstaelse":
       return (
         <Forstaelse
@@ -202,21 +183,13 @@ const PlaySets = () => {
           <Feedback
             totalScore={totalScore}
             totalExercises={totalExercises}
+            progress={exerciseProgress}
+            possible={totalExercises}
             feedbackState={feedbackState}
             nextExercise={nextExercise}
           />
         </div>
       );
-      case "newExercise":
-        return (
-          <div>
-            <NextExerciseBtn
-              handleNextTask= {nextExercise} 
-              answerState= {'correct'}
-            />
-          {console.log(":)")}
-          </div>
-        );
     case "chat":
       return (
         <Chat

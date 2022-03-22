@@ -1,94 +1,78 @@
-import React from 'react';
-import { Paper, Typography, Button } from '@mui/material';
-// import sadPickle from '../../assets/images/sadPickle.png';
-// import mariusPickle from '../../assets/images/mariusPickle.png';
-import useStyles from './styles'
+import React from "react";
+import { Paper, Typography, Button } from "@mui/material";
+import useStyles from "./styles";
+import NavBar from "../NavBar/Navbar";
+//Denne importen må endres etter strukturen blir endret
+import exerciseStyles from '../exerciseStyle';
+import ProgressBar from '../ProgressBar';
 
-/**
- * This is the feedback page between exercises.
- * @author Julie
- * @param {object} props
- * @property {integer} totalScore Keeps track of the players total score.
- * @property {integer} totalExercises Total number of exercises in a set.
- * @property {boolean} feedbackState True if the player answered correctly, false if not.
- * @property {function} nextExercise Button that takes the player to the next exercise.
- * @returns A feedback page.
- */
 const Feedback = ({
-  totalScore,
   totalExercises,
+  totalScore,
+  progress,
+  possible,
   feedbackState,
   nextExercise,
 }) => {
-  const style = useStyles();
+  const className = useStyles();
+  const classesBase = exerciseStyles();
+  const classes = { ...className, ...classesBase };
+
   // Returns a different feedback page if the player succeeded or not.
   switch (feedbackState) {
-    case true:
+    case 'playing':
       return (
-        <Paper elevation={0} >
-          {/* <img
-            src={mariusPickle}
-            alt="Marius pickle"
-          /> */}
-          <div>
-            <Typography variant="h1" className={style.text}>
-              Hurra, du klarte det!
-            </Typography>
-            <br />
-            {/* <Typography variant="h2" >
+        <Paper className={classes.root}>
+        <NavBar></NavBar>
+        <div className={classes.progresscontainer}>
+          <ProgressBar progress={progress} possible={possible} />
+        </div>
+        <Typography variant="h2" className={classes.text}>
               Poengsummen din er
               {` ${totalScore} `}
-              <br />
               av totalt
               {` ${totalExercises} `}
               mulige!
-            </Typography> */}
-          </div>
+            </Typography>
           <Button
             variant="contained"
             color="primary"
             onClick={() => nextExercise()}
             fullWidth
           >
-            neste oppgave
+            Neste oppgave
           </Button>
         </Paper>
       );
-    case false:
+      case 'finished':
       return (
-        <Paper elevation={0}>
-          {/* <img src={sadPickle} alt="sad pickle"  /> */}
-          <div >
-            <Typography variant="h1" className={style.text}>
-              Bedre lykke neste gang!
-            </Typography>
-            <br />
-            {/* <Typography variant="h2" >
+        <Paper className={classes.root}>
+        <NavBar></NavBar>
+        <div className={classes.progresscontainer}>
+          <ProgressBar progress={progress} possible={possible} />
+        </div>
+        <Typography variant="h2" className={classes.text}>
               Poengsummen din er
               {` ${totalScore} `}
-              <br />
-              Av totalt
+              av totalt
               {` ${totalExercises} `}
               mulige!
-            </Typography> */}
-          </div>
+            </Typography>
           <Button
             variant="contained"
             color="primary"
             onClick={() => nextExercise()}
             fullWidth
           >
-            neste oppgave
+            Fullfør sett
           </Button>
         </Paper>
       );
     default:
       return (
-        <Paper>
+        <Paper className={classes.root}>
           <div>
-            <Typography variant="h3" >
-              Noe gikk galt
-            </Typography>
+            <Typography variant="h3">Noe gikk galt</Typography>
           </div>
         </Paper>
       );

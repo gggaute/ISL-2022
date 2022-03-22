@@ -232,30 +232,33 @@ const RyddeSetninger = ({
           <Toolbar component="nav" className={classes.toolbar}>
           </Toolbar>
         </AppBar>
-        <div className={classes.topContent}>
-          <div className={classes.progresscontainer}>
-            <ProgressBar progress={progress} possible={possible} />
-          </div>
-          <Card>
-            <CardContent className={classes.cardcontent}>
-              {/* <IconButton
+
+        {/* <IconButton
+    <Paper className={classes.root}>
+      <div className={classes.topContent}>
+        <div className={classes.progresscontainer}>
+          <ProgressBar progress={progress} possible={possible} />
+        </div>
+        <Card>
+          <CardContent className={classes.cardcontent}>
+           {/* <IconButton
               onClick={() => fireAudio()}
               disabled={disabled}
               data-testid="volumeRyddeSetninger"
             >
               <VolumeUpIcon />
             </IconButton> */}
-              <Typography
-                variant="body2"
-                component="p"
-                className={classes.audiotext}
-              >
-                Trykk på ordene sånn at de kommer i riktig rekkefølge. Husk å
-                sjekke tegnsettingen!
-              </Typography>
-            </CardContent>
+        <Typography
+          variant="body2"
+          component="p"
+          className={classes.audiotext}
+        >
+          Trykk på ordene sånn at de kommer i riktig rekkefølge. Husk å
+          sjekke tegnsettingen!
+        </Typography>
+        {/* </CardContent>
           </Card>
-        </div>
+        </div> */}
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={1}>
             <Grid item xs={12}>

@@ -192,29 +192,31 @@ const Chat = ({
           <Toolbar component="nav" className={classes.toolbar}>
           </Toolbar>
         </AppBar>
-        <div className={classes.topContent}>
-          <div className={classes.progresscontainer}>
-            <ProgressBar progress={progress} possible={possible} />
-          </div>
-          <Card>
-            <CardContent className={classes.cardcontent}>
-              {/*<IconButton
+        {/*<IconButton
+    <Paper className={classes.root}>
+      <div className={classes.topContent}>
+        <div className={classes.progresscontainer}>
+          <ProgressBar progress={progress} possible={possible} />
+        </div>
+        <Card>
+          <CardContent className={classes.cardcontent}>
+            {/*<IconButton
               onClick={fireAudio}
               disabled={disabled}
               data-testid="volumeChat"
             >
               <VolumeUpIcon />
             </IconButton> */}
-              <Typography
-                variant="body2"
-                component="p"
-                className={classes.audiotext}
-              >
-                Du har fått en melding! Trykk på det svaret som er riktig.
-              </Typography>
-            </CardContent>
-          </Card>
-        </div>
+        <Typography
+          variant="body2"
+          component="p"
+          className={classes.audiotext}
+        >
+          Du har fått en melding! Trykk på det svaret som er riktig.
+        </Typography>
+        {/* </CardContent> */}
+        {/* </Card> */}
+        {/* </div >S */}
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={3}>
             {chatHistory.map((chat, i) => {
@@ -248,7 +250,7 @@ const Chat = ({
             />
           </Grid>
         </Paper>
-      </Paper>
+      </Paper >
     </>
   );
 };
