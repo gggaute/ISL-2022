@@ -15,6 +15,10 @@ import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import ryddaudio from "../../assets/audiofiles/ryddeSetningerVoice.mp3";
 import ProgressBar from "../ProgressBar";
 import NextExerciseBtn from "../NextExerciseBtn/NextExerciseBtn";
+import useStyles from './styles';
+import exerciseStyles from '../exerciseStyle';
+
+
 
 /**
  * This is the ryddeSetninger exercise component that is playable from Playsets.
@@ -61,6 +65,9 @@ const RyddeSetninger = ({
   /* Objects that take both the component style and a common style between all
   exercises, to finally integrate both style objects into the classes object
   to be used in the component */
+  const className = useStyles();
+  const classesBase = exerciseStyles();
+  const classes = { ...className, ...classesBase };
 
   // List of the the words gotten from the database and assembled together with their respective worldclasses.
   let concatenatedWords = [];
@@ -86,26 +93,22 @@ const RyddeSetninger = ({
   css backgroundColor object with its the colors HEX code. */
   const colorCodeTransform = (wordClass) => {
     switch (wordClass) {
-      case "det":
-        return { backgroundColor: "#FDFF95" };
-      case "prp":
-        return { backgroundColor: "#8EE7EF" };
-      case "pron":
-        return { backgroundColor: "#9EFFFA" };
+      case "sub":
+        return { backgroundColor: "#3366FF" };
+      case "ob":
+        return { backgroundColor: "#99CCFF" };
       case "adv":
-        return { backgroundColor: "#8EEF98" };
-      case "intj":
-        return { backgroundColor: "#CDFFC0" };
-      case "v":
-        return { backgroundColor: "#FA9D48" };
+        return { backgroundColor: "#FFFFCC" };
+      case "set":
+        return { backgroundColor: "#FFCC00" };
       case "conj":
-        return { backgroundColor: "#F3BB88" };
-      case "n":
-        return { backgroundColor: "#EC6F6F" };
+        return { backgroundColor: "#33CC33" };
       case "subj":
-        return { backgroundColor: "#FF9E9E" };
-      case "adj":
-        return { backgroundColor: "#D08EEF" };
+        return { backgroundColor: "#CCFFCC" };
+      case "fin":
+        return { backgroundColor: "#CC0000" };
+      case "infin":
+        return { backgroundColor: "#FF6699" };
       default:
         return { backgroundColor: "#E0E0E0" };
     }
@@ -218,16 +221,18 @@ const RyddeSetninger = ({
   }, []);
 
   return (
-    <Paper>
-      <AppBar position="static">
-        <Toolbar component="nav">{restartSet()}</Toolbar>
+    <Paper className={classes.root}>
+      <AppBar className={classes.navbar} position="static">
+        <Toolbar component="nav" className={classes.toolbar}>
+          {restartSet()}
+        </Toolbar>
       </AppBar>
-      <div>
-        <div>
+      <div className={classes.topContent}>
+        <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <Card>
-          <CardContent>
+          <CardContent className={classes.cardcontent}>
             <IconButton
               onClick={() => fireAudio()}
               disabled={disabled}
@@ -235,23 +240,28 @@ const RyddeSetninger = ({
             >
               <VolumeUpIcon />
             </IconButton>
-            <Typography variant="body2" component="p">
+            <Typography
+              variant="body2"
+              component="p"
+              className={classes.audiotext}
+            >
               Trykk på ordene sånn at de kommer i riktig rekkefølge. Husk å
               sjekke tegnsettingen!
             </Typography>
           </CardContent>
         </Card>
       </div>
-      <Paper elevation={0}>
+      <Paper className={classes.layout} elevation={0}>
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            <div style={{ alignSelf: "center" }}>
+            <div style={{ alignSelf: 'center' }}>
               {wordWithColorCode.map((el, index) => (
                 <Button
                   key={index}
                   id={index}
                   value={el[0]}
                   style={el[1]}
+                  className={classes.wordBtn}
                   variant="contained"
                   disabled={disableButton}
                   onClick={(e) => clicked(e, el)}
@@ -262,13 +272,14 @@ const RyddeSetninger = ({
             </div>
           </Grid>
           <Grid item xs={12}>
-            <div>
+            <div className={classes.chosenWords}>
               {chosenWords.map((el, index) => (
                 <Button
                   key={index}
                   id={index}
                   value={el[0]}
                   style={el[1]}
+                  className={classes.wordBtn}
                   variant="contained"
                   disabled={disableButton}
                   onClick={(e) => removeWord(e, el)}
@@ -284,13 +295,14 @@ const RyddeSetninger = ({
               variant="contained"
               disabled={disableButton}
               onClick={checkAnswer}
+              className={classes.checkAnswerBtn}
             >
               Sjekk svar
             </Button>
           </Grid>
           <NextExerciseBtn
             answerState={answerState}
-            handleNextTask={nextExercise}
+            handleNextTask={() => nextExercise()}
           />
         </Grid>
       </Paper>

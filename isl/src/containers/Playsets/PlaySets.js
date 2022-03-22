@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { Button, Grid } from "@mui/material";
 import ReplayIcon from "@mui/icons-material/Replay";
 import Forstaelse from "../../components/Forstaelse/Forstaelse";
 import Chat from "../../components/Chat/Chat";
 import RyddeSetninger from "../../components/RyddeSetninger/RyddeSetninger";
 import Feedback from "../../components/feedback/Feedback";
-import axios from 'axios';
+import axios from "axios";
 import FinishedSet from "../../components/finishedSet/FinishedSet";
 import OverviewPage from "../../components/OverviewPage/OverviewPage";
-import ContentContainer from '../../components/Fill-In-Word/ContentContainer'
-import UnlockPad from '../../components/UnlockPad/UnlockPad'
+import ContentContainer from "../../components/Fill-In-Word/ContentContainer";
+import UnlockPad from "../../components/UnlockPad/UnlockPad";
+import StartPage from "../StartPage/StartPage";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import NextExerciseBtn from "../../components/NextExerciseBtn/NextExerciseBtn";
 
 /**
  * This is the container for playing exercise sets.
@@ -42,7 +45,7 @@ const PlaySets = () => {
     forstaelse: [],
     ryddeSetninger: [],
     lasoppmobil: [],
-    drainnmanglendeord: []
+    drainnmanglendeord: [],
   });
 
   /*   // Hooks to get access to the Redux store and obtain user and auth info.
@@ -75,7 +78,7 @@ const PlaySets = () => {
       } else if (exercise.substring(0, 4) === "DraI" && id) {
         formDataExercises.drainnmanglendeord.push(id);
       }
-      });
+    });
     setTotalExercises(
       formDataExercises.chat.length +
         formDataExercises.forstaelse.length +
@@ -89,8 +92,8 @@ const PlaySets = () => {
     axios
       .get(`http://localhost:8000/api/sets/${id}`, {
         headers: {
-          'Content-Type': 'application/json',
-          accept: 'application/json',
+          "Content-Type": "application/json",
+          accept: "application/json",
         },
       })
       .then((res) => {
@@ -99,7 +102,7 @@ const PlaySets = () => {
         setDescription(res.data.description);
         setTotalScore(0);
         setExerciseProgress(0);
-        setStep('overview');
+        setStep("overview");
       })
       .catch((e) => {
         return e;
@@ -114,6 +117,8 @@ const PlaySets = () => {
    * the current exercise being played from the list.
    */
   function nextExercise() {
+    console.log(step);
+    setStep("");
     if (formDataExercises.chat[0]) {
       setExerciseProgress(exerciseProgress + 1);
       setExerciseId(formDataExercises.chat.shift());
@@ -134,21 +139,19 @@ const PlaySets = () => {
       setExerciseProgress(exerciseProgress + 1);
       setExerciseId(formDataExercises.drainnmanglendeord.shift());
       setStep("drainnmanglendeord");
+    } else {
+      setStep("finish");
     }
-     else {
-     setStep("finish");
-    }
+    console.log(step);
   }
 
   // Keeps track of scores and decides what feedback to show accordingly.
   function showFeedback(score, totalPossibleScore) {
     if (score === totalPossibleScore) {
       setTotalScore(totalScore + 1);
-      setFeedbackState(true);
-    } else {
-      setFeedbackState(false);
+      setStep("");
     }
-    setStep("feedback");
+    setStep("newExercise");
   }
 
   /**
@@ -208,6 +211,7 @@ const PlaySets = () => {
           possible={totalExercises}
           restartSet={() => restartSet()}
           playAudio={(url) => playAudio(url)}
+          nextExercise={nextExercise}
         />
       );
     case "feedback":
@@ -221,6 +225,16 @@ const PlaySets = () => {
           />
         </div>
       );
+      case "newExercise":
+        return (
+          <div>
+            <NextExerciseBtn
+              handleNextTask= {nextExercise} 
+              answerState= {'correct'}
+            />
+          {console.log(":)")}
+          </div>
+        );
     case "chat":
       return (
         <Chat
@@ -230,6 +244,7 @@ const PlaySets = () => {
           possible={totalExercises}
           restartSet={() => restartSet()}
           playAudio={(url) => playAudio(url)}
+          nextExercise={nextExercise}
         />
       );
     case "ryddeSetninger":
@@ -241,9 +256,10 @@ const PlaySets = () => {
           possible={totalExercises}
           restartSet={() => restartSet()}
           playAudio={(url) => playAudio(url)}
+          nextExercise={nextExercise}
         />
       );
-      case "lasoppmobil":
+    case "lasoppmobil":
       return (
         <UnlockPad
           id={exerciseId}
@@ -252,9 +268,10 @@ const PlaySets = () => {
           possible={totalExercises}
           restartSet={() => restartSet()}
           playAudio={(url) => playAudio(url)}
+          nextExercise={nextExercise}
         />
       );
-      case "drainnmanglendeord":
+    case "drainnmanglendeord":
       return (
         <ContentContainer
           id={exerciseId}
@@ -263,21 +280,11 @@ const PlaySets = () => {
           possible={totalExercises}
           restartSet={() => restartSet()}
           playAudio={(url) => playAudio(url)}
+          nextExercise={nextExercise}
         />
       );
     case "finish":
-      return (
-        <div>
-          <FinishedSet
-            totalScore={totalScore}
-            totalExercises={totalExercises}
-            percentage={totalScore / totalExercises}
-            id={id}
-            getContents={getContent}
-            setSteps={setStep}
-          />
-        </div>
-      );
+      return <Navigate to="/" />
     default:
       return null;
   }

@@ -1,31 +1,31 @@
 {
   "files": {
-    "main.css": "/static/css/main.608012ea.css",
-    "main.js": "/static/js/main.aed3121b.js",
+    "main.css": "/static/css/main.e6c13ad2.css",
+    "main.js": "/static/js/main.c79fd8fe.js",
     "static/js/787.6554fd4b.chunk.js": "/static/js/787.6554fd4b.chunk.js",
     "static/media/muslimWoman.png": "/static/media/muslimWoman.896c8aca9673ca8d7fdc.png",
     "static/media/blondeWoman.png": "/static/media/blondeWoman.b9e48dd4ac6d452bd50f.png",
     "static/media/frenchMan.png": "/static/media/frenchMan.f768988f5f8787911669.png",
-    "static/media/egg.png": "/static/media/egg.2b0d12f107646b9bb79e.png",
     "static/media/capsMan.png": "/static/media/capsMan.87ad48c8619fab2e62df.png",
     "static/media/gingerMan.png": "/static/media/gingerMan.b1687d9f3f4660687ddc.png",
     "static/media/brunetteWoman.png": "/static/media/brunetteWoman.a858f36faa813ced6953.png",
-    "static/media/logo.png": "/static/media/logo.28fd1840df33f1fc596f.png",
     "static/media/happyPickle.png": "/static/media/happyPickle.de47293254b5a007a866.png",
     "static/media/ryddeSetningerVoice.mp3": "/static/media/ryddeSetningerVoice.0eac7013b15045431372.mp3",
     "static/media/chatVoice.mp3": "/static/media/chatVoice.e0c9423f1dca094a0f68.mp3",
     "static/media/forstaelseVoice.mp3": "/static/media/forstaelseVoice.9e3d232ce804ca1cf029.mp3",
+    "static/media/mariusPickle.png": "/static/media/mariusPickle.f70c758bf339f8466950.png",
+    "static/media/sadPickle.png": "/static/media/sadPickle.af75db38fec28d19975e.png",
     "static/media/defaultMan.png": "/static/media/defaultMan.3759889a8d300f7b8a62.png",
     "static/media/finalSad.png": "/static/media/finalSad.1d16a54fe5de6afd071b.png",
     "index.html": "/index.html",
-    "static/media/bottomTriangle.svg": "/static/media/bottomTriangle.0fdc4d115ebfdffe87b3e471ad683806.svg",
-    "static/media/topTriangle.svg": "/static/media/topTriangle.0b2e441606622276d8467c9c75fae474.svg",
-    "main.608012ea.css.map": "/static/css/main.608012ea.css.map",
-    "main.aed3121b.js.map": "/static/js/main.aed3121b.js.map",
+    "static/media/bottomTriangle.svg": "/static/media/bottomTriangle.e97eb9d77633c6b39daa3718be55825d.svg",
+    "static/media/topTriangle.svg": "/static/media/topTriangle.758b4b1f876c9f0ce2e52f99a88d8efe.svg",
+    "main.e6c13ad2.css.map": "/static/css/main.e6c13ad2.css.map",
+    "main.c79fd8fe.js.map": "/static/js/main.c79fd8fe.js.map",
     "787.6554fd4b.chunk.js.map": "/static/js/787.6554fd4b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.608012ea.css",
-    "static/js/main.aed3121b.js"
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.c79fd8fe.js"
   ]
 }

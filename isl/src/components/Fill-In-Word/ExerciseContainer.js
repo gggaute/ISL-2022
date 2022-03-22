@@ -6,22 +6,37 @@ import Words from "./Words";
 import { useState } from "react";
 import CheckAnswer from "./CheckAnswer";
 import FeedbackBox from "./FeedbackBox";
+import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import $ from "jquery";
 import { FcPrevious, FcNext } from "react-icons/fc";
 import axios from "axios";
 import { useEffect } from "react";
+import ProgressBar from '../ProgressBar';
+import exerciseStyles from '../exerciseStyle';
 
-const ExerciseContainer = ({ id }) => {
+const ExerciseContainer = ({  
+  id,
+  showFeedback,
+  progress,
+  possible,
+  nextExercise, 
+}) => {
+  const [answerState, setAnswerState] = useState(null);
   let backendSentence = []
   let backendwords = []
   const [onload, setOnload] = useState(true);
   const [words, setWords] = useState([]);
 
   const [sentence, setSentence] = useState([]);
+  const [score, setScore] = useState(0);
+  const [totalPossibleScore, setTotalPossibleScore] = useState(0);
+
+  const classesBase = exerciseStyles();
+  const classes = { ...classesBase };
 
   useEffect(() => {
     getContent()
-  },[])
+  }, [])
 
   function getContent() {
     axios
@@ -97,22 +112,27 @@ const ExerciseContainer = ({ id }) => {
 
   const [previousClickedWord, setPreviousClickedWord] = useState("");
 
+  let answer;
   const [disabled, setDisabled] = useState(false);
   const checkAnswer = () => {
-    var answer;
     if (sentence.includes(missingWord)) {
-      answer = true;
-      $("#resultBox").removeClass();
-      $("#resultBox").addClass("riktig");
-      $("#resultText").text("Riktig!"); //TODO: Set correct icon
-      $("#goToNext").text("Neste oppgave -->"); //TODO: Set arrow icon
-      // $("#goToNext").addClass("visible");
+      answer = '';
+      setAnswerState('correct')
+      setScore(score + 1);
+      setTotalPossibleScore(totalPossibleScore + 1);
+      // $("#resultBox").removeClass();
+      // $("#resultBox").addClass("riktig");
+      // $("#resultText").text("Riktig!"); //TODO: Set correct icon
+      // $("#goToNext").text("Neste oppgave -->"); //TODO: Set arrow icon
+      // // $("#goToNext").addClass("visible");
       setDisabled(true);
     } else {
-      answer = false;
-      $("#resultBox").removeClass();
-      $("#resultBox").addClass("feil");
-      $("#resultText").text("Feil. Prøv igjen!"); //TODO: Set wrong icon
+      setAnswerState('incorrect')
+      setTotalPossibleScore(totalPossibleScore + 1);
+      answer = 'prøv igjen!';
+      // $("#resultBox").removeClass();
+      // $("#resultBox").addClass("feil");
+      // $("#resultText").text("Feil. Prøv igjen!"); //TODO: Set wrong icon
     }
     console.log(answer);
   };
@@ -122,25 +142,41 @@ const ExerciseContainer = ({ id }) => {
   const [missingWord, setMissingWord] = useState("");
 
   const [missingWordIndex, setMissingWordIndex] = useState(-1)
+
+  const handleNextTask = () => {
+    setAnswerState(null);
+    showFeedback(score, totalPossibleScore);
+  };
+  
   return (
-    <div className="game-wrapper">
-      <Question question={question}></Question>
-      <Task
-        missingWord={missingWord}
-        onload={onload}
-        previousClickedWord={previousClickedWord}
-        sentence={sentence}
-        missingWordIndex={missingWordIndex}
-      ></Task>
-      <Words
-        onClick={onClickedWord}
-        words={words}
-        disabled={disabled}
-        missingWord={missingWord}
-      ></Words>
-      <CheckAnswer onClick={checkAnswer} disabled={disabled}></CheckAnswer>
-      <FeedbackBox></FeedbackBox>
-    </div>
+    <>
+    <div className={classes.progresscontainer}>
+          <ProgressBar progress={progress} possible={possible} />
+        </div>
+      <div className="game-wrapper">
+        {/* <p>{answer}</p> */}
+        <Question question={question}></Question>
+        <Task
+          missingWord={missingWord}
+          onload={onload}
+          previousClickedWord={previousClickedWord}
+          sentence={sentence}
+          missingWordIndex={missingWordIndex}
+        ></Task>
+        <Words
+          onClick={onClickedWord}
+          words={words}
+          disabled={disabled}
+          missingWord={missingWord}
+        ></Words>
+        <CheckAnswer onClick={checkAnswer} disabled={disabled}></CheckAnswer>
+        <NextExerciseBtn
+            answerState={answerState}
+            handleNextTask={handleNextTask}
+          />
+      </div>
+    </>
+
   );
 };
 

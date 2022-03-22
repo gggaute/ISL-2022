@@ -3,6 +3,7 @@ import { Button, Card, Grid, CardHeader } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import useStyles from './styles';
 
 /**
  * Button used to go to next exercise in set. It changes color depending on whether right or
@@ -15,20 +16,22 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
  * @returns Card component with onClick button.
  */
 
-function NextExerciseBtn({ handleNextTask, answerState }) {
+ function NextExerciseBtn({ handleNextTask, answerState }) {
+  const classes = useStyles();
   switch (answerState) {
     case 'incorrect':
       return (
         <Grid item xs={12}>
-          <Card>
+          <Card className={classes.answerElementWrong}>
             <CardHeader
-              avatar={<CancelIcon/>}
+              avatar={<CancelIcon className={classes.icons} />}
               title=" Feil! "
             />
-            <div>
+            <div className={classes.btnParent}>
               <Button
                 data-testid="resultButtonIncorrect"
                 onClick={handleNextTask}
+                className={classes.answerBtn}
                 fullWidth
                 size="small"
               >
@@ -41,15 +44,16 @@ function NextExerciseBtn({ handleNextTask, answerState }) {
     case 'correct':
       return (
         <Grid item xs={12}>
-          <Card>
+          <Card className={classes.answerElement}>
             <CardHeader
-              avatar={<CheckCircleIcon/>}
+              avatar={<CheckCircleIcon className={classes.icons} />}
               title="Riktig!"
             />
-            <div>
+            <div className={classes.btnParent}>
               <Button
                 data-testid="resultButton"
                 onClick={handleNextTask}
+                className={classes.answerBtn}
                 fullWidth
                 size="small"
               >
@@ -63,5 +67,6 @@ function NextExerciseBtn({ handleNextTask, answerState }) {
       return <></>;
   }
 }
+
 
 export default NextExerciseBtn;

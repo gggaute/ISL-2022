@@ -24,6 +24,9 @@ import ChatBubble from '../ChatBubble/ChatBubble';
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import ProgressBar from '../ProgressBar';
 import axios from 'axios';
+import useStyles from './styles';
+import exerciseStyles from '../exerciseStyle';
+
 
 /**
  * This is the chat exercise component that is playable from Playsets.
@@ -41,6 +44,7 @@ import axios from 'axios';
  */
 const Chat = ({
   id,
+  nextExercise,
   showFeedback,
   progress,
   possible,
@@ -66,9 +70,15 @@ const Chat = ({
   /* Objects that take both the component style and a common style between all
   exercises, to finally integrate both style objects into the classes object
   to be used in the component */
+  const className = useStyles();
+  const classesBase = exerciseStyles();
+  const classes = { ...className, ...classesBase };
+
 
   // Data for the chat exercise from backend.
   const [formData, setFormData] = useState({});
+
+  
 
   /**
    * Function that checks if the input argument corresponds to a case
@@ -113,6 +123,7 @@ const Chat = ({
         setReceivericon(avatarR);
       });
   }
+
   const handleNextTask = () => {
     setAnswerstate(null);
     if (!formData[`chatquestion${taskStep}`]) {
@@ -170,18 +181,18 @@ const Chat = ({
   }, []);
 
   return (
-    <Paper >
-      <AppBar position="static">
-        <Toolbar component="nav" >
+    <Paper className={classes.root}>
+      <AppBar className={classes.navbar} position="static">
+        <Toolbar component="nav" className={classes.toolbar}>
           {restartSet()}
         </Toolbar>
       </AppBar>
-      <div >
-        <div >
+      <div className={classes.topContent}>
+        <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <Card>
-          <CardContent>
+          <CardContent className={classes.cardcontent}>
             <IconButton
               onClick={fireAudio}
               disabled={disabled}
@@ -192,13 +203,14 @@ const Chat = ({
             <Typography
               variant="body2"
               component="p"
+              className={classes.audiotext}
             >
               Du har fått en melding! Trykk på det svaret som er riktig.
             </Typography>
           </CardContent>
         </Card>
       </div>
-      <Paper elevation={0}>
+      <Paper className={classes.layout} elevation={0}>
         <Grid container spacing={3}>
           {chatHistory.map((chat, i) => {
             if (i % 2 === 0) {
@@ -219,6 +231,7 @@ const Chat = ({
                 variant="contained"
                 color="secondary"
                 disableElevation
+                className={classes.btn}
               >
                 {random()}
               </ButtonGroup>
