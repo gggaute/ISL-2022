@@ -40,7 +40,6 @@ const Forstaelse = ({
   showFeedback,
   progress,
   possible,
-  restartSet,
   playAudio,
 }) => {
   // Data for the forstaelse exercise from backend.
@@ -104,6 +103,7 @@ const Forstaelse = ({
     }
   };
 
+  /*
   function fireAudio() {
     setDisabled(true);
     playAudio(forsaudio);
@@ -111,6 +111,7 @@ const Forstaelse = ({
       setDisabled(false);
     }, 4000);
   }
+  */
 
   useEffect(() => {
     getContent();
@@ -120,7 +121,6 @@ const Forstaelse = ({
     <Paper className={classes.root}>
       <AppBar className={classes.navbar} position="static">
         <Toolbar component="nav" className={classes.toolbar}>
-          {restartSet()}
         </Toolbar>
       </AppBar>
       <div className={classes.topContent}>
@@ -129,13 +129,14 @@ const Forstaelse = ({
         </div>
         <Card>
           <CardContent className={classes.cardcontent}>
-            <IconButton
+            {/*<IconButton
               onClick={() => fireAudio()}
               disabled={disabled}
               data-testid="volumeForstaelse"
             >
               <VolumeUpIcon />
             </IconButton>
+            */}
             <Typography
               variant="body2"
               component="p"

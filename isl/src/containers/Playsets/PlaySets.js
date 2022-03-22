@@ -67,15 +67,15 @@ const PlaySets = () => {
     formDataExercises.lasoppmobil.length = 0;
     formDataExercises.drainnmanglendeord.length = 0;
     Object.entries(sets).forEach(([exercise, id]) => {
-      if (exercise.substring(0, 5) === "chat" && id) {
+      if (exercise.substring(0, 4) === "chat" && id) {
         formDataExercises.chat.push(id);
-      } else if (exercise.substring(0, 5) === "fors" && id) {
+      } else if (exercise.substring(0, 4) === "fors" && id) {
         formDataExercises.forstaelse.push(id);
-      } else if (exercise.substring(0, 5) === "rydd" && id) {
+      } else if (exercise.substring(0, 4) === "rydd" && id) {
         formDataExercises.ryddeSetninger.push(id);
-      } else if (exercise.substring(0, 5) === "LåsO" && id) {
+      } else if (exercise.substring(0, 4) === "LåsO" && id) {
         formDataExercises.lasoppmobil.push(id);
-      } else if (exercise.substring(0, 5) === "DraI" && id) {
+      } else if (exercise.substring(0, 4) === "DraI" && id) {
         formDataExercises.drainnmanglendeord.push(id);
       }
     });
@@ -102,7 +102,7 @@ const PlaySets = () => {
         setDescription(res.data.description);
         setTotalScore(0);
         setExerciseProgress(0);
-        setStep("overview");
+        nextExercise()
       })
       .catch((e) => {
         return e;
@@ -159,23 +159,6 @@ const PlaySets = () => {
    * and changes step to "overview" when the restart button is clicked. This enables the user to
    * exit the exercise set currently being played. The user is redirected to the set's overviewpage.
    */
-  function restartSet() {
-    return (
-      <Grid>
-        <Button
-          variant="outlined"
-          color="secondary"
-          startIcon={<ReplayIcon />}
-          onClick={() => {
-            getContent(id);
-            setStep("overview");
-          }}
-        >
-          Restart sett
-        </Button>
-      </Grid>
-    );
-  }
 
   function playAudio(url) {
     new Audio(url).play();
@@ -209,7 +192,6 @@ const PlaySets = () => {
           showFeedback={showFeedback}
           progress={exerciseProgress}
           possible={totalExercises}
-          restartSet={() => restartSet()}
           playAudio={(url) => playAudio(url)}
           nextExercise={nextExercise}
         />
@@ -242,7 +224,6 @@ const PlaySets = () => {
           showFeedback={showFeedback}
           progress={exerciseProgress}
           possible={totalExercises}
-          restartSet={() => restartSet()}
           playAudio={(url) => playAudio(url)}
           nextExercise={nextExercise}
         />
@@ -254,7 +235,6 @@ const PlaySets = () => {
           showFeedback={showFeedback}
           progress={exerciseProgress}
           possible={totalExercises}
-          restartSet={() => restartSet()}
           playAudio={(url) => playAudio(url)}
           nextExercise={nextExercise}
         />
@@ -266,7 +246,6 @@ const PlaySets = () => {
           showFeedback={showFeedback}
           progress={exerciseProgress}
           possible={totalExercises}
-          restartSet={() => restartSet()}
           playAudio={(url) => playAudio(url)}
           nextExercise={nextExercise}
         />
@@ -278,7 +257,6 @@ const PlaySets = () => {
           showFeedback={showFeedback}
           progress={exerciseProgress}
           possible={totalExercises}
-          restartSet={() => restartSet()}
           playAudio={(url) => playAudio(url)}
           nextExercise={nextExercise}
         />

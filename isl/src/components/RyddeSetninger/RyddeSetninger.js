@@ -39,7 +39,6 @@ const RyddeSetninger = ({
   showFeedback,
   progress,
   possible,
-  restartSet,
   playAudio,
 }) => {
   const [renderPage, setRenderPage] = useState();
@@ -208,6 +207,7 @@ const RyddeSetninger = ({
     showFeedback(score, totalPossibleScore);
   };
 
+  /*
   function fireAudio() {
     setDisabled(true);
     playAudio(ryddaudio);
@@ -215,6 +215,7 @@ const RyddeSetninger = ({
       setDisabled(false);
     }, 6000);
   }
+  */
 
   useEffect(() => {
     getContent();
@@ -224,7 +225,6 @@ const RyddeSetninger = ({
     <Paper className={classes.root}>
       <AppBar className={classes.navbar} position="static">
         <Toolbar component="nav" className={classes.toolbar}>
-          {restartSet()}
         </Toolbar>
       </AppBar>
       <div className={classes.topContent}>
@@ -233,13 +233,13 @@ const RyddeSetninger = ({
         </div>
         <Card>
           <CardContent className={classes.cardcontent}>
-            <IconButton
+           {/* <IconButton
               onClick={() => fireAudio()}
               disabled={disabled}
               data-testid="volumeRyddeSetninger"
             >
               <VolumeUpIcon />
-            </IconButton>
+            </IconButton> */}
             <Typography
               variant="body2"
               component="p"

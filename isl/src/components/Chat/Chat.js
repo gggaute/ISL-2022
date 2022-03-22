@@ -48,7 +48,6 @@ const Chat = ({
   showFeedback,
   progress,
   possible,
-  restartSet,
   playAudio,
 }) => {
   const [sendericon, setSendericon] = useState();
@@ -170,11 +169,13 @@ const Chat = ({
     });
   }
 
+  /*
   function fireAudio() {
     setDisabled(true);
     playAudio(chataudio);
     setTimeout(() => setDisabled(false), 6000);
   }
+  */
 
   useEffect(() => {
     getContent();
@@ -184,7 +185,6 @@ const Chat = ({
     <Paper className={classes.root}>
       <AppBar className={classes.navbar} position="static">
         <Toolbar component="nav" className={classes.toolbar}>
-          {restartSet()}
         </Toolbar>
       </AppBar>
       <div className={classes.topContent}>
@@ -193,13 +193,13 @@ const Chat = ({
         </div>
         <Card>
           <CardContent className={classes.cardcontent}>
-            <IconButton
+            {/*<IconButton
               onClick={fireAudio}
               disabled={disabled}
               data-testid="volumeChat"
             >
               <VolumeUpIcon />
-            </IconButton>
+            </IconButton> */}
             <Typography
               variant="body2"
               component="p"
