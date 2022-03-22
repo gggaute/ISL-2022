@@ -26,3 +26,13 @@ class Chat(models.Model):
     answer31 = models.CharField(max_length=1000, blank=True)
     answer32 = models.CharField(max_length=1000, blank=True)
     correctanswer3 = models.CharField(max_length=1000, blank=True)
+
+    chatquestion4 = models.CharField(max_length=1000, blank=True)
+    answer41 = models.CharField(max_length=1000, blank=True)
+    answer42 = models.CharField(max_length=1000, blank=True)
+    correctanswer4 = models.CharField(max_length=1000, blank=True)
+
+    chatquestion5 = models.CharField(max_length=1000, blank=True)
+    answer51 = models.CharField(max_length=1000, blank=True)
+    answer52 = models.CharField(max_length=1000, blank=True)
+    correctanswer5 = models.CharField(max_length=1000, blank=True)
