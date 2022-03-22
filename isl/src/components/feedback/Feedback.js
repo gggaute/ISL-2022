@@ -7,6 +7,8 @@ import exerciseStyles from '../exerciseStyle';
 import ProgressBar from '../ProgressBar';
 
 const Feedback = ({
+  totalExercises,
+  totalScore,
   progress,
   possible,
   feedbackState,
@@ -18,49 +20,51 @@ const Feedback = ({
 
   // Returns a different feedback page if the player succeeded or not.
   switch (feedbackState) {
-    case true:
+    case 'playing':
       return (
         <Paper className={classes.root}>
         <Navbar></Navbar>
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-          <div>
-            <Typography variant="h1" className={classes.text}>
-              Hurra, du klarte det!
+        <Typography variant="h2" className={classes.text}>
+              Poengsummen din er
+              {` ${totalScore} `}
+              av totalt
+              {` ${totalExercises} `}
+              mulige!
             </Typography>
-            <br />
-          </div>
           <Button
             variant="contained"
             color="primary"
             onClick={() => nextExercise()}
             fullWidth
           >
-            neste oppgave
+            Neste oppgave
           </Button>
         </Paper>
       );
-    case false:
+      case 'finished':
       return (
         <Paper className={classes.root}>
         <Navbar></Navbar>
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-          <div>
-            <Typography variant="h1" className={classes.text}>
-              Bedre lykke neste gang!
+        <Typography variant="h2" className={classes.text}>
+              Poengsummen din er
+              {` ${totalScore} `}
+              av totalt
+              {` ${totalExercises} `}
+              mulige!
             </Typography>
-            <br />
-          </div>
           <Button
             variant="contained"
             color="primary"
             onClick={() => nextExercise()}
             fullWidth
           >
-            neste oppgave
+            Fullfør sett
           </Button>
         </Paper>
       );
