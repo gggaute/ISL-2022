@@ -27,8 +27,6 @@ import axios from 'axios';
 import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 
-import Navbar from "../Fill-In-Word/Navbar";
-
 
 /**
  * This is the chat exercise component that is playable from Playsets.
@@ -185,7 +183,6 @@ const Chat = ({
 
   return (
     <Paper className={classes.root}>
-       <Navbar></Navbar>
       <div className={classes.topContent}>
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />

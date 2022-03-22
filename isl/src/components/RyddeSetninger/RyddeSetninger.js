@@ -18,8 +18,6 @@ import NextExerciseBtn from "../NextExerciseBtn/NextExerciseBtn";
 import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 
-import Navbar from "../Fill-In-Word/Navbar";
-
 
 
 /**
@@ -225,7 +223,6 @@ const RyddeSetninger = ({
 
   return (
     <Paper className={classes.root}>
-       <Navbar></Navbar>
       <AppBar className={classes.navbar} position="static">
         <Toolbar component="nav" className={classes.toolbar}>
         </Toolbar>

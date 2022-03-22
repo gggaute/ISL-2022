@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {
-  Paper,
-} from '@mui/material';
 
 // import SingleLetter from './singleLetter';
 // import Button from "@mui/material/Button";
@@ -137,7 +134,7 @@ useEffect(() => {
 },[])
 
 return (
-  <Paper className={classes.root}>
+  <>
     <Navbar></Navbar>
     <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
@@ -170,7 +167,7 @@ return (
             </div>
 
         </div>
-    </Paper>
+  </>
 )
 }
 
