@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 
 // import SingleLetter from './singleLetter';
 // import Button from "@mui/material/Button";
-import egg from "../../assets/img/egg.png";
-import Navbar from "../Fill-In-Word/Navbar";
 import axios from "axios"
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import ProgressBar from '../ProgressBar';
 import exerciseStyles from '../exerciseStyle';
+import NavBar from "../NavBar/Navbar";
+import ContentHeader from "../ContentHeader/ContentHeader";
 
 const UnlockPad = ({ 
   id,
@@ -134,8 +134,9 @@ useEffect(() => {
 },[])
 
 return (
-    <>
-    <Navbar></Navbar>
+  <>
+  <NavBar></NavBar>
+  <ContentHeader></ContentHeader>
     <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>

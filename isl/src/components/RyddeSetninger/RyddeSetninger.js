@@ -17,6 +17,8 @@ import ProgressBar from "../ProgressBar";
 import NextExerciseBtn from "../NextExerciseBtn/NextExerciseBtn";
 import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
+import NavBar from "../NavBar/Navbar";
+import ContentHeader from "../ContentHeader/ContentHeader";
 
 
 
@@ -222,91 +224,95 @@ const RyddeSetninger = ({
   }, []);
 
   return (
-    <Paper className={classes.root}>
-      <AppBar className={classes.navbar} position="static">
-        <Toolbar component="nav" className={classes.toolbar}>
-        </Toolbar>
-      </AppBar>
-      <div className={classes.topContent}>
-        <div className={classes.progresscontainer}>
-          <ProgressBar progress={progress} possible={possible} />
-        </div>
-        <Card>
-          <CardContent className={classes.cardcontent}>
-           {/* <IconButton
+    <>
+      <NavBar></NavBar>
+      <ContentHeader></ContentHeader>
+      <Paper className={classes.root}>
+        <AppBar className={classes.navbar} position="static">
+          <Toolbar component="nav" className={classes.toolbar}>
+          </Toolbar>
+        </AppBar>
+        <div className={classes.topContent}>
+          <div className={classes.progresscontainer}>
+            <ProgressBar progress={progress} possible={possible} />
+          </div>
+          <Card>
+            <CardContent className={classes.cardcontent}>
+              {/* <IconButton
               onClick={() => fireAudio()}
               disabled={disabled}
               data-testid="volumeRyddeSetninger"
             >
               <VolumeUpIcon />
             </IconButton> */}
-            <Typography
-              variant="body2"
-              component="p"
-              className={classes.audiotext}
-            >
-              Trykk på ordene sånn at de kommer i riktig rekkefølge. Husk å
-              sjekke tegnsettingen!
-            </Typography>
-          </CardContent>
-        </Card>
-      </div>
-      <Paper className={classes.layout} elevation={0}>
-        <Grid container spacing={1}>
-          <Grid item xs={12}>
-            <div style={{ alignSelf: 'center' }}>
-              {wordWithColorCode.map((el, index) => (
-                <Button
-                  key={index}
-                  id={index}
-                  value={el[0]}
-                  style={el[1]}
-                  className={classes.wordBtn}
-                  variant="contained"
-                  disabled={disableButton}
-                  onClick={(e) => clicked(e, el)}
-                >
-                  {el[0]}
-                </Button>
-              ))}
-            </div>
+              <Typography
+                variant="body2"
+                component="p"
+                className={classes.audiotext}
+              >
+                Trykk på ordene sånn at de kommer i riktig rekkefølge. Husk å
+                sjekke tegnsettingen!
+              </Typography>
+            </CardContent>
+          </Card>
+        </div>
+        <Paper className={classes.layout} elevation={0}>
+          <Grid container spacing={1}>
+            <Grid item xs={12}>
+              <div style={{ alignSelf: 'center' }}>
+                {wordWithColorCode.map((el, index) => (
+                  <Button
+                    key={index}
+                    id={index}
+                    value={el[0]}
+                    style={el[1]}
+                    className={classes.wordBtn}
+                    variant="contained"
+                    disabled={disableButton}
+                    onClick={(e) => clicked(e, el)}
+                  >
+                    {el[0]}
+                  </Button>
+                ))}
+              </div>
+            </Grid>
+            <Grid item xs={12}>
+              <div className={classes.chosenWords}>
+                {chosenWords.map((el, index) => (
+                  <Button
+                    key={index}
+                    id={index}
+                    value={el[0]}
+                    style={el[1]}
+                    className={classes.wordBtn}
+                    variant="contained"
+                    disabled={disableButton}
+                    onClick={(e) => removeWord(e, el)}
+                  >
+                    {el[0]}
+                  </Button>
+                ))}
+              </div>
+            </Grid>
+            <Grid item xs={6} />
+            <Grid item xs={6}>
+              <Button
+                variant="contained"
+                disabled={disableButton}
+                onClick={checkAnswer}
+                className={classes.checkAnswerBtn}
+              >
+                Sjekk svar
+              </Button>
+            </Grid>
+            <NextExerciseBtn
+              answerState={answerState}
+              handleNextTask={() => nextExercise()}
+            />
           </Grid>
-          <Grid item xs={12}>
-            <div className={classes.chosenWords}>
-              {chosenWords.map((el, index) => (
-                <Button
-                  key={index}
-                  id={index}
-                  value={el[0]}
-                  style={el[1]}
-                  className={classes.wordBtn}
-                  variant="contained"
-                  disabled={disableButton}
-                  onClick={(e) => removeWord(e, el)}
-                >
-                  {el[0]}
-                </Button>
-              ))}
-            </div>
-          </Grid>
-          <Grid item xs={6} />
-          <Grid item xs={6}>
-            <Button
-              variant="contained"
-              disabled={disableButton}
-              onClick={checkAnswer}
-              className={classes.checkAnswerBtn}
-            >
-              Sjekk svar
-            </Button>
-          </Grid>
-          <NextExerciseBtn
-            answerState={answerState}
-            handleNextTask={() => nextExercise()}
-          />
-        </Grid>
+        </Paper>
       </Paper>
-    </Paper>
+    </>
   );
 };
 

@@ -26,6 +26,8 @@ import ProgressBar from '../ProgressBar';
 import axios from 'axios';
 import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
+import NavBar from "../NavBar/Navbar";
+import ContentHeader from "../ContentHeader/ContentHeader";
 
 
 /**
@@ -77,7 +79,7 @@ const Chat = ({
   // Data for the chat exercise from backend.
   const [formData, setFormData] = useState({});
 
-  
+
 
   /**
    * Function that checks if the input argument corresponds to a case
@@ -85,7 +87,7 @@ const Chat = ({
    * @param {string} iconName Icon name from the database.
    * @returns The image object corresponding the input argument.
    */
-  
+
   const transformIcon = (iconName) => {
     switch (iconName) {
       case 'gingerMan':
@@ -182,68 +184,72 @@ const Chat = ({
   }, []);
 
   return (
-    <Paper className={classes.root}>
-      <AppBar className={classes.navbar} position="static">
-        <Toolbar component="nav" className={classes.toolbar}>
-        </Toolbar>
-      </AppBar>
-      <div className={classes.topContent}>
-        <div className={classes.progresscontainer}>
-          <ProgressBar progress={progress} possible={possible} />
-        </div>
-        <Card>
-          <CardContent className={classes.cardcontent}>
-            {/*<IconButton
+    <>
+      <NavBar></NavBar>
+      <ContentHeader></ContentHeader>
+      <Paper className={classes.root}>
+        <AppBar className={classes.navbar} position="static">
+          <Toolbar component="nav" className={classes.toolbar}>
+          </Toolbar>
+        </AppBar>
+        <div className={classes.topContent}>
+          <div className={classes.progresscontainer}>
+            <ProgressBar progress={progress} possible={possible} />
+          </div>
+          <Card>
+            <CardContent className={classes.cardcontent}>
+              {/*<IconButton
               onClick={fireAudio}
               disabled={disabled}
               data-testid="volumeChat"
             >
               <VolumeUpIcon />
             </IconButton> */}
-            <Typography
-              variant="body2"
-              component="p"
-              className={classes.audiotext}
-            >
-              Du har fått en melding! Trykk på det svaret som er riktig.
-            </Typography>
-          </CardContent>
-        </Card>
-      </div>
-      <Paper className={classes.layout} elevation={0}>
-        <Grid container spacing={3}>
-          {chatHistory.map((chat, i) => {
-            if (i % 2 === 0) {
-              return <ChatBubble key={i} chat={chat} icon={sendericon} />;
-            }
-            return <ChatBubble key={i} chat={chat} icon={receivericon} right />;
-          })}
-          <Grid
-            container
-            direction="column"
-            justify="flex-end"
-            alignItems="flex-end"
-          >
-            {answerstate === null && (
-              <ButtonGroup
-                orientation="vertical"
-                aria-label="vertical contained secondary button group"
-                variant="contained"
-                color="secondary"
-                disableElevation
-                className={classes.btn}
+              <Typography
+                variant="body2"
+                component="p"
+                className={classes.audiotext}
               >
-                {random()}
-              </ButtonGroup>
-            )}
+                Du har fått en melding! Trykk på det svaret som er riktig.
+              </Typography>
+            </CardContent>
+          </Card>
+        </div>
+        <Paper className={classes.layout} elevation={0}>
+          <Grid container spacing={3}>
+            {chatHistory.map((chat, i) => {
+              if (i % 2 === 0) {
+                return <ChatBubble key={i} chat={chat} icon={sendericon} />;
+              }
+              return <ChatBubble key={i} chat={chat} icon={receivericon} right />;
+            })}
+            <Grid
+              container
+              direction="column"
+              justify="flex-end"
+              alignItems="flex-end"
+            >
+              {answerstate === null && (
+                <ButtonGroup
+                  orientation="vertical"
+                  aria-label="vertical contained secondary button group"
+                  variant="contained"
+                  color="secondary"
+                  disableElevation
+                  className={classes.btn}
+                >
+                  {random()}
+                </ButtonGroup>
+              )}
+            </Grid>
+            <NextExerciseBtn
+              answerState={answerstate}
+              handleNextTask={handleNextTask}
+            />
           </Grid>
-          <NextExerciseBtn
-            answerState={answerstate}
-            handleNextTask={handleNextTask}
-          />
-        </Grid>
+        </Paper>
       </Paper>
-    </Paper>
+    </>
   );
 };
 

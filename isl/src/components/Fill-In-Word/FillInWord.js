@@ -1,11 +1,10 @@
 import React from "react";
-import ContentHeader from "./ContentHeader";
 import Question from "./Question";
 import Task from "./Task";
 import Words from "./Words";
 import { useState } from "react";
 import CheckAnswer from "./CheckAnswer";
-import FeedbackBox from "./FeedbackBox";
+import FeedbackBox from "../feedback/Feedback";
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import $ from "jquery";
 import { FcPrevious, FcNext } from "react-icons/fc";
@@ -13,13 +12,16 @@ import axios from "axios";
 import { useEffect } from "react";
 import ProgressBar from '../ProgressBar';
 import exerciseStyles from '../exerciseStyle';
+import NavBar from "../NavBar/Navbar";
+import ContentHeader from "../ContentHeader/ContentHeader";
 
-const ExerciseContainer = ({  
+
+const ExerciseContainer = ({
   id,
   showFeedback,
   progress,
   possible,
-  nextExercise, 
+  nextExercise,
 }) => {
   const [answerState, setAnswerState] = useState(null);
   let backendSentence = []
@@ -147,12 +149,14 @@ const ExerciseContainer = ({
     setAnswerState(null);
     showFeedback(score, totalPossibleScore);
   };
-  
+
   return (
     <>
-    <div className={classes.progresscontainer}>
-          <ProgressBar progress={progress} possible={possible} />
-        </div>
+      <NavBar></NavBar>
+      <ContentHeader></ContentHeader>
+      <div className={classes.progresscontainer}>
+        <ProgressBar progress={progress} possible={possible} />
+      </div>
       <div className="game-wrapper">
         {/* <p>{answer}</p> */}
         <Question question={question}></Question>
@@ -171,9 +175,9 @@ const ExerciseContainer = ({
         ></Words>
         <CheckAnswer onClick={checkAnswer} disabled={disabled}></CheckAnswer>
         <NextExerciseBtn
-            answerState={answerState}
-            handleNextTask={handleNextTask}
-          />
+          answerState={answerState}
+          handleNextTask={handleNextTask}
+        />
       </div>
     </>
 

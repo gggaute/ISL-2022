@@ -19,6 +19,8 @@ import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import axios from 'axios';
 import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
+import NavBar from "../NavBar/Navbar";
+import ContentHeader from "../ContentHeader/ContentHeader";
 
 /**
  * This is the forstaelse exercise component that is playable from Playsets.
@@ -118,18 +120,21 @@ const Forstaelse = ({
   }, []);
 
   return (
-    <Paper className={classes.root}>
-      <AppBar className={classes.navbar} position="static">
-        <Toolbar component="nav" className={classes.toolbar}>
-        </Toolbar>
-      </AppBar>
-      <div className={classes.topContent}>
-        <div className={classes.progresscontainer}>
-          <ProgressBar progress={progress} possible={possible} />
-        </div>
-        <Card>
-          <CardContent className={classes.cardcontent}>
-            {/*<IconButton
+    <>
+      <NavBar></NavBar>
+      <ContentHeader></ContentHeader>
+      <Paper className={classes.root}>
+        <AppBar className={classes.navbar} position="static">
+          <Toolbar component="nav" className={classes.toolbar}>
+          </Toolbar>
+        </AppBar>
+        <div className={classes.topContent}>
+          <div className={classes.progresscontainer}>
+            <ProgressBar progress={progress} possible={possible} />
+          </div>
+          <Card>
+            <CardContent className={classes.cardcontent}>
+              {/*<IconButton
               onClick={() => fireAudio()}
               disabled={disabled}
               data-testid="volumeForstaelse"
@@ -137,61 +142,62 @@ const Forstaelse = ({
               <VolumeUpIcon />
             </IconButton>
             */}
-            <Typography
-              variant="body2"
-              component="p"
-              className={classes.audiotext}
-            >
-              Les hva meldingen sier. Svar på spørsmålet.
-            </Typography>
-          </CardContent>
-        </Card>
-      </div>
-      <Paper className={classes.layout} elevation={0}>
-        <Grid container spacing={3}>
-          <ChatBubble chat={formData[`chat${taskStep}`]} />
-          <Grid className={classes.gridText} item xs={12}>
-            <hr />
-            <Typography className={classes.text}>
-              {formData[`question${taskStep}`]}
-            </Typography>
+              <Typography
+                variant="body2"
+                component="p"
+                className={classes.audiotext}
+              >
+                Les hva meldingen sier. Svar på spørsmålet.
+              </Typography>
+            </CardContent>
+          </Card>
+        </div>
+        <Paper className={classes.layout} elevation={0}>
+          <Grid container spacing={3}>
+            <ChatBubble chat={formData[`chat${taskStep}`]} />
+            <Grid className={classes.gridText} item xs={12}>
+              <hr />
+              <Typography className={classes.text}>
+                {formData[`question${taskStep}`]}
+              </Typography>
+            </Grid>
+            {answerState === null && (
+              <>
+                <Grid item xs={6}>
+                  <Button
+                    onClick={() => onClickAnswer('true')}
+                    variant="contained"
+                    color="secondary"
+                    fullWidth
+                  >
+                    JA
+                  </Button>
+                </Grid>
+                <Grid item xs={6}>
+                  <Button
+                    onClick={() => onClickAnswer('false')}
+                    variant="contained"
+                    color="secondary"
+                    fullWidth
+                  >
+                    NEI
+                  </Button>
+                </Grid>
+              </>
+            )}
+            {answerState !== null && (
+              <Typography className={classes.explanation}>
+                {formData[`explanation${taskStep}`]}
+              </Typography>
+            )}
+            <NextExerciseBtn
+              answerState={answerState}
+              handleNextTask={handleNextTask}
+            />
           </Grid>
-          {answerState === null && (
-            <>
-              <Grid item xs={6}>
-                <Button
-                  onClick={() => onClickAnswer('true')}
-                  variant="contained"
-                  color="secondary"
-                  fullWidth
-                >
-                  JA
-                </Button>
-              </Grid>
-              <Grid item xs={6}>
-                <Button
-                  onClick={() => onClickAnswer('false')}
-                  variant="contained"
-                  color="secondary"
-                  fullWidth
-                >
-                  NEI
-                </Button>
-              </Grid>
-            </>
-          )}
-          {answerState !== null && (
-            <Typography className={classes.explanation}>
-              {formData[`explanation${taskStep}`]}
-            </Typography>
-          )}
-          <NextExerciseBtn
-            answerState={answerState}
-            handleNextTask={handleNextTask}
-          />
-        </Grid>
+        </Paper>
       </Paper>
-    </Paper>
+    </>
   );
 };
 

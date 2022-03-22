@@ -9,7 +9,7 @@ import Feedback from "../../components/feedback/Feedback";
 import axios from "axios";
 import FinishedSet from "../../components/finishedSet/FinishedSet";
 import OverviewPage from "../../components/OverviewPage/OverviewPage";
-import ContentContainer from "../../components/Fill-In-Word/ContentContainer";
+import FillInWord from "../../components/Fill-In-Word/FillInWord";
 import UnlockPad from "../../components/UnlockPad/UnlockPad";
 import StartPage from "../StartPage/StartPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -252,7 +252,7 @@ const PlaySets = () => {
       );
     case "drainnmanglendeord":
       return (
-        <ContentContainer
+        <FillInWord
           id={exerciseId}
           showFeedback={showFeedback}
           progress={exerciseProgress}
