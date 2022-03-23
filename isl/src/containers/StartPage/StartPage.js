@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import SetCard from "../../components/SetCard/SetCard";
 
+import NavBar from "../../components/NavBar/Navbar";
+import {
+  Paper,
+} from "@mui/material";
+import exerciseStyles from '../../components/exerciseStyle';
+
 
 /*
  * This is the container for the home page.
@@ -14,6 +20,9 @@ const StartPage = () => {
   // List of the users own sets.
   const [ExerciseSetList, setExerciseSetList] = useState([]);
   const [playId, setPlayId] = useState(null);
+
+  const classesBase = exerciseStyles();
+  const classes = {...classesBase };
 
   /*    function getContent() {
     axios
@@ -66,7 +75,10 @@ const StartPage = () => {
 
   return (
     <div>
-      {renderSwitch()}
+      <NavBar></NavBar>
+      <Paper className={classes.root}>
+        {renderSwitch()}
+      </Paper>
     </div>
   );
 };
