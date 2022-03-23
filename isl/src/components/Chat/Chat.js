@@ -28,6 +28,7 @@ import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import ContentHeader from "../ContentHeader/ContentHeader";
+import Question from '../Fill-In-Word/Question';
 
 
 /**
@@ -198,13 +199,14 @@ const Chat = ({
             >
               <VolumeUpIcon />
             </IconButton> */}
-        <Typography
+        {/* <Typography
           variant="body2"
           component="p"
           className={classes.audiotext}
         >
           Du har fått en melding! Trykk på det svaret som er riktig.
-        </Typography>
+        </Typography> */}
+        <Question className={classes.audiotext} question={'Du har fått en melding! Trykk på det svaret som er riktig.'}/>
         {/* </CardContent> */}
         {/* </Card> */}
         {/* </div >S */}
