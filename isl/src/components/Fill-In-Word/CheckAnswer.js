@@ -6,7 +6,7 @@ const CheckAnswer = ({ onClick, disabled }) => {
   const className = useStyles()
 
   return (
-    <button classname="checkAnswerBtn" onClick={onClick} disabled={disabled}>
+    <button className="checkAnswerBtn" onClick={onClick} disabled={disabled}>
       Sjekk svar
     </button>
   )

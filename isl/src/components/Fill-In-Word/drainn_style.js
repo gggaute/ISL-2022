@@ -21,30 +21,6 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '1rem',
       },
       /* GAME-CONTENT */
-
-      taskPBorder: {
-        border: '1px solid darkgrey',
-        backgroundColor: '#8AA9E4',
-        padding: '0.3rem',
-        minWidth: '2rem',
-        maxHeight: '1.2rem',
-        display: 'grid',
-        justifyContent: 'center',
-        alignItems: 'center',
-        visibility: 'hidden',
-      },
-      vis: {
-        visibility: 'visible',
-      },
-      
-      wordContainer: {
-        border: '1px solid lightgrey',
-        maxWidth: '8rem',
-        maxHeight: '2.5rem',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
       nextExerciseButtonDiv: {
         paddingTop: '-0.5rem',
       },

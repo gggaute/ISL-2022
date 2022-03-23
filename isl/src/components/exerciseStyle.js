@@ -9,7 +9,7 @@ const exerciseStyles = makeStyles((theme) => ({
     margin: 'auto',
     marginTop: "20px",
     borderRadius: '15px',
-    maxHeight: '80vh',
+    maxHeight: '97vh',
     [theme.breakpoints.down('xs')]: {
       maxHeight: '90vh',
     },

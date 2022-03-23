@@ -28,7 +28,7 @@ const Task = ({ sentence, onload, missingWord, missingWordIndex }) => {
   return ( 
     <div className='task'>
       {sentence.map((word, i) => (i === missingWordIndex ?
-        <div className = {className.wordContainer}> <p className={className.taskPBorder}> {checkStart(word)} </p> </div>
+        <div className = "wordContainer"> <p className="taskPBorder"> {checkStart(word)} </p> </div>
           :
         <p> {word} </p>
       ))}

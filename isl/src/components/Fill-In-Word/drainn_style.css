@@ -8,14 +8,15 @@
 .task > p {
     display: inline;
     margin: 0;
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
+    margin-right: .5rem;
+    margin-left: .5rem;
 }
 .wordBox, #checkAnswerBtn {
-    cursor: pointer
+    cursor: pointer;
+    border-radius: 10px;
   }
   
-  wordBox:disabled, #checkAnswerBtn:disabled {
+  .wordBox:disabled, #checkAnswerBtn:disabled {
     cursor: default;
   }
 
@@ -29,8 +30,34 @@
     align-items: center;
     /* border: 1px solid red; */
   }
-  p {
-    margin: 1rem;
+  
+  .taskPBorder {
+    border: 1px solid darkgrey;
+    background-color: #8AA9E4;
+    padding: 0.3rem;
+    min-width: 2rem;
+    max-height: 1.2rem;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden
+  }
+
+  .vis {
+    visibility: visible;
+  }
+  
+p {
+  margin: 1rem;
+}
+
+  .wordContainer {
+    border: 1px solid lightgrey;
+    max-width: 8rem;
+    max-height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .checkAnswerBtn {
@@ -38,9 +65,9 @@
     display: flex;
     justify-self: center;
     justify-content: center;
-    padding: 12rem;
+    padding: 1.2rem;
     text-decoration: underline;
-    text-underline-offset: 3rem;
+    text-underline-offset: .3rem;
   }
   .wordGrid {
     display: grid;
