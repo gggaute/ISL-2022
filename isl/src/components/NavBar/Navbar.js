@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../assets/img/logo.png'
 import { FcPrevious, FcNext } from 'react-icons/fc'
+import "./style.css";
 
 const Navbar = () => {
   return (
