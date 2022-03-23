@@ -25,11 +25,11 @@ const Navbar = () => {
       </div>
       <div className="mid-div"></div>
       <div className="right-div">
-          <Link to='/'>
+          <Link to='/' className="link" style={{ textDecoration: 'none', color: '#2261a8' }}>
           <h3 id="navbarTitle"> Hjem </h3>
           </Link>
           <IconButton className="routeButton" data-testid="idButton" component={Link} to="/">
-            <HomeIcon />
+            <HomeIcon style={{color: '#2261a8'}}/>
           </IconButton>
       </div>
     </div>
