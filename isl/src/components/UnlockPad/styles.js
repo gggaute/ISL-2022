@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-    img: {
+    unlockImg: {
         width: '90%',
         height: '90%',
         margin: 'auto',
@@ -63,6 +63,12 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         maxWidth: '50%',
         alignSelf: 'center',
+    },
+
+    feedbackAndReset: {
+        paddingLeft: '25px',
+        paddingRight: '25px',
+        paddingBottom: '15px',
     },
 
 }));
