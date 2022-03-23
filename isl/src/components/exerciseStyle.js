@@ -7,12 +7,13 @@ const exerciseStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     margin: 'auto',
-    marginTop: 0,
+    marginTop: "20px",
     borderRadius: '15px',
     maxHeight: '80vh',
     [theme.breakpoints.down('xs')]: {
       maxHeight: '90vh',
     },
+    padding: "10px",
   },
   topContent: {
     padding: theme.spacing(2),
