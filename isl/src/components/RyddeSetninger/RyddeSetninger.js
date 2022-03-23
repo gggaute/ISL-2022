@@ -99,19 +99,19 @@ const RyddeSetninger = ({
       case "ob":
         return { backgroundColor: "#99CCFF" };
       case "adv":
-        return { backgroundColor: "#FFFFCC" };
+        return { backgroundColor: "#F27D16" };
       case "set":
         return { backgroundColor: "#FFCC00" };
       case "conj":
         return { backgroundColor: "#33CC33" };
       case "subj":
-        return { backgroundColor: "#CCFFCC" };
+        return { backgroundColor: "#954BC9" };
       case "fin":
         return { backgroundColor: "#CC0000" };
       case "infin":
         return { backgroundColor: "#FF6699" };
       default:
-        return { backgroundColor: "#E0E0E0" };
+        return { backgroundColor: "#969595" };
     }
   };
 
