@@ -52,6 +52,9 @@ const exerciseStyles = makeStyles((theme) => ({
   progressBar: {
     height: "10px",
     marginBottom: "10px",
+  },
+  text2: {
+    margin: '50px',
   }
 }));
 
