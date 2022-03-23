@@ -162,31 +162,33 @@ const ExerciseContainer = ({
       <NavBar></NavBar>
       <Paper className={classes.root}>
       {/* <ContentHeader></ContentHeader> */}
-      <div className={classes.progresscontainer}>
-        <ProgressBar progress={progress} possible={possible} />
-      </div>
-      <div className={className.gameWrapper}>
-        {/* <p>{answer}</p> */}
-        <Question question={question}></Question>
-        <Task
-          missingWord={missingWord}
-          onload={onload}
-          previousClickedWord={previousClickedWord}
-          sentence={sentence}
-          missingWordIndex={missingWordIndex}
-        ></Task>
-        <Words
-          onClick={onClickedWord}
-          words={words}
-          disabled={disabled}
-          missingWord={missingWord}
-        ></Words>
-        <CheckAnswer onClick={checkAnswer} disabled={disabled}></CheckAnswer>
-        <NextExerciseBtn
-          answerState={answerState}
-          handleNextTask={handleNextTask}
-        />
-      </div>
+        <div className={classes.progresscontainer}>
+          <ProgressBar progress={progress} possible={possible} />
+        </div>
+        <div className={className.gameWrapper}>
+          {/* <p>{answer}</p> */}
+          <Question question={question}></Question>
+          <Task
+            missingWord={missingWord}
+            onload={onload}
+            previousClickedWord={previousClickedWord}
+            sentence={sentence}
+            missingWordIndex={missingWordIndex}
+          ></Task>
+          <Words
+            onClick={onClickedWord}
+            words={words}
+            disabled={disabled}
+            missingWord={missingWord}
+          ></Words>
+          <CheckAnswer onClick={checkAnswer} disabled={disabled}></CheckAnswer>
+          <div className={className.nextExerciseButtonDiv}>
+            <NextExerciseBtn
+              answerState={answerState}
+              handleNextTask={handleNextTask}
+            />
+          </div>
+        </div>
       </Paper>
     </>
 

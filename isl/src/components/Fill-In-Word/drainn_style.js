@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
       
       wrapper: {
         border: '1px solid #7CA3EE',
-        padding: '06rem',
+        padding: '0.6rem',
         display: 'grid',
         gridTemplateColumns: '1fr',
         rowGap: '1rem',
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
       },
       
       gameWrapper: {
-        padding: '06rem',
+        padding: '0.6rem',
         display: 'grid',
         gridTemplateColumns: '1fr',
         rowGap: '1rem',
@@ -23,15 +23,15 @@ const useStyles = makeStyles((theme) => ({
       /* GAME-CONTENT */
       
       questionclass: {
-        border: '01px solid #7CA3EE',
+        border: '0.1px solid #7CA3EE',
       },
 
       taskPBorder: {
         border: '1px solid darkgrey',
         backgroundColor: '#8AA9E4',
-        padding: '3rem',
+        padding: '0.3rem',
         minWidth: '2rem',
-        maxHeight: '12rem',
+        maxHeight: '1.2rem',
         display: 'grid',
         justifyContent: 'center',
         alignItems: 'center',
@@ -44,10 +44,13 @@ const useStyles = makeStyles((theme) => ({
       wordContainer: {
         border: '1px solid lightgrey',
         maxWidth: '8rem',
-        maxHeight: '25rem',
+        maxHeight: '2.5rem',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+      },
+      nextExerciseButtonDiv: {
+        paddingTop: '-0.5rem',
       },
       
 }))
