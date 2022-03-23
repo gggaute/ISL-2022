@@ -1,0 +1,54 @@
+.wordGrid > button {
+    background-color: #8AA9E4;
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid darkgrey;
+    font-size: 1rem;
+  }
+.task > p {
+    display: inline;
+    margin: 0;
+    margin-right: 5rem;
+    margin-left: 5rem;
+}
+.wordBox, #checkAnswerBtn {
+    cursor: pointer
+  }
+  
+  wordBox:disabled, #checkAnswerBtn:disabled {
+    cursor: default;
+  }
+  body {
+    font-family: Arial;
+  }
+  #root {
+    width: 100%;
+  }
+
+  .task {
+    border: 01px solid #7CA3EE;
+    padding: 1rem;
+  }
+  .task {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* border: 1px solid red; */
+  }
+  p {
+    margin: 1rem;
+  }
+  
+  .checkAnswerBtn {
+    width: 50%;
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    padding: 12rem;
+    text-decoration: underline;
+    text-underline-offset: 3rem;
+  }
+  .wordGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }

@@ -8,11 +8,10 @@ import ProgressBar from '../ProgressBar';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import useStyles from "./styles";
+import Question from "../Fill-In-Word/Question";
 import ContentHeader from "../ContentHeader/ContentHeader";
 import "./buttons.css";
-import {
-  Paper,
-} from '@mui/material';
+import { Paper } from '@mui/material';
 
 const UnlockPad = ({
   id,
@@ -143,37 +142,38 @@ const UnlockPad = ({
     <>
       <NavBar></NavBar>
       <Paper className={classes.root}>
-      {/* <ContentHeader></ContentHeader> */}
-      <div className={classes.progresscontainer}>
-        <ProgressBar progress={progress} possible={possible} />
-      </div>
-      <div className={classes.content}>
-        <img src={image} alt="solutionImage"></img>
-        <div className={classes.contentRow}>
-          <div className={classes.guess}>{itemList}</div>
-          <div className={classes.gridLetters}>
-            {letters.map((letter, count) => (
-              <>
-                <button id={setButtonID()} key={count} disabled={setDisabled} onClick={(event) => {
-                  handleEvent(event)
-                  registerLetterinAnswer(letter)
-                }}>
-                  {letter.toUpperCase()} </button>
-                {() => count++}
-              </>
-            ))}
+        {/* <ContentHeader></ContentHeader> */}
+        <div className={classes.progresscontainer}>
+          <ProgressBar progress={progress} possible={possible} />
+        </div>
+        <Question question={"Hva ser du på bildet? Stav ordet!"}></Question>
+        <div className={classes.content}>
+          <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
+          <div className={classes.contentRow}>
+            <div className={classes.guess}>{itemList}</div>
+            <div className={classes.gridLetters}>
+              {letters.map((letter, count) => (
+                <>
+                  <button id={setButtonID()} key={count} disabled={setDisabled} onClick={(event) => {
+                    handleEvent(event)
+                    registerLetterinAnswer(letter)
+                  }}>
+                    {letter.toUpperCase()} </button>
+                  {() => count++}
+                </>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-      <div className={classes.feedBackAndReset}>
-        {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
-        {/* <h1>{feedback}</h1> */}
-        <NextExerciseBtn
-          answerState={tilbakemelding}
-          handleNextTask={handleNextTask}
-        />
+        <div className={classes.feedbackAndReset}>
+          {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
+          {/* <h1>{feedback}</h1> */}
+          <NextExerciseBtn
+            answerState={tilbakemelding}
+            handleNextTask={handleNextTask}
+          />
 
-      </div>
+        </div>
       </Paper>
     </>
   )

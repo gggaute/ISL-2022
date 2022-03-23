@@ -1,8 +1,12 @@
 import React from 'react'
 import $ from "jquery"
 import { useEffect } from 'react'
+import useStyles from "./drainn_style";
+import './drainn_style.css'
+
 
 const Task = ({ sentence, onload, missingWord, missingWordIndex }) => {
+  const className = useStyles()
 
   useEffect(() => {
     console.log(missingWordIndex);
@@ -24,7 +28,7 @@ const Task = ({ sentence, onload, missingWord, missingWordIndex }) => {
   return ( 
     <div className='task'>
       {sentence.map((word, i) => (i === missingWordIndex ?
-        <div id="wordContainer"> <p className="taskPBorder"> {checkStart(word)} </p> </div>
+        <div className = {className.wordContainer}> <p className={className.taskPBorder}> {checkStart(word)} </p> </div>
           :
         <p> {word} </p>
       ))}
