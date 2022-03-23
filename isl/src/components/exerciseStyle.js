@@ -21,7 +21,7 @@ const exerciseStyles = makeStyles((theme) => ({
   layout: {
     backgroundColor: '#F5F5F5',
     margin: theme.spacing(1),
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
     overflow: 'hidden',
     overflowY: 'auto',
   },
@@ -49,6 +49,10 @@ const exerciseStyles = makeStyles((theme) => ({
   progresscontainer: {
     margin: theme.spacing(1),
   },
+  progressBar: {
+    height: "10px",
+    marginBottom: "10px",
+  }
 }));
 
 export default exerciseStyles;
