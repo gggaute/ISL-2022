@@ -8,8 +8,8 @@
 .task > p {
     display: inline;
     margin: 0;
-    margin-right: 5rem;
-    margin-left: 5rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
 }
 .wordBox, #checkAnswerBtn {
     cursor: pointer
@@ -18,15 +18,9 @@
   wordBox:disabled, #checkAnswerBtn:disabled {
     cursor: default;
   }
-  body {
-    font-family: Arial;
-  }
-  #root {
-    width: 100%;
-  }
 
   .task {
-    border: 01px solid #7CA3EE;
+    border: 0.1px solid #7CA3EE;
     padding: 1rem;
   }
   .task {

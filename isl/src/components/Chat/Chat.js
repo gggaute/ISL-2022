@@ -28,7 +28,7 @@ import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import ContentHeader from "../ContentHeader/ContentHeader";
-import Question from '../Fill-In-Word/Question';
+import Question from '../Question/Question';
 
 
 /**
@@ -206,7 +206,7 @@ const Chat = ({
         >
           Du har fått en melding! Trykk på det svaret som er riktig.
         </Typography> */}
-        <Question className={classes.audiotext} question={'Du har fått en melding! Trykk på det svaret som er riktig.'}/>
+        <Question question={'Du har fått en melding! Trykk på det svaret som er riktig.'}/>
         {/* </CardContent> */}
         {/* </Card> */}
         {/* </div >S */}

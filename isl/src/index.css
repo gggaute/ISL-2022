@@ -5,49 +5,6 @@ body {
   width: 100%;
 }
 
-/* PAGE-CONTENT */
-
-.wrapper {
-  /* border: 1px solid #7CA3EE; */
-  padding: 0.6rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 1rem;
-  margin-top: 1rem;
-}
-
-.game-wrapper {
-  padding: 0.6rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 1rem;
-  margin-top: 1rem;
-}
-
-.header-wrapper {
-  /* border: 1px solid red; */
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  border-bottom: 0.5px solid #7CA3EE;
-  padding: .3rem;
-  margin: 0 -0.6rem;
-}
-
-.cHText {
-  font-size: 1.3rem;
-  margin-left: 1rem;
-}
-
-.kapLink {
-  display: grid;
-  justify-content: end;
-  margin-right: 1rem;
-  font-size: 1.2rem;
-  color:#3f6cc0;
-  align-items: center;
-  text-underline-offset: .2rem;
-}
-
 /* SCALING */
 
 @media (max-width: 700px) {

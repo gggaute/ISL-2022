@@ -19,6 +19,7 @@ import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import ContentHeader from "../ContentHeader/ContentHeader";
+import Question from "../Question/Question";
 
 
 
@@ -238,14 +239,7 @@ const RyddeSetninger = ({
             >
               <VolumeUpIcon />
             </IconButton> */}
-        <Typography
-          variant="body2"
-          component="p"
-          className={classes.audiotext}
-        >
-          Trykk på ordene sånn at de kommer i riktig rekkefølge. Husk å
-          sjekke tegnsettingen!
-        </Typography>
+        <Question question={"Trykk på ordene sånn at de kommer i riktig rekkefølge. Husk å sjekke tegnsettingen!"}></Question>
         {/* </CardContent>
           </Card>
         </div> */}
