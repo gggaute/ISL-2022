@@ -7,7 +7,9 @@ import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import ProgressBar from '../ProgressBar';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
+import useStyles from "./styles";
 import ContentHeader from "../ContentHeader/ContentHeader";
+import "./buttons.css";
 import {
   Paper,
 } from '@mui/material';
@@ -29,8 +31,9 @@ const UnlockPad = ({
   const [image, setImg] = useState(null)
   let isFinished = false;
 
+  const className = useStyles();
   const classesBase = exerciseStyles();
-  const classes = { ...classesBase };
+  const classes = { ...className, ...classesBase };
 
   function getContent() {
     axios
@@ -144,14 +147,14 @@ const UnlockPad = ({
       <div className={classes.progresscontainer}>
         <ProgressBar progress={progress} possible={possible} />
       </div>
-      <div id="content">
+      <div className={classes.content}>
         <img src={image} alt="solutionImage"></img>
-        <div id="contentRow">
-          <div id="guess">{itemList}</div>
-          <div className="grid">
+        <div className={classes.contentRow}>
+          <div className={classes.guess}>{itemList}</div>
+          <div className={classes.gridLetters}>
             {letters.map((letter, count) => (
               <>
-                <button className="gridButton" key={count} id={setButtonID()} disabled={setDisabled} onClick={(event) => {
+                <button id={setButtonID()} key={count} disabled={setDisabled} onClick={(event) => {
                   handleEvent(event)
                   registerLetterinAnswer(letter)
                 }}>
@@ -161,15 +164,14 @@ const UnlockPad = ({
             ))}
           </div>
         </div>
-        <div id="feedBackAndReset">
-          {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
-          {/* <h1>{feedback}</h1> */}
-          <NextExerciseBtn
-            answerState={tilbakemelding}
-            handleNextTask={handleNextTask}
-          />
-
-        </div>
+      </div>
+      <div className={classes.feedBackAndReset}>
+        {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
+        {/* <h1>{feedback}</h1> */}
+        <NextExerciseBtn
+          answerState={tilbakemelding}
+          handleNextTask={handleNextTask}
+        />
 
       </div>
       </Paper>
