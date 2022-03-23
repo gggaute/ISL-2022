@@ -134,7 +134,7 @@ const ExerciseContainer = ({
       // $("#resultText").text("Riktig!"); //TODO: Set correct icon
       // $("#goToNext").text("Neste oppgave -->"); //TODO: Set arrow icon
       // // $("#goToNext").addClass("visible");
-      setDisabled(true);
+      
     } else {
       setAnswerState('incorrect')
       setTotalPossibleScore(totalPossibleScore + 1);
@@ -143,6 +143,7 @@ const ExerciseContainer = ({
       // $("#resultBox").addClass("feil");
       // $("#resultText").text("Feil. Prøv igjen!"); //TODO: Set wrong icon
     }
+    setDisabled(true);
     console.log(answer);
   };
 
