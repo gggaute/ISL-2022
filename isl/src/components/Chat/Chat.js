@@ -186,7 +186,7 @@ const Chat = ({
   return (
     <>
       <NavBar></NavBar>
-      <ContentHeader></ContentHeader>
+      {/* <ContentHeader></ContentHeader> */}
       <Paper className={classes.root}>
         <AppBar className={classes.navbar} position="static">
           <Toolbar component="nav" className={classes.toolbar}>

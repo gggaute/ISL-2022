@@ -153,7 +153,7 @@ const ExerciseContainer = ({
   return (
     <>
       <NavBar></NavBar>
-      <ContentHeader></ContentHeader>
+      {/* <ContentHeader></ContentHeader> */}
       <div className={classes.progresscontainer}>
         <ProgressBar progress={progress} possible={possible} />
       </div>
