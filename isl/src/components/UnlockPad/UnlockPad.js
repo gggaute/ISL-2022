@@ -7,7 +7,11 @@ import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import ProgressBar from '../ProgressBar';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
+import useStyles from "./styles";
+import Question from "../Fill-In-Word/Question";
 import ContentHeader from "../ContentHeader/ContentHeader";
+import "./buttons.css";
+import { Paper } from '@mui/material';
 
 const UnlockPad = ({
   id,
@@ -26,8 +30,9 @@ const UnlockPad = ({
   const [image, setImg] = useState(null)
   let isFinished = false;
 
+  const className = useStyles();
   const classesBase = exerciseStyles();
-  const classes = { ...classesBase };
+  const classes = { ...className, ...classesBase };
 
   function getContent() {
     axios
@@ -136,28 +141,31 @@ const UnlockPad = ({
   return (
     <>
       <NavBar></NavBar>
-      <ContentHeader></ContentHeader>
-      <div className={classes.progresscontainer}>
-        <ProgressBar progress={progress} possible={possible} />
-      </div>
-      <div id="content">
-        <img src={image} alt="solutionImage"></img>
-        <div id="contentRow">
-          <div id="guess">{itemList}</div>
-          <div className="grid">
-            {letters.map((letter, count) => (
-              <>
-                <button className="gridButton" key={count} id={setButtonID()} disabled={setDisabled} onClick={(event) => {
-                  handleEvent(event)
-                  registerLetterinAnswer(letter)
-                }}>
-                  {letter.toUpperCase()} </button>
-                {() => count++}
-              </>
-            ))}
+      <Paper className={classes.root}>
+        {/* <ContentHeader></ContentHeader> */}
+        <div className={classes.progresscontainer}>
+          <ProgressBar progress={progress} possible={possible} />
+        </div>
+        <Question question={"Hva ser du på bildet? Stav ordet!"}></Question>
+        <div className={classes.content}>
+          <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
+          <div className={classes.contentRow}>
+            <div className={classes.guess}>{itemList}</div>
+            <div className={classes.gridLetters}>
+              {letters.map((letter, count) => (
+                <>
+                  <button id={setButtonID()} key={count} disabled={setDisabled} onClick={(event) => {
+                    handleEvent(event)
+                    registerLetterinAnswer(letter)
+                  }}>
+                    {letter.toUpperCase()} </button>
+                  {() => count++}
+                </>
+              ))}
+            </div>
           </div>
         </div>
-        <div id="feedBackAndReset">
+        <div className={classes.feedbackAndReset}>
           {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
           {/* <h1>{feedback}</h1> */}
           <NextExerciseBtn
@@ -166,8 +174,7 @@ const UnlockPad = ({
           />
 
         </div>
-
-      </div>
+      </Paper>
     </>
   )
 }

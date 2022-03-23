@@ -16,6 +16,9 @@ import NavBar from "../NavBar/Navbar";
 import ContentHeader from "../ContentHeader/ContentHeader";
 import useStyles from "./drainn_style";
 import './drainn_style.css'
+import {
+  Paper,
+} from '@mui/material';
 
 
 const ExerciseContainer = ({
@@ -157,7 +160,8 @@ const ExerciseContainer = ({
   return (
     <>
       <NavBar></NavBar>
-      <ContentHeader></ContentHeader>
+      <Paper className={classes.root}>
+      {/* <ContentHeader></ContentHeader> */}
       <div className={classes.progresscontainer}>
         <ProgressBar progress={progress} possible={possible} />
       </div>
@@ -183,6 +187,7 @@ const ExerciseContainer = ({
           handleNextTask={handleNextTask}
         />
       </div>
+      </Paper>
     </>
 
   );
