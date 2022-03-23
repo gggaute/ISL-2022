@@ -21,7 +21,7 @@ import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import ContentHeader from "../ContentHeader/ContentHeader";
-import Question from '../Fill-In-Word/Question';
+import Question from '../Question/Question';
 
 /**
  * This is the forstaelse exercise component that is playable from Playsets.
@@ -144,7 +144,7 @@ const Forstaelse = ({
           Les hva meldingen sier. Svar på spørsmålet. */}
         {/* </Typography> */}
 
-       <Question className={classes.audiotext} question={'Les hva meldingen sier. Svar på spørsmålet.'}/>
+       <Question question={'Les hva meldingen sier. Svar på spørsmålet.'}/>
 
         {/* </CardContent>
           </Card>

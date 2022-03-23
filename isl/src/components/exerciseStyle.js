@@ -52,7 +52,14 @@ const exerciseStyles = makeStyles((theme) => ({
   progressBar: {
     height: "10px",
     marginBottom: "10px",
-  }
+  },
+  question: {
+    fontWeight: "bold",
+    fontSize: "1.3em",
+    borderBottom: "1px solid #7CA3EE",
+    marginBottom: "5px",
+    margin: "0 15px",
+  },
 }));
 
 export default exerciseStyles;

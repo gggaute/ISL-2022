@@ -21,10 +21,6 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '1rem',
       },
       /* GAME-CONTENT */
-      
-      questionclass: {
-        border: '01px solid #7CA3EE',
-      },
 
       taskPBorder: {
         border: '1px solid darkgrey',
