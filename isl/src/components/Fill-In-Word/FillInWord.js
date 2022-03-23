@@ -1,5 +1,5 @@
 import React from "react";
-import Question from "./Question";
+import Question from "../Question/Question";
 import Task from "./Task";
 import Words from "./Words";
 import { useState } from "react";
@@ -14,6 +14,11 @@ import ProgressBar from '../ProgressBar';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import ContentHeader from "../ContentHeader/ContentHeader";
+import useStyles from "./drainn_style";
+import './drainn_style.css'
+import {
+  Paper,
+} from '@mui/material';
 
 
 const ExerciseContainer = ({
@@ -33,8 +38,10 @@ const ExerciseContainer = ({
   const [score, setScore] = useState(0);
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
+  const className = useStyles()
   const classesBase = exerciseStyles();
-  const classes = { ...classesBase };
+  const classes = {...className,  ...classesBase };
+
 
   useEffect(() => {
     getContent()
@@ -127,7 +134,7 @@ const ExerciseContainer = ({
       // $("#resultText").text("Riktig!"); //TODO: Set correct icon
       // $("#goToNext").text("Neste oppgave -->"); //TODO: Set arrow icon
       // // $("#goToNext").addClass("visible");
-      setDisabled(true);
+      
     } else {
       setAnswerState('incorrect')
       setTotalPossibleScore(totalPossibleScore + 1);
@@ -136,6 +143,7 @@ const ExerciseContainer = ({
       // $("#resultBox").addClass("feil");
       // $("#resultText").text("Feil. Prøv igjen!"); //TODO: Set wrong icon
     }
+    setDisabled(true);
     console.log(answer);
   };
 
@@ -153,32 +161,36 @@ const ExerciseContainer = ({
   return (
     <>
       <NavBar></NavBar>
-      <ContentHeader></ContentHeader>
-      <div className={classes.progresscontainer}>
-        <ProgressBar progress={progress} possible={possible} />
-      </div>
-      <div className="game-wrapper">
-        {/* <p>{answer}</p> */}
-        <Question question={question}></Question>
-        <Task
-          missingWord={missingWord}
-          onload={onload}
-          previousClickedWord={previousClickedWord}
-          sentence={sentence}
-          missingWordIndex={missingWordIndex}
-        ></Task>
-        <Words
-          onClick={onClickedWord}
-          words={words}
-          disabled={disabled}
-          missingWord={missingWord}
-        ></Words>
-        <CheckAnswer onClick={checkAnswer} disabled={disabled}></CheckAnswer>
-        <NextExerciseBtn
-          answerState={answerState}
-          handleNextTask={handleNextTask}
-        />
-      </div>
+      <Paper className={classes.root}>
+      {/* <ContentHeader></ContentHeader> */}
+        <div className={classes.progresscontainer}>
+          <ProgressBar progress={progress} possible={possible} />
+        </div>
+        <div className={className.gameWrapper}>
+          {/* <p>{answer}</p> */}
+          <Question question={question}></Question>
+          <Task
+            missingWord={missingWord}
+            onload={onload}
+            previousClickedWord={previousClickedWord}
+            sentence={sentence}
+            missingWordIndex={missingWordIndex}
+          ></Task>
+          <Words
+            onClick={onClickedWord}
+            words={words}
+            disabled={disabled}
+            missingWord={missingWord}
+          ></Words>
+          <CheckAnswer onClick={checkAnswer} disabled={disabled}></CheckAnswer>
+          <div className={className.nextExerciseButtonDiv}>
+            <NextExerciseBtn
+              answerState={answerState}
+              handleNextTask={handleNextTask}
+            />
+          </div>
+        </div>
+      </Paper>
     </>
 
   );

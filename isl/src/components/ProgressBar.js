@@ -1,5 +1,6 @@
 import React from 'react';
 import { LinearProgress } from '@mui/material/';
+import exerciseStyles from "./exerciseStyle";
 
 /**
  * This is the progress bar displayed at the top of every exercise,
@@ -19,12 +20,14 @@ const ProgressBar = ({ progress, possible }) => {
    * each completed exercise the bar should be filled 16,66 percent more.
    */
   const normalise = (progress) => ((progress - MIN) * 100) / (MAX - MIN);
+  const classes = exerciseStyles();
 
   return (
     <LinearProgress
       color="secondary"
       value={normalise(progress)}
       variant="determinate"
+      className={classes.progressBar}
     />
   );
 };

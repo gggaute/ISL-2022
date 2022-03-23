@@ -19,6 +19,7 @@ import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import ContentHeader from "../ContentHeader/ContentHeader";
+import Question from "../Question/Question";
 
 
 
@@ -99,19 +100,19 @@ const RyddeSetninger = ({
       case "ob":
         return { backgroundColor: "#99CCFF" };
       case "adv":
-        return { backgroundColor: "#FFFFCC" };
+        return { backgroundColor: "#F27D16" };
       case "set":
         return { backgroundColor: "#FFCC00" };
       case "conj":
         return { backgroundColor: "#33CC33" };
       case "subj":
-        return { backgroundColor: "#CCFFCC" };
+        return { backgroundColor: "#954BC9" };
       case "fin":
         return { backgroundColor: "#CC0000" };
       case "infin":
         return { backgroundColor: "#FF6699" };
       default:
-        return { backgroundColor: "#E0E0E0" };
+        return { backgroundColor: "#969595" };
     }
   };
 
@@ -226,21 +227,11 @@ const RyddeSetninger = ({
   return (
     <>
       <NavBar></NavBar>
-      <ContentHeader></ContentHeader>
       <Paper className={classes.root}>
-        <AppBar className={classes.navbar} position="static">
-          <Toolbar component="nav" className={classes.toolbar}>
-          </Toolbar>
-        </AppBar>
-
-        {/* <IconButton
-    <Paper className={classes.root}>
-      <div className={classes.topContent}>
+      {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Card>
-          <CardContent className={classes.cardcontent}>
            {/* <IconButton
               onClick={() => fireAudio()}
               disabled={disabled}
@@ -248,14 +239,7 @@ const RyddeSetninger = ({
             >
               <VolumeUpIcon />
             </IconButton> */}
-        <Typography
-          variant="body2"
-          component="p"
-          className={classes.audiotext}
-        >
-          Trykk på ordene sånn at de kommer i riktig rekkefølge. Husk å
-          sjekke tegnsettingen!
-        </Typography>
+        <Question question={"Trykk på ordene sånn at de kommer i riktig rekkefølge. Husk å sjekke tegnsettingen!"}></Question>
         {/* </CardContent>
           </Card>
         </div> */}

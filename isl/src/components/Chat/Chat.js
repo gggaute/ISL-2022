@@ -28,6 +28,7 @@ import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import ContentHeader from "../ContentHeader/ContentHeader";
+import Question from '../Question/Question';
 
 
 /**
@@ -186,20 +187,11 @@ const Chat = ({
   return (
     <>
       <NavBar></NavBar>
-      <ContentHeader></ContentHeader>
       <Paper className={classes.root}>
-        <AppBar className={classes.navbar} position="static">
-          <Toolbar component="nav" className={classes.toolbar}>
-          </Toolbar>
-        </AppBar>
-        {/*<IconButton
-    <Paper className={classes.root}>
-      <div className={classes.topContent}>
+      {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Card>
-          <CardContent className={classes.cardcontent}>
             {/*<IconButton
               onClick={fireAudio}
               disabled={disabled}
@@ -207,13 +199,14 @@ const Chat = ({
             >
               <VolumeUpIcon />
             </IconButton> */}
-        <Typography
+        {/* <Typography
           variant="body2"
           component="p"
           className={classes.audiotext}
         >
           Du har fått en melding! Trykk på det svaret som er riktig.
-        </Typography>
+        </Typography> */}
+        <Question question={'Du har fått en melding! Trykk på det svaret som er riktig.'}/>
         {/* </CardContent> */}
         {/* </Card> */}
         {/* </div >S */}

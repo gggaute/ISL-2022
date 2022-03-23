@@ -21,6 +21,7 @@ import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import ContentHeader from "../ContentHeader/ContentHeader";
+import Question from '../Question/Question';
 
 /**
  * This is the forstaelse exercise component that is playable from Playsets.
@@ -122,20 +123,11 @@ const Forstaelse = ({
   return (
     <>
       <NavBar></NavBar>
-      <ContentHeader></ContentHeader>
       <Paper className={classes.root}>
-        <AppBar className={classes.navbar} position="static">
-          <Toolbar component="nav" className={classes.toolbar}>
-          </Toolbar>
-        </AppBar>
-        {/*<IconButton
-    <Paper className={classes.root}>
-      <div className={classes.topContent}>
+      {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Card>
-          <CardContent className={classes.cardcontent}>
             {/*<IconButton
               onClick={() => fireAudio()}
               disabled={disabled}
@@ -144,13 +136,16 @@ const Forstaelse = ({
               <VolumeUpIcon />
             </IconButton>
             */}
-        <Typography
+        {/* <Typography
           variant="body2"
           component="p"
           className={classes.audiotext}
         >
-          Les hva meldingen sier. Svar på spørsmålet.
-        </Typography>
+          Les hva meldingen sier. Svar på spørsmålet. */}
+        {/* </Typography> */}
+
+       <Question question={'Les hva meldingen sier. Svar på spørsmålet.'}/>
+
         {/* </CardContent>
           </Card>
         </div> */}

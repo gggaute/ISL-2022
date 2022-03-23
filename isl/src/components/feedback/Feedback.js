@@ -22,51 +22,55 @@ const Feedback = ({
   switch (feedbackState) {
     case 'playing':
       return (
-        <Paper className={classes.root}>
-        <NavBar></NavBar>
-        <div className={classes.progresscontainer}>
-          <ProgressBar progress={progress} possible={possible} />
-        </div>
-        <Typography variant="h2" className={classes.text}>
-              Poengsummen din er
-              {` ${totalScore} `}
-              av totalt
-              {` ${totalExercises} `}
-              mulige!
-            </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => nextExercise()}
-            fullWidth
-          >
-            Neste oppgave
-          </Button>
-        </Paper>
+        <>
+          <NavBar></NavBar>
+          <Paper className={classes.root}>
+            <div className={classes.progresscontainer}>
+              <ProgressBar progress={progress} possible={possible} />
+            </div>
+            <Typography variant="h4" align="center" className={classes.text2}>
+                  Poengsummen din er
+                  {` ${totalScore} `}
+                  av totalt
+                  {` ${totalExercises} `}
+                  mulige!
+                </Typography>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => nextExercise()}
+                fullWidth
+              >
+                Neste oppgave
+              </Button>
+          </Paper>
+        </>
       );
       case 'finished':
       return (
-        <Paper className={classes.root}>
-        <NavBar></NavBar>
-        <div className={classes.progresscontainer}>
-          <ProgressBar progress={progress} possible={possible} />
-        </div>
-        <Typography variant="h2" className={classes.text}>
-              Poengsummen din er
-              {` ${totalScore} `}
-              av totalt
-              {` ${totalExercises} `}
-              mulige!
-            </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => nextExercise()}
-            fullWidth
-          >
-            Fullfør sett
-          </Button>
-        </Paper>
+        <>
+          <NavBar></NavBar>
+          <Paper className={classes.root}>
+          <div className={classes.progresscontainer}>
+            <ProgressBar progress={2} possible={1} />
+          </div>
+          <Typography variant="h4" align="center" className={classes.text2}>
+                Poengsummen din er
+                {` ${totalScore} `}
+                av totalt
+                {` ${totalExercises} `}
+                mulige!
+              </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => nextExercise()}
+              fullWidth
+            >
+              Fullfør sett
+            </Button>
+          </Paper>
+        </>
       );
     default:
       return (
