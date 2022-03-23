@@ -10,6 +10,9 @@ import NavBar from "../NavBar/Navbar";
 import useStyles from "./styles";
 import ContentHeader from "../ContentHeader/ContentHeader";
 import "./buttons.css";
+import {
+  Paper,
+} from '@mui/material';
 
 const UnlockPad = ({
   id,
@@ -139,6 +142,7 @@ const UnlockPad = ({
   return (
     <>
       <NavBar></NavBar>
+      <Paper className={classes.root}>
       {/* <ContentHeader></ContentHeader> */}
       <div className={classes.progresscontainer}>
         <ProgressBar progress={progress} possible={possible} />
@@ -170,6 +174,7 @@ const UnlockPad = ({
         />
 
       </div>
+      </Paper>
     </>
   )
 }

@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const exerciseStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: '#F5F5F5',
-    maxWidth: theme.spacing(62),
+    maxWidth: '70%',
     display: 'flex',
     flexDirection: 'column',
     margin: 'auto',

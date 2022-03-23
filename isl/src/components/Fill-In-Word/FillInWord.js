@@ -14,6 +14,9 @@ import ProgressBar from '../ProgressBar';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import ContentHeader from "../ContentHeader/ContentHeader";
+import {
+  Paper,
+} from '@mui/material';
 
 
 const ExerciseContainer = ({
@@ -153,6 +156,7 @@ const ExerciseContainer = ({
   return (
     <>
       <NavBar></NavBar>
+      <Paper className={classes.root}>
       {/* <ContentHeader></ContentHeader> */}
       <div className={classes.progresscontainer}>
         <ProgressBar progress={progress} possible={possible} />
@@ -179,6 +183,7 @@ const ExerciseContainer = ({
           handleNextTask={handleNextTask}
         />
       </div>
+      </Paper>
     </>
 
   );
