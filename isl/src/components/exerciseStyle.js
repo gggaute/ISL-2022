@@ -55,7 +55,14 @@ const exerciseStyles = makeStyles((theme) => ({
   },
   text2: {
     margin: '50px',
-  }
+  },
+  question: {
+    fontWeight: "bold",
+    fontSize: "1.3em",
+    borderBottom: "1px solid #7CA3EE",
+    marginBottom: "5px",
+    margin: "0 15px",
+  },
 }));
 
 export default exerciseStyles;
