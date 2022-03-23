@@ -1,21 +1,39 @@
-import React from 'react'
-import logo from '../../assets/img/logo.png'
-import { FcPrevious, FcNext } from 'react-icons/fc'
+import React from "react";
+import logo from "../../assets/img/logo.png";
+import { FcPrevious, FcNext } from "react-icons/fc";
+import HomeIcon from "@mui/icons-material/Home";
+import { IconButton } from "@mui/material";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 const Navbar = () => {
   return (
-    <div className='bar'>
-      <div className='left-div'>
-        <img id="logo" src={logo} onClick={() => {window.open("https://www.ntnu.edu/learnnowyouth/info/welcome", "_blank")}} alt="Norsk for Ungdom logo" width="130"></img>
+    <div className="bar">
+      <div className="left-div">
+        <img
+          id="logo"
+          src={logo}
+          onClick={() => {
+            window.open(
+              "https://www.ntnu.edu/learnnowyouth/info/welcome",
+              "_blank"
+            );
+          }}
+          alt="Norsk for Ungdom logo"
+          width="130"
+        ></img>
       </div>
-      <div className='mid-div'>
-        <h1 id="navbarTitle">HVA SKAL STÅ HER</h1>
-      </div>
-      <div className='right-div'>
+      <div className="mid-div"></div>
+      <div className="right-div">
+          <Link to='/'>
+          <h3 id="navbarTitle"> Hjem </h3>
+          </Link>
+          <IconButton className="routeButton" data-testid="idButton" component={Link} to="/">
+            <HomeIcon />
+          </IconButton>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
