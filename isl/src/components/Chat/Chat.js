@@ -188,14 +188,9 @@ const Chat = ({
       <NavBar></NavBar>
       <Paper className={classes.root}>
       {/* <ContentHeader></ContentHeader> */}
-        {/*<IconButton
-    <Paper className={classes.root}>
-      <div className={classes.topContent}>
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Card>
-          <CardContent className={classes.cardcontent}>
             {/*<IconButton
               onClick={fireAudio}
               disabled={disabled}
