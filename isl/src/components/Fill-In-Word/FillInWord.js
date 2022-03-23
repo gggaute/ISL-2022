@@ -182,7 +182,7 @@ const ExerciseContainer = ({
             disabled={disabled}
             missingWord={missingWord}
           ></Words>
-          <CheckAnswer onClick={checkAnswer} disabled={disabled}></CheckAnswer>
+          <CheckAnswer onClick={checkAnswer} disabled={disabled} onload={onload}></CheckAnswer>
           <div className={className.nextExerciseButtonDiv}>
             <NextExerciseBtn
               answerState={answerState}
