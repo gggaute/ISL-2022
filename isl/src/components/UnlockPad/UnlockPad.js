@@ -8,7 +8,7 @@ import ProgressBar from '../ProgressBar';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import useStyles from "./styles";
-import Question from "../Fill-In-Word/Question";
+import Question from "../Question/Question";
 import ContentHeader from "../ContentHeader/ContentHeader";
 import "./buttons.css";
 import { Paper } from '@mui/material';

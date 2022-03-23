@@ -1,5 +1,5 @@
 import React from "react";
-import Question from "./Question";
+import Question from "../Question/Question";
 import Task from "./Task";
 import Words from "./Words";
 import { useState } from "react";
