@@ -14,6 +14,8 @@ import ProgressBar from '../ProgressBar';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import ContentHeader from "../ContentHeader/ContentHeader";
+import useStyles from "./drainn_style";
+import './drainn_style.css'
 
 
 const ExerciseContainer = ({
@@ -33,8 +35,10 @@ const ExerciseContainer = ({
   const [score, setScore] = useState(0);
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
+  const className = useStyles()
   const classesBase = exerciseStyles();
-  const classes = { ...classesBase };
+  const classes = {...className,  ...classesBase };
+
 
   useEffect(() => {
     getContent()
@@ -157,7 +161,7 @@ const ExerciseContainer = ({
       <div className={classes.progresscontainer}>
         <ProgressBar progress={progress} possible={possible} />
       </div>
-      <div className="game-wrapper">
+      <div className={className.gameWrapper}>
         {/* <p>{answer}</p> */}
         <Question question={question}></Question>
         <Task
