@@ -11,7 +11,8 @@ import useStyles from "./styles";
 import Question from "../Question/Question";
 import ContentHeader from "../ContentHeader/ContentHeader";
 import "./buttons.css";
-import { Paper } from '@mui/material';
+import { IconButton, Paper } from '@mui/material';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 const UnlockPad = ({
   id,
@@ -108,6 +109,23 @@ const UnlockPad = ({
     // console.log(answerList);
   }
 
+  function removeLastLetter() {
+    if (userAnswer.length === 1 || userAnswer.length < 1) {
+      console.log('length of useranswer is 1')
+      setUserAnswer("")
+      setUserAnswerList([])
+      presentAnswer()
+    }
+    for (let x = 0; x < userAnswer.length; x++) {
+      answerList.pop()
+      console.log(answerList)
+    }
+    userAnswerList.pop()
+    answerList.pop()
+    let tempAnswer = userAnswer.substring(0, userAnswer.length - 1)
+    setUserAnswer(tempAnswer)
+  }
+
   presentAnswer();
 
   let itemList = answerList.map((item, index) => {
@@ -115,7 +133,7 @@ const UnlockPad = ({
   });
 
   function handleEvent(event) {
-    event.target.disabled = true
+    // event.target.disabled = true
   }
 
   checkAnswer()
@@ -150,7 +168,12 @@ const UnlockPad = ({
         <div className={classes.content}>
           <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
           <div className={classes.contentRow}>
-            <div className={classes.guess}>{itemList}</div>
+            <div className={classes.guess}>
+              {itemList}
+              <IconButton  disabled={setDisabled} onClick={removeLastLetter}>
+                <KeyboardBackspaceIcon variant="contained"/>
+              </IconButton>
+            </div>
             <div className={classes.gridLetters}>
               {letters.map((letter, count) => (
                 <>
