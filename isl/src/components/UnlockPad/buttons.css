@@ -1,0 +1,126 @@
+
+#numpadButton1 {
+    grid-row: 1;
+    grid-column: 1;
+    background-color: white;
+    border-radius: 100%;
+    padding: 10px;
+    box-shadow: 1px 1px 10px #7CA3EE;
+    margin: 5px;
+    border: 1px #7CA3EE;
+    height: 3.5em;
+    width: 3.5em;
+    justify-self: center;
+}
+  
+ #numpadButton2 {
+    grid-row: 1;
+    grid-column: 2;
+    background-color: white;
+    border-radius: 100%;
+    padding: 10px;
+    box-shadow: 1px 1px 10px #7CA3EE;
+    margin: 5px;
+    border: 1px #7CA3EE;
+    height: 3.5em;
+    width: 3.5em;
+    justify-self: center;
+}
+
+#numpadButton3 {
+    grid-row: 1;
+    grid-column: 3;
+    background-color: white;
+    border-radius: 100%;
+    padding: 10px;
+    box-shadow: 1px 1px 10px #7CA3EE;
+    margin: 5px;
+    border: 1px #7CA3EE;
+    height: 3.5em;
+    width: 3.5em;
+    justify-self: center;
+}
+
+#numpadButton4 {
+    grid-row: 2;
+    grid-column: 1;
+    background-color: white;
+    border-radius: 100%;
+    padding: 10px;
+    box-shadow: 1px 1px 10px #7CA3EE;
+    margin: 5px;
+    border: 1px #7CA3EE;
+    height: 3.5em;
+    width: 3.5em;
+    justify-self: center;
+}
+  
+#numpadButton5 {
+    grid-row: 2;
+    grid-column: 2;
+    background-color: white;
+    border-radius: 100%;
+    padding: 10px;
+    box-shadow: 1px 1px 10px #7CA3EE;
+    margin: 5px;
+    border: 1px #7CA3EE;
+    height: 3.5em;
+    width: 3.5em;
+    justify-self: center;
+}
+  
+#numpadButton6 {
+    grid-row: 2;
+    grid-column: 3;
+    background-color: white;
+    border-radius: 100%;
+    padding: 10px;
+    box-shadow: 1px 1px 10px #7CA3EE;
+    margin: 5px;
+    border: 1px #7CA3EE;
+    height: 3.5em;
+    width: 3.5em;
+    justify-self: center;
+}
+  
+#numpadButton7 {
+    grid-row: 3;
+    grid-column: 1;
+    background-color: white;
+    border-radius: 100%;
+    padding: 10px;
+    box-shadow: 1px 1px 10px #7CA3EE;
+    margin: 5px;
+    border: 1px #7CA3EE;
+    height: 3.5em;
+    width: 3.5em;
+    justify-self: center;
+}
+  
+#numpadButton8 {
+    grid-row: 3;
+    grid-column: 2;
+    background-color: white;
+    border-radius: 100%;
+    padding: 10px;
+    box-shadow: 1px 1px 10px #7CA3EE;
+    margin: 5px;
+    border: 1px #7CA3EE;
+    height: 3.5em;
+    width: 3.5em;
+    justify-self: center;
+}
+  
+#numpadButton9 {
+    grid-row: 3;
+    grid-column: 3;
+    background-color: white;
+    border-radius: 100%;
+    padding: 10px;
+    box-shadow: 1px 1px 10px #7CA3EE;
+    margin: 5px;
+    border: 1px #7CA3EE;
+    height: 3.5em;
+    width: 3.5em;
+    justify-self: center;
+}

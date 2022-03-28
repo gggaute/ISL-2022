@@ -1,18 +1,33 @@
-import './App.css';
-import ContentContainer from './components/ContentContainer';
-import Navbar from './components/Navbar';
-
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import PlaySets from "./containers/Playsets/PlaySets";
+import StartPage from './containers/StartPage/StartPage';
+import { createTheme } from '@mui/material/styles'
+import { ThemeProvider } from "@emotion/react";
 
 function App() {
-  // let property = {correctSolution: "egg", letters: ["e","g","g","a","b","c","d","f","h"], image: egg}
 
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#7CA3EE'
+      },
+      secondary: {
+        main: '#7CA3EE'
+      }
+    }
 
+  })
   return (
-    <div className="container">
-      <Navbar></Navbar>
-      <ContentContainer ></ContentContainer>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<StartPage />} />
+          <Route exact path="/sets" element={<PlaySets />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
