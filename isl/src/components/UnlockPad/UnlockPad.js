@@ -168,7 +168,7 @@ const UnlockPad = ({
         <div className={classes.content}>
           <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
           <div className={classes.contentRow}>
-            <div className={classes.guess}>
+            <div className={classes.guess} id="guess">
               {itemList}
               <IconButton  disabled={setDisabled} onClick={removeLastLetter}>
                 <KeyboardBackspaceIcon variant="contained"/>
