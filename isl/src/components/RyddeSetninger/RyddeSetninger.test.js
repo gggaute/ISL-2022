@@ -81,7 +81,7 @@ describe('RyddeSetninger component', () => {
         await screen.findByText('Jeg');
         const text = screen.getByText('Jeg');
     
-        /* expect(text.tagName.toLowerCase()).toEqual('span'); */ /*I think we need to change it to button becouse our code is different? Or something in our code is wrong*/
+        expect(text.tagName.toLowerCase()).toEqual('button');
     });
 
 
@@ -117,10 +117,10 @@ describe('RyddeSetninger component', () => {
         expect(answerButton.closest('button')).toBeDisabled();
         expect(checkAnswer.closest('button')).toBeDisabled();
 
-        /*
-        expect(answer.tagName.toLowerCase()).toEqual('span');
-        expect(text.tagName.toLowerCase()).toEqual('span');
-        */
+        
+        expect(answer.tagName.toLowerCase()).toEqual('button');
+        expect(text.tagName.toLowerCase()).toEqual('button');
+        
       });
 
     test('should return "Feil!" on incorrect play through, and buttons are disabled', async () => {
@@ -155,10 +155,10 @@ describe('RyddeSetninger component', () => {
         expect(answerButton.closest('button')).toBeDisabled();
         expect(checkAnswer.closest('button')).toBeDisabled();
         
-        /*
-        expect(answer.tagName.toLowerCase()).toEqual('span');
-        expect(text.tagName.toLowerCase()).toEqual('span');
-        */
+        
+        expect(answer.tagName.toLowerCase()).toEqual('button');
+        expect(text.tagName.toLowerCase()).toEqual('button');
+        
     });
 
     test('should be able to click and unclick buttons in answer', async () => {
