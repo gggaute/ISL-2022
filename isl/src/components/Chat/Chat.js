@@ -172,13 +172,13 @@ const Chat = ({
     });
   }
 
-  /*
+  
   function fireAudio() {
     setDisabled(true);
     playAudio(chataudio);
     setTimeout(() => setDisabled(false), 6000);
   }
-  */
+  
 
   useEffect(() => {
     getContent();
@@ -192,20 +192,13 @@ const Chat = ({
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-            {/*<IconButton
+            <IconButton
               onClick={fireAudio}
               disabled={disabled}
               data-testid="volumeChat"
             >
               <VolumeUpIcon />
-            </IconButton> */}
-        {/* <Typography
-          variant="body2"
-          component="p"
-          className={classes.audiotext}
-        >
-          Du har fått en melding! Trykk på det svaret som er riktig.
-        </Typography> */}
+            </IconButton> 
         <Question question={'Du har fått en melding! Trykk på det svaret som er riktig.'}/>
         {/* </CardContent> */}
         {/* </Card> */}

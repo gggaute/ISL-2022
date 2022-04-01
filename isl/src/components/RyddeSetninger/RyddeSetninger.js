@@ -210,7 +210,7 @@ const RyddeSetninger = ({
     showFeedback(score, totalPossibleScore);
   };
 
-  /*
+  
   function fireAudio() {
     setDisabled(true);
     playAudio(ryddaudio);
@@ -218,7 +218,7 @@ const RyddeSetninger = ({
       setDisabled(false);
     }, 6000);
   }
-  */
+  
 
   useEffect(() => {
     getContent();
@@ -232,13 +232,13 @@ const RyddeSetninger = ({
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-           {/* <IconButton
+            <IconButton
               onClick={() => fireAudio()}
               disabled={disabled}
               data-testid="volumeRyddeSetninger"
             >
               <VolumeUpIcon />
-            </IconButton> */}
+            </IconButton>
         <Question question={"Trykk på ordene sånn at de kommer i riktig rekkefølge. Husk å sjekke tegnsettingen!"}></Question>
         {/* </CardContent>
           </Card>

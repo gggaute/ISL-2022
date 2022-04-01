@@ -53,6 +53,9 @@ const Forstaelse = ({
   const [score, setScore] = useState(0);
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
+  
+  const [disabled, setDisabled] = useState(false);
+
   /* Objects that take both the component style and a common style between all
   exercises, to finally integrate both style objects into the classes object
   to be used in the component */
@@ -95,7 +98,7 @@ const Forstaelse = ({
     showFeedback(score, totalPossibleScore);
   };
 
-  /*
+  
   function fireAudio() {
     setDisabled(true);
     playAudio(forsaudio);
@@ -103,7 +106,7 @@ const Forstaelse = ({
       setDisabled(false);
     }, 4000);
   }
-  */
+
 
   useEffect(() => {
     getContent();
@@ -117,22 +120,13 @@ const Forstaelse = ({
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-            {/*<IconButton
+            <IconButton
               onClick={() => fireAudio()}
               disabled={disabled}
               data-testid="volumeForstaelse"
             >
               <VolumeUpIcon />
             </IconButton>
-            */}
-        {/* <Typography
-          variant="body2"
-          component="p"
-          className={classes.audiotext}
-        >
-          Les hva meldingen sier. Svar på spørsmålet. */}
-        {/* </Typography> */}
-
        <Question question={'Les hva meldingen sier. Svar på spørsmålet.'}/>
 
         {/* </CardContent>

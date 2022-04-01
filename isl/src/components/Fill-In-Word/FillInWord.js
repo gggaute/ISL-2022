@@ -19,7 +19,10 @@ import './drainn_style.css'
 import {
   Paper,
   Typography,
+  IconButton,
 } from '@mui/material';
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import fillaudio from "../../assets/audiofiles/fillInWordVoice.mp3";
 
 
 const ExerciseContainer = ({
@@ -27,7 +30,7 @@ const ExerciseContainer = ({
   showFeedback,
   progress,
   possible,
-  nextExercise,
+  playAudio,
 }) => {
   const [answerState, setAnswerState] = useState(null);
   let backendSentence = []
@@ -159,6 +162,13 @@ const ExerciseContainer = ({
     showFeedback(score, totalPossibleScore);
   };
 
+  function fireAudio() {
+    setDisabled(true);
+    playAudio(fillaudio);
+    setTimeout(() => {
+      setDisabled(false);
+    }, 4000);
+  }
   return (
     <>
       <NavBar></NavBar>
@@ -167,6 +177,13 @@ const ExerciseContainer = ({
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
+        <IconButton
+              onClick={() => fireAudio()}
+              disabled={disabled}
+              data-testid="volumeRyddeSetninger"
+            >
+              <VolumeUpIcon />
+            </IconButton>
         <div className={className.gameWrapper}>
           {/* <p>{answer}</p> */}
           <Question question={question}></Question>

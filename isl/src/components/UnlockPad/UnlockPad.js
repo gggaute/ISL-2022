@@ -11,13 +11,20 @@ import useStyles from "./styles";
 import Question from "../Question/Question";
 import ContentHeader from "../ContentHeader/ContentHeader";
 import "./buttons.css";
-import { Typography, Paper } from '@mui/material';
+import { 
+  Typography,
+  Paper,
+  IconButton,
+ } from '@mui/material';
+ import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import unlockaudio from "../../assets/audiofiles/unlockVoice.mp3";
 
 const UnlockPad = ({
   id,
   showFeedback,
   progress,
-  possible
+  possible,
+  playAudio
 }) => {
 
   let setDisabled = false
@@ -33,6 +40,8 @@ const UnlockPad = ({
   const className = useStyles();
   const classesBase = exerciseStyles();
   const classes = { ...className, ...classesBase };
+
+  const [audioDisabled, setAudioDisabled] = useState(false);
 
   function getContent() {
     axios
@@ -138,6 +147,14 @@ const UnlockPad = ({
     getContent()
   }, [])
 
+  function fireAudio() {
+    setAudioDisabled(true);
+    playAudio(unlockaudio);
+    setTimeout(() => {
+      setAudioDisabled(false);
+    }, 4000);
+  }
+
   return (
     <>
       <NavBar></NavBar>
@@ -146,6 +163,13 @@ const UnlockPad = ({
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
+        <IconButton
+              onClick={() => fireAudio()}
+              disabled={audioDisabled}
+              data-testid="volumeRyddeSetninger"
+            >
+              <VolumeUpIcon />
+            </IconButton>
         <Question question={"Hva ser du på bildet? Stav ordet!"}></Question>
         <div className={classes.content}>
           <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
