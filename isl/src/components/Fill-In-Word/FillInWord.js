@@ -18,6 +18,7 @@ import useStyles from "./drainn_style";
 import './drainn_style.css'
 import {
   Paper,
+  Typography,
 } from '@mui/material';
 
 
@@ -183,6 +184,15 @@ const ExerciseContainer = ({
             missingWord={missingWord}
           ></Words>
           <CheckAnswer onClick={checkAnswer} disabled={disabled} onload={onload}></CheckAnswer>
+          {answerState === 'incorrect' && (
+              <Typography className={classes.explanation}>
+              Fasit: {sentence.map((sentenceWord) => {
+                if (sentenceWord === previousClickedWord) {
+                return (<strong>{missingWord + " "} </strong>)
+                } else { return (sentenceWord + " " )}
+                })}
+              </Typography>
+            )}
           <div className={className.nextExerciseButtonDiv}>
             <NextExerciseBtn
               answerState={answerState}

@@ -57,7 +57,7 @@ const Chat = ({
   const [receivericon, setReceivericon] = useState();
 
   // Null if user hasn't given an answer, "correct" or "incorrect" if user has given an answer.
-  const [answerstate, setAnswerstate] = useState(null);
+  const [answerState, setAnswerstate] = useState(null);
 
   // Keeps track of which task in the exercise the user is currently on.
   const [taskStep, setTaskStep] = useState(1);
@@ -224,7 +224,7 @@ const Chat = ({
               justify="flex-end"
               alignItems="flex-end"
             >
-              {answerstate === null && (
+              {answerState === null && (
                 <ButtonGroup
                   orientation="vertical"
                   aria-label="vertical contained secondary button group"
@@ -237,8 +237,13 @@ const Chat = ({
                 </ButtonGroup>
               )}
             </Grid>
+            {answerState !== null && (
+              <Typography className={classes.explanation}>
+                {formData[`explanation${taskStep-1}`]}
+              </Typography>
+            )}
             <NextExerciseBtn
-              answerState={answerstate}
+              answerState={answerState}
               handleNextTask={handleNextTask}
             />
           </Grid>

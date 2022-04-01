@@ -11,7 +11,7 @@ import useStyles from "./styles";
 import Question from "../Question/Question";
 import ContentHeader from "../ContentHeader/ContentHeader";
 import "./buttons.css";
-import { Paper } from '@mui/material';
+import { Typography, Paper } from '@mui/material';
 
 const UnlockPad = ({
   id,
@@ -168,6 +168,11 @@ const UnlockPad = ({
         <div className={classes.feedbackAndReset}>
           {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
           {/* <h1>{feedback}</h1> */}
+          {tilbakemelding === 'incorrect' && (
+          <Typography className={classes.explanation}>
+            Fasit: {correctSolution}
+          </Typography>
+          )}
           <NextExerciseBtn
             answerState={tilbakemelding}
             handleNextTask={handleNextTask}
