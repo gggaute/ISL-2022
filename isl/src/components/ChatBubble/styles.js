@@ -1,28 +1,28 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
-    padding: theme.spacing(5),
-    maxWidth: theme.spacing(100),
+    marginTop: "16px",
+    marginBottom: "16px",
+    padding: "64px",
+    maxWidth: "100px",
   },
   cardLeft: {
-    maxWidth: theme.spacing(50),
+    maxWidth: "1000px",
     display: 'inline-block',
-    paddingLeft: theme.spacing(5),
-    paddingRight: theme.spacing(5),
+    paddingLeft: "16px",
+    paddingRight: "16px",
   },
   cardRight: {
-    maxWidth: theme.spacing(50),
+    maxWidth: "1000px",
     display: 'inline-block',
-    paddingLeft: theme.spacing(5),
-    paddingRight: theme.spacing(5),
+    paddingLeft: "16px",
+    paddingRight: "16px",
     backgroundColor: 'lightBlue',
   },
   avatarLarge: {
-    width: theme.spacing(5),
-    height: theme.spacing(5),
+    width: "64px",
+    height: "64px",
   },
   text: {
     margin: '6px 0px 6px 0px',
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     float: 'right',
   },
   parentLeft: {
-    display: 'flex',
+    display: 'flex-start',
   },
   parentRight: {
     display: 'flex-end',

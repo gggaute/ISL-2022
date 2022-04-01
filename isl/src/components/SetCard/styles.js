@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
   cardHeader: {
@@ -6,8 +6,8 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     marginTop: '3px',
-    marginRight: theme.spacing(1),
-    marginLeft: theme.spacing(1),
+    marginRight: "4px",
+    marginLeft: "4px",
     // [theme.breakpoints.between('sm', 'xl')]: {
     //   width: '60vw',
     // },

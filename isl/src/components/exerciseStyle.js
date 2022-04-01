@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 const exerciseStyles = makeStyles((theme) => ({
   root: {
@@ -10,18 +10,15 @@ const exerciseStyles = makeStyles((theme) => ({
     marginTop: "20px",
     borderRadius: '15px',
     maxHeight: '97vh',
-    [theme.breakpoints.down('xs')]: {
-      maxHeight: '90vh',
-    },
-    padding: "10px",
+    padding: "4px",
   },
   topContent: {
-    padding: theme.spacing(2),
+    padding: "8px",
   },
   layout: {
     backgroundColor: '#F5F5F5',
-    margin: theme.spacing(1),
-    padding: theme.spacing(3),
+    margin: "4px",
+    padding: "28px",
     overflow: 'hidden',
     overflowY: 'auto',
   },
@@ -43,15 +40,15 @@ const exerciseStyles = makeStyles((theme) => ({
     margin: 'auto 0 auto 0',
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: "8px",
     float: 'right',
   },
   progresscontainer: {
-    margin: theme.spacing(1),
+    margin: "4px",
   },
   progressBar: {
-    height: "10px",
-    marginBottom: "10px",
+    height: "15px",
+    margin: "10px",
   },
   text2: {
     margin: '50px',

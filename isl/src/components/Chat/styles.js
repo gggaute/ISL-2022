@@ -1,8 +1,8 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
   gridText: {
-    paddingBottom: theme.spacing(0),
+    paddingBottom: 0,
   },
   chatList: {
     width: 'inherit',
