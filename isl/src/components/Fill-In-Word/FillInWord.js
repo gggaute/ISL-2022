@@ -1,11 +1,10 @@
 import React from "react";
-import ContentHeader from "./ContentHeader";
-import Question from "./Question";
+import Question from "../Question/Question";
 import Task from "./Task";
 import Words from "./Words";
 import { useState } from "react";
 import CheckAnswer from "./CheckAnswer";
-import FeedbackBox from "./FeedbackBox";
+import FeedbackBox from "../feedback/Feedback";
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import $ from "jquery";
 import { FcPrevious, FcNext } from "react-icons/fc";
@@ -13,13 +12,22 @@ import axios from "axios";
 import { useEffect } from "react";
 import ProgressBar from '../ProgressBar';
 import exerciseStyles from '../exerciseStyle';
+import NavBar from "../NavBar/Navbar";
+import ContentHeader from "../ContentHeader/ContentHeader";
+import useStyles from "./drainn_style";
+import './drainn_style.css'
+import {
+  Paper,
+  Typography,
+} from '@mui/material';
 
-const ExerciseContainer = ({  
+
+const ExerciseContainer = ({
   id,
   showFeedback,
   progress,
   possible,
-  nextExercise, 
+  nextExercise,
 }) => {
   const [answerState, setAnswerState] = useState(null);
   let backendSentence = []
@@ -31,8 +39,10 @@ const ExerciseContainer = ({
   const [score, setScore] = useState(0);
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
+  const className = useStyles()
   const classesBase = exerciseStyles();
-  const classes = { ...classesBase };
+  const classes = {...className,  ...classesBase };
+
 
   useEffect(() => {
     getContent()
@@ -125,7 +135,7 @@ const ExerciseContainer = ({
       // $("#resultText").text("Riktig!"); //TODO: Set correct icon
       // $("#goToNext").text("Neste oppgave -->"); //TODO: Set arrow icon
       // // $("#goToNext").addClass("visible");
-      setDisabled(true);
+      
     } else {
       setAnswerState('incorrect')
       setTotalPossibleScore(totalPossibleScore + 1);
@@ -134,6 +144,7 @@ const ExerciseContainer = ({
       // $("#resultBox").addClass("feil");
       // $("#resultText").text("Feil. Prøv igjen!"); //TODO: Set wrong icon
     }
+    setDisabled(true);
     console.log(answer);
   };
 
@@ -147,34 +158,49 @@ const ExerciseContainer = ({
     setAnswerState(null);
     showFeedback(score, totalPossibleScore);
   };
-  
+
   return (
     <>
-    <div className={classes.progresscontainer}>
+      <NavBar></NavBar>
+      <Paper className={classes.root}>
+      {/* <ContentHeader></ContentHeader> */}
+        <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-      <div className="game-wrapper">
-        {/* <p>{answer}</p> */}
-        <Question question={question}></Question>
-        <Task
-          missingWord={missingWord}
-          onload={onload}
-          previousClickedWord={previousClickedWord}
-          sentence={sentence}
-          missingWordIndex={missingWordIndex}
-        ></Task>
-        <Words
-          onClick={onClickedWord}
-          words={words}
-          disabled={disabled}
-          missingWord={missingWord}
-        ></Words>
-        <CheckAnswer onClick={checkAnswer} disabled={disabled}></CheckAnswer>
-        <NextExerciseBtn
-            answerState={answerState}
-            handleNextTask={handleNextTask}
-          />
-      </div>
+        <div className={className.gameWrapper}>
+          {/* <p>{answer}</p> */}
+          <Question question={question}></Question>
+          <Task
+            missingWord={missingWord}
+            onload={onload}
+            previousClickedWord={previousClickedWord}
+            sentence={sentence}
+            missingWordIndex={missingWordIndex}
+          ></Task>
+          <Words
+            onClick={onClickedWord}
+            words={words}
+            disabled={disabled}
+            missingWord={missingWord}
+          ></Words>
+          <CheckAnswer onClick={checkAnswer} disabled={disabled} onload={onload}></CheckAnswer>
+          {answerState === 'incorrect' && (
+              <Typography className={classes.explanation}>
+              Fasit: {sentence.map((sentenceWord) => {
+                if (sentenceWord === previousClickedWord) {
+                return (<strong>{missingWord + " "} </strong>)
+                } else { return (sentenceWord + " " )}
+                })}
+              </Typography>
+            )}
+          <div className={className.nextExerciseButtonDiv}>
+            <NextExerciseBtn
+              answerState={answerState}
+              handleNextTask={handleNextTask}
+            />
+          </div>
+        </div>
+      </Paper>
     </>
 
   );

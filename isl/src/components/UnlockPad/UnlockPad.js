@@ -2,20 +2,24 @@ import React, { useState, useEffect } from "react";
 
 // import SingleLetter from './singleLetter';
 // import Button from "@mui/material/Button";
-import egg from "../../assets/img/egg.png";
-import Navbar from "../Fill-In-Word/Navbar";
 import axios from "axios"
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import ProgressBar from '../ProgressBar';
 import exerciseStyles from '../exerciseStyle';
+import NavBar from "../NavBar/Navbar";
+import useStyles from "./styles";
+import Question from "../Question/Question";
+import ContentHeader from "../ContentHeader/ContentHeader";
+import "./buttons.css";
+import { Typography, Paper } from '@mui/material';
 
-const UnlockPad = ({ 
+const UnlockPad = ({
   id,
   showFeedback,
   progress,
   possible
 }) => {
-  
+
   let setDisabled = false
   // const [answerstate, setAnswerstate] = useState(null);
   const [correctSolution, setCorrectSolution] = useState("");
@@ -26,8 +30,9 @@ const UnlockPad = ({
   const [image, setImg] = useState(null)
   let isFinished = false;
 
+  const className = useStyles();
   const classesBase = exerciseStyles();
-  const classes = { ...classesBase };
+  const classes = { ...className, ...classesBase };
 
   function getContent() {
     axios
@@ -60,21 +65,21 @@ const UnlockPad = ({
 
   function checkAnswer() {
     if (userAnswer.length === solutionLength) {
-        if (userAnswer === correctSolution) {
-            tilbakemelding = "correct"
-            // setAnswerstate('correct')
-        }
-        else {
-            tilbakemelding = "incorrect"
-            // setAnswerstate('incorrect')
-        }
-        isFinished = true
-        console.log(correctSolution, solutionLength)
+      if (userAnswer === correctSolution) {
+        tilbakemelding = "correct"
+        // setAnswerstate('correct')
+      }
+      else {
+        tilbakemelding = "incorrect"
+        // setAnswerstate('incorrect')
+      }
+      isFinished = true
+      console.log(correctSolution, solutionLength)
     }
     if (isFinished) {
-        setDisabled = true
+      setDisabled = true
     }
-}
+  }
 
   //count for id til css, vet ikke om det funker
   let count = 0;
@@ -111,64 +116,72 @@ const UnlockPad = ({
 
   function handleEvent(event) {
     event.target.disabled = true
-}
+  }
 
-checkAnswer()
+  checkAnswer()
 
-function setButtonID() {
+  function setButtonID() {
     count++
     return "numpadButton" + count.toString()
-}
-
-const handleNextTask = () => {
-  if (tilbakemelding === 'correct') {
-    showFeedback(1, 1);
-  } else {
-    showFeedback(0, 1);
   }
-};
+
+  const handleNextTask = () => {
+    if (tilbakemelding === 'correct') {
+      showFeedback(1, 1);
+    } else {
+      showFeedback(0, 1);
+    }
+  };
 
 
-useEffect(() => {
-  getContent()
-},[])
+  useEffect(() => {
+    getContent()
+  }, [])
 
-return (
-  <>
-    <Navbar></Navbar>
-    <div className={classes.progresscontainer}>
+  return (
+    <>
+      <NavBar></NavBar>
+      <Paper className={classes.root}>
+        {/* <ContentHeader></ContentHeader> */}
+        <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <div id="content">
-            <img src= {image} alt="solutionImage"></img>
-            <div id="contentRow">
-                <div id="guess">{itemList}</div>
-                <div className="grid">
-                    {letters.map((letter, count) => (
-                        <>
-                            <button className="gridButton" key={count} id={setButtonID()} disabled={setDisabled} onClick={(event) => {
-                                handleEvent(event)
-                                registerLetterinAnswer(letter)
-                            }}>
-                                {letter.toUpperCase()} </button>
-                            {() => count++}
-                        </>
-                    ))}
-                </div>
+        <Question question={"Hva ser du på bildet? Stav ordet!"}></Question>
+        <div className={classes.content}>
+          <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
+          <div className={classes.contentRow}>
+            <div className={classes.guess}>{itemList}</div>
+            <div className={classes.gridLetters}>
+              {letters.map((letter, count) => (
+                <>
+                  <button id={setButtonID()} key={count} disabled={setDisabled} onClick={(event) => {
+                    handleEvent(event)
+                    registerLetterinAnswer(letter)
+                  }}>
+                    {letter.toUpperCase()} </button>
+                  {() => count++}
+                </>
+              ))}
             </div>
-            <div id="feedBackAndReset">
-                {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
-                {/* <h1>{feedback}</h1> */}
-                <NextExerciseBtn 
-                    answerState={tilbakemelding}
-                    handleNextTask={handleNextTask}
-                />
-              
-            </div>
+          </div>
+        </div>
+        <div className={classes.feedbackAndReset}>
+          {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
+          {/* <h1>{feedback}</h1> */}
+          {tilbakemelding === 'incorrect' && (
+          <Typography className={classes.explanation}>
+            Fasit: {correctSolution}
+          </Typography>
+          )}
+          <NextExerciseBtn
+            answerState={tilbakemelding}
+            handleNextTask={handleNextTask}
+          />
 
         </div>
-  </>
-)
+      </Paper>
+    </>
+  )
 }
 
 export default UnlockPad;

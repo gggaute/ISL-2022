@@ -26,6 +26,9 @@ import ProgressBar from '../ProgressBar';
 import axios from 'axios';
 import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
+import NavBar from "../NavBar/Navbar";
+import ContentHeader from "../ContentHeader/ContentHeader";
+import Question from '../Question/Question';
 
 
 /**
@@ -54,7 +57,7 @@ const Chat = ({
   const [receivericon, setReceivericon] = useState();
 
   // Null if user hasn't given an answer, "correct" or "incorrect" if user has given an answer.
-  const [answerstate, setAnswerstate] = useState(null);
+  const [answerState, setAnswerstate] = useState(null);
 
   // Keeps track of which task in the exercise the user is currently on.
   const [taskStep, setTaskStep] = useState(1);
@@ -77,7 +80,7 @@ const Chat = ({
   // Data for the chat exercise from backend.
   const [formData, setFormData] = useState({});
 
-  
+
 
   /**
    * Function that checks if the input argument corresponds to a case
@@ -85,7 +88,7 @@ const Chat = ({
    * @param {string} iconName Icon name from the database.
    * @returns The image object corresponding the input argument.
    */
-  
+
   const transformIcon = (iconName) => {
     switch (iconName) {
       case 'gingerMan':
@@ -182,13 +185,13 @@ const Chat = ({
   }, []);
 
   return (
-    <Paper className={classes.root}>
-      <div className={classes.topContent}>
+    <>
+      <NavBar></NavBar>
+      <Paper className={classes.root}>
+      {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Card>
-          <CardContent className={classes.cardcontent}>
             {/*<IconButton
               onClick={fireAudio}
               disabled={disabled}
@@ -196,50 +199,57 @@ const Chat = ({
             >
               <VolumeUpIcon />
             </IconButton> */}
-            <Typography
-              variant="body2"
-              component="p"
-              className={classes.audiotext}
+        {/* <Typography
+          variant="body2"
+          component="p"
+          className={classes.audiotext}
+        >
+          Du har fått en melding! Trykk på det svaret som er riktig.
+        </Typography> */}
+        <Question question={'Du har fått en melding! Trykk på det svaret som er riktig.'}/>
+        {/* </CardContent> */}
+        {/* </Card> */}
+        {/* </div >S */}
+        <Paper className={classes.layout} elevation={0}>
+          <Grid container spacing={3}>
+            {chatHistory.map((chat, i) => {
+              if (i % 2 === 0) {
+                return <ChatBubble key={i} chat={chat} icon={sendericon} />;
+              }
+              return <ChatBubble key={i} chat={chat} icon={receivericon} right />;
+            })}
+            <Grid
+              container
+              direction="column"
+              justify="flex-end"
+              alignItems="flex-end"
             >
-              Du har fått en melding! Trykk på det svaret som er riktig.
-            </Typography>
-          </CardContent>
-        </Card>
-      </div>
-      <Paper className={classes.layout} elevation={0}>
-        <Grid container spacing={3}>
-          {chatHistory.map((chat, i) => {
-            if (i % 2 === 0) {
-              return <ChatBubble key={i} chat={chat} icon={sendericon} />;
-            }
-            return <ChatBubble key={i} chat={chat} icon={receivericon} right />;
-          })}
-          <Grid
-            container
-            direction="column"
-            justify="flex-end"
-            alignItems="flex-end"
-          >
-            {answerstate === null && (
-              <ButtonGroup
-                orientation="vertical"
-                aria-label="vertical contained secondary button group"
-                variant="contained"
-                color="secondary"
-                disableElevation
-                className={classes.btn}
-              >
-                {random()}
-              </ButtonGroup>
+              {answerState === null && (
+                <ButtonGroup
+                  orientation="vertical"
+                  aria-label="vertical contained secondary button group"
+                  variant="contained"
+                  color="secondary"
+                  disableElevation
+                  className={classes.btn}
+                >
+                  {random()}
+                </ButtonGroup>
+              )}
+            </Grid>
+            {answerState !== null && (
+              <Typography className={classes.explanation}>
+                {formData[`explanation${taskStep-1}`]}
+              </Typography>
             )}
+            <NextExerciseBtn
+              answerState={answerState}
+              handleNextTask={handleNextTask}
+            />
           </Grid>
-          <NextExerciseBtn
-            answerState={answerstate}
-            handleNextTask={handleNextTask}
-          />
-        </Grid>
-      </Paper>
-    </Paper>
+        </Paper>
+      </Paper >
+    </>
   );
 };
 

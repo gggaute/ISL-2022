@@ -3,16 +3,17 @@ import { makeStyles } from '@material-ui/core/styles';
 const exerciseStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: '#F5F5F5',
-    maxWidth: theme.spacing(62),
+    maxWidth: '70%',
     display: 'flex',
     flexDirection: 'column',
     margin: 'auto',
-    marginTop: 0,
+    marginTop: "20px",
     borderRadius: '15px',
-    maxHeight: '80vh',
+    maxHeight: '97vh',
     [theme.breakpoints.down('xs')]: {
       maxHeight: '90vh',
     },
+    padding: "10px",
   },
   topContent: {
     padding: theme.spacing(2),
@@ -20,7 +21,7 @@ const exerciseStyles = makeStyles((theme) => ({
   layout: {
     backgroundColor: '#F5F5F5',
     margin: theme.spacing(1),
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
     overflow: 'hidden',
     overflowY: 'auto',
   },
@@ -47,6 +48,20 @@ const exerciseStyles = makeStyles((theme) => ({
   },
   progresscontainer: {
     margin: theme.spacing(1),
+  },
+  progressBar: {
+    height: "10px",
+    marginBottom: "10px",
+  },
+  text2: {
+    margin: '50px',
+  },
+  question: {
+    fontWeight: "bold",
+    fontSize: "1.3em",
+    borderBottom: "1px solid #7CA3EE",
+    marginBottom: "5px",
+    margin: "0 15px",
   },
 }));
 

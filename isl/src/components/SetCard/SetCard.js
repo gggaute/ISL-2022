@@ -2,6 +2,7 @@ import React from 'react';
 import { Avatar, Card, CardHeader, IconButton } from '@mui/material';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import { Link } from 'react-router-dom';
+import useStyles from './styles';
 
 /**
  * Reusable card component for exercise sets with icon buttons for playing, saving,
@@ -16,35 +17,32 @@ import { Link } from 'react-router-dom';
  * @returns Card component for given exercise set.
  */
 function SetCard({ type, formData, setId }) {
-
+  const classes = useStyles();
   // Returns different buttons depending on the type of card.
   function iconButtons() {
-    if (type === 'mySet') {
       return (
         <>
-          <Link to='/sets' state = {{playId : setId}}>
-          <IconButton className="routeButton" data-testid="idButton">
-            <PlayCircleOutlineIcon />
+          <IconButton>
+            <PlayCircleOutlineIcon/>
           </IconButton>
-          </Link>
         </>
       );
-    }
-    return <></>;
   }
 
   return (
-    <Card >
-      <CardHeader
+    <Link to='/sets' state = {{playId : setId}} className={classes.link}>
+    <Card className={classes.card}>
+      <CardHeader className={classes.cardHeader}
         avatar={
-          <Avatar>
-            {type === 'mySet' ? formData.id : formData.sets}
+          <Avatar sx={{ bgcolor: '#8AA9E4'}}>
+            {type === 'mySet' ? formData.id : formData.sets }
           </Avatar>
         }
         title={formData.title}
         action={iconButtons()}
       />
     </Card>
+    </Link>
   );
 }
 

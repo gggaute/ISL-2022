@@ -5,7 +5,8 @@ import Chat from "../../components/Chat/Chat";
 import RyddeSetninger from "../../components/RyddeSetninger/RyddeSetninger";
 import Feedback from "../../components/feedback/Feedback";
 import axios from "axios";
-import ContentContainer from "../../components/Fill-In-Word/ContentContainer";
+import FinishedSet from "../../components/finishedSet/FinishedSet";
+import FillInWord from "../../components/Fill-In-Word/FillInWord";
 import UnlockPad from "../../components/UnlockPad/UnlockPad";
 /**
  * This is the container for playing exercise sets.
@@ -70,10 +71,10 @@ const PlaySets = () => {
     });
     setTotalExercises(
       formDataExercises.chat.length +
-        formDataExercises.forstaelse.length +
-        formDataExercises.ryddeSetninger.length +
-        formDataExercises.lasoppmobil.length +
-        formDataExercises.drainnmanglendeord.length
+      formDataExercises.forstaelse.length +
+      formDataExercises.ryddeSetninger.length +
+      formDataExercises.lasoppmobil.length +
+      formDataExercises.drainnmanglendeord.length
     );
   }
 
@@ -135,9 +136,9 @@ const PlaySets = () => {
   // Keeps track of scores and decides what feedback to show accordingly.
   function showFeedback(score, totalPossibleScore) {
     if (score === totalPossibleScore) {
-      setTotalScore(totalScore + 1);  
+      setTotalScore(totalScore + 1);
     }
-    if (exerciseProgress === totalExercises){
+    if (exerciseProgress === totalExercises) {
       setFeedbackState('finished');
     } else {
       setFeedbackState('playing');
@@ -224,7 +225,7 @@ const PlaySets = () => {
       );
     case "drainnmanglendeord":
       return (
-        <ContentContainer
+        <FillInWord
           id={exerciseId}
           showFeedback={showFeedback}
           progress={exerciseProgress}
