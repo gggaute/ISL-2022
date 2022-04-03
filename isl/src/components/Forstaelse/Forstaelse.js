@@ -126,6 +126,7 @@ const Forstaelse = ({
       <Paper className={classes.root}>
       {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
+          <h1 className={className.exerciseType}>Forståelse</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
             {/*<IconButton

@@ -18,6 +18,11 @@ const useStyles = makeStyles((theme) => ({
   checkAnswerBtn: {
     float: 'right',
   },
+  exerciseType:{
+    display: 'flex',
+    justifyContent: 'center',
+    fontWeight: 'bolder',
+  }
 }));
 
 export default useStyles;
