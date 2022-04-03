@@ -17,6 +17,11 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "8px",
     marginLeft: "8px",
   },
+  exerciseType:{
+    display: 'flex',
+    justifyContent: 'center',
+    fontWeight: 'bolder',
+  }
 }));
 
 export default useStyles;

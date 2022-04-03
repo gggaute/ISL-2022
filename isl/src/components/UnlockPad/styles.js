@@ -70,6 +70,11 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: '25px',
         paddingBottom: '15px',
     },
+    exerciseType:{
+        display: 'flex',
+        justifyContent: 'center',
+        fontWeight: 'bolder',
+      }
 
 }));
 

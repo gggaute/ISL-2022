@@ -144,6 +144,7 @@ const UnlockPad = ({
       <Paper className={classes.root}>
         {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
+        <h1 className={className.exerciseType}>Skriv ordet</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <Question question={"Hva ser du på bildet? Stav ordet!"}></Question>
