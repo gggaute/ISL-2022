@@ -57,7 +57,7 @@ const RyddeSetninger = ({
   to be checked against when the user is satisfied with their answer. */
   const [rightAnswer, setRightAnswer] = useState();
 
-  const [answerState, setAnswerState] = useState();
+  const [answerState, setAnswerState] = useState(null);
   const [disableButton, setDisableButton] = useState(false);
   const [score, setScore] = useState(0);
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
@@ -292,6 +292,11 @@ const RyddeSetninger = ({
                 Sjekk svar
               </Button>
             </Grid>
+            {answerState === 'incorrect' && (
+              <Typography className={classes.explanation}>
+               Fasit: {rightAnswer.map(function (e, i) { return [words[i] + " "];})}
+              </Typography>
+            )}
             <NextExerciseBtn
               answerState={answerState}
               handleNextTask={() => nextExercise()}

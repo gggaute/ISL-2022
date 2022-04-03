@@ -7,7 +7,7 @@ import NavBar from "../NavBar/Navbar";
 import useStyles from "./styles";
 import Question from "../Question/Question";
 import "./buttons.css";
-import { IconButton, Paper } from '@mui/material';
+import { IconButton, Paper,Typography } from '@mui/material';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 const UnlockPad = ({
@@ -226,11 +226,15 @@ const UnlockPad = ({
           </div>
         </div>
         <div className={classes.feedbackAndReset}>
+          {feedback === 'incorrect' && (
+          <Typography className={classes.explanation}>
+            Fasit: {correctSolution}
+          </Typography>
+          )}
           <NextExerciseBtn
             answerState={feedback}
             handleNextTask={handleNextTask}
           />
-
         </div>
       </Paper>
     </>
