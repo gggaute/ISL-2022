@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '0.6rem',
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'center',
     rowGap: '1rem',
     marginTop: '1rem',
     maxWidth: '100%',
@@ -40,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
   wordGridWrapper:{
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 
 }))
