@@ -14,8 +14,10 @@ const useStyles = makeStyles((theme) => ({
     float: 'right',
   },
   explanation: {
-    marginRight: "8px",
-    marginLeft: "8px",
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifySelf: 'center'
   },
   exerciseType:{
     display: 'flex',

@@ -9,7 +9,7 @@ const exerciseStyles = makeStyles((theme) => ({
     margin: 'auto',
     marginTop: "20px",
     borderRadius: '15px',
-    maxHeight: '97vh',
+    marginBottom: '20px',
     padding: "4px",
   },
   topContent: {

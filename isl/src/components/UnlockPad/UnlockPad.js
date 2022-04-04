@@ -6,6 +6,7 @@ import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import useStyles from "./styles";
 import Question from "../Question/Question";
+import './grid.css'
 import "./buttons.css";
 import { IconButton, Paper,Typography } from '@mui/material';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
@@ -204,7 +205,7 @@ const UnlockPad = ({
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <Question question={"Hva ser du på bildet? Stav ordet!"}></Question>
-        <div className={classes.content}>
+        <div id='content'>
           <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
           <div className={classes.contentRow}>
             <div className={classes.guess} id="guess">

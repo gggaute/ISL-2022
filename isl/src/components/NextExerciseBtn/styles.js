@@ -20,16 +20,20 @@ const useStyles = makeStyles((theme) => ({
   answerBtn: {
     backgroundColor: 'white',
     marginRight: "4px",
+    minWidth: '45px'
   },
   btnParent: {
     flex: '1',
     margin: 'auto',
     width: '50%',
-    paddingRight: "6px",
+    paddingRight: "8px",
     paddingLeft: "8px",
   },
   icons: {
     color: 'white',
   },
+  cardHeader: {
+    padding: '10px'
+  }
 }));
 export default useStyles;
