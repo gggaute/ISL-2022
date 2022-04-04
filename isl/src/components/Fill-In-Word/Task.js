@@ -1,38 +1,39 @@
 import React from 'react'
 import $ from "jquery"
 import { useEffect } from 'react'
-import useStyles from "./drainn_style";
 import './drainn_style.css'
+import useStyles from './drainn_style'
+import { Card } from '@mui/material';
+
 
 
 const Task = ({ sentence, onload, missingWord, missingWordIndex }) => {
-  const className = useStyles()
+  const className = useStyles();
 
   useEffect(() => {
     console.log(missingWordIndex);
   }, [])
 
   const checkStart = (word) => {
-    if(onload){
-      console.log("går inn i if")
+    if (onload) {
       return ""
     }
-    else{
+    else {
       $(".taskPBorder").addClass("vis");
-      console.log("går inn i else")
       return word
     }
   }
 
-
-  return ( 
-    <div className='task'>
-      {sentence.map((word, i) => (i === missingWordIndex ?
-        <div className = "wordContainer"> <p className="taskPBorder"> {checkStart(word)} </p> </div>
+  return (
+    <Card className='task'>
+      <div className='taskGrid'>
+        {sentence.map((word, i) => (i === missingWordIndex ?
+          <div className="wordContainer"> <p className="taskPBorder"> {checkStart(word)} </p> </div>
           :
-        <p> {word} </p>
-      ))}
-    </div>
+          <p> {word} </p>
+        ))}
+      </div>
+    </Card>
   )
 }
 

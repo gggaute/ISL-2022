@@ -1,75 +1,102 @@
-.wordGrid > button {
-    background-color: #8AA9E4;
-    margin: 1rem;
-    padding: 1rem;
-    border: 1px solid darkgrey;
-    font-size: 1rem;
-  }
-.task > p {
-    display: inline;
-    margin: 0;
-    margin-right: .5rem;
-    margin-left: .5rem;
-}
-.wordBox, #checkAnswerBtn {
-    cursor: pointer;
-    border-radius: 10px;
-  }
-  
-  .wordBox:disabled, #checkAnswerBtn:disabled {
-    cursor: default;
-  }
-
-  .task {
-    border: 0.1px solid #7CA3EE;
-    padding: 1rem;
-  }
-  .task {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    /* border: 1px solid red; */
-  }
-  
-  .taskPBorder {
-    border: 1px solid darkgrey;
-    background-color: #8AA9E4;
-    padding: 0.3rem;
-    min-width: 2rem;
-    max-height: 1.2rem;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden
-  }
-
-  .vis {
-    visibility: visible;
-  }
-  
 p {
-  margin: 1rem;
+  display: inline;
+  margin-bottom: 0;
+  margin-top: 0.3rem;
+  margin-right: 0.2rem;
+  margin-left: 0.3rem;
 }
 
-  .wordContainer {
-    border: 1px solid lightgrey;
-    max-width: 8rem;
-    max-height: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.task {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 100%;
+  padding: 1rem;
+}
+
+.taskPBorder {
+  /* border: 1px solid darkgrey; */
+  background-color: #BCD0F7;
+  /* Lysere farge */
+  border-radius: 10%;
+  padding: 0.3rem;
+  min-width: 2rem;
+  max-width: 7rem;
+  max-height: 2.45rem;
+  margin: 0;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden
+}
+
+.vis {
+  visibility: visible;
+}
+
+.wordContainer {
+  /* border: 2px solid #7CA3EE; */
+  border-bottom: 1px solid #7CA3EE;
+  /* border-radius: 15%; */
+  min-width: 2rem;
+  min-height: 1.5rem;
+  max-width: 6rem;
+  max-height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkAnswerBtn {
+  margin: auto;
+  width: 50%;
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  padding: 1.2rem;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.wordGrid {
+  /* max-width: 70%; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   
-  .checkAnswerBtn {
-    width: 50%;
-    display: flex;
-    justify-self: center;
-    justify-content: center;
-    padding: 1.2rem;
-    text-decoration: underline;
-    text-underline-offset: .3rem;
+}
+.taskGrid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0;
+  justify-items: center;
+}
+
+@media screen and (max-width: 850px) {
+  .taskGrid {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 0;
   }
-  .wordGrid {
-    display: grid;
+}
+
+
+@media screen and (max-width: 650px) {
+  .taskGrid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 0;
+  }
+}
+
+
+
+@media screen and (max-width: 530px) {
+  .taskGrid {
     grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 0;
   }
+
+}
+@media screen and (max-width: 460px) {
+  .wordGrid {
+    grid-template-columns: 1fr 1fr; 
+  }
+}

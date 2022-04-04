@@ -4,16 +4,13 @@ import Task from "./Task";
 import Words from "./Words";
 import { useState } from "react";
 import CheckAnswer from "./CheckAnswer";
-import FeedbackBox from "../feedback/Feedback";
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import $ from "jquery";
-import { FcPrevious, FcNext } from "react-icons/fc";
 import axios from "axios";
 import { useEffect } from "react";
 import ProgressBar from '../ProgressBar';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
-import ContentHeader from "../ContentHeader/ContentHeader";
 import useStyles from "./drainn_style";
 import './drainn_style.css'
 import {
@@ -40,7 +37,7 @@ const ExerciseContainer = ({
 
   const className = useStyles()
   const classesBase = exerciseStyles();
-  const classes = {...className,  ...classesBase };
+  const classes = { ...className, ...classesBase };
 
 
   useEffect(() => {
@@ -86,9 +83,6 @@ const ExerciseContainer = ({
         for (let i = 0; i < count; i++) {
           backendSentence.pop()
         }
-        console.log("sentence: ", backendSentence);
-        console.log("words: ", backendwords);
-        console.log(res.data.correctSolution);
         setSentence(backendSentence)
         setWords(backendwords)
         setMissingWord(res.data.correctSolution)
@@ -97,7 +91,6 @@ const ExerciseContainer = ({
   }
 
   const onClickedWord = (clickedWord) => {
-    console.log("click", clickedWord);
     setOnload(false);
     $("#resultBox").removeClass();
     $("#resultText").text("...");
@@ -129,22 +122,12 @@ const ExerciseContainer = ({
       setAnswerState('correct')
       setScore(score + 1);
       setTotalPossibleScore(totalPossibleScore + 1);
-      // $("#resultBox").removeClass();
-      // $("#resultBox").addClass("riktig");
-      // $("#resultText").text("Riktig!"); //TODO: Set correct icon
-      // $("#goToNext").text("Neste oppgave -->"); //TODO: Set arrow icon
-      // // $("#goToNext").addClass("visible");
-      
     } else {
       setAnswerState('incorrect')
       setTotalPossibleScore(totalPossibleScore + 1);
       answer = 'prøv igjen!';
-      // $("#resultBox").removeClass();
-      // $("#resultBox").addClass("feil");
-      // $("#resultText").text("Feil. Prøv igjen!"); //TODO: Set wrong icon
     }
     setDisabled(true);
-    console.log(answer);
   };
 
   const question = "Hvilket ord mangler?";
@@ -162,13 +145,11 @@ const ExerciseContainer = ({
     <>
       <NavBar></NavBar>
       <Paper className={classes.root}>
-      {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
           <h1 className={className.exerciseType}>Fyll inn manglende ord</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <div className={className.gameWrapper}>
-          {/* <p>{answer}</p> */}
           <Question question={question}></Question>
           <Task
             missingWord={missingWord}
@@ -177,13 +158,15 @@ const ExerciseContainer = ({
             sentence={sentence}
             missingWordIndex={missingWordIndex}
           ></Task>
-          <Words
-            onClick={onClickedWord}
-            words={words}
-            disabled={disabled}
-            missingWord={missingWord}
-          ></Words>
-          <CheckAnswer onClick={checkAnswer} disabled={disabled} onload={onload}></CheckAnswer>
+          <div className={className.wordGridWrapper}>
+            <Words
+              onClick={onClickedWord}
+              words={words}
+              disabled={disabled}
+              missingWord={missingWord}
+            ></Words>
+          <CheckAnswer onClick={checkAnswer} disabled={disabled} onload={onload}/>
+          </div>
           <div className={className.nextExerciseButtonDiv}>
             <NextExerciseBtn
               answerState={answerState}
