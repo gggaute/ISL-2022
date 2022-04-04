@@ -166,14 +166,6 @@ const ExerciseContainer = ({
               disabled={disabled}
               missingWord={missingWord}
             ></Words>
-          <CheckAnswer onClick={checkAnswer} disabled={disabled} onload={onload}/>
-          </div>
-          <Words
-            onClick={onClickedWord}
-            words={words}
-            disabled={disabled}
-            missingWord={missingWord}
-          ></Words>
           <CheckAnswer onClick={checkAnswer} disabled={disabled} onload={onload}></CheckAnswer>
           {answerState === 'incorrect' && (
               <Typography className={classes.explanation}>
@@ -184,6 +176,7 @@ const ExerciseContainer = ({
                 })}
               </Typography>
             )}
+          </div>
           <div className={className.nextExerciseButtonDiv}>
             <NextExerciseBtn
               answerState={answerState}
