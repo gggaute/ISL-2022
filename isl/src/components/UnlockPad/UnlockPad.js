@@ -17,7 +17,7 @@ import {
   IconButton,
  } from '@mui/material';
  import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import unlockaudio from "../../assets/audiofiles/unlockVoice.mp3";
+import unlockaudio from "../../assets/audiofiles/unlockAudio.mp3";
 
 const UnlockPad = ({
   id,
@@ -170,7 +170,7 @@ const UnlockPad = ({
             >
               <VolumeUpIcon />
             </IconButton>
-        <Question question={"Hva ser du på bildet? Stav ordet!"}></Question>
+        <Question question={"Hva ser du på bildet? Skriv ordet!"}></Question>
         <div className={classes.content}>
           <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
           <div className={classes.contentRow}>

@@ -12,7 +12,7 @@ import {
   IconButton,
 } from "@mui/material";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import ryddaudio from "../../assets/audiofiles/ryddeSetningerVoice.mp3";
+import ryddaudio from "../../assets/audiofiles/ryddeAudio.mp3";
 import ProgressBar from "../ProgressBar";
 import NextExerciseBtn from "../NextExerciseBtn/NextExerciseBtn";
 import useStyles from './styles';
@@ -216,7 +216,7 @@ const RyddeSetninger = ({
     playAudio(ryddaudio);
     setTimeout(() => {
       setDisabled(false);
-    }, 6000);
+    }, 5000);
   }
   
 
@@ -239,7 +239,7 @@ const RyddeSetninger = ({
             >
               <VolumeUpIcon />
             </IconButton>
-        <Question question={"Trykk på ordene sånn at de kommer i riktig rekkefølge. Husk å sjekke tegnsettingen!"}></Question>
+        <Question question={"Trykk på ordene for å skrive setningen i riktig rekkefølge."}></Question>
         {/* </CardContent>
           </Card>
         </div> */}

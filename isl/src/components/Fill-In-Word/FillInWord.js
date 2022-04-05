@@ -22,7 +22,7 @@ import {
   IconButton,
 } from '@mui/material';
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import fillaudio from "../../assets/audiofiles/fillInWordVoice.mp3";
+import fillaudio from "../../assets/audiofiles/fillInnAudio.mp3";
 
 
 const ExerciseContainer = ({
@@ -45,6 +45,8 @@ const ExerciseContainer = ({
   const className = useStyles()
   const classesBase = exerciseStyles();
   const classes = {...className,  ...classesBase };
+
+  const [audioDisabled, setAudioDisabled] = useState(false);
 
 
   useEffect(() => {
@@ -151,7 +153,7 @@ const ExerciseContainer = ({
     console.log(answer);
   };
 
-  const question = "Hvilket ord mangler?";
+  const question = "Trykk på ordet som mangler i setningen.";
 
   const [missingWord, setMissingWord] = useState("");
 
@@ -163,10 +165,10 @@ const ExerciseContainer = ({
   };
 
   function fireAudio() {
-    setDisabled(true);
+    setAudioDisabled(true);
     playAudio(fillaudio);
     setTimeout(() => {
-      setDisabled(false);
+      setAudioDisabled(false);
     }, 4000);
   }
   return (
@@ -179,7 +181,7 @@ const ExerciseContainer = ({
         </div>
         <IconButton
               onClick={() => fireAudio()}
-              disabled={disabled}
+              disabled={audioDisabled}
               data-testid="volumeRyddeSetninger"
             >
               <VolumeUpIcon />

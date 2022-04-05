@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import ChatBubble from '../ChatBubble/ChatBubble';
-import forsaudio from '../../assets/audiofiles/forstaelseVoice.mp3';
+import forsaudio from '../../assets/audiofiles/forstaelseAudio.mp3';
 import ProgressBar from '../ProgressBar';
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import axios from 'axios';
@@ -127,7 +127,7 @@ const Forstaelse = ({
             >
               <VolumeUpIcon />
             </IconButton>
-       <Question question={'Les hva meldingen sier. Svar på spørsmålet.'}/>
+       <Question question={'Les hva meldingen sier. Svar på spørsmålet under.'}/>
 
         {/* </CardContent>
           </Card>

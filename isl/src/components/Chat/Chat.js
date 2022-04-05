@@ -12,7 +12,7 @@ import {
   IconButton,
 } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
-import chataudio from '../../assets/audiofiles/chatVoice.mp3';
+import chataudio from '../../assets/audiofiles/chatAudio.mp3';
 import gingerMan from '../../assets/images/gingerMan.png';
 import capsMan from '../../assets/images/capsMan.png';
 import frenchMan from '../../assets/images/frenchMan.png';
@@ -176,7 +176,7 @@ const Chat = ({
   function fireAudio() {
     setDisabled(true);
     playAudio(chataudio);
-    setTimeout(() => setDisabled(false), 6000);
+    setTimeout(() => setDisabled(false), 7000);
   }
   
 
@@ -199,7 +199,7 @@ const Chat = ({
             >
               <VolumeUpIcon />
             </IconButton> 
-        <Question question={'Du har fått en melding! Trykk på det svaret som er riktig.'}/>
+        <Question question={'Du har fått en melding! Svar på meldingen ved å trykke på riktig svar.'}/>
         {/* </CardContent> */}
         {/* </Card> */}
         {/* </div >S */}
