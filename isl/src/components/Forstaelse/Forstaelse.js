@@ -5,9 +5,7 @@ import {
   Grid,
   Typography,
   Paper,
-  IconButton,
 } from '@mui/material';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import ChatBubble from '../ChatBubble/ChatBubble';
 import forsaudio from '../../assets/audiofiles/forstaelseAudio.mp3';
 import ProgressBar from '../ProgressBar';
@@ -118,13 +116,6 @@ const Forstaelse = ({
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-            <IconButton
-              onClick={() => fireAudio()}
-              disabled={disabled}
-              data-testid="volumeForstaelse"
-            >
-              <VolumeUpIcon />
-            </IconButton>
        <Question question={question} fireAudio = {fireAudio} disabled={disabled} />
 
         {/* </CardContent>
