@@ -12,7 +12,6 @@ import {
   Paper,
   IconButton,
  } from '@mui/material';
- import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import unlockaudio from "../../assets/audiofiles/unlockAudio.mp3";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
@@ -62,6 +61,7 @@ const UnlockPad = ({
 
   const [audioDisabled, setAudioDisabled] = useState(false);
 
+  const question = "Hva ser du på bildet? Skriv ordet!";
   /**
    * Funciton to fetch content from database
    * Sets @variable backendLetters to contain the letters from database,
@@ -219,14 +219,7 @@ const UnlockPad = ({
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <IconButton
-              onClick={() => fireAudio()}
-              disabled={audioDisabled}
-              data-testid="volumeRyddeSetninger"
-            >
-              <VolumeUpIcon />
-            </IconButton>
-        <Question question={"Hva ser du på bildet? Skriv ordet!"}></Question>
+        <Question question={question} fireAudio = {fireAudio} disabeld = {audioDisabled}></Question>
         <div className={classes.content}>
           <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
           <div className={classes.contentRow}>

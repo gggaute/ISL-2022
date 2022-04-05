@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import {
-  AppBar,
   Button,
-  Card,
   Grid,
-  CardContent,
   Typography,
-  Toolbar,
   Paper,
   IconButton,
 } from '@mui/material';
@@ -62,6 +58,8 @@ const Forstaelse = ({
   const className = useStyles();
   const classesBase = exerciseStyles();
   const classes = { ...className, ...classesBase };
+
+  const question = 'Les hva meldingen sier. Svar på spørsmålet under.';
 
   // Gets the exercise content with {id} from backend.
   function getContent() {
@@ -127,7 +125,7 @@ const Forstaelse = ({
             >
               <VolumeUpIcon />
             </IconButton>
-       <Question question={'Les hva meldingen sier. Svar på spørsmålet under.'}/>
+       <Question question={question} fireAudio = {fireAudio} disabled={disabled} />
 
         {/* </CardContent>
           </Card>

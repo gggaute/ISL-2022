@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import {
-  Card,
-  CardContent,
   Typography,
   Grid,
   ButtonGroup,
   Button,
   Paper,
-  Toolbar,
-  IconButton,
 } from '@mui/material';
-import AppBar from '@mui/material/AppBar';
 import chataudio from '../../assets/audiofiles/chatAudio.mp3';
 import gingerMan from '../../assets/images/gingerMan.png';
 import capsMan from '../../assets/images/capsMan.png';
@@ -27,7 +21,6 @@ import axios from 'axios';
 import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
-import ContentHeader from "../ContentHeader/ContentHeader";
 import Question from '../Question/Question';
 
 
@@ -80,6 +73,7 @@ const Chat = ({
   // Data for the chat exercise from backend.
   const [formData, setFormData] = useState({});
 
+  const question = 'Du har fått en melding! Svar på meldingen ved å trykke på riktig svar.';
 
 
   /**
@@ -192,17 +186,7 @@ const Chat = ({
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-            <IconButton
-              onClick={fireAudio}
-              disabled={disabled}
-              data-testid="volumeChat"
-            >
-              <VolumeUpIcon />
-            </IconButton> 
-        <Question question={'Du har fått en melding! Svar på meldingen ved å trykke på riktig svar.'}/>
-        {/* </CardContent> */}
-        {/* </Card> */}
-        {/* </div >S */}
+        <Question question={question} fireAudio ={fireAudio} disabled={disabled} />
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={3}>
             {chatHistory.map((chat, i) => {

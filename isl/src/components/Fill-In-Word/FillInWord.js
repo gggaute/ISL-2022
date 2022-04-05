@@ -4,24 +4,19 @@ import Task from "./Task";
 import Words from "./Words";
 import { useState } from "react";
 import CheckAnswer from "./CheckAnswer";
-import FeedbackBox from "../feedback/Feedback";
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import $ from "jquery";
-import { FcPrevious, FcNext } from "react-icons/fc";
 import axios from "axios";
 import { useEffect } from "react";
 import ProgressBar from '../ProgressBar';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
-import ContentHeader from "../ContentHeader/ContentHeader";
 import useStyles from "./drainn_style";
 import './drainn_style.css'
 import {
   Paper,
   Typography,
-  IconButton,
 } from '@mui/material';
-import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import fillaudio from "../../assets/audiofiles/fillInnAudio.mp3";
 
 
@@ -175,20 +170,11 @@ const ExerciseContainer = ({
     <>
       <NavBar></NavBar>
       <Paper className={classes.root}>
-      {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <IconButton
-              onClick={() => fireAudio()}
-              disabled={audioDisabled}
-              data-testid="volumeRyddeSetninger"
-            >
-              <VolumeUpIcon />
-            </IconButton>
         <div className={className.gameWrapper}>
-          {/* <p>{answer}</p> */}
-          <Question question={question}></Question>
+          <Question question={question} fireAudio={fireAudio} disabled={audioDisabled}></Question>
           <Task
             missingWord={missingWord}
             onload={onload}
