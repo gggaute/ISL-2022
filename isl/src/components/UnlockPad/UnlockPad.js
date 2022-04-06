@@ -205,7 +205,7 @@ const UnlockPad = ({
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <Question question={"Hva ser du på bildet? Stav ordet!"}></Question>
-        <div id='content'>
+        <div id='content' className={classes.content}>
           <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
           <div className={classes.contentRow}>
             <div className={classes.guess} id="guess">

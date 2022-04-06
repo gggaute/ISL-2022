@@ -9,9 +9,10 @@ const Question = ({ question }) => {
   const classes = { ...className, ...classesBase };
 
   return (
-    <div className={classes.question}>
-      <p>{question}</p>
-    </div>
+    <>
+      <p className={classes.question}>{question}</p>
+      <hr className={classes.questionLine}></hr>
+    </>
   )
 }
 

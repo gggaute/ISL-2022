@@ -2,25 +2,26 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => {
     return{
-        unlockImg: {
-            width: '80%',
-            height: '80%',
-            margin: 'auto',
-        },
-    
         content: {
             display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
-            // border: 'lawngreen 2px solid',
-    },
-    
+            marginTop: "10px",
+            marginBottom: "20px",
+        },
+        unlockImg: {
+            width: '90%',
+            height: '100%',
+            margin: 'auto',
+            // border: "1px solid green",
+        },
         contentRow: {
             display: 'flex',
             flexDirection: 'column',
             // border: '#7CA3EE 2px solid',
-            marginBottom: '15px'
-    },
-    
+            margin: "auto",
+            width: '90%',
+            height: '100%',
+        },
         gridButton: {
             backgroundColor: 'white',
             borderRadius: '100%',
@@ -31,12 +32,10 @@ const useStyles = makeStyles((theme) => {
             height: '3.5em',
             width: '3.5em',
         },
-    
         gridButtonDisabled: {
             backgroundColor: '#7CA3EE',
             color: 'white',
         },
-    
         tryAgainButton: {
             backgroundColor: '#EC6F6F',
             color: 'white',
@@ -45,14 +44,12 @@ const useStyles = makeStyles((theme) => {
             boxShadow: 'none',
             width: '10em',
         },
-    
         guess: {
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'space-evenly',
             margin: '10 auto',
         },
-    
         gridLetters: {
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
@@ -63,7 +60,6 @@ const useStyles = makeStyles((theme) => {
             maxWidth: '90%',
             alignSelf: 'center',
         },
-    
         feedbackAndReset: {
             paddingLeft: '25px',
             paddingRight: '25px',
