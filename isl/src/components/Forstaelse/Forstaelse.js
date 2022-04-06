@@ -117,7 +117,7 @@ const Forstaelse = ({
           <h1 className={className.exerciseType}>Forståelse</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-       <Question question={question} fireAudio = {fireAudio} disabled={disabled} />
+       <Question question={question} fireAudio={fireAudio} disabled={disabled} />
 
         {/* </CardContent>
           </Card>

@@ -221,7 +221,7 @@ const UnlockPad = ({
         <h1 className={className.exerciseType}>Skriv ordet</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Question question={question} fireAudio = {fireAudio} disabeld = {audioDisabled}></Question>
+        <Question question={question} fireAudio={fireAudio} disabled={audioDisabled}></Question>
         <div id='content'>
           <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
           <div className={classes.contentRow}>

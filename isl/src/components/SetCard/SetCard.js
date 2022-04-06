@@ -39,7 +39,7 @@ function SetCard({ type, formData, setId }) {
           </Avatar>
         }
         title={formData.title}
-        action={iconButtons()}
+        action={iconButtons}
       />
     </Card>
     </Link>

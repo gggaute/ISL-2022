@@ -187,7 +187,7 @@ const Chat = ({
           <h1 className={className.exerciseType}>CHAT</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Question question={question} fireAudio ={fireAudio} disabled={disabled} />
+        <Question question={question} fireAudio={fireAudio} disabled={disabled} />
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={3}>
             {chatHistory.map((chat, i) => {

@@ -9,6 +9,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("", front, name="front"),
+    path("sets", front, name="sets"),
     path('api/', include('forstaelse.urls')),
     path('api/', include('chat.urls')),
     path('api/', include('rydde_setninger.urls')),

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
 import SetCard from "../../components/SetCard/SetCard";
 
 import NavBar from "../../components/NavBar/Navbar";
@@ -19,7 +18,6 @@ const StartPage = () => {
 
   // List of the users own sets.
   const [ExerciseSetList, setExerciseSetList] = useState([]);
-  const [playId, setPlayId] = useState(null);
 
   const classesBase = exerciseStyles();
   const classes = {...classesBase };
@@ -64,7 +62,6 @@ const StartPage = () => {
             <SetCard
               type="mySet"
               formData={set}
-              playId={playId}
               setId={set.id}
             />
           );
