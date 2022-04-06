@@ -8,14 +8,23 @@ import useStyles from "./styles";
 import Question from "../Question/Question";
 import './general.css'
 import "./buttons.css";
-import { 
-  Typography,
-  Paper,
-  IconButton,
- } from '@mui/material';
+import { Typography, Paper, IconButton } from '@mui/material';
 import unlockaudio from "../../assets/audiofiles/unlockAudio.mp3";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
+
+/**
+ * This is the Unlock exercise component that is playable from Playsets.
+ * @author Ingvild, Jasmina
+ * @param {object} props
+ * @property {integer} id This is the id of the ryddeSetninger exercise being played.
+ * @property {function} showFeedback Tracks a user's score when playing an exercise in a set and
+ * which feedback case to show after finishing the exercise.
+ * @property {integer} progress Counts how many exercises the user has played.
+ * @property {integer} possible Total exercises in the set.
+ * @property {function} playAudio Returns a new HTMLAudioElement.
+ * @returns A Unlock exercise instance.
+ */
 const UnlockPad = ({
   id,
   showFeedback,
@@ -23,10 +32,6 @@ const UnlockPad = ({
   possible,
   playAudio
 }) => {
-
-  /**
-   * This is the unlock (Lås opp mobilen) exercise component
-   */
 
   const [correctSolution, setCorrectSolution] = useState("");
   // The word that is the correct solution
