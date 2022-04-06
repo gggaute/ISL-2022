@@ -13,8 +13,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     backgroundColor: 'lightcoral',
-    paddingTop: "4px",
-    paddingBottom: "4px",
+    paddingTop: "8px",
+    paddingBottom: "8px",
     paddingRight: "4px",
   },
   answerBtn: {
