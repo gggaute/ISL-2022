@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => {
         contentRow: {
             display: 'flex',
             flexDirection: 'column',
+            alignItems: "center",
             // border: '#7CA3EE 2px solid',
             margin: "auto",
             width: '90%',
@@ -44,11 +45,29 @@ const useStyles = makeStyles((theme) => {
             boxShadow: 'none',
             width: '10em',
         },
-        guess: {
+        guessRow: {
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-evenly',
-            margin: '10 auto',
+            justifyContent: "flex-end",
+            width: "90%",
+            marginBottom: "10px",
+            // border: "1px solid green",
+        },
+        guess: {
+            display: "flex",
+            justifyContent: "space-evenly",
+            width: "100%",
+            // border: "1px solid red",
+            marginTop: "3px",
+        },
+        guessP: {
+            marginRight: "5px",
+        },
+        backArrow: {
+            backgroundColor: "rgb(124, 163, 238)",
+            color: "white",
+            width: "30px",
+            height: "30px",
         },
         gridLetters: {
             display: 'grid',

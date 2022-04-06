@@ -6,9 +6,9 @@ import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import useStyles from "./styles";
 import Question from "../Question/Question";
-import './grid.css'
+import './general.css'
 import "./buttons.css";
-import { IconButton, Paper,Typography } from '@mui/material';
+import { IconButton, Paper, Typography } from '@mui/material';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 const UnlockPad = ({
@@ -71,7 +71,7 @@ const UnlockPad = ({
       .then((res) => {
         setCorrectSolution(res.data.correctSolution);
         setSolutionLength(res.data.correctSolution.length);
-    
+
         backendLetters.push(res.data.letter1);
         backendLetters.push(res.data.letter2);
         backendLetters.push(res.data.letter3);
@@ -81,14 +81,14 @@ const UnlockPad = ({
         backendLetters.push(res.data.letter7);
         backendLetters.push(res.data.letter8);
         backendLetters.push(res.data.letter9);
-        
+
         setLetters(backendLetters);
         setImg(res.data.solutionImage);
-      
+
       });
   }
 
-  
+
   /**
    * Function to check if @variable userAnswer is correct. 
    * Sets @variable feedback based on if the userAnswer is 
@@ -112,8 +112,8 @@ const UnlockPad = ({
     }
   }
 
- 
-  
+
+
   /**
    * Function to register letters from buttons into userAnswer and userAnswerList
    */
@@ -164,7 +164,7 @@ const UnlockPad = ({
 
   // Variable to present answerlist as individual p elements to present in the return section
   let itemList = answerList.map((item) => {
-    return <p>{item}</p>;
+    return <p className={classes.guessP}>{item}</p>;
   });
 
   // Runs function to check current state
@@ -198,20 +198,22 @@ const UnlockPad = ({
 
   return (
     <>
-      <NavBar/>
+      <NavBar />
       <Paper className={classes.root}>
         <div className={classes.progresscontainer}>
-        <h1 className={className.exerciseType}>Skriv ordet</h1>
+          <h1 className={className.exerciseType}>Skriv ordet</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <Question question={"Hva ser du på bildet? Stav ordet!"}></Question>
         <div id='content' className={classes.content}>
           <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
           <div className={classes.contentRow}>
-            <div className={classes.guess} id="guess">
-              {itemList}
-              <IconButton  disabled={setDisabled} onClick={removeLastLetter}>
-                <KeyboardBackspaceIcon variant="contained"/>
+            <div className={classes.guessRow}>
+              <div className={classes.guess} id="guess">
+                {itemList}
+              </div>
+              <IconButton variant="contained" color="primary" disabled={setDisabled} onClick={removeLastLetter} className={classes.backArrow} id="backArrow">
+                <KeyboardBackspaceIcon />
               </IconButton>
             </div>
             <div className={classes.gridLetters}>
@@ -229,9 +231,9 @@ const UnlockPad = ({
         </div>
         <div className={classes.feedbackAndReset}>
           {feedback === 'incorrect' && (
-          <Typography className={classes.explanation}>
-            Fasit: {correctSolution}
-          </Typography>
+            <Typography className={classes.explanation}>
+              Fasit: {correctSolution}
+            </Typography>
           )}
           <NextExerciseBtn
             answerState={feedback}
