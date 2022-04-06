@@ -8,9 +8,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '3px',
     marginRight: "4px",
     marginLeft: "4px",
-    // [theme.breakpoints.between('sm', 'xl')]: {
-    //   width: '60vw',
-    // },
   },
   link: {
     textDecoration: 'none',

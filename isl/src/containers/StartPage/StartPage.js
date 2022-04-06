@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
 import SetCard from "../../components/SetCard/SetCard";
-
 import NavBar from "../../components/NavBar/Navbar";
-import {
-  Paper,
-} from "@mui/material";
+import { Paper } from "@mui/material";
 import exerciseStyles from '../../components/exerciseStyle';
 
 
@@ -14,8 +10,9 @@ import exerciseStyles from '../../components/exerciseStyle';
  * @author Phajsi, Simen
  * @returns The user home page.
  */
+
 const StartPage = () => {
-  // Three lists that are updated with data from backend when the page renders.
+  // Two lists that are updated with data from backend when the page renders.
 
   // List of the users own sets.
   const [ExerciseSetList, setExerciseSetList] = useState([]);
@@ -24,23 +21,6 @@ const StartPage = () => {
   const classesBase = exerciseStyles();
   const classes = {...classesBase };
 
-  /*    function getContent() {
-    axios
-      .get(http://localhost:8000/api/sets, {
-        headers: {
-          'Content-Type': 'application/json',
-          accept: 'application/json',
-        },
-      }).then(
-        axios.spread((...res) => {
-          setExerciseSetList(res.data);
-        })
-      )
-      .catch((e) => {
-        return e;
-      });
-  }
-   */
   function getContent() {
     fetch('http://localhost:8000/api/sets')
       .then((response) => response.json())

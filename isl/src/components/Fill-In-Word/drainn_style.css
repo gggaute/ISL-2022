@@ -15,9 +15,7 @@ p {
 }
 
 .taskPBorder {
-  /* border: 1px solid darkgrey; */
   background-color: #BCD0F7;
-  /* Lysere farge */
   border-radius: 10%;
   padding: 0.3rem;
   min-width: 2rem;
@@ -35,9 +33,7 @@ p {
 }
 
 .wordContainer {
-  /* border: 2px solid #7CA3EE; */
   border-bottom: 1px solid #7CA3EE;
-  /* border-radius: 15%; */
   min-width: 2rem;
   min-height: 1.5rem;
   max-width: 6rem;
@@ -59,7 +55,6 @@ p {
 }
 
 .wordGrid {
-  /* max-width: 70%; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   

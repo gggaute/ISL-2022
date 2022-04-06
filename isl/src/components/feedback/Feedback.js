@@ -2,7 +2,6 @@ import React from "react";
 import { Paper, Typography, Button } from "@mui/material";
 import useStyles from "./styles";
 import NavBar from "../NavBar/Navbar";
-//Denne importen må endres etter strukturen blir endret
 import exerciseStyles from '../exerciseStyle';
 import ProgressBar from '../ProgressBar';
 import "./poengsum.css";

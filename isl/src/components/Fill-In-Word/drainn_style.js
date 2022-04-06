@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles((theme) => ({
-  /* PAGE-CONTENT */
+
   gameWrapper: {
     padding: '0.6rem',
     display: 'flex',
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     fontWeight: 'bolder',
   },
-  /* GAME-CONTENT */
+
   nextExerciseButtonDiv: {
     paddingTop: '-0.5rem',
   },

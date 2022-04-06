@@ -2,14 +2,12 @@ import React from 'react'
 import $ from "jquery"
 import { useEffect } from 'react'
 import './drainn_style.css'
-import useStyles from './drainn_style'
 import { Card } from '@mui/material';
 
 
 
 const Task = ({ sentence, onload, missingWord, missingWordIndex }) => {
-  const className = useStyles();
-
+  
   useEffect(() => {
     console.log(missingWordIndex);
   }, [])
