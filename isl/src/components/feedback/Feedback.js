@@ -30,7 +30,7 @@ const Feedback = ({
             <div className={classes.progresscontainer}>
               <ProgressBar progress={progress} possible={possible} />
             </div>
-            <Typography variant="h4" align="center" className={classes.text2}>
+            <Typography variant="h4" align="center" className={classes.text2} id="poengsumText">
                   Poengsummen din er
                   {` ${totalScore} `}
                   av totalt
@@ -65,12 +65,17 @@ const Feedback = ({
               </Typography>
           <Typography variant="h4" align="center" className={classes.text2} id="poengsumText">
                 Dine poeng: 
-                <div  className={classes.points}>
+              </Typography>
+
+              <Typography variant="h4" align="center" className={classes.text2} id="poengsum">
+              <div  className={classes.points}>
                 {` ${totalScore } ` }
                 /
                 {` ${totalExercises} `}
-                </div>
-              </Typography>
+                  </div>
+            </Typography>
+
+
 
               <div className={classes.btnParent}>
             <Button
