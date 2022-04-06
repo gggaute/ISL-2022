@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 import {
-  AppBar,
   Button,
-  Card,
   Grid,
-  CardContent,
   Typography,
-  Toolbar,
   Paper,
-  IconButton,
 } from '@mui/material';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import ChatBubble from '../ChatBubble/ChatBubble';
-import forsaudio from '../../assets/audiofiles/forstaelseVoice.mp3';
+import forsaudio from '../../assets/audiofiles/forstaelseAudio.mp3';
 import ProgressBar from '../ProgressBar';
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import axios from 'axios';
@@ -53,12 +47,17 @@ const Forstaelse = ({
   const [score, setScore] = useState(0);
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
+  
+  const [disabled, setDisabled] = useState(false);
+
   /* Objects that take both the component style and a common style between all
   exercises, to finally integrate both style objects into the classes object
   to be used in the component */
   const className = useStyles();
   const classesBase = exerciseStyles();
   const classes = { ...className, ...classesBase };
+
+  const question = 'Les hva meldingen sier. Svar på spørsmålet under.';
 
   // Gets the exercise content with {id} from backend.
   function getContent() {
@@ -95,7 +94,7 @@ const Forstaelse = ({
     showFeedback(score, totalPossibleScore);
   };
 
-  /*
+  
   function fireAudio() {
     setDisabled(true);
     playAudio(forsaudio);
@@ -103,7 +102,7 @@ const Forstaelse = ({
       setDisabled(false);
     }, 4000);
   }
-  */
+
 
   useEffect(() => {
     getContent();
@@ -117,23 +116,7 @@ const Forstaelse = ({
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-            {/*<IconButton
-              onClick={() => fireAudio()}
-              disabled={disabled}
-              data-testid="volumeForstaelse"
-            >
-              <VolumeUpIcon />
-            </IconButton>
-            */}
-        {/* <Typography
-          variant="body2"
-          component="p"
-          className={classes.audiotext}
-        >
-          Les hva meldingen sier. Svar på spørsmålet. */}
-        {/* </Typography> */}
-
-       <Question question={'Les hva meldingen sier. Svar på spørsmålet.'}/>
+       <Question question={question} fireAudio = {fireAudio} disabled={disabled} />
 
         {/* </CardContent>
           </Card>

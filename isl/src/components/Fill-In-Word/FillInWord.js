@@ -4,22 +4,20 @@ import Task from "./Task";
 import Words from "./Words";
 import { useState } from "react";
 import CheckAnswer from "./CheckAnswer";
-import FeedbackBox from "../feedback/Feedback";
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import $ from "jquery";
-import { FcPrevious, FcNext } from "react-icons/fc";
 import axios from "axios";
 import { useEffect } from "react";
 import ProgressBar from '../ProgressBar';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
-import ContentHeader from "../ContentHeader/ContentHeader";
 import useStyles from "./drainn_style";
 import './drainn_style.css'
 import {
   Paper,
   Typography,
 } from '@mui/material';
+import fillaudio from "../../assets/audiofiles/fillInnAudio.mp3";
 
 
 const ExerciseContainer = ({
@@ -27,7 +25,7 @@ const ExerciseContainer = ({
   showFeedback,
   progress,
   possible,
-  nextExercise,
+  playAudio,
 }) => {
   const [answerState, setAnswerState] = useState(null);
   let backendSentence = []
@@ -42,6 +40,8 @@ const ExerciseContainer = ({
   const className = useStyles()
   const classesBase = exerciseStyles();
   const classes = {...className,  ...classesBase };
+
+  const [audioDisabled, setAudioDisabled] = useState(false);
 
 
   useEffect(() => {
@@ -148,7 +148,7 @@ const ExerciseContainer = ({
     console.log(answer);
   };
 
-  const question = "Hvilket ord mangler?";
+  const question = "Trykk på ordet som mangler i setningen.";
 
   const [missingWord, setMissingWord] = useState("");
 
@@ -159,17 +159,22 @@ const ExerciseContainer = ({
     showFeedback(score, totalPossibleScore);
   };
 
+  function fireAudio() {
+    setAudioDisabled(true);
+    playAudio(fillaudio);
+    setTimeout(() => {
+      setAudioDisabled(false);
+    }, 4000);
+  }
   return (
     <>
       <NavBar></NavBar>
       <Paper className={classes.root}>
-      {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <div className={className.gameWrapper}>
-          {/* <p>{answer}</p> */}
-          <Question question={question}></Question>
+          <Question question={question} fireAudio={fireAudio} disabled={audioDisabled}></Question>
           <Task
             missingWord={missingWord}
             onload={onload}
