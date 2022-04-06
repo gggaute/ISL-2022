@@ -10,19 +10,18 @@ const useStyles = makeStyles((theme) => ({
   cardLeft: {
     maxWidth: "1000px",
     display: 'inline-block',
-    paddingLeft: "16px",
-    paddingRight: "16px",
+    padding: "12px",
   },
   cardRight: {
     maxWidth: "1000px",
     display: 'inline-block',
-    paddingLeft: "16px",
-    paddingRight: "16px",
+    padding: "12px",
     backgroundColor: 'lightBlue',
   },
   avatarLarge: {
-    width: "64px",
-    height: "64px",
+    width: "55px",
+    height: "55px",
+    margin: "5px",
   },
   text: {
     margin: '6px 0px 6px 0px',

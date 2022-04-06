@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     flex: '1',
     margin: 'auto',
     width: '50%',
-    paddingRight: "6px",
+    paddingRight: "8px",
     paddingLeft: "8px",
   },
   icons: {
