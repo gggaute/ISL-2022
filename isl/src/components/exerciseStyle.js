@@ -60,6 +60,7 @@ const exerciseStyles = makeStyles((theme) => ({
     marginBottom: "5px",
     margin: "0 15px",
     maxWidth: '70%',
+    display: 'flex',
   },
 }));
 
