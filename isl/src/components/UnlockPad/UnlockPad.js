@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-
-// import SingleLetter from './singleLetter';
-// import Button from "@mui/material/Button";
 import axios from "axios"
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import ProgressBar from '../ProgressBar';
@@ -9,9 +6,10 @@ import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import useStyles from "./styles";
 import Question from "../Question/Question";
-import ContentHeader from "../ContentHeader/ContentHeader";
+import './grid.css'
 import "./buttons.css";
-import { Paper } from '@mui/material';
+import { IconButton, Paper,Typography } from '@mui/material';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 const UnlockPad = ({
   id,
@@ -20,20 +18,48 @@ const UnlockPad = ({
   possible
 }) => {
 
-  let setDisabled = false
-  // const [answerstate, setAnswerstate] = useState(null);
-  const [correctSolution, setCorrectSolution] = useState("");
-  const [userAnswer, setUserAnswer] = useState("");
-  const [solutionLength, setSolutionLength] = useState(0);
-  const backendLetters = []
-  const [letters, setLetters] = useState([]);
-  const [image, setImg] = useState(null)
-  let isFinished = false;
+  /**
+   * This is the unlock (Lås opp mobilen) exercise component
+   */
 
+  const [correctSolution, setCorrectSolution] = useState("");
+  // The word that is the correct solution
+  const [solutionLength, setSolutionLength] = useState(0);
+  // The length of the correct word
+  const [userAnswer, setUserAnswer] = useState("");
+  // The letters joined together as a word that the player guesses
+  const backendLetters = []
+  // List of letters for letters from backend
+  const [letters, setLetters] = useState([]);
+  // List of letters for the letter buttons in numpad
+  const [image, setImg] = useState(null)
+  // Image of correct solution
+  let isFinished = false;
+  // Boolean for if a correct or incorrect answer is given
+  let setDisabled = false
+  // Boolean to set buttons disabled property
+  let feedback
+  // String variable to fill with type of content to trigger correct response in NextExerciseBtn
+  let count = 0;
+  // Int for numpad button css to give each button an indivial id with increasing value
+  const [userAnswerList, setUserAnswerList] = useState([]);
+  // List containting letters from the userAnswer, used to present answer in Answerlist
+  const answerList = [];
+  // List containing blank spaces and guessed letters. Should have equal length to correctSolution length
+
+  /* Objects that take both the component style and a common style between all
+  exercises, to finally integrate both style objects into the classes object
+  to be used in the component */
   const className = useStyles();
   const classesBase = exerciseStyles();
   const classes = { ...className, ...classesBase };
 
+  /**
+   * Funciton to fetch content from database
+   * Sets @variable backendLetters to contain the letters from database,
+   * then sets letters to contain content from backendLetters, and
+   * sets Image to fetched image from database
+   */
   function getContent() {
     axios
       .get(`http://localhost:8000/api/unlock/${id}`, {
@@ -45,7 +71,7 @@ const UnlockPad = ({
       .then((res) => {
         setCorrectSolution(res.data.correctSolution);
         setSolutionLength(res.data.correctSolution.length);
-        //forloop av slag for å iterere gjennom letters og legge de til i "letters"
+    
         backendLetters.push(res.data.letter1);
         backendLetters.push(res.data.letter2);
         backendLetters.push(res.data.letter3);
@@ -55,37 +81,42 @@ const UnlockPad = ({
         backendLetters.push(res.data.letter7);
         backendLetters.push(res.data.letter8);
         backendLetters.push(res.data.letter9);
+        
         setLetters(backendLetters);
         setImg(res.data.solutionImage);
-        console.log(res.data.solutionImage)
+      
       });
   }
 
-  let tilbakemelding
-
+  
+  /**
+   * Function to check if @variable userAnswer is correct. 
+   * Sets @variable feedback based on if the userAnswer is 
+   * the same as @variable correctSolution.
+   * If @variable userAnswer is equal in length to @variable correctSolution 
+   * then @variable isFinished is set to true regardless if the answer is correct
+   * If userAnswer is correct, then buttons disable @variable is set to true
+   */
   function checkAnswer() {
     if (userAnswer.length === solutionLength) {
       if (userAnswer === correctSolution) {
-        tilbakemelding = "correct"
-        // setAnswerstate('correct')
+        feedback = "correct"
       }
       else {
-        tilbakemelding = "incorrect"
-        // setAnswerstate('incorrect')
+        feedback = "incorrect"
       }
       isFinished = true
-      console.log(correctSolution, solutionLength)
     }
     if (isFinished) {
       setDisabled = true
     }
   }
 
-  //count for id til css, vet ikke om det funker
-  let count = 0;
-
-  const [userAnswerList, setUserAnswerList] = useState([]);
-
+ 
+  
+  /**
+   * Function to register letters from buttons into userAnswer and userAnswerList
+   */
   function registerLetterinAnswer(buttonLetter) {
     if (userAnswer.length < solutionLength) {
       setUserAnswer(userAnswer + buttonLetter);
@@ -93,40 +124,67 @@ const UnlockPad = ({
     }
   }
 
-  const answerList = [];
+  /**
+   * Function to present the letters from userAnswer list to answerList containing the guessed letters 
+   * and adding the correct amount of blank spaces to present the correct solution length
+   */
   function presentAnswer() {
     for (let i = 0; i <= userAnswerList.length; i++) {
       answerList.push(userAnswerList[i]);
     }
     answerList.pop();
-    // console.log(answerList);
+
     if (answerList.length < solutionLength) {
       for (let i = answerList.length; i < solutionLength; i++) {
         answerList.push("_");
       }
     }
-    // console.log(answerList);
   }
 
+  /**
+   * Function to "backspace" or remove the last guessed letter
+   */
+  function removeLastLetter() {
+    if (userAnswer.length === 1 || userAnswer.length < 1) {
+      setUserAnswer("")
+      setUserAnswerList([])
+      presentAnswer()
+    }
+    for (let x = 0; x < userAnswer.length; x++) {
+      answerList.pop()
+    }
+    userAnswerList.pop()
+    answerList.pop()
+    let tempAnswer = userAnswer.substring(0, userAnswer.length - 1)
+    setUserAnswer(tempAnswer)
+  }
+
+  // Runs the function to present saved values to current state
   presentAnswer();
 
-  let itemList = answerList.map((item, index) => {
+  // Variable to present answerlist as individual p elements to present in the return section
+  let itemList = answerList.map((item) => {
     return <p>{item}</p>;
   });
 
-  function handleEvent(event) {
-    event.target.disabled = true
-  }
-
+  // Runs function to check current state
   checkAnswer()
 
+  /**
+   * Function to set count variable
+   * @returns String containing numpadID and currenct count int as string, to use as id for letter buttons
+   */
   function setButtonID() {
     count++
     return "numpadButton" + count.toString()
   }
 
+  /**
+   * Function to take the parent state to the next step, which is feedback
+   * Gives an amount of points to show during the feeback step; 1 if the answer was correct, 0 if incorrect.
+   */
   const handleNextTask = () => {
-    if (tilbakemelding === 'correct') {
+    if (feedback === 'correct') {
       showFeedback(1, 1);
     } else {
       showFeedback(0, 1);
@@ -140,23 +198,26 @@ const UnlockPad = ({
 
   return (
     <>
-      <NavBar></NavBar>
+      <NavBar/>
       <Paper className={classes.root}>
-        {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
         <h1 className={className.exerciseType}>Skriv ordet</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <Question question={"Hva ser du på bildet? Stav ordet!"}></Question>
-        <div className={classes.content}>
+        <div id='content'>
           <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
           <div className={classes.contentRow}>
-            <div className={classes.guess}>{itemList}</div>
+            <div className={classes.guess} id="guess">
+              {itemList}
+              <IconButton  disabled={setDisabled} onClick={removeLastLetter}>
+                <KeyboardBackspaceIcon variant="contained"/>
+              </IconButton>
+            </div>
             <div className={classes.gridLetters}>
               {letters.map((letter, count) => (
                 <>
-                  <button id={setButtonID()} key={count} disabled={setDisabled} onClick={(event) => {
-                    handleEvent(event)
+                  <button id={setButtonID()} key={count} disabled={setDisabled} onClick={() => {
                     registerLetterinAnswer(letter)
                   }}>
                     {letter.toUpperCase()} </button>
@@ -167,13 +228,15 @@ const UnlockPad = ({
           </div>
         </div>
         <div className={classes.feedbackAndReset}>
-          {/* Her kan det heller puttes tilbakemeldingskomponent hvis det passer bedre */}
-          {/* <h1>{feedback}</h1> */}
+          {feedback === 'incorrect' && (
+          <Typography className={classes.explanation}>
+            Fasit: {correctSolution}
+          </Typography>
+          )}
           <NextExerciseBtn
-            answerState={tilbakemelding}
+            answerState={feedback}
             handleNextTask={handleNextTask}
           />
-
         </div>
       </Paper>
     </>
