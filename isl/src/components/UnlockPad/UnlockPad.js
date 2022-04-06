@@ -8,14 +8,20 @@ import useStyles from "./styles";
 import Question from "../Question/Question";
 import './general.css'
 import "./buttons.css";
-import { IconButton, Paper, Typography } from '@mui/material';
+import { 
+  Typography,
+  Paper,
+  IconButton,
+ } from '@mui/material';
+import unlockaudio from "../../assets/audiofiles/unlockAudio.mp3";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 const UnlockPad = ({
   id,
   showFeedback,
   progress,
-  possible
+  possible,
+  playAudio
 }) => {
 
   /**
@@ -54,6 +60,9 @@ const UnlockPad = ({
   const classesBase = exerciseStyles();
   const classes = { ...className, ...classesBase };
 
+  const [audioDisabled, setAudioDisabled] = useState(false);
+
+  const question = "Hva ser du på bildet? Skriv ordet!";
   /**
    * Funciton to fetch content from database
    * Sets @variable backendLetters to contain the letters from database,
@@ -196,6 +205,14 @@ const UnlockPad = ({
     getContent()
   }, [])
 
+  function fireAudio() {
+    setAudioDisabled(true);
+    playAudio(unlockaudio);
+    setTimeout(() => {
+      setAudioDisabled(false);
+    }, 4000);
+  }
+
   return (
     <>
       <NavBar />
@@ -204,7 +221,7 @@ const UnlockPad = ({
           <h1 className={className.exerciseType}>Skriv ordet</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Question question={"Hva ser du på bildet? Stav ordet!"}></Question>
+        <Question question={question} fireAudio = {fireAudio} disabeld = {audioDisabled}></Question>
         <div id='content' className={classes.content}>
           <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
           <div className={classes.contentRow}>

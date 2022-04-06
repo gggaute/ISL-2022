@@ -1,24 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import {
-  AppBar,
-  Card,
-  CardContent,
   Typography,
   Grid,
-  Toolbar,
   Paper,
   Button,
-  IconButton,
 } from "@mui/material";
-import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import ryddaudio from "../../assets/audiofiles/ryddeSetningerVoice.mp3";
+import ryddaudio from "../../assets/audiofiles/ryddeAudio.mp3";
 import ProgressBar from "../ProgressBar";
 import NextExerciseBtn from "../NextExerciseBtn/NextExerciseBtn";
 import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
-import ContentHeader from "../ContentHeader/ContentHeader";
 import Question from "../Question/Question";
 
 
@@ -63,6 +56,8 @@ const RyddeSetninger = ({
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
   const [disabled, setDisabled] = useState(false);
+
+  const question = "Trykk på ordene for å skrive setningen i riktig rekkefølge.";
 
   /* Objects that take both the component style and a common style between all
   exercises, to finally integrate both style objects into the classes object
@@ -210,15 +205,15 @@ const RyddeSetninger = ({
     showFeedback(score, totalPossibleScore);
   };
 
-  /*
+  
   function fireAudio() {
     setDisabled(true);
     playAudio(ryddaudio);
     setTimeout(() => {
       setDisabled(false);
-    }, 6000);
+    }, 5000);
   }
-  */
+  
 
   useEffect(() => {
     getContent();
@@ -228,22 +223,11 @@ const RyddeSetninger = ({
     <>
       <NavBar></NavBar>
       <Paper className={classes.root}>
-      {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
           <h1 className={className.exerciseType}>Rydd setningen</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-           {/* <IconButton
-              onClick={() => fireAudio()}
-              disabled={disabled}
-              data-testid="volumeRyddeSetninger"
-            >
-              <VolumeUpIcon />
-            </IconButton> */}
-        <Question question={"Trykk på ordene sånn at de kommer i riktig rekkefølge. Husk å sjekke tegnsettingen!"}></Question>
-        {/* </CardContent>
-          </Card>
-        </div> */}
+        <Question question={question} fireAudio = {fireAudio} disabled = {disabled}></Question>
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={1}>
             <Grid item xs={12}>

@@ -17,6 +17,7 @@ import {
   Paper,
   Typography,
 } from '@mui/material';
+import fillaudio from "../../assets/audiofiles/fillInnAudio.mp3";
 
 
 const ExerciseContainer = ({
@@ -24,7 +25,7 @@ const ExerciseContainer = ({
   showFeedback,
   progress,
   possible,
-  nextExercise,
+  playAudio,
 }) => {
   const [answerState, setAnswerState] = useState(null);
   let backendSentence = []
@@ -39,6 +40,8 @@ const ExerciseContainer = ({
   const className = useStyles()
   const classesBase = exerciseStyles();
   const classes = { ...className, ...classesBase };
+
+  const [audioDisabled, setAudioDisabled] = useState(false);
 
 
   useEffect(() => {
@@ -131,7 +134,7 @@ const ExerciseContainer = ({
     setDisabled(true);
   };
 
-  const question = "Hvilket ord mangler?";
+  const question = "Trykk på ordet som mangler i setningen.";
 
   const [missingWord, setMissingWord] = useState("");
 
@@ -142,6 +145,13 @@ const ExerciseContainer = ({
     showFeedback(score, totalPossibleScore);
   };
 
+  function fireAudio() {
+    setAudioDisabled(true);
+    playAudio(fillaudio);
+    setTimeout(() => {
+      setAudioDisabled(false);
+    }, 4000);
+  }
   return (
     <>
       <NavBar></NavBar>
@@ -151,7 +161,7 @@ const ExerciseContainer = ({
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <div className={className.gameWrapper}>
-          <Question question={question}></Question>
+          <Question question={question} fireAudio={fireAudio} disabled={audioDisabled}></Question>
           <Task
             missingWord={missingWord}
             onload={onload}
