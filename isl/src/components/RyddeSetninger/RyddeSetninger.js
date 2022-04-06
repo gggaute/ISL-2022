@@ -139,7 +139,7 @@ const RyddeSetninger = ({
 
   function getContent() {
     axios
-      .get(`http://localhost:8000/api/rydde_setninger/${id}`, {
+      .get(`/api/rydde_setninger/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           accept: 'application/json',

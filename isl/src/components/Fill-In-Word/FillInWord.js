@@ -50,7 +50,7 @@ const ExerciseContainer = ({
 
   function getContent() {
     axios
-      .get(`http://localhost:8000/api/draInnManglendeOrd/${id}`, {
+      .get(`/api/draInnManglendeOrd/${id}`, {
         headers: {
           "Content-Type": "application/json",
           accept: "application/json",

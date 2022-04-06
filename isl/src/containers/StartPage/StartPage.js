@@ -6,6 +6,7 @@ import {
   Paper,
 } from "@mui/material";
 import exerciseStyles from '../../components/exerciseStyle';
+import axios from 'axios';
 
 
 /*
@@ -22,23 +23,22 @@ const StartPage = () => {
   const classesBase = exerciseStyles();
   const classes = {...classesBase };
 
-  /*    function getContent() {
+  function getContent() {
     axios
-      .get(http://localhost:8000/api/sets, {
+      .get(`/api/sets`, {
         headers: {
           'Content-Type': 'application/json',
           accept: 'application/json',
         },
-      }).then(
-        axios.spread((...res) => {
+      }).then((res) => {
           setExerciseSetList(res.data);
         })
-      )
       .catch((e) => {
         return e;
       });
   }
-   */
+  
+  /*
   function getContent() {
     fetch('http://localhost:8000/api/sets')
       .then((response) => response.json())
@@ -47,6 +47,7 @@ const StartPage = () => {
         return e;
       });
   }
+  */
 
   // Only runs once when the page renders and gets the necessary content from backend.
   useEffect(() => {

@@ -104,7 +104,7 @@ const Chat = ({
 
   function getContent() {
     axios
-      .get(`http://localhost:8000/api/chat/${id}`, {
+      .get(`/api/chat/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           accept: 'application/json',
