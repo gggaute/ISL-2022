@@ -165,6 +165,7 @@ const Chat = ({
           key={index}
           style={{ marginTop: 3, borderRadius: '25px' }}
           onClick={() => handleAnswer(chats)}
+          data-cy="chat-answer-button"
         >
           {chats}
         </Button>
