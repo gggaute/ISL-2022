@@ -139,7 +139,7 @@ const RyddeSetninger = ({
 
   function getContent() {
     axios
-      .get(`http://localhost:8000/api/rydde_setninger/${id}`, {
+      .get(`/api/rydde_setninger/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           accept: 'application/json',
@@ -227,7 +227,7 @@ const RyddeSetninger = ({
           <h1 className={className.exerciseType}>Rydd setningen</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Question question={question} fireAudio = {fireAudio} disabled = {disabled}></Question>
+        <Question question={question} fireAudio={fireAudio} disabled={disabled}></Question>
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={1}>
             <Grid item xs={12}>

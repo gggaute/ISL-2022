@@ -72,7 +72,7 @@ const UnlockPad = ({
    */
   function getContent() {
     axios
-      .get(`http://localhost:8000/api/unlock/${id}`, {
+      .get(`/api/unlock/${id}`, {
         headers: {
           "Content-Type": "application/json",
           accept: "application/json",

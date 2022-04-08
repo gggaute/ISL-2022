@@ -79,7 +79,7 @@ const PlaySets = () => {
 
   function getContent(id) {
     axios
-      .get(`http://localhost:8000/api/sets/${id}`, {
+      .get(`/api/sets/${id}`, {
         headers: {
           "Content-Type": "application/json",
           accept: "application/json",

@@ -62,7 +62,7 @@ const Forstaelse = ({
   // Gets the exercise content with {id} from backend.
   function getContent() {
     axios
-      .get(`http://localhost:8000/api/forstaelse/${id}`, {
+      .get(`/api/forstaelse/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           accept: 'application/json',
@@ -117,7 +117,7 @@ const Forstaelse = ({
           <h1 className={className.exerciseType}>Forståelse</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-       <Question question={question} fireAudio = {fireAudio} disabled={disabled} />
+       <Question question={question} fireAudio={fireAudio} disabled={disabled} />
 
         {/* </CardContent>
           </Card>
