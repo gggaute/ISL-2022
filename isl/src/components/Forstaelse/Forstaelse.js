@@ -7,7 +7,6 @@ import {
   Paper,
 } from '@mui/material';
 import ChatBubble from '../ChatBubble/ChatBubble';
-import forsaudio from '../../assets/audiofiles/forstaelseAudio.mp3';
 import ProgressBar from '../ProgressBar';
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import axios from 'axios';
@@ -15,6 +14,7 @@ import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import Question from '../Question/Question';
+import forsaudio from '../../assets/audiofiles/forstaelseAudio.mp3';
 
 /**
  * This is the forstaelse exercise component that is playable from Playsets.
@@ -48,7 +48,7 @@ const Forstaelse = ({
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
   
-  const [disabled, setDisabled] = useState(false);
+  //const [disabled, setDisabled] = useState(false);
 
   /* Objects that take both the component style and a common style between all
   exercises, to finally integrate both style objects into the classes object
@@ -94,14 +94,14 @@ const Forstaelse = ({
     showFeedback(score, totalPossibleScore);
   };
 
-  
+/*   
   function fireAudio() {
     setDisabled(true);
     playAudio(forsaudio);
     setTimeout(() => {
       setDisabled(false);
     }, 4000);
-  }
+  } */
 
 
   useEffect(() => {
@@ -116,7 +116,7 @@ const Forstaelse = ({
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-       <Question question={question} fireAudio = {fireAudio} disabled={disabled} />
+       <Question question={question} audio = {forsaudio} playAudio = {playAudio} />
 
         {/* </CardContent>
           </Card>

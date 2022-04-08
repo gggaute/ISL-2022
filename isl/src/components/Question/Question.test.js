@@ -15,17 +15,16 @@ test('audio play should play once after click and be disabled', async () => {
     await act(async () =>
       render(
         <Router>
-          <Question fireAudio={() => <></>} />
+          <Question playAudio={() => <></>} />
         </Router>
       )
     );
-    const button = screen.getByTestId('volume');
+    const button = screen.getByRole('button', {
+        name: /volum/i
+      })
 
-    expect(button).toHaveProperty("disabled", false);
     fireEvent.click(button);
-
-    expect(setTimeout).toHaveBeenCalledTimes(1);
-    //expect(button).toHaveProperty("disabled", true);
-    //expect(setTimeout).toHaveBeenLastCalledWith(4000);
+    expect(button).toHaveProperty("disabled", true);
+    expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 5000);
   });
 

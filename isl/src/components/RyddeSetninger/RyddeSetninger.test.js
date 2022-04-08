@@ -196,29 +196,5 @@ describe('RyddeSetninger component', () => {
         expect(screen.getByText('bordet')).toBeVisible();
         expect(screen.getByText('Riktig!')).toBeVisible();
       });
-      
-    test('Audio play should play once after click and be disabled', async () => {
-        axios.get.mockResolvedValue({ data: {} });
-
-        await act(async () =>
-        render(
-            <Router>
-            <RyddeSetninger
-                id={5}
-                playAudio={() => <></>}
-                restartSet={() => <></>}
-            />
-            </Router>
-        )
-        );
-        const button = screen.getByTestId('volumeRyddeSetninger');
-        fireEvent.click(button);
-
-        expect(setTimeout).toHaveBeenCalledTimes(1);
-        expect(button).toBeDisabled();
-        expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 6000);
-    });
-
-    
 });
 

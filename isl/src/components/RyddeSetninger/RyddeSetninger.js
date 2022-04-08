@@ -55,7 +55,7 @@ const RyddeSetninger = ({
   const [score, setScore] = useState(0);
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
-  const [disabled, setDisabled] = useState(false);
+  //const [disabled, setDisabled] = useState(false);
 
   const question = "Trykk på ordene for å skrive setningen i riktig rekkefølge.";
 
@@ -205,14 +205,14 @@ const RyddeSetninger = ({
     showFeedback(score, totalPossibleScore);
   };
 
-  
+/*   
   function fireAudio() {
     setDisabled(true);
     playAudio(ryddaudio);
     setTimeout(() => {
       setDisabled(false);
     }, 5000);
-  }
+  } */
   
 
   useEffect(() => {
@@ -226,7 +226,7 @@ const RyddeSetninger = ({
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Question question={question} fireAudio = {fireAudio} disabled = {disabled}></Question>
+        <Question question={question} audio = {ryddaudio} playAudio = {playAudio} ></Question>
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={1}>
             <Grid item xs={12}>

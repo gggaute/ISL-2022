@@ -59,7 +59,7 @@ const UnlockPad = ({
   const classesBase = exerciseStyles();
   const classes = { ...className, ...classesBase };
 
-  const [audioDisabled, setAudioDisabled] = useState(false);
+  //const [audioDisabled, setAudioDisabled] = useState(false);
 
   const question = "Hva ser du på bildet? Skriv ordet!";
   /**
@@ -204,13 +204,13 @@ const UnlockPad = ({
     getContent()
   }, [])
 
-  function fireAudio() {
+/*   function fireAudio() {
     setAudioDisabled(true);
     playAudio(unlockaudio);
     setTimeout(() => {
       setAudioDisabled(false);
     }, 4000);
-  }
+  } */
 
   return (
     <>
@@ -219,7 +219,7 @@ const UnlockPad = ({
         <div className={classes.progresscontainer}>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Question question={question} fireAudio = {fireAudio} disabeld = {audioDisabled}></Question>
+        <Question question={question} audio = {unlockaudio} playAudio = {playAudio} ></Question>
         <div className={classes.content}>
           <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
           <div className={classes.contentRow}>

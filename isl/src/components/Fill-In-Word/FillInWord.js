@@ -41,8 +41,6 @@ const ExerciseContainer = ({
   const classesBase = exerciseStyles();
   const classes = {...className,  ...classesBase };
 
-  const [audioDisabled, setAudioDisabled] = useState(false);
-
 
   useEffect(() => {
     getContent()
@@ -159,13 +157,14 @@ const ExerciseContainer = ({
     showFeedback(score, totalPossibleScore);
   };
 
-  function fireAudio() {
+/*   function fireAudio() {
     setAudioDisabled(true);
     playAudio(fillaudio);
     setTimeout(() => {
       setAudioDisabled(false);
     }, 4000);
-  }
+  } */
+
   return (
     <>
       <NavBar></NavBar>
@@ -174,7 +173,7 @@ const ExerciseContainer = ({
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <div className={className.gameWrapper}>
-          <Question question={question} fireAudio={fireAudio} disabled={audioDisabled}></Question>
+          <Question question={question} audio = {fillaudio} playAudio = {playAudio}></Question>
           <Task
             missingWord={missingWord}
             onload={onload}
