@@ -1,0 +1,18 @@
+@media only screen and (max-width: 650px) {
+    #rootPaper {
+        margin: auto;
+        min-width: 88%;
+        margin-top: 20px;
+    }
+   
+}
+
+@media only screen and (max-width: 450px) {
+    #rootPaper {
+        margin: auto;
+        min-width: 94%;
+        margin-top: 10px;
+    }
+    
+}
+

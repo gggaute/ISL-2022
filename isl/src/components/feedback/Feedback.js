@@ -6,6 +6,7 @@ import NavBar from "../NavBar/Navbar";
 import exerciseStyles from '../exerciseStyle';
 import ProgressBar from '../ProgressBar';
 import "./poengsum.css";
+import "../exerciseStyle.css";
 
 
 const Feedback = ({
@@ -26,7 +27,7 @@ const Feedback = ({
       return (
         <>
           <NavBar></NavBar>
-          <Paper className={classes.root}>
+          <Paper className={classes.root} id="rootPaper">
             <div className={classes.progresscontainer}>
               <ProgressBar progress={progress} possible={possible} />
             </div>
@@ -55,7 +56,7 @@ const Feedback = ({
       return (
         <>
           <NavBar></NavBar>
-          <Paper className={classes.root}>
+          <Paper className={classes.root} id="rootPaper">
           <div className={classes.progresscontainer}>
             <ProgressBar progress={2} possible={1} />
           </div>
@@ -92,7 +93,7 @@ const Feedback = ({
       );
     default:
       return (
-        <Paper className={classes.root}>
+        <Paper className={classes.root} id="rootPaper">
           <div>
             <Typography variant="h3">Noe gikk galt</Typography>
           </div>

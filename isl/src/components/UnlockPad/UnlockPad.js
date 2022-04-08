@@ -16,6 +16,7 @@ import {
 } from '@mui/material';
 import unlockaudio from "../../assets/audiofiles/unlockAudio.mp3";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import "../exerciseStyle.css";
 
 const UnlockPad = ({
   id,
@@ -217,7 +218,7 @@ const UnlockPad = ({
   return (
     <>
       <NavBar />
-      <Paper className={classes.root}>
+      <Paper className={classes.root} id="rootPaper">
         <div className={classes.progresscontainer}>
           <h1 className={className.exerciseType}>Skriv ordet</h1>
           <ProgressBar progress={progress} possible={possible} />

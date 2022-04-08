@@ -22,6 +22,7 @@ import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import Question from '../Question/Question';
+import "../exerciseStyle.css";
 
 
 /**
@@ -181,7 +182,7 @@ const Chat = ({
   return (
     <>
       <NavBar></NavBar>
-      <Paper className={classes.root}>
+      <Paper className={classes.root} id="rootPaper">
       {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
           <h1 className={className.exerciseType}>CHAT</h1>

@@ -19,7 +19,7 @@ import {
   Grid,
 } from '@mui/material';
 import fillaudio from "../../assets/audiofiles/fillInnAudio.mp3";
-
+import "../exerciseStyle.css";
 
 const ExerciseContainer = ({
   id,
@@ -156,7 +156,7 @@ const ExerciseContainer = ({
   return (
     <>
       <NavBar></NavBar>
-      <Paper className={classes.root}>
+      <Paper className={classes.root} id="rootPaper">
         <div className={classes.progresscontainer}>
           <h1 className={className.exerciseType}>Fyll inn manglende ord</h1>
           <ProgressBar progress={progress} possible={possible} />

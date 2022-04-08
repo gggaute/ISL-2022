@@ -15,6 +15,7 @@ import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import Question from '../Question/Question';
+import "../exerciseStyle.css";
 
 /**
  * This is the forstaelse exercise component that is playable from Playsets.
@@ -111,7 +112,7 @@ const Forstaelse = ({
   return (
     <>
       <NavBar></NavBar>
-      <Paper className={classes.root}>
+      <Paper className={classes.root} id="rootPaper">
       {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
           <h1 className={className.exerciseType}>Forståelse</h1>

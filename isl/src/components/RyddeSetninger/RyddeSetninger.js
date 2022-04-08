@@ -13,6 +13,8 @@ import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import Question from "../Question/Question";
+import "../exerciseStyle.css";
+
 
 
 
@@ -205,7 +207,7 @@ const RyddeSetninger = ({
     showFeedback(score, totalPossibleScore);
   };
 
-  
+
   function fireAudio() {
     setDisabled(true);
     playAudio(ryddaudio);
@@ -213,7 +215,7 @@ const RyddeSetninger = ({
       setDisabled(false);
     }, 5000);
   }
-  
+
 
   useEffect(() => {
     getContent();
@@ -222,9 +224,9 @@ const RyddeSetninger = ({
   return (
     <>
       <NavBar></NavBar>
-      <Paper className={classes.root}>
+      <Paper className={classes.root} id="rootPaper">
         <div className={classes.progresscontainer}>
-          <h1 className={className.exerciseType}>Rydd setningen</h1>
+          <h1 className={classes.exerciseType}>Rydd setningen</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <Question question={question} fireAudio={fireAudio} disabled={disabled}></Question>
@@ -266,20 +268,18 @@ const RyddeSetninger = ({
                 ))}
               </div>
             </Grid>
-            <Grid item xs={6} />
-            <Grid item xs={6}>
+            <Grid item xs={12} className={classes.checkAnswerBtn}>
               <Button
                 variant="contained"
                 disabled={disableButton}
                 onClick={checkAnswer}
-                className={classes.checkAnswerBtn}
               >
                 Sjekk svar
               </Button>
             </Grid>
             {answerState === 'incorrect' && (
               <Typography className={classes.explanation}>
-                <strong>Fasit: </strong>{rightAnswer.map(function (e, i) { return [words[i] + " "];})}
+                <strong>Fasit: </strong>{rightAnswer.map(function (e, i) { return [words[i] + " "]; })}
               </Typography>
             )}
             <NextExerciseBtn
