@@ -279,7 +279,7 @@ const RyddeSetninger = ({
             </Grid>
             {answerState === 'incorrect' && (
               <Typography className={classes.explanation}>
-               Fasit: {rightAnswer.map(function (e, i) { return [words[i] + " "];})}
+                <strong>Fasit: </strong>{rightAnswer.map(function (e, i) { return [words[i] + " "];})}
               </Typography>
             )}
             <NextExerciseBtn

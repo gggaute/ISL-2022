@@ -21,6 +21,7 @@ const exerciseStyles = makeStyles((theme) => ({
     padding: "28px",
     overflow: 'hidden',
     overflowY: 'auto',
+    // border: "1px solid red",
   },
   navbar: {
     margin: 0,
@@ -61,6 +62,12 @@ const exerciseStyles = makeStyles((theme) => ({
   questionLine: {
     borderTop: "1px solid #7CA3EE",
     margin: "5px 14px",
+  },
+  explanation: {
+    // color: "red",
+    // border: "1px solid green",
+    width: "70%",
+    margin: "30px",
   },
 }));
 

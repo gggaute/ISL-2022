@@ -124,3 +124,51 @@
     width: 3.5em;
     justify-self: center;
 }
+
+@media only screen and (max-width: 750px) {
+
+    #numpadButton1 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+
+    #numpadButton2 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+
+    #numpadButton3 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+
+    #numpadButton4 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+
+    #numpadButton5 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+
+    #numpadButton6 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+    
+    #numpadButton7 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+
+    #numpadButton8 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+    
+    #numpadButton9 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+}

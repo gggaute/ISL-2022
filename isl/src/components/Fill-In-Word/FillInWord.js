@@ -16,6 +16,7 @@ import './drainn_style.css'
 import {
   Paper,
   Typography,
+  Grid,
 } from '@mui/material';
 import fillaudio from "../../assets/audiofiles/fillInnAudio.mp3";
 
@@ -160,40 +161,44 @@ const ExerciseContainer = ({
           <h1 className={className.exerciseType}>Fyll inn manglende ord</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <div className={className.gameWrapper}>
-          <Question question={question} fireAudio={fireAudio} disabled={audioDisabled}></Question>
-          <Task
-            missingWord={missingWord}
-            onload={onload}
-            previousClickedWord={previousClickedWord}
-            sentence={sentence}
-            missingWordIndex={missingWordIndex}
-          ></Task>
-          <div className={className.wordGridWrapper}>
-            <Words
-              onClick={onClickedWord}
-              words={words}
-              disabled={disabled}
-              missingWord={missingWord}
-            ></Words>
-          <CheckAnswer onClick={checkAnswer} disabled={disabled} onload={onload}></CheckAnswer>
-          {answerState === 'incorrect' && (
-              <Typography className={classes.explanation}>
-              Fasit: {sentence.map((sentenceWord) => {
-                if (sentenceWord === previousClickedWord) {
-                return (<strong>{missingWord + " "} </strong>)
-                } else { return (sentenceWord + " " )}
-                })}
-              </Typography>
-            )}
-          </div>
-          <div className={className.nextExerciseButtonDiv}>
-            <NextExerciseBtn
-              answerState={answerState}
-              handleNextTask={handleNextTask}
-            />
-          </div>
-        </div>
+        <Question question={question} fireAudio={fireAudio} disabled={audioDisabled}></Question>
+        <Paper className={classes.layout} elevation={0}>
+          <Grid container spacing={1} className={classes.overallGrid}>
+            <div className={className.gameWrapper}>
+              <Task
+                missingWord={missingWord}
+                onload={onload}
+                previousClickedWord={previousClickedWord}
+                sentence={sentence}
+                missingWordIndex={missingWordIndex}
+              ></Task>
+              <div className={className.wordGridWrapper}>
+                <Words
+                  onClick={onClickedWord}
+                  words={words}
+                  disabled={disabled}
+                  missingWord={missingWord}
+                ></Words>
+                <CheckAnswer onClick={checkAnswer} disabled={disabled} onload={onload}></CheckAnswer>
+              </div>
+            </div>
+              {answerState === 'incorrect' && (
+                <Typography className={classes.explanation}>
+                  <strong>Fasit: </strong> {sentence.map((sentenceWord) => {
+                    if (sentenceWord === previousClickedWord) {
+                      return (<strong>{missingWord + " "} </strong>)
+                    } else { return (sentenceWord + " ") }
+                  })}
+                </Typography>
+              )}
+              {/* <div className={className.nextExerciseButtonDiv}> */}
+                <NextExerciseBtn
+                  answerState={answerState}
+                  handleNextTask={handleNextTask}
+                />
+              {/* </div> */}
+          </Grid>
+        </Paper>
       </Paper>
     </>
 
