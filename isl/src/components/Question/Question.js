@@ -11,16 +11,17 @@ const Question = ({ question, fireAudio, disabled }) => {
   const classes = { ...className, ...classesBase };
 
   return (
-    <div className={classes.question}>
-      <p>{question}</p>
+    <>
+      <p className={classes.question}>{question}</p>
       <IconButton
-              onClick={fireAudio}
-              disabled={disabled}
-              data-testid="volume"
-            >
-              <VolumeUpIcon />
-            </IconButton> 
-    </div>
+        onClick={fireAudio}
+        disabled={disabled}
+        data-testid="volume"
+      >
+        <VolumeUpIcon />
+      </IconButton>
+      < hr className={classes.questionLine} ></hr >
+    </>
   )
 }
 

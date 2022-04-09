@@ -5,19 +5,20 @@ import StartPage from './containers/StartPage/StartPage';
 import { createTheme } from '@mui/material/styles'
 import { ThemeProvider } from "@emotion/react";
 
-function App() {
-
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#7CA3EE'
-      },
-      secondary: {
-        main: '#7CA3EE'
-      }
+export const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#7CA3EE'
+    },
+    secondary: {
+      main: '#7CA3EE'
     }
+  }
 
-  })
+})
+
+function App() {
+  
   return (
     <ThemeProvider theme={theme}>
       <Router>

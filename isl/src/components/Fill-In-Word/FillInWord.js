@@ -39,7 +39,7 @@ const ExerciseContainer = ({
 
   const className = useStyles()
   const classesBase = exerciseStyles();
-  const classes = {...className,  ...classesBase };
+  const classes = { ...className, ...classesBase };
 
   const [audioDisabled, setAudioDisabled] = useState(false);
 
@@ -87,9 +87,6 @@ const ExerciseContainer = ({
         for (let i = 0; i < count; i++) {
           backendSentence.pop()
         }
-        console.log("sentence: ", backendSentence);
-        console.log("words: ", backendwords);
-        console.log(res.data.correctSolution);
         setSentence(backendSentence)
         setWords(backendwords)
         setMissingWord(res.data.correctSolution)
@@ -98,7 +95,6 @@ const ExerciseContainer = ({
   }
 
   const onClickedWord = (clickedWord) => {
-    console.log("click", clickedWord);
     setOnload(false);
     $("#resultBox").removeClass();
     $("#resultText").text("...");
@@ -130,22 +126,12 @@ const ExerciseContainer = ({
       setAnswerState('correct')
       setScore(score + 1);
       setTotalPossibleScore(totalPossibleScore + 1);
-      // $("#resultBox").removeClass();
-      // $("#resultBox").addClass("riktig");
-      // $("#resultText").text("Riktig!"); //TODO: Set correct icon
-      // $("#goToNext").text("Neste oppgave -->"); //TODO: Set arrow icon
-      // // $("#goToNext").addClass("visible");
-      
     } else {
       setAnswerState('incorrect')
       setTotalPossibleScore(totalPossibleScore + 1);
       answer = 'prøv igjen!';
-      // $("#resultBox").removeClass();
-      // $("#resultBox").addClass("feil");
-      // $("#resultText").text("Feil. Prøv igjen!"); //TODO: Set wrong icon
     }
     setDisabled(true);
-    console.log(answer);
   };
 
   const question = "Trykk på ordet som mangler i setningen.";
@@ -171,6 +157,7 @@ const ExerciseContainer = ({
       <NavBar></NavBar>
       <Paper className={classes.root}>
         <div className={classes.progresscontainer}>
+          <h1 className={className.exerciseType}>Fyll inn manglende ord</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <div className={className.gameWrapper}>
@@ -182,12 +169,13 @@ const ExerciseContainer = ({
             sentence={sentence}
             missingWordIndex={missingWordIndex}
           ></Task>
-          <Words
-            onClick={onClickedWord}
-            words={words}
-            disabled={disabled}
-            missingWord={missingWord}
-          ></Words>
+          <div className={className.wordGridWrapper}>
+            <Words
+              onClick={onClickedWord}
+              words={words}
+              disabled={disabled}
+              missingWord={missingWord}
+            ></Words>
           <CheckAnswer onClick={checkAnswer} disabled={disabled} onload={onload}></CheckAnswer>
           {answerState === 'incorrect' && (
               <Typography className={classes.explanation}>
@@ -198,6 +186,7 @@ const ExerciseContainer = ({
                 })}
               </Typography>
             )}
+          </div>
           <div className={className.nextExerciseButtonDiv}>
             <NextExerciseBtn
               answerState={answerState}

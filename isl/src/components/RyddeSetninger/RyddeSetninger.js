@@ -224,6 +224,7 @@ const RyddeSetninger = ({
       <NavBar></NavBar>
       <Paper className={classes.root}>
         <div className={classes.progresscontainer}>
+          <h1 className={className.exerciseType}>Rydd setningen</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <Question question={question} fireAudio = {fireAudio} disabled = {disabled}></Question>

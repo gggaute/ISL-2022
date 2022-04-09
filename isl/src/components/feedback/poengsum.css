@@ -1,0 +1,12 @@
+#poengsumText {
+    display: flex;
+    justify-content: space-around;
+    width: "50%";
+}
+
+#poengsum {
+    display: flex;
+    justify-content: space-around;
+    min-width: 100px;
+    margin-top: 0;
+}
