@@ -215,7 +215,7 @@ const UnlockPad = ({
             <div className={classes.gridLetters}>
               {letters.map((letter, count) => (
                 <>
-                  <button id={setButtonID()} key={count} disabled={setDisabled} onClick={() => {
+                  <button data-cy="button-with-letter" id={setButtonID()} key={count} disabled={setDisabled} onClick={() => {
                     registerLetterinAnswer(letter)
                   }}>
                     {letter.toUpperCase()} </button>

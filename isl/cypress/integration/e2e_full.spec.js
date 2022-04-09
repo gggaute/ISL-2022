@@ -23,7 +23,7 @@ describe('App loop', () => {
 
     // FIRST TASK
     it('clicks first answer in chat', () => {
-        cy.get('button:first').click()
+        cy.get('[data-cy=chat-answer-button]:first').click()
         cy.contains(/Riktig!|Feil!/g)
     })
     it('clicks on arrow after first answer', () => {
@@ -95,18 +95,80 @@ describe('App loop', () => {
     })
 
     //RYDD SETNINGER
+    it('clicks on words in rydde-setninger', () => {
+        // click words
+        cy.get('button:first').click()
+        cy.get('button:first').click()
+        cy.get('button:first').click()
+        cy.get('button:first').click()
+        cy.get('button:first').click()
+        
+        // check answer
+        cy.get('.jss78:first').click()
+        cy.contains(/Riktig!|Feil!/g)
+
+        // go next
+        cy.get('button:enabled:first').click()
+        cy.contains('Neste oppgave')
+    })
 
     // INTERMEDIARY PAGE TO UNLOCK
     it('clicks on neste oppgave', () => {
         cy.get('button:first').click()
         cy.contains('Hva ser du på bildet? Stav ordet!')
     })
+    it('clicks neste oppgave correctly', () => {
+        cy.contains('Hva ser du på bildet? Stav ordet!')
+    })
 
     // UNLOCK
+    it('clicks through unlock', () => {
+        // clicks three letters
+        cy.get('#numpadButton1').click()
+        cy.get('#numpadButton2').click()
+        cy.get('#numpadButton3').click()
+
+        //backspace
+        cy.get('button:first').click()
+        
+        //finishes word
+        cy.get('#numpadButton3').click()
+        cy.get('#numpadButton4').click()
+        cy.get('#numpadButton5').click()
+        cy.contains(/Riktig!|Feil!/g)
+
+        //click arrow
+        cy.get('button:enabled:first').click()
+        cy.contains('Neste oppgave')
+    })
 
     // INTERMEDIARY PAGE TO DRA INN MANGLENDE ORD
     it('clicks on neste oppgave', () => {
         cy.get('button:first').click()
         cy.contains('Sjekk svar')
+    })
+
+    // DRA INN MANGLENDE ORD
+
+    it('clicks through drainnmanglendeord', () => {
+        //click a word
+        cy.get('button:first').click()
+        
+        //click a different word
+        cy.get('button:first').click()
+
+        //check answer
+        cy.get('.checkAnswerBtn').click()
+        cy.contains(/Riktig!|Feil!/g)
+
+        //click arrow
+        cy.get('button:enabled:first').click()
+        cy.contains('Fullfør sett')
+    })
+
+    // FINISH END TO END RUNTHROUGH
+    it('clicks on Fullfør sett', () => {
+        cy.get('button:first').click()
+        cy.contains('runthrough')
     })
 })
