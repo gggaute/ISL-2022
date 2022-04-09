@@ -220,7 +220,7 @@ const UnlockPad = ({
       <NavBar />
       <Paper className={classes.root} id="rootPaper">
         <div className={classes.progresscontainer}>
-          <h1 className={className.exerciseType}>Skriv ordet</h1>
+          <h1 className={classes.exerciseType}>Skriv ordet</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <Question question={question} fireAudio={fireAudio} disabeld={audioDisabled}></Question>
