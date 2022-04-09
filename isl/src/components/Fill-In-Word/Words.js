@@ -1,13 +1,11 @@
 import React from 'react'
 import Word from './Word'
 import './drainn_style.css'
-import useStyles from './drainn_style'
 
-const Words = ({ onClick, words, missingWord, disabled }) => {
-  const className = useStyles();
+const Words = ({ onClick, words, disabled }) => {
   return (
       <div className="wordGrid">
-        {words.map((word) => (<Word word={word} missingWord={missingWord} disabled={disabled} onClick={onClick}></Word>))}
+        {words.map((word) => (<Word word={word} disabled={disabled} onClick={onClick}></Word>))}
       </div>
   )
 }

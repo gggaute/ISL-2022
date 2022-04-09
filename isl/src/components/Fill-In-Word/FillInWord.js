@@ -5,7 +5,6 @@ import Words from "./Words";
 import { useState } from "react";
 import CheckAnswer from "./CheckAnswer";
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
-import $ from "jquery";
 import axios from "axios";
 import { useEffect } from "react";
 import ProgressBar from '../ProgressBar';
@@ -43,7 +42,11 @@ const ExerciseContainer = ({
   const classes = { ...className, ...classesBase };
 
   const [audioDisabled, setAudioDisabled] = useState(false);
-
+  const [previousClickedWord, setPreviousClickedWord] = useState("");
+  const [disabled, setDisabled] = useState(false);
+  const [missingWord, setMissingWord] = useState("");
+  const [missingWordIndex, setMissingWordIndex] = useState(-1);
+  const question = "Trykk på ordet som mangler i setningen.";
 
   useEffect(() => {
     getContent()
@@ -90,56 +93,47 @@ const ExerciseContainer = ({
         }
         setSentence(backendSentence)
         setWords(backendwords)
-        setMissingWord(res.data.correctSolution)
-        setMissingWordIndex(backendSentence.indexOf(res.data.correctSolution));
+        setMissingWord(backendSentence[res.data.correctSolutionIndex])
+        setMissingWordIndex(res.data.correctSolutionIndex);
       });
   }
 
+  console.log("Scentence: " + sentence)
+  console.log()
+  console.log("MissingWord: " + missingWord)
+
   const onClickedWord = (clickedWord) => {
     setOnload(false);
-    $("#resultBox").removeClass();
-    $("#resultText").text("...");
-
-    if (previousClickedWord === "") {
+    if(previousClickedWord === ""){
+      //remove the word that was chosen from list of words
       setWords(words.filter((word) => word !== clickedWord));
+      // if the index of the word is the same as missingWordIndex, then the clicked word will take the place of the missing word
       setSentence(
-        sentence.map((w) => (w === missingWord ? (w = clickedWord) : w))
-      );
-    } else {
+        sentence.map((word, index) => (index === missingWordIndex ? (word = clickedWord): word)))
+    }
+    else {
       setWords([
         ...words.filter((word) => word !== clickedWord),
         previousClickedWord,
       ]);
       setSentence(
-        sentence.map((w) => (w === previousClickedWord ? (w = clickedWord) : w))
-      );
+        sentence.map((word, index) => (index === missingWordIndex ? (word = clickedWord): word)))
     }
     setPreviousClickedWord(clickedWord);
-  };
 
-  const [previousClickedWord, setPreviousClickedWord] = useState("");
-
-  let answer;
-  const [disabled, setDisabled] = useState(false);
+  }
+  
   const checkAnswer = () => {
-    if (sentence.includes(missingWord)) {
-      answer = '';
+    if(sentence[missingWordIndex] === missingWord){
       setAnswerState('correct')
       setScore(score + 1);
       setTotalPossibleScore(totalPossibleScore + 1);
     } else {
       setAnswerState('incorrect')
       setTotalPossibleScore(totalPossibleScore + 1);
-      answer = 'prøv igjen!';
     }
     setDisabled(true);
   };
-
-  const question = "Trykk på ordet som mangler i setningen.";
-
-  const [missingWord, setMissingWord] = useState("");
-
-  const [missingWordIndex, setMissingWordIndex] = useState(-1)
 
   const handleNextTask = () => {
     setAnswerState(null);
@@ -153,6 +147,9 @@ const ExerciseContainer = ({
       setAudioDisabled(false);
     }, 4000);
   }
+
+  
+
   return (
     <>
       <NavBar></NavBar>
@@ -184,19 +181,17 @@ const ExerciseContainer = ({
             </div>
               {answerState === 'incorrect' && (
                 <Typography className={classes.explanation}>
-                  <strong>Fasit: </strong> {sentence.map((sentenceWord) => {
-                    if (sentenceWord === previousClickedWord) {
+                  <strong>Fasit: </strong> {sentence.map((sentenceWord, index) => {
+                    if (index === missingWordIndex) {
                       return (<strong>{missingWord + " "} </strong>)
                     } else { return (sentenceWord + " ") }
                   })}
                 </Typography>
               )}
-              {/* <div className={className.nextExerciseButtonDiv}> */}
                 <NextExerciseBtn
                   answerState={answerState}
                   handleNextTask={handleNextTask}
                 />
-              {/* </div> */}
           </Grid>
         </Paper>
       </Paper>
