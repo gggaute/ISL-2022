@@ -1,14 +1,18 @@
+# Imports
 from django.db import models
 
 
 """
- @author Phajsi, Julie, Aksel
+ @author Phajsi, Julie
+ @revised by aksel
  This is the model for the rydde_setninger exercise. It determines all the fields and the constraints.
- Each rydde_setninger exercise may have up to 3 tasks, but only 1 is required.
+ Each rydde_setninger exercise may have up to 15 words, but have to have at least three. 
 """
 
 
 class RyddeSetninger(models.Model):
+    
+    # Word classes that is chosen for each word in order to create colour scheme
     WORD_CLASSES = (
         ('sub', 'Subjekt'),
         ('ob', 'Objekt/Predikativ'),

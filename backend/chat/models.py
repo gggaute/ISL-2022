@@ -1,10 +1,12 @@
+# Imports
 from django.db import models
 
 
 """
- @author Maja, Even, Julie, Aksel
+ @author Maja, Even, Julie
+ @Revised by Aksel
  This is the model for the chat exercise. It determines all the fields and the constraints.
- Each chat exercise may have up to 3 tasks, but only 1 is required.
+ Each chat exercise may have up to 5 tasks, but only 1 is required.
 """
 
 

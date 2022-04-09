@@ -4,8 +4,13 @@ from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 from .serializer import DraInnManglendeOrdSerializer
 
-# Create your views here.
+'''
+@author  Guri
+This is the DraInnManglendeOrd view.
+It uses viewSets for viewing and editing DraInnManglendeOrd instances. 
+'''
 
+# DraInnManglendeOrd Viewset
 class DraInnManglendeOrdViewSet(viewsets.ModelViewSet):
     queryset = DraInnManglendeOrd.objects.all()
     permissions_classes = [ permissions.AllowAny ]

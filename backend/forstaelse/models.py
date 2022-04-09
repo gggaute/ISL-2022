@@ -1,10 +1,12 @@
+# Imports
 from django.db import models
 
 
 """
- @author Phajsi, Simen, Aksel
+ @author Phajsi, Simen
+ @Revised by Aksel
  This is the model for the forstaelse exercise. It determines all the fields and the constraints.
- Each forstaelse exercise may have up to 3 tasks, but only 1 is required.
+ Each forstaelse exercise consists of one task.
 """
 
 

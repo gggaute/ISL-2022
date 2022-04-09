@@ -1,8 +1,17 @@
+# Imports
 from rest_framework import serializers
 from .models import RyddeSetninger
 
+'''
+@Author Aksel
+This is the serializer for the forstaelse exercise.
+It is responsible for converting the ryddeSetninger objekt into datatypes that is understandable by react front-end.
+After first validating the data, it allows parsed data to be converted back into complex types. 
+'''
 
+# Creates a ModelSerializer
 class RyddeSetningerSerializer(serializers.ModelSerializer):
+    # Meta class that initializes fields
     class Meta:
         model = RyddeSetninger
         fields = ('id', 'word1', 'wordClass1', 'word2', 'wordClass2', 'word3', 'wordClass3',
