@@ -158,7 +158,7 @@ const ExerciseContainer = ({
       <NavBar></NavBar>
       <Paper className={classes.root} id="rootPaper">
         <div className={classes.progresscontainer}>
-          <h1 className={className.exerciseType}>Fyll inn manglende ord</h1>
+          <h1 className={classes.exerciseType}>Fyll inn manglende ord</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <Question question={question} fireAudio={fireAudio} disabled={audioDisabled}></Question>

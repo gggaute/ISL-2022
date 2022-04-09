@@ -85,13 +85,7 @@ const useStyles = makeStyles((theme) => {
             paddingLeft: '25px',
             paddingRight: '25px',
             paddingBottom: '25px',
-        },
-        exerciseType:{
-            display: 'flex',
-            justifyContent: 'center',
-            fontWeight: 'bolder',
-        },
-    
+        },    
     }
 });
 

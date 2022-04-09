@@ -10,11 +10,6 @@ const useStyles = makeStyles((theme) => ({
     overflowY: 'scroll',
     maxHeight: 'inherit',
   },
-  exerciseType:{
-    display: 'flex',
-    justifyContent: 'center',
-    fontWeight: 'bolder',
-  }
 }));
 
 export default useStyles;

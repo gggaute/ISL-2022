@@ -13,11 +13,6 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '100%',
     // border: "1px solid blue",
   },
-  exerciseType: {
-    display: 'flex',
-    justifyContent: 'center',
-    fontWeight: 'bolder',
-  },
   overallGrid: {
     // border: "1px solid pink",
     display: "flex",

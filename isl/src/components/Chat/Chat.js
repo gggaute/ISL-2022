@@ -185,7 +185,7 @@ const Chat = ({
       <Paper className={classes.root} id="rootPaper">
       {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
-          <h1 className={className.exerciseType}>CHAT</h1>
+          <h1 className={classes.exerciseType}>CHAT</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
         <Question question={question} fireAudio={fireAudio} disabled={disabled} />
