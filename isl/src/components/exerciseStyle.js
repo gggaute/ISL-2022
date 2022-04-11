@@ -1,3 +1,5 @@
+// ExerciseStyle: Styling that can be referred to from any component
+
 import { makeStyles } from '@mui/styles';
 
 const exerciseStyles = makeStyles((theme) => ({
@@ -30,9 +32,8 @@ const exerciseStyles = makeStyles((theme) => ({
     height: "15px",
     margin: "10px",
   },
-  // TODO: Endre navn på denne
-  // Text2: The text in the feedbackComponent showing the points
-  text2: {
+  // TextFeedback: The text in the feedbackComponent
+  textFeedback: {
     margin: '30px',
   },
   // Question: The text in the question-component showing the exercise task/question/explanation

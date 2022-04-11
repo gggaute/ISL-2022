@@ -19,7 +19,7 @@ const ChatBubble = ({ chat, icon, right }) => {
     <Grid container spacing={3}>
       {right && <Grid item xs={3} />}
       <Grid item xs={9}>
-      <div className={right ? classes.parentRight : classes.parentLeft}>
+        <div className={right ? classes.parentRight : classes.parentLeft}>
           <div className={right ? classes.floatRight : classes.floatLeft}>
             <Avatar
               className={classes.avatarLarge}

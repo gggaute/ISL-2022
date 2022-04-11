@@ -30,15 +30,15 @@ const Feedback = ({
             <div className={classes.progresscontainer}>
               <ProgressBar progress={progress} possible={possible} />
             </div>
-            <Typography variant="h4" align="center" className={classes.text2} id="poengsumText">
-                  Poengsummen din er
-                  {` ${totalScore} `}
-                  av totalt
-                  {` ${totalExercises} `}
-                  mulige!
-                </Typography>
+            <Typography variant="h4" align="center" className={classes.textFeedback} id="poengsumText">
+              Poengsummen din er
+              {` ${totalScore} `}
+              av totalt
+              {` ${totalExercises} `}
+              mulige!
+            </Typography>
 
-              <div className={classes.btnParent}>
+            <div className={classes.btnParent}>
               <Button
                 variant="contained"
                 color="primary"
@@ -47,49 +47,46 @@ const Feedback = ({
               >
                 Neste oppgave
               </Button>
-              </div>
-          </Paper>
-        </>
-      );
-      case 'finished':
-      return (
-        <>
-          <NavBar></NavBar>
-          <Paper className={classes.root} id="rootPaper">
-          <div className={classes.progresscontainer}>
-            <ProgressBar progress={2} possible={1} />
-          </div>
-
-          <Typography variant="h4" align="center" className={classes.text2}>
-          Du har gjort alle oppgavene!
-              </Typography>
-          <Typography variant="h4" align="center" className={classes.text2} id="poengsumText">
-                Dine poeng: 
-              </Typography>
-
-              <Typography variant="h4" align="center" className={classes.text2} id="poengsum">
-              <div  className={classes.points}>
-                {` ${totalScore } ` }
-                /
-                {` ${totalExercises} `}
-                  </div>
-            </Typography>
-
-
-
-              <div className={classes.btnParent}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => nextExercise()}
-              fullWidth
-            >
-              Fullfør sett
-            </Button>
             </div>
           </Paper>
         </>
       );
+    
+    case 'finished':
+      return (
+        <>
+          <NavBar></NavBar>
+          <Paper className={classes.root} id="rootPaper">
+            <div className={classes.progresscontainer}>
+              <ProgressBar progress={2} possible={1} />
+            </div>
+
+            <Typography variant="h4" align="center" className={classes.textFeedback}>
+              Du har gjort alle oppgavene!
+            </Typography>
+
+            <Typography variant="h4" align="center" className={classes.textFeedback} id="poengsumText">
+              Dine poeng:
+            </Typography>
+
+            <Typography variant="h4" align="center" className={classes.textFeedback} id="poengsum">
+              <div className={classes.points}>
+                {` ${totalScore} `}
+                /
+                {` ${totalExercises} `}
+              </div>
+            </Typography>
+
+            <div className={classes.btnParent}>
+              <Button variant="contained" color="primary" onClick={() => nextExercise()} fullWidth>
+                Fullfør sett
+              </Button>
+            </div>
+
+          </Paper>
+        </>
+      );
+    
     default:
       return (
         <Paper className={classes.root} id="rootPaper">
