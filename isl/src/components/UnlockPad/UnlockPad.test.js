@@ -63,7 +63,7 @@ describe('Unlock component', () => {
         const letterX = screen.getByText('X')
         expect(letterX.tagName.toLowerCase()).toEqual('button')
 
-        const question = screen.getByText('Hva ser du på bildet? Stav ordet!')
+        const question = screen.getByText('Hva ser du på bildet? Skriv ordet!')
         expect(question.tagName.toLowerCase()).toEqual('p')
     })
 
