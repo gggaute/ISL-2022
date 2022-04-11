@@ -56,11 +56,20 @@ const exerciseStyles = makeStyles((theme) => ({
   question: {
     fontWeight: "bold",
     fontSize: "1.3em",
-    borderBottom: "1px solid #7CA3EE",
-    marginBottom: "5px",
-    margin: "0 15px",
-    maxWidth: '70%',
+    margin: "0 14px 5px 14px",
+  },
+  questionLine: {
+    borderTop: "1px solid #7CA3EE",
+    margin: "5px 14px",
+  },
+  explanation: {
+    width: "70%",
+    margin: "30px",
+  },
+  exerciseType:{ // Name of exercise
     display: 'flex',
+    justifyContent: 'center',
+    fontWeight: 'bolder',
   },
 }));
 

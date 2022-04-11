@@ -31,7 +31,7 @@ function SetCard({ type, formData, setId }) {
 
   return (
     <Link to='/sets' state = {{playId : setId}} className={classes.link}>
-    <Card className={classes.card}>
+    <Card className={classes.card} data-cy="card">
       <CardHeader className={classes.cardHeader}
         avatar={
           <Avatar sx={{ bgcolor: '#8AA9E4'}}>
@@ -39,7 +39,7 @@ function SetCard({ type, formData, setId }) {
           </Avatar>
         }
         title={formData.title}
-        action={iconButtons()}
+        action={iconButtons}
       />
     </Card>
     </Link>

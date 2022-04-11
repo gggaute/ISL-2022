@@ -15,6 +15,7 @@ import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import Question from '../Question/Question';
+import "../exerciseStyle.css";
 
 /**
  * This is the forstaelse exercise component that is playable from Playsets.
@@ -62,7 +63,7 @@ const Forstaelse = ({
   // Gets the exercise content with {id} from backend.
   function getContent() {
     axios
-      .get(`http://localhost:8000/api/forstaelse/${id}`, {
+      .get(`/api/forstaelse/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           accept: 'application/json',
@@ -111,12 +112,17 @@ const Forstaelse = ({
   return (
     <>
       <NavBar></NavBar>
-      <Paper className={classes.root}>
+      <Paper className={classes.root} id="rootPaper">
+      {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
-          <h1 className={className.exerciseType}>Forståelse</h1>
+          <h1 className={classes.exerciseType}>Forståelse</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-       <Question question={question} fireAudio = {fireAudio} disabled={disabled} />
+       <Question question={question} fireAudio={fireAudio} disabled={disabled} />
+
+        {/* </CardContent>
+          </Card>
+        </div> */}
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={3}>
             <ChatBubble chat={formData[`chat`]} />

@@ -2,25 +2,28 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => {
     return{
-        unlockImg: {
-            width: '80%',
-            height: '80%',
-            margin: 'auto',
-        },
-    
         content: {
             display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
-            // border: 'lawngreen 2px solid',
-    },
-    
+            marginTop: "10px",
+            marginBottom: "20px",
+            // border: "1px solid green",
+        },
+        unlockImg: {
+            width: '90%',
+            height: '100%',
+            margin: 'auto',
+            // border: "1px solid green",
+        },
         contentRow: {
             display: 'flex',
             flexDirection: 'column',
+            alignItems: "center",
             // border: '#7CA3EE 2px solid',
-            marginBottom: '15px'
-    },
-    
+            margin: "auto",
+            width: '90%',
+            height: '100%',
+        },
         gridButton: {
             backgroundColor: 'white',
             borderRadius: '100%',
@@ -31,12 +34,10 @@ const useStyles = makeStyles((theme) => {
             height: '3.5em',
             width: '3.5em',
         },
-    
         gridButtonDisabled: {
             backgroundColor: '#7CA3EE',
             color: 'white',
         },
-    
         tryAgainButton: {
             backgroundColor: '#EC6F6F',
             color: 'white',
@@ -45,14 +46,31 @@ const useStyles = makeStyles((theme) => {
             boxShadow: 'none',
             width: '10em',
         },
-    
-        guess: {
+        guessRow: {
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-evenly',
-            margin: '10 auto',
+            justifyContent: "flex-end",
+            width: "90%",
+            marginBottom: "10px",
+            border: "1px solid rgb(205, 220, 248)",
+            padding: "10px",
         },
-    
+        guess: {
+            display: "flex",
+            justifyContent: "space-evenly",
+            width: "100%",
+            // border: "1px solid red",
+            marginTop: "3px",
+        },
+        guessP: {
+            marginRight: "5px",
+        },
+        backArrow: {
+            backgroundColor: "rgb(124, 163, 238)",
+            color: "white",
+            width: "30px",
+            height: "30px",
+        },
         gridLetters: {
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
@@ -63,20 +81,12 @@ const useStyles = makeStyles((theme) => {
             maxWidth: '90%',
             alignSelf: 'center',
         },
-    
         feedbackAndReset: {
             paddingLeft: '25px',
             paddingRight: '25px',
             paddingBottom: '25px',
-        },
-        exerciseType:{
-            display: 'flex',
-            justifyContent: 'center',
-            fontWeight: 'bolder',
-          }
-    
+        },    
     }
-    
 });
 
 export default useStyles;

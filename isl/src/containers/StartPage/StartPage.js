@@ -3,6 +3,7 @@ import SetCard from "../../components/SetCard/SetCard";
 import NavBar from "../../components/NavBar/Navbar";
 import { Paper } from "@mui/material";
 import exerciseStyles from '../../components/exerciseStyle';
+import axios from 'axios';
 
 
 /*
@@ -16,11 +17,26 @@ const StartPage = () => {
 
   // List of the users own sets.
   const [ExerciseSetList, setExerciseSetList] = useState([]);
-  const [playId, setPlayId] = useState(null);
 
   const classesBase = exerciseStyles();
   const classes = {...classesBase };
 
+  function getContent() {
+    axios
+      .get(`/api/sets`, {
+        headers: {
+          'Content-Type': 'application/json',
+          accept: 'application/json',
+        },
+      }).then((res) => {
+          setExerciseSetList(res.data);
+        })
+      .catch((e) => {
+        return e;
+      });
+  }
+  
+  /*
   function getContent() {
     fetch('http://localhost:8000/api/sets')
       .then((response) => response.json())
@@ -29,6 +45,7 @@ const StartPage = () => {
         return e;
       });
   }
+  */
 
   // Only runs once when the page renders and gets the necessary content from backend.
   useEffect(() => {
@@ -44,7 +61,6 @@ const StartPage = () => {
             <SetCard
               type="mySet"
               formData={set}
-              playId={playId}
               setId={set.id}
             />
           );
@@ -56,7 +72,7 @@ const StartPage = () => {
   return (
     <div>
       <NavBar></NavBar>
-      <Paper className={classes.root}>
+      <Paper className={classes.root} id="root">
         {renderSwitch()}
       </Paper>
     </div>

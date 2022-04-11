@@ -32,11 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   points: {
     backgroundColor: 'lightgreen',
-    maxWidth: "20%",
-    display: "flex",
-    justifyContent: "center",
-    textAlign: "center",
-    verticalAlign: "middle",
+    padding: "10px",
   },
   btnParent: {
     flex: '1',

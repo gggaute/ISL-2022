@@ -16,13 +16,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   checkAnswerBtn: {
-    float: 'right',
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
   },
-  exerciseType:{
-    display: 'flex',
-    justifyContent: 'center',
-    fontWeight: 'bolder',
-  }
 }));
 
 export default useStyles;

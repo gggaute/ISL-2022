@@ -5,6 +5,7 @@ import NavBar from "../NavBar/Navbar";
 import exerciseStyles from '../exerciseStyle';
 import ProgressBar from '../ProgressBar';
 import "./poengsum.css";
+import "../exerciseStyle.css";
 
 
 const Feedback = ({
@@ -25,11 +26,11 @@ const Feedback = ({
       return (
         <>
           <NavBar></NavBar>
-          <Paper className={classes.root}>
+          <Paper className={classes.root} id="rootPaper">
             <div className={classes.progresscontainer}>
               <ProgressBar progress={progress} possible={possible} />
             </div>
-            <Typography variant="h4" align="center" className={classes.text2}>
+            <Typography variant="h4" align="center" className={classes.text2} id="poengsumText">
                   Poengsummen din er
                   {` ${totalScore} `}
                   av totalt
@@ -54,7 +55,7 @@ const Feedback = ({
       return (
         <>
           <NavBar></NavBar>
-          <Paper className={classes.root}>
+          <Paper className={classes.root} id="rootPaper">
           <div className={classes.progresscontainer}>
             <ProgressBar progress={2} possible={1} />
           </div>
@@ -64,12 +65,17 @@ const Feedback = ({
               </Typography>
           <Typography variant="h4" align="center" className={classes.text2} id="poengsumText">
                 Dine poeng: 
-                <div  className={classes.points}>
+              </Typography>
+
+              <Typography variant="h4" align="center" className={classes.text2} id="poengsum">
+              <div  className={classes.points}>
                 {` ${totalScore } ` }
                 /
                 {` ${totalExercises} `}
-                </div>
-              </Typography>
+                  </div>
+            </Typography>
+
+
 
               <div className={classes.btnParent}>
             <Button
@@ -86,7 +92,7 @@ const Feedback = ({
       );
     default:
       return (
-        <Paper className={classes.root}>
+        <Paper className={classes.root} id="rootPaper">
           <div>
             <Typography variant="h3">Noe gikk galt</Typography>
           </div>
