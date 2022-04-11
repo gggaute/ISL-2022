@@ -5,7 +5,6 @@ import Chat from "../../components/Chat/Chat";
 import RyddeSetninger from "../../components/RyddeSetninger/RyddeSetninger";
 import Feedback from "../../components/feedback/Feedback";
 import axios from "axios";
-import FinishedSet from "../../components/finishedSet/FinishedSet";
 import FillInWord from "../../components/Fill-In-Word/FillInWord";
 import UnlockPad from "../../components/UnlockPad/UnlockPad";
 /**
@@ -80,7 +79,7 @@ const PlaySets = () => {
 
   function getContent(id) {
     axios
-      .get(`http://localhost:8000/api/sets/${id}`, {
+      .get(`/api/sets/${id}`, {
         headers: {
           "Content-Type": "application/json",
           accept: "application/json",

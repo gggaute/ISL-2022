@@ -1,33 +1,47 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: theme.spacing(100),
+    maxWidth: "100px",
     margin: 'auto',
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(1),
-    padding: theme.spacing(2),
+    marginTop: "16px",
+    marginBottom: "4px",
+    padding: "8px",
     backgroundColor: 'white',
     display: 'block',
   },
   image: {
     maxHeight: '30vh',
-    marginBottom: theme.spacing(1),
+    marginBottom: "4px",
     float: 'right',
-    [theme.breakpoints.down('xs')]: {
-      maxWidth: '24vw',
-    },
+    maxWidth: "24vw",
+    // [theme.breakpoints.down('xs')]: {
+    //   maxWidth: '24vw',
+    // },
   },
   textBox: {
     display: 'block',
     maxWidth: '70%',
   },
   text: {
-    maxWidth: theme.spacing(78),
-    marginBottom: theme.spacing(1),
+    maxWidth: "78px",
+    marginBottom: "4px",
     float: 'left',
     display: 'inline-block',
     fontSize: "1em",
+  },
+  points: {
+    backgroundColor: 'lightgreen',
+    padding: "10px",
+  },
+  btnParent: {
+    flex: '1',
+    margin: 'auto',
+    width: '90%',
+    paddingRight: "8px",
+    paddingLeft: "8px",
+    paddingBottom: "30px",
+
   },
 }));
 

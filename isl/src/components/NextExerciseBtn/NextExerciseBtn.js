@@ -23,7 +23,7 @@ import useStyles from './styles';
       return (
         <Grid item xs={12}>
           <Card className={classes.answerElementWrong}>
-            <CardHeader
+            <CardHeader className= {classes.cardHeader}
               avatar={<CancelIcon className={classes.icons} />}
               title=" Feil! "
             />

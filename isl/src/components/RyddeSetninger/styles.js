@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   chosenWords: {
-    padding: theme.spacing(1),
+    padding: "4px",
     minHeight: '2.5em',
     backgroundColor: 'white',
     borderRadius: '11px',
@@ -16,7 +16,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   checkAnswerBtn: {
-    float: 'right',
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
   },
 }));
 

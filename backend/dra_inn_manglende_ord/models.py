@@ -5,8 +5,7 @@ from pyexpat import model
 # Create your models here.
 
 class DraInnManglendeOrd(models.Model):
-    correctSolution = models.TextField(max_length=30, blank=False);
-
+    correctSolutionIndex = models.IntegerField(default=1,blank=False)
 
     # Max 15-word sentences (for now)
     sentenceWord1 = models.TextField(max_length=20, blank=False)
