@@ -1,6 +1,7 @@
 import { makeStyles } from '@mui/styles';
 
 const exerciseStyles = makeStyles((theme) => ({
+  // Root: Paper behind every exercise and feedback-component
   root: {
     backgroundColor: '#F5F5F5',
     maxWidth: '70%',
@@ -12,9 +13,7 @@ const exerciseStyles = makeStyles((theme) => ({
     marginBottom: '20px',
     padding: "4px",
   },
-  topContent: {
-    padding: "8px",
-  },
+  // Layout: Exercise-content (everything under the audio-button)
   layout: {
     backgroundColor: '#F5F5F5',
     margin: "4px",
@@ -22,51 +21,38 @@ const exerciseStyles = makeStyles((theme) => ({
     overflow: 'hidden',
     overflowY: 'auto',
   },
-  navbar: {
-    margin: 0,
-    padding: 0,
-    backgroundColor: 'white',
-    color: 'black',
-    borderRadius: '15px 15px 0 0',
-  },
-  toolbar: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-  cardcontent: {
-    display: 'flex',
-  },
-  audiotext: {
-    margin: 'auto 0 auto 0',
-  },
-  menuButton: {
-    marginRight: "8px",
-    float: 'right',
-  },
+  // ProgressContainer: Container for exercise-header and the progressBar (everything over the exercise text)
   progresscontainer: {
     margin: "4px",
   },
+  // ProgressBar: The entire progressbar
   progressBar: {
     height: "15px",
     margin: "10px",
   },
+  // TODO: Endre navn på denne
+  // Text2: The text in the feedbackComponent showing the points
   text2: {
     margin: '30px',
   },
+  // Question: The text in the question-component showing the exercise task/question/explanation
   question: {
     fontWeight: "bold",
     fontSize: "1.3em",
     margin: "0 14px 5px 14px",
   },
+  // QuestionLine: HR (horisontal rule / line) under question/audio
   questionLine: {
     borderTop: "1px solid #7CA3EE",
     margin: "5px 14px",
   },
+  // Explanation: The typography containing the explanation for each exercise
   explanation: {
     width: "70%",
     margin: "30px",
   },
-  exerciseType:{ // Name of exercise
+  // ExerciseType: Name of exercise (exercise-header)
+  exerciseType: {
     display: 'flex',
     justifyContent: 'center',
     fontWeight: 'bolder',

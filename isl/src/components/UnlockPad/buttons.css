@@ -1,3 +1,12 @@
+/* Numpad-buttons: Each button in the numpad-grid */
+/* Media queries for size of buttons on smaller screens further down the document */
+
+/* Grid layout:
+    btn1    btn2    btn3
+    btn4    btn5    btn6
+    btn7    btn8    btn9
+*/
+
 
 #numpadButton1 {
     grid-row: 1;
