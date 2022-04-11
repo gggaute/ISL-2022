@@ -14,8 +14,8 @@ describe('App loop', () => {
     })
 
     it('clicks to begin set', () => {
-        cy.get('.jss15:first').click()
-        cy.contains('Du har fått en melding! Trykk på det svaret som er riktig.')
+        cy.get('.jss16:first').click()
+        cy.contains('Du har fått en melding! Svar på meldingen ved å trykke på riktig svar.')
     })
 
 
@@ -27,47 +27,47 @@ describe('App loop', () => {
         cy.contains(/Riktig!|Feil!/g)
     })
     it('clicks on arrow after first answer', () => {
-        cy.get('button:first').click()
+        cy.get('.jss43:first').click()
         cy.contains('svar2')
     })
 
     // SECOND TASK
     it('clicks second answer in chat', () => {
-        cy.get('button:first').click()
+        cy.get('[data-cy=chat-answer-button]:first').click()
         cy.contains(/Riktig!|Feil!/g)
     })
     it('clicks on arrow after second answer', () => {
-        cy.get('button:first').click()
+        cy.get('.jss43:first').click()
         cy.contains('svar3')
     })
 
     // THIRD TASK
     it('clicks third answer in chat', () => {
-        cy.get('button:first').click()
+        cy.get('[data-cy=chat-answer-button]:first').click()
         cy.contains(/Riktig!|Feil!/g)
     })
     it('clicks on arrow after third answer', () => {
-        cy.get('button:first').click()
+        cy.get('.jss43:first').click()
         cy.contains('svar4')
     })
 
     // FOURTH TASK
     it('clicks fourth answer in chat', () => {
-        cy.get('button:first').click()
+        cy.get('[data-cy=chat-answer-button]:first').click()
         cy.contains(/Riktig!|Feil!/g)
     })
     it('clicks on arrow after fourth answer', () => {
-        cy.get('button:first').click()
+        cy.get('.jss43:first').click()
         cy.contains('svar5')
     })
 
     // FIFTH TASK
     it('clicks fifth answer in chat', () => {
-        cy.get('button:first').click()
+        cy.get('[data-cy=chat-answer-button]:first').click()
         cy.contains(/Riktig!|Feil!/g)
     })
     it('clicks on arrow after fifth answer', () => {
-        cy.get('button:first').click()
+        cy.get('.jss43:first').click()
         cy.contains('Neste oppgave')
     })
 
@@ -80,11 +80,11 @@ describe('App loop', () => {
 
     // FORSTÅELSE
     it('clicks JA or NEI', () => {
-        cy.get('button:first').click()
+        cy.get('.MuiButton-root:first').click()
         cy.contains(/Riktig!|Feil!/g)
     })
     it('clicks on arrow after answer', () => {
-        cy.get('button:first').click()
+        cy.get('.jss43:first').click()
         cy.contains('Neste oppgave')
     })
 
@@ -96,19 +96,20 @@ describe('App loop', () => {
 
     //RYDD SETNINGER
     it('clicks on words in rydde-setninger', () => {
-        // click words
-        cy.get('button:first').click()
-        cy.get('button:first').click()
-        cy.get('button:first').click()
-        cy.get('button:first').click()
-        cy.get('button:first').click()
+        // click all words in and 1 back out
+        cy.get('.jss2:first').click()
+        cy.get('.jss2:first').click()
+        cy.get('.jss2:first').click()
+        cy.get('.jss2:first').click()
+        cy.get('.jss2:first').click()
+        cy.get('.jss2:first').click()
         
         // check answer
-        cy.get('.jss78:first').click()
+        cy.get('[data-cy=check]').click()
         cy.contains(/Riktig!|Feil!/g)
 
-        // go next
-        cy.get('button:enabled:first').click()
+        // go next with arrow
+        cy.get('.jss43:first').click()
         cy.contains('Neste oppgave')
     })
 
@@ -138,7 +139,7 @@ describe('App loop', () => {
         cy.contains(/Riktig!|Feil!/g)
 
         //click arrow
-        cy.get('button:enabled:first').click()
+        cy.get('.jss43:first').click()
         cy.contains('Neste oppgave')
     })
 
@@ -162,7 +163,7 @@ describe('App loop', () => {
         cy.contains(/Riktig!|Feil!/g)
 
         //click arrow
-        cy.get('button:enabled:first').click()
+        cy.get('.jss43:first').click()
         cy.contains('Fullfør sett')
     })
 
