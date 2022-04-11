@@ -20,7 +20,7 @@ import {
 import fillaudio from "../../assets/audiofiles/fillInnAudio.mp3";
 import "../exerciseStyle.css";
 
-const ExerciseContainer = ({
+const FillInWord = ({
   id,
   showFeedback,
   progress,
@@ -200,4 +200,4 @@ const ExerciseContainer = ({
   );
 };
 
-export default ExerciseContainer;
+export default FillInWord;

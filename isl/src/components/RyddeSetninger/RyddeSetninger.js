@@ -233,7 +233,7 @@ const RyddeSetninger = ({
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={1}>
             <Grid item xs={12}>
-              <div style={{ alignSelf: 'center' }}>
+              <div data-cy="div-with-buttons" style={{ alignSelf: 'center' }}>
                 {wordWithColorCode.map((el, index) => (
                   <Button
                     key={index}
@@ -244,6 +244,7 @@ const RyddeSetninger = ({
                     variant="contained"
                     disabled={disableButton}
                     onClick={(e) => clicked(e, el)}
+                    data-cy="word-into-sentence-button"
                   >
                     {el[0]}
                   </Button>
@@ -270,6 +271,7 @@ const RyddeSetninger = ({
             </Grid>
             <Grid item xs={12} className={classes.checkAnswerBtn}>
               <Button
+                data-cy="check"
                 variant="contained"
                 disabled={disableButton}
                 onClick={checkAnswer}
