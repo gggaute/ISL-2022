@@ -22,6 +22,7 @@ import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
 import Question from '../Question/Question';
+import "../exerciseStyle.css";
 
 
 /**
@@ -104,7 +105,7 @@ const Chat = ({
 
   function getContent() {
     axios
-      .get(`http://localhost:8000/api/chat/${id}`, {
+      .get(`/api/chat/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           accept: 'application/json',
@@ -181,13 +182,13 @@ const Chat = ({
   return (
     <>
       <NavBar></NavBar>
-      <Paper className={classes.root}>
+      <Paper className={classes.root} id="rootPaper">
       {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
-          <h1 className={className.exerciseType}>CHAT</h1>
+          <h1 className={classes.exerciseType}>CHAT</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Question question={question} fireAudio ={fireAudio} disabled={disabled} />
+        <Question question={question} fireAudio={fireAudio} disabled={disabled} />
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={3}>
             {chatHistory.map((chat, i) => {

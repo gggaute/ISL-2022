@@ -8,9 +8,15 @@ import useStyles from "./styles";
 import Question from "../Question/Question";
 import './general.css'
 import "./buttons.css";
-import { Typography, Paper, IconButton } from '@mui/material';
+import {
+  Typography,
+  Paper,
+  IconButton,
+  Grid,
+} from '@mui/material';
 import unlockaudio from "../../assets/audiofiles/unlockAudio.mp3";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import "../exerciseStyle.css";
 
 
 /**
@@ -76,7 +82,7 @@ const UnlockPad = ({
    */
   function getContent() {
     axios
-      .get(`http://localhost:8000/api/unlock/${id}`, {
+      .get(`/api/unlock/${id}`, {
         headers: {
           "Content-Type": "application/json",
           accept: "application/json",
@@ -221,47 +227,51 @@ const UnlockPad = ({
   return (
     <>
       <NavBar />
-      <Paper className={classes.root}>
+      <Paper className={classes.root} id="rootPaper">
         <div className={classes.progresscontainer}>
-          <h1 className={className.exerciseType}>Skriv ordet</h1>
+          <h1 className={classes.exerciseType}>Skriv ordet</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Question question={question} fireAudio = {fireAudio} disabeld = {audioDisabled}></Question>
-        <div id='content' className={classes.content}>
-          <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
-          <div className={classes.contentRow}>
-            <div className={classes.guessRow}>
-              <div className={classes.guess} id="guess">
-                {itemList}
+        <Question question={question} fireAudio={fireAudio} disabeld={audioDisabled}></Question>
+        <Paper className={classes.layout} elevation={0}>
+          <Grid container spacing={1}>
+            <div id='content' className={classes.content}>
+              <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
+              <div className={classes.contentRow}>
+                <div className={classes.guessRow}>
+                  <div className={classes.guess} id="guess">
+                    {itemList}
+                  </div>
+                  <IconButton variant="contained" color="primary" disabled={setDisabled} onClick={removeLastLetter} className={classes.backArrow} id="backArrow">
+                    <KeyboardBackspaceIcon />
+                  </IconButton>
+                </div>
+                <div className={classes.gridLetters}>
+                  {letters.map((letter, count) => (
+                    <>
+                      <button id={setButtonID()} className={classes.gridButton} key={count} disabled={setDisabled} onClick={() => {
+                        registerLetterinAnswer(letter)
+                      }}>
+                        {letter.toUpperCase()} </button>
+                      {() => count++}
+                    </>
+                  ))}
+                </div>
               </div>
-              <IconButton variant="contained" color="primary" disabled={setDisabled} onClick={removeLastLetter} className={classes.backArrow} id="backArrow">
-                <KeyboardBackspaceIcon />
-              </IconButton>
             </div>
-            <div className={classes.gridLetters}>
-              {letters.map((letter, count) => (
-                <>
-                  <button id={setButtonID()} key={count} disabled={setDisabled} onClick={() => {
-                    registerLetterinAnswer(letter)
-                  }}>
-                    {letter.toUpperCase()} </button>
-                  {() => count++}
-                </>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className={classes.feedbackAndReset}>
-          {feedback === 'incorrect' && (
-            <Typography className={classes.explanation}>
-              Fasit: {correctSolution}
-            </Typography>
-          )}
-          <NextExerciseBtn
-            answerState={feedback}
-            handleNextTask={handleNextTask}
-          />
-        </div>
+            {feedback === 'incorrect' && (
+              <Typography className={classes.explanation}>
+                <strong>Fasit: </strong>{correctSolution}
+              </Typography>
+            )}
+            {/* <div className={classes.feedbackAndReset}> */}
+              <NextExerciseBtn
+                answerState={feedback}
+                handleNextTask={handleNextTask}
+              />
+            {/* </div> */}
+          </Grid>
+        </Paper>
       </Paper>
     </>
   )

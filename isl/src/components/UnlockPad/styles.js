@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => {
             gridTemplateColumns: 'repeat(2, 1fr)',
             marginTop: "10px",
             marginBottom: "20px",
+            // border: "1px solid green",
         },
         unlockImg: {
             width: '90%',
@@ -51,7 +52,8 @@ const useStyles = makeStyles((theme) => {
             justifyContent: "flex-end",
             width: "90%",
             marginBottom: "10px",
-            // border: "1px solid green",
+            border: "1px solid rgb(205, 220, 248)",
+            padding: "10px",
         },
         guess: {
             display: "flex",
@@ -83,15 +85,8 @@ const useStyles = makeStyles((theme) => {
             paddingLeft: '25px',
             paddingRight: '25px',
             paddingBottom: '25px',
-        },
-        exerciseType:{
-            display: 'flex',
-            justifyContent: 'center',
-            fontWeight: 'bolder',
-          }
-    
+        },    
     }
-    
 });
 
 export default useStyles;

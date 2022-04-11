@@ -5,7 +5,6 @@ import Words from "./Words";
 import { useState } from "react";
 import CheckAnswer from "./CheckAnswer";
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
-import $ from "jquery";
 import axios from "axios";
 import { useEffect } from "react";
 import ProgressBar from '../ProgressBar';
@@ -16,9 +15,10 @@ import './drainn_style.css'
 import {
   Paper,
   Typography,
+  Grid,
 } from '@mui/material';
 import fillaudio from "../../assets/audiofiles/fillInnAudio.mp3";
-
+import "../exerciseStyle.css";
 
 const ExerciseContainer = ({
   id,
@@ -42,7 +42,11 @@ const ExerciseContainer = ({
   const classes = { ...className, ...classesBase };
 
   const [audioDisabled, setAudioDisabled] = useState(false);
-
+  const [previousClickedWord, setPreviousClickedWord] = useState("");
+  const [disabled, setDisabled] = useState(false);
+  const [missingWord, setMissingWord] = useState("");
+  const [missingWordIndex, setMissingWordIndex] = useState(-1);
+  const question = "Trykk på ordet som mangler i setningen.";
 
   useEffect(() => {
     getContent()
@@ -50,7 +54,7 @@ const ExerciseContainer = ({
 
   function getContent() {
     axios
-      .get(`http://localhost:8000/api/draInnManglendeOrd/${id}`, {
+      .get(`/api/draInnManglendeOrd/${id}`, {
         headers: {
           "Content-Type": "application/json",
           accept: "application/json",
@@ -89,56 +93,47 @@ const ExerciseContainer = ({
         }
         setSentence(backendSentence)
         setWords(backendwords)
-        setMissingWord(res.data.correctSolution)
-        setMissingWordIndex(backendSentence.indexOf(res.data.correctSolution));
+        setMissingWord(backendSentence[res.data.correctSolutionIndex])
+        setMissingWordIndex(res.data.correctSolutionIndex);
       });
   }
 
+  console.log("Scentence: " + sentence)
+  console.log()
+  console.log("MissingWord: " + missingWord)
+
   const onClickedWord = (clickedWord) => {
     setOnload(false);
-    $("#resultBox").removeClass();
-    $("#resultText").text("...");
-
-    if (previousClickedWord === "") {
+    if(previousClickedWord === ""){
+      //remove the word that was chosen from list of words
       setWords(words.filter((word) => word !== clickedWord));
+      // if the index of the word is the same as missingWordIndex, then the clicked word will take the place of the missing word
       setSentence(
-        sentence.map((w) => (w === missingWord ? (w = clickedWord) : w))
-      );
-    } else {
+        sentence.map((word, index) => (index === missingWordIndex ? (word = clickedWord): word)))
+    }
+    else {
       setWords([
         ...words.filter((word) => word !== clickedWord),
         previousClickedWord,
       ]);
       setSentence(
-        sentence.map((w) => (w === previousClickedWord ? (w = clickedWord) : w))
-      );
+        sentence.map((word, index) => (index === missingWordIndex ? (word = clickedWord): word)))
     }
     setPreviousClickedWord(clickedWord);
-  };
 
-  const [previousClickedWord, setPreviousClickedWord] = useState("");
-
-  let answer;
-  const [disabled, setDisabled] = useState(false);
+  }
+  
   const checkAnswer = () => {
-    if (sentence.includes(missingWord)) {
-      answer = '';
+    if(sentence[missingWordIndex] === missingWord){
       setAnswerState('correct')
       setScore(score + 1);
       setTotalPossibleScore(totalPossibleScore + 1);
     } else {
       setAnswerState('incorrect')
       setTotalPossibleScore(totalPossibleScore + 1);
-      answer = 'prøv igjen!';
     }
     setDisabled(true);
   };
-
-  const question = "Trykk på ordet som mangler i setningen.";
-
-  const [missingWord, setMissingWord] = useState("");
-
-  const [missingWordIndex, setMissingWordIndex] = useState(-1)
 
   const handleNextTask = () => {
     setAnswerState(null);
@@ -152,48 +147,53 @@ const ExerciseContainer = ({
       setAudioDisabled(false);
     }, 4000);
   }
+
+  
+
   return (
     <>
       <NavBar></NavBar>
-      <Paper className={classes.root}>
+      <Paper className={classes.root} id="rootPaper">
         <div className={classes.progresscontainer}>
-          <h1 className={className.exerciseType}>Fyll inn manglende ord</h1>
+          <h1 className={classes.exerciseType}>Fyll inn manglende ord</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <div className={className.gameWrapper}>
-          <Question question={question} fireAudio={fireAudio} disabled={audioDisabled}></Question>
-          <Task
-            missingWord={missingWord}
-            onload={onload}
-            previousClickedWord={previousClickedWord}
-            sentence={sentence}
-            missingWordIndex={missingWordIndex}
-          ></Task>
-          <div className={className.wordGridWrapper}>
-            <Words
-              onClick={onClickedWord}
-              words={words}
-              disabled={disabled}
-              missingWord={missingWord}
-            ></Words>
-          <CheckAnswer onClick={checkAnswer} disabled={disabled} onload={onload}></CheckAnswer>
-          {answerState === 'incorrect' && (
-              <Typography className={classes.explanation}>
-              Fasit: {sentence.map((sentenceWord) => {
-                if (sentenceWord === previousClickedWord) {
-                return (<strong>{missingWord + " "} </strong>)
-                } else { return (sentenceWord + " " )}
-                })}
-              </Typography>
-            )}
-          </div>
-          <div className={className.nextExerciseButtonDiv}>
-            <NextExerciseBtn
-              answerState={answerState}
-              handleNextTask={handleNextTask}
-            />
-          </div>
-        </div>
+        <Question question={question} fireAudio={fireAudio} disabled={audioDisabled}></Question>
+        <Paper className={classes.layout} elevation={0}>
+          <Grid container spacing={1} className={classes.overallGrid}>
+            <div className={className.gameWrapper}>
+              <Task
+                missingWord={missingWord}
+                onload={onload}
+                previousClickedWord={previousClickedWord}
+                sentence={sentence}
+                missingWordIndex={missingWordIndex}
+              ></Task>
+              <div className={className.wordGridWrapper}>
+                <Words
+                  onClick={onClickedWord}
+                  words={words}
+                  disabled={disabled}
+                  missingWord={missingWord}
+                ></Words>
+                <CheckAnswer onClick={checkAnswer} disabled={disabled} onload={onload}></CheckAnswer>
+              </div>
+            </div>
+              {answerState === 'incorrect' && (
+                <Typography className={classes.explanation}>
+                  <strong>Fasit: </strong> {sentence.map((sentenceWord, index) => {
+                    if (index === missingWordIndex) {
+                      return (<strong>{missingWord + " "} </strong>)
+                    } else { return (sentenceWord + " ") }
+                  })}
+                </Typography>
+              )}
+                <NextExerciseBtn
+                  answerState={answerState}
+                  handleNextTask={handleNextTask}
+                />
+          </Grid>
+        </Paper>
       </Paper>
     </>
 

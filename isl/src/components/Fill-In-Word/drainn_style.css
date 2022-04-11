@@ -62,7 +62,6 @@ p {
   /* max-width: 70%; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  
 }
 .taskGrid{
   display: grid;
@@ -70,6 +69,7 @@ p {
   gap: 0;
   justify-items: center;
 }
+
 
 @media screen and (max-width: 850px) {
   .taskGrid {
@@ -87,14 +87,13 @@ p {
 }
 
 
-
 @media screen and (max-width: 530px) {
   .taskGrid {
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 0;
   }
-
 }
+
 @media screen and (max-width: 460px) {
   .wordGrid {
     grid-template-columns: 1fr 1fr; 
