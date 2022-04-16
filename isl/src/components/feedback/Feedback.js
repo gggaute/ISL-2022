@@ -5,6 +5,9 @@ import NavBar from "../NavBar/Navbar";
 //Denne importen må endres etter strukturen blir endret
 import exerciseStyles from '../exerciseStyle';
 import ProgressBar from '../ProgressBar';
+import "./poengsum.css";
+import "../exerciseStyle.css";
+
 
 const Feedback = ({
   totalExercises,
@@ -24,17 +27,19 @@ const Feedback = ({
       return (
         <>
           <NavBar></NavBar>
-          <Paper className={classes.root}>
+          <Paper className={classes.root} id="rootPaper">
             <div className={classes.progresscontainer}>
               <ProgressBar progress={progress} possible={possible} />
             </div>
-            <Typography variant="h4" align="center" className={classes.text2}>
+            <Typography variant="h4" align="center" className={classes.text2} id="poengsumText">
                   Poengsummen din er
                   {` ${totalScore} `}
                   av totalt
                   {` ${totalExercises} `}
                   mulige!
                 </Typography>
+
+              <div className={classes.btnParent}>
               <Button
                 variant="contained"
                 color="primary"
@@ -43,6 +48,7 @@ const Feedback = ({
               >
                 Neste oppgave
               </Button>
+              </div>
           </Paper>
         </>
       );
@@ -50,17 +56,29 @@ const Feedback = ({
       return (
         <>
           <NavBar></NavBar>
-          <Paper className={classes.root}>
+          <Paper className={classes.root} id="rootPaper">
           <div className={classes.progresscontainer}>
             <ProgressBar progress={2} possible={1} />
           </div>
+
           <Typography variant="h4" align="center" className={classes.text2}>
-                Poengsummen din er
-                {` ${totalScore} `}
-                av totalt
-                {` ${totalExercises} `}
-                mulige!
+          Du har gjort alle oppgavene!
               </Typography>
+          <Typography variant="h4" align="center" className={classes.text2} id="poengsumText">
+                Dine poeng: 
+              </Typography>
+
+              <Typography variant="h4" align="center" className={classes.text2} id="poengsum">
+              <div  className={classes.points}>
+                {` ${totalScore } ` }
+                /
+                {` ${totalExercises} `}
+                  </div>
+            </Typography>
+
+
+
+              <div className={classes.btnParent}>
             <Button
               variant="contained"
               color="primary"
@@ -69,12 +87,13 @@ const Feedback = ({
             >
               Fullfør sett
             </Button>
+            </div>
           </Paper>
         </>
       );
     default:
       return (
-        <Paper className={classes.root}>
+        <Paper className={classes.root} id="rootPaper">
           <div>
             <Typography variant="h3">Noe gikk galt</Typography>
           </div>

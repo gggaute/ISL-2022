@@ -5,7 +5,7 @@ from .models import DraInnManglendeOrd
 class DraInnManglendeOrdSerializer(serializers.ModelSerializer):
     class Meta:
         model = DraInnManglendeOrd
-        fields = ('id', 'correctSolution',
+        fields = ('id', 'correctSolutionIndex',
         'sentenceWord1', 'sentenceWord2', 'sentenceWord3',
         'sentenceWord4', 'sentenceWord5', 'sentenceWord6',
         'sentenceWord7', 'sentenceWord8', 'sentenceWord9',

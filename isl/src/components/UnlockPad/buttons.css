@@ -124,3 +124,101 @@
     width: 3.5em;
     justify-self: center;
 }
+
+
+@media only screen and (max-width: 500px) {
+
+    #numpadButton1 {
+        height: 2.8em;
+        width: 2.8em;
+    }
+
+    #numpadButton2 {
+        height: 2.8em;
+        width: 2.8em;
+    }
+
+    #numpadButton3 {
+        height: 2.8em;
+        width: 2.8em;
+    }
+
+    #numpadButton4 {
+        height: 2.8em;
+        width: 2.8em;
+    }
+
+    #numpadButton5 {
+        height: 2.8em;
+        width: 2.8em;
+    }
+
+    #numpadButton6 {
+        height: 2.8em;
+        width: 2.8em;
+    }
+    
+    #numpadButton7 {
+        height: 2.8em;
+        width: 2.8em;
+    }
+
+    #numpadButton8 {
+        height: 2.8em;
+        width: 2.8em;
+    }
+    
+    #numpadButton9 {
+        height: 2.8em;
+        width: 2.8em;
+    }
+}
+
+
+@media only screen and (max-width: 400px) {
+
+    #numpadButton1 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+
+    #numpadButton2 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+
+    #numpadButton3 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+
+    #numpadButton4 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+
+    #numpadButton5 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+
+    #numpadButton6 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+    
+    #numpadButton7 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+
+    #numpadButton8 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+    
+    #numpadButton9 {
+        height: 2.5em;
+        width: 2.5em;
+    }
+}

@@ -73,7 +73,30 @@ const PlaySets = () => {
     );
   }
 
-  
+  /**
+   * Fetches content from backend based on the given id, and pushes it
+   * to createPlayList(), to make and play the set.
+   * @param {int} id The id of the set.
+   */
+  function getContent(id) {
+    axios
+      .get(`/api/sets/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+        },
+      })
+      .then((res) => {
+        createPlayList(res.data);
+        setTotalScore(0);
+        setExerciseProgress(0);
+        nextExercise()
+      })
+      .catch((e) => {
+        return e;
+      });
+  }
+
   /**
    * The function will handle logic for going to the next exercise when the user
    * has finished the current exercise. It will use exercise lists created from
@@ -107,30 +130,6 @@ const PlaySets = () => {
     }
   }
   
-  /**
-   * Fetches content from backend based on the given id, and pushes it
-   * to createPlayList(), to make and play the set.
-   * @param {int} id The id of the set.
-   */
-  function getContent(id) {
-    axios
-      .get(`http://localhost:8000/api/sets/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          accept: "application/json",
-        },
-      })
-      .then((res) => {
-        createPlayList(res.data);
-        setTotalScore(0);
-        setExerciseProgress(0);
-        nextExercise()
-      })
-      .catch((e) => {
-        return e;
-      });
-  }
-
   /**
    * The function keeps track of scores and decides what feedback to show accordingly.
    * @param {int} score Score from the current task.

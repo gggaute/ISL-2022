@@ -23,7 +23,7 @@ import useStyles from './styles';
       return (
         <Grid item xs={12}>
           <Card className={classes.answerElementWrong}>
-            <CardHeader
+            <CardHeader className= {classes.cardHeader}
               avatar={<CancelIcon className={classes.icons} />}
               title=" Feil! "
             />
@@ -56,6 +56,7 @@ import useStyles from './styles';
                 className={classes.answerBtn}
                 fullWidth
                 size="small"
+                data-cy="arrow-button"
               >
                 <TrendingFlatIcon fontSize="large" />
               </Button>

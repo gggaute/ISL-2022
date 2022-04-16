@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -7,15 +7,11 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   gridText: {
-    paddingBottom: theme.spacing(0),
+    paddingBottom: 0,
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: "8px",
     float: 'right',
-  },
-  explanation: {
-    marginRight: theme.spacing(2),
-    marginLeft: theme.spacing(2),
   },
 }));
 
