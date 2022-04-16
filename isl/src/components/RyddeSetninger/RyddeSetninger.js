@@ -20,15 +20,13 @@ import "../exerciseStyle.css";
 
 /**
  * This is the ryddeSetninger exercise component that is playable from Playsets.
- * @author Julie, Phajsi
+ * @author Old group
  * @param {object} props
  * @property {integer} id This is the id of the ryddeSetninger exercise being played.
  * @property {function} showFeedback Tracks a user's score when playing an exercise in a set and
  * which feedback case to show after finishing the exercise.
  * @property {integer} progress Counts how many exercises the user has played.
  * @property {integer} possible Total exercises in the set.
- * @property {function} restartSet Sets setStep in Playsets to "overview" so the user can exit
- * the exercise set from any exercise.
  * @property {function} playAudio Returns a new HTMLAudioElement.
  * @returns A ryddeSetninger exercise instance.
  */
@@ -39,7 +37,6 @@ const RyddeSetninger = ({
   possible,
   playAudio,
 }) => {
-  const [renderPage, setRenderPage] = useState();
   // List of the words displayed in the exercise.
   const [words] = useState([]);
   // List of the words the user has chosen in the exercise.
@@ -48,8 +45,9 @@ const RyddeSetninger = ({
   const [wordWithColorCode, setWordWithColorCode] = useState([]);
   // List of the wordclasses corresponding to the words displayed.
   const [wordClasses] = useState([]);
-  /* State that keeps track of the correct sentence, which needs 
-  to be checked against when the user is satisfied with their answer. */
+  
+  // State that keeps track of the correct sentence, which needs 
+  // to be checked against when the user is satisfied with their answer.
   const [rightAnswer, setRightAnswer] = useState();
 
   const [answerState, setAnswerState] = useState(null);
@@ -57,8 +55,10 @@ const RyddeSetninger = ({
   const [score, setScore] = useState(0);
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
+  //A state that disables the audio button when the audio is displayed
   const [disabled, setDisabled] = useState(false);
 
+  //A string with the question displayed for the task
   const question = "Trykk på ordene for å skrive setningen i riktig rekkefølge.";
 
   /* Objects that take both the component style and a common style between all
@@ -88,17 +88,17 @@ const RyddeSetninger = ({
   };
 
   /**
-   * 
+   * Randomizes the words that the user needs to sort.
    */
   const randomizeWords = () => {
     concatenatedWords.sort(() => Math.random() - 0.5);
   };
 
   /**
-   * Function that transforms the wordclass into its corresponding color and returns
-   * the css backgroundColor object with its the colors HEX code.
-   * @param {*} wordClass
-   */
+   * Function that transforms the wordclass into its corresponding color and returns the
+   * css backgroundColor object with its the colors HEX code. 
+   * @param {String} wordClass Backends wordclasses
+  */
   const colorCodeTransform = (wordClass) => {
     switch (wordClass) {
       case "sub":
@@ -149,7 +149,8 @@ const RyddeSetninger = ({
   };
 
   /**
-   * TODO ?
+   * Fetches content from backend based on the given id, and runs
+   * filterData() to render the info on the page.
    */
   function getContent() {
     axios
@@ -161,7 +162,6 @@ const RyddeSetninger = ({
       })
       .then((res) => {
         filterData(res.data);
-        setRenderPage(renderPage + 1);
       })
       .catch((e) => {
         return e;
@@ -216,12 +216,12 @@ const RyddeSetninger = ({
   };
 
   /**
-   * 
+   * The function calls showFeedback(int,int) and sends the user to the feedback page,
+   * after the user has played the current task.
    */
   const nextExercise = () => {
     showFeedback(score, totalPossibleScore);
   };
-
 
   function fireAudio() {
     setDisabled(true);

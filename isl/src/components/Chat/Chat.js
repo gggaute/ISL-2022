@@ -27,26 +27,24 @@ import "../exerciseStyle.css";
 
 /**
  * This is the chat exercise component that is playable from Playsets.
- * @author Maja, Julie, Even, Simen, Phajsi
+ * @author Old group
  * @param {object} props
  * @property {integer} id This is the id of the chat exercise being played.
  * @property {function} showFeedback Tracks a user's score when playing an exercise in a set and
  * which feedback case to show after finishing the exercise.
  * @property {integer} progress Counts how many exercises the user has played.
  * @property {integer} possible Total exercises in the set.
- * @property {function} restartSet Sets setStep in Playsets to "overview" so the user can exit
- * the exercise set from any exercise.
  * @property {function} playAudio Returns a new HTMLAudioElement.
  * @returns A chat exercise instance.
  */
 const Chat = ({
   id,
-  nextExercise,
   showFeedback,
   progress,
   possible,
   playAudio,
 }) => {
+  //icons for the chat users.
   const [sendericon, setSendericon] = useState();
   const [receivericon, setReceivericon] = useState();
 
@@ -61,6 +59,7 @@ const Chat = ({
   // List that keeps track of conversation history in the chat exercise.
   const [chatHistory] = useState([]);
 
+  // A state that disables the audio button when the audio is displayed
   const [disabled, setDisabled] = useState(false);
 
   /* Objects that take both the component style and a common style between all
@@ -70,10 +69,11 @@ const Chat = ({
   const classesBase = exerciseStyles();
   const classes = { ...className, ...classesBase };
 
-
   // Data for the chat exercise from backend.
   const [formData, setFormData] = useState({});
 
+
+  //A string with the question displayed for the task
   const question = 'Du har fått en melding! Svar på meldingen ved å trykke på riktig svar.';
 
 
@@ -104,7 +104,9 @@ const Chat = ({
   };
 
   /**
-   * TODO ?
+   * Fetches content from backend based on the given id, and sets
+   * the data to formdata and pushes first question 
+   * to chatHistory, to render the info on the page.
    */
   function getContent() {
     axios
@@ -125,7 +127,8 @@ const Chat = ({
   }
 
   /**
-   * TODO
+   * The function checks if there are more chat questions or
+   * sends the user to the feedback page.
    */
   const handleNextTask = () => {
     setAnswerstate(null);
@@ -139,8 +142,10 @@ const Chat = ({
   };
 
   /**
-   * TODO
-   * @param {*} answer 
+   * The function checks if the user clicked the answer matching
+   * the correctanswer from the chat task, increments the score
+   * if it was correct and updates taskstep.
+   * @param {object} answer The answer clicked by the user
    */
   function handleAnswer(answer) {
     // Checks if answer is correct or not.
@@ -198,7 +203,6 @@ const Chat = ({
     <>
       <NavBar></NavBar>
       <Paper className={classes.root} id="rootPaper">
-      {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
           <h1 className={classes.exerciseType}>CHAT</h1>
           <ProgressBar progress={progress} possible={possible} />

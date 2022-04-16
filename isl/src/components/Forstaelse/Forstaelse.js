@@ -19,21 +19,18 @@ import "../exerciseStyle.css";
 
 /**
  * This is the forstaelse exercise component that is playable from Playsets.
- * @author Simen, Phajsi
+ * @author Old group
  * @param {object} props
  * @property {integer} id This is the id of the forstaelse exercise being played.
  * @property {function} showFeedback Tracks a user's score when playing an exercise in a set and
  * which feedback case to show after finishing the exercise.
  * @property {integer} progress Counts how many exercises the user has played.
  * @property {integer} possible Total exercises in the set.
- * @property {function} restartSet Sets setStep in Playsets to "overview" so the user can exit
- * the exercise set from any exercise.
  * @property {function} playAudio Returns a new HTMLAudioElement.
  * @returns A forstaelse exercise instance.
  */
 const Forstaelse = ({
   id,
-  nextExercise,
   showFeedback,
   progress,
   possible,
@@ -48,7 +45,7 @@ const Forstaelse = ({
   const [score, setScore] = useState(0);
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
-  
+  // A state that disables the audio button when the audio is displayed
   const [disabled, setDisabled] = useState(false);
 
   /* Objects that take both the component style and a common style between all
@@ -58,10 +55,12 @@ const Forstaelse = ({
   const classesBase = exerciseStyles();
   const classes = { ...className, ...classesBase };
 
+  //A string with the question displayed for the task
   const question = 'Les hva meldingen sier. Svar på spørsmålet under.';
 
   /**
-   * Gets the exercise content with {id} from backend
+   * Fetches content from backend based on the given id, and sets
+   * the data to formdata().
    */
   function getContent() {
     axios
@@ -80,8 +79,8 @@ const Forstaelse = ({
   }
 
   /**
-   * Updates states after a user has clicked on an answer.
-   * @param {*} userAnswer 
+   * This function updates states after a user has clicked on an answer.
+   * @param {object} userAnswer The answer the user chose. 
    */
   function onClickAnswer(userAnswer) {
     if (formData[`answer`] === userAnswer) {
@@ -95,8 +94,9 @@ const Forstaelse = ({
   }
 
   /**
-   * Goes to the next task or the next exercise after the user has played the current task.
-   */
+   * The function calls showFeedback(int,int) and sends the user to the feedback page, 
+   * after the user has played the current task.
+   */ 
   const handleNextTask = () => {
     setAnswerState(null);
     showFeedback(score, totalPossibleScore);
