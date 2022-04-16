@@ -2,7 +2,12 @@ import React from 'react'
 import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles((theme) => ({
-
+  // OverallGrid: Grid containing the overall exercise-content (i.e. everything efter the HR-line)
+  overallGrid: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  // GameWrapper: Contains the task-sentence, the word-button grid, and the check answer button
   gameWrapper: {
     padding: '0.6rem',
     display: 'flex',
@@ -11,17 +16,8 @@ const useStyles = makeStyles((theme) => ({
     rowGap: '1rem',
     marginTop: '1rem',
     maxWidth: '100%',
-    // border: "1px solid blue",
   },
-  overallGrid: {
-    // border: "1px solid pink",
-    display: "flex",
-    flexDirection: "column",
-  },
-  /* GAME-CONTENT */
-  // nextExerciseButtonDiv: {
-    // paddingTop: '-0.5rem',
-  // },
+  // WordButton: Each button in the word-button grid
   wordButton:{
     backgroundColor: '#BCD0F7',
     margin: '0.3rem',
@@ -31,19 +27,23 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     borderRadius: '0.5rem',
   },
-  task:{
-    display: 'flex',
-    flexDirection: 'row',
-    maxWidth: '100%',
-    padding: '0.5rem',
-  },
+  
+  // TODO: Brukes denne ??
+  // Task: The task sentence that is missing a word
+  // task:{
+  //   display: 'flex',
+  //   flexDirection: 'row',
+  //   maxWidth: '100%',
+  //   padding: '0.5rem',
+  // },
+
+  // WordGridWrapper: Contains the word-button grid and the check answer button
   wordGridWrapper:{
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-  }
-
+  },
 }))
 
-export default useStyles
+export default useStyles;

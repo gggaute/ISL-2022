@@ -60,7 +60,9 @@ const Forstaelse = ({
 
   const question = 'Les hva meldingen sier. Svar på spørsmålet under.';
 
-  // Gets the exercise content with {id} from backend.
+  /**
+   * Gets the exercise content with {id} from backend
+   */
   function getContent() {
     axios
       .get(`/api/forstaelse/${id}`, {
@@ -77,7 +79,10 @@ const Forstaelse = ({
       });
   }
 
-  // Updates states after a user has clicked on an answer.
+  /**
+   * Updates states after a user has clicked on an answer.
+   * @param {*} userAnswer 
+   */
   function onClickAnswer(userAnswer) {
     if (formData[`answer`] === userAnswer) {
       setAnswerState('correct');
@@ -89,7 +94,9 @@ const Forstaelse = ({
     }
   }
 
-  // Goes to the next task or the next exercise after the user has played the current task.
+  /**
+   * Goes to the next task or the next exercise after the user has played the current task.
+   */
   const handleNextTask = () => {
     setAnswerState(null);
     showFeedback(score, totalPossibleScore);

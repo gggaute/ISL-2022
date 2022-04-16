@@ -5,6 +5,11 @@ import exerciseStyle from "../exerciseStyle";
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import { IconButton } from '@mui/material';
 
+/**
+ * TODO
+ * @param {*} param0 
+ * @returns 
+ */
 const Question = ({ question, fireAudio, disabled }) => {
   const className = useStyles();
   const classesBase = exerciseStyle();

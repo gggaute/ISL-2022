@@ -72,7 +72,10 @@ const RyddeSetninger = ({
   let concatenatedWords = [];
   let counter = 0;
 
-  // Splits the words in the sentence from their wordclasses and into their respective states.
+  /**
+   * Splits the words in the sentence from their wordclasses and into their respective states.
+   * @param {*} el 
+   */
   const splitData = (el) => {
     counter += 1;
     if (!(el === "" || typeof el === "number")) {
@@ -84,12 +87,18 @@ const RyddeSetninger = ({
     }
   };
 
+  /**
+   * 
+   */
   const randomizeWords = () => {
     concatenatedWords.sort(() => Math.random() - 0.5);
   };
 
-  /* Function that transforms the wordclass into its corresponding color and returns the
-  css backgroundColor object with its the colors HEX code. */
+  /**
+   * Function that transforms the wordclass into its corresponding color and returns
+   * the css backgroundColor object with its the colors HEX code.
+   * @param {*} wordClass
+   */
   const colorCodeTransform = (wordClass) => {
     switch (wordClass) {
       case "sub":
@@ -139,6 +148,9 @@ const RyddeSetninger = ({
     setWordWithColorCode([...concatenatedWords]);
   };
 
+  /**
+   * TODO ?
+   */
   function getContent() {
     axios
       .get(`/api/rydde_setninger/${id}`, {
@@ -203,6 +215,9 @@ const RyddeSetninger = ({
     }
   };
 
+  /**
+   * 
+   */
   const nextExercise = () => {
     showFeedback(score, totalPossibleScore);
   };

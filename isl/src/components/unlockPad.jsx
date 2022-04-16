@@ -2,6 +2,11 @@ import React, { useState } from "react"
 import Button from "@mui/material/Button";
 import './styling/unlockPadStyle.css'
 
+/**
+ * TODO
+ * @param {*} input 
+ * @returns 
+ */
 const UnlockPad = (input) => {
 
     //henter inn en oppgave fra databasen, må inneholde:

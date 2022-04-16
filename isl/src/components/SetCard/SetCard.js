@@ -1,4 +1,4 @@
-// TODO: SetCard trengs ikke lenger
+// TODO: SetCard trengs ikke lenger ?
 
 import React from 'react';
 import { Avatar, Card, CardHeader, IconButton } from '@mui/material';

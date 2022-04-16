@@ -103,6 +103,9 @@ const Chat = ({
     }
   };
 
+  /**
+   * TODO ?
+   */
   function getContent() {
     axios
       .get(`/api/chat/${id}`, {
@@ -121,6 +124,9 @@ const Chat = ({
       });
   }
 
+  /**
+   * TODO
+   */
   const handleNextTask = () => {
     setAnswerstate(null);
     if (!formData[`chatquestion${taskStep}`]) {
@@ -132,6 +138,10 @@ const Chat = ({
     }
   };
 
+  /**
+   * TODO
+   * @param {*} answer 
+   */
   function handleAnswer(answer) {
     // Checks if answer is correct or not.
     if (answer === formData[`correctanswer${taskStep}`]) {
@@ -146,7 +156,11 @@ const Chat = ({
     chatHistory.push(answer);
   }
 
-  // Function for randomizing the answers so the correct answer isn't always the same button.
+  /**
+   * TODO
+   * Function for randomizing the answers so the correct answer isn't always the same button.
+   * @returns 
+   */
   function random() {
     const buttonList = [
       formData[`answer${taskStep}1`],

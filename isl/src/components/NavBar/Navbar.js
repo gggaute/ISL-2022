@@ -5,6 +5,10 @@ import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./style.css";
 
+/**
+ * TODO
+ * @returns 
+ */
 const Navbar = () => {
   return (
     <div className="bar">

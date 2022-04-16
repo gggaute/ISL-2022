@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"
+import axios from "axios";
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import ProgressBar from '../ProgressBar';
-import exerciseStyles from '../exerciseStyle';
 import NavBar from "../NavBar/Navbar";
-import useStyles from "./styles";
 import Question from "../Question/Question";
-import './general.css'
-import "./buttons.css";
 import {
   Typography,
   Paper,
@@ -16,6 +12,10 @@ import {
 } from '@mui/material';
 import unlockaudio from "../../assets/audiofiles/unlockAudio.mp3";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import useStyles from "./styles";
+import exerciseStyles from '../exerciseStyle';
+import './general.css';
+import "./buttons.css";
 import "../exerciseStyle.css";
 
 
@@ -23,7 +23,7 @@ import "../exerciseStyle.css";
  * This is the Unlock exercise component that is playable from Playsets.
  * @author Ingvild, Jasmina
  * @param {object} props
- * @property {integer} id This is the id of the ryddeSetninger exercise being played.
+ * @property {integer} id This is the id of the Unlock exercise being played.
  * @property {function} showFeedback Tracks a user's score when playing an exercise in a set and
  * which feedback case to show after finishing the exercise.
  * @property {integer} progress Counts how many exercises the user has played.
@@ -39,30 +39,41 @@ const UnlockPad = ({
   playAudio
 }) => {
 
-  const [correctSolution, setCorrectSolution] = useState("");
   // The word that is the correct solution
-  const [solutionLength, setSolutionLength] = useState(0);
+  const [correctSolution, setCorrectSolution] = useState("");
+
   // The length of the correct word
-  const [userAnswer, setUserAnswer] = useState("");
+  const [solutionLength, setSolutionLength] = useState(0);
+
   // The letters joined together as a word that the player guesses
-  const backendLetters = []
+  const [userAnswer, setUserAnswer] = useState("");
+
   // List of letters for letters from backend
-  const [letters, setLetters] = useState([]);
+  const backendLetters = []
+
   // List of letters for the letter buttons in numpad
-  const [image, setImg] = useState(null)
+  const [letters, setLetters] = useState([]);
+
   // Image of correct solution
-  let isFinished = false;
+  const [image, setImg] = useState(null)
+
   // Boolean for if a correct or incorrect answer is given
-  let setDisabled = false
+  let isFinished = false;
+
   // Boolean to set buttons disabled property
-  let feedback
+  let setDisabled = false
+
   // String variable to fill with type of content to trigger correct response in NextExerciseBtn
-  let count = 0;
+  let feedback
+
   // Int for numpad button css to give each button an indivial id with increasing value
-  const [userAnswerList, setUserAnswerList] = useState([]);
+  let count = 0;
+
   // List containting letters from the userAnswer, used to present answer in Answerlist
-  const answerList = [];
+  const [userAnswerList, setUserAnswerList] = useState([]);
+
   // List containing blank spaces and guessed letters. Should have equal length to correctSolution length
+  const answerList = [];
 
   /* Objects that take both the component style and a common style between all
   exercises, to finally integrate both style objects into the classes object
@@ -216,6 +227,7 @@ const UnlockPad = ({
     getContent()
   }, [])
 
+
   function fireAudio() {
     setAudioDisabled(true);
     playAudio(unlockaudio);
@@ -264,12 +276,10 @@ const UnlockPad = ({
                 <strong>Fasit: </strong>{correctSolution}
               </Typography>
             )}
-            {/* <div className={classes.feedbackAndReset}> */}
-              <NextExerciseBtn
-                answerState={feedback}
-                handleNextTask={handleNextTask}
-              />
-            {/* </div> */}
+            <NextExerciseBtn
+              answerState={feedback}
+              handleNextTask={handleNextTask}
+            />
           </Grid>
         </Paper>
       </Paper>

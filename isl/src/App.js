@@ -5,6 +5,9 @@ import StartPage from './containers/StartPage/StartPage';
 import { createTheme } from '@mui/material/styles'
 import { ThemeProvider } from "@emotion/react";
 
+/**
+ * TODO
+ */
 export const theme = createTheme({
   palette: {
     primary: {

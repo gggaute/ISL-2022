@@ -1,13 +1,23 @@
 import React from "react";
 import { Paper, Typography, Button } from "@mui/material";
-import useStyles from "./styles";
 import NavBar from "../NavBar/Navbar";
-import exerciseStyles from '../exerciseStyle';
 import ProgressBar from '../ProgressBar';
+import exerciseStyles from '../exerciseStyle';
+import useStyles from "./styles";
 import "./poengsum.css";
 import "../exerciseStyle.css";
 
-
+/**
+ * TODO
+ * @param {object} props 
+ * @property {} totalExercises
+ * @property {} totalScore
+ * @property {} progress
+ * @property {} possible
+ * @property {} feedbackState
+ * @property {} nextExercise
+ * @returns 
+ */
 const Feedback = ({
   totalExercises,
   totalScore,
@@ -16,6 +26,10 @@ const Feedback = ({
   feedbackState,
   nextExercise,
 }) => {
+
+  /* Objects that take both the component style and a common style between all
+  exercises, to finally integrate both style objects into the classes object
+  to be used in the component */
   const className = useStyles();
   const classesBase = exerciseStyles();
   const classes = { ...className, ...classesBase };
