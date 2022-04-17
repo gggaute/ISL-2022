@@ -1,6 +1,6 @@
 import React from 'react'
-import '../Fill-In-Word/drainn_style'
-import useStyles from "../Fill-In-Word/drainn_style";
+import '../FillInWord/styles'
+import useStyles from "../FillInWord/styles";
 import exerciseStyle from "../exerciseStyle";
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import { IconButton } from '@mui/material';

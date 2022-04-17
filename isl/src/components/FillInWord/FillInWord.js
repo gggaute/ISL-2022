@@ -15,9 +15,9 @@ import {
   Grid,
 } from '@mui/material';
 import fillaudio from "../../assets/audiofiles/fillInnAudio.mp3";
-import useStyles from "./drainn_style";
+import useStyles from "./styles";
 import exerciseStyles from '../exerciseStyle';
-import './drainn_style.css'
+import './general.css'
 import "../exerciseStyle.css";
 
 /**

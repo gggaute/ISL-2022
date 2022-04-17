@@ -3,13 +3,13 @@ import axios from 'axios';
 import React from 'react';
 import { render, screen, act, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import RyddeSetninger from './RyddeSetninger';
+import SortSentences from './SortSentence';
 
 jest.mock('axios');
 jest.useFakeTimers();
 
 
-describe('RyddeSetninger component', () => {
+describe('SortSentences component', () => {
     const resp = {
       id: 11,
       word1: 'Jeg',
@@ -48,7 +48,7 @@ describe('RyddeSetninger component', () => {
         await act(async () =>
           render(
             <Router>
-              <RyddeSetninger id={5} />
+              <SortSentences id={5} />
             </Router>
           )
         );
@@ -73,7 +73,7 @@ describe('RyddeSetninger component', () => {
         await act(async () =>
           render(
             <Router>
-              <RyddeSetninger id={5} />
+              <SortSentences id={5} />
             </Router>
           )
         );
@@ -91,7 +91,7 @@ describe('RyddeSetninger component', () => {
         await act(async () =>
           render(
             <Router>
-              <RyddeSetninger id={5} restartSet={() => <></>} />
+              <SortSentences id={5} restartSet={() => <></>} />
             </Router>
           )
         );
@@ -129,7 +129,7 @@ describe('RyddeSetninger component', () => {
         await act(async () =>
         render(
             <Router>
-            <RyddeSetninger id={5} restartSet={() => <></>} />
+            <SortSentences id={5} restartSet={() => <></>} />
             </Router>
         )
         );
@@ -167,7 +167,7 @@ describe('RyddeSetninger component', () => {
         await act(async () =>
           render(
             <Router>
-              <RyddeSetninger id={5} restartSet={() => <></>} />
+              <SortSentences id={5} restartSet={() => <></>} />
             </Router>
           )
         );
@@ -203,7 +203,7 @@ describe('RyddeSetninger component', () => {
         await act(async () =>
         render(
             <Router>
-            <RyddeSetninger
+            <SortSentences
                 id={5}
                 playAudio={() => <></>}
                 restartSet={() => <></>}
@@ -211,7 +211,7 @@ describe('RyddeSetninger component', () => {
             </Router>
         )
         );
-        const button = screen.getByTestId('volumeRyddeSetninger');
+        const button = screen.getByTestId('volumeSortSentences');
         fireEvent.click(button);
 
         expect(setTimeout).toHaveBeenCalledTimes(1);

@@ -3,7 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import { render, screen, act, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Forstaelse from './Forstaelse';
+import Forstaelse from './Comprehension';
 
 jest.mock('axios');
 jest.useFakeTimers();

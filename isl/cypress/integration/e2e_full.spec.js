@@ -95,7 +95,7 @@ describe('App loop', () => {
     })
 
     //RYDD SETNINGER
-    it('clicks on words in rydde-setninger', () => {
+    it('clicks on words in sortSentence', () => {
         // click all words in and 1 back out
         cy.get('.jss2:first').click()
         cy.get('.jss2:first').click()

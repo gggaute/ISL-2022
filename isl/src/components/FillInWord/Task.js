@@ -1,7 +1,7 @@
 import React from 'react'
 import $ from "jquery"
 import { useEffect } from 'react'
-import './drainn_style.css'
+import './general.css'
 import { Card } from '@mui/material';
 
 

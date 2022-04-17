@@ -6,7 +6,7 @@ import {
   Paper,
   Button,
 } from "@mui/material";
-import ryddaudio from "../../assets/audiofiles/ryddeAudio.mp3";
+import sortAudio from "../../assets/audiofiles/sortAudio.mp3";
 import ProgressBar from "../ProgressBar";
 import NextExerciseBtn from "../NextExerciseBtn/NextExerciseBtn";
 import useStyles from './styles';
@@ -15,22 +15,19 @@ import NavBar from "../NavBar/Navbar";
 import Question from "../Question/Question";
 import "../exerciseStyle.css";
 
-
-
-
 /**
- * This is the ryddeSetninger exercise component that is playable from Playsets.
+ * This is the sortSentences exercise component that is playable from Playsets.
  * @author Old group
  * @param {object} props
- * @property {integer} id This is the id of the ryddeSetninger exercise being played.
+ * @property {integer} id This is the id of the sortSentences exercise being played.
  * @property {function} showFeedback Tracks a user's score when playing an exercise in a set and
  * which feedback case to show after finishing the exercise.
  * @property {integer} progress Counts how many exercises the user has played.
  * @property {integer} possible Total exercises in the set.
  * @property {function} playAudio Returns a new HTMLAudioElement.
- * @returns A ryddeSetninger exercise instance.
+ * @returns A sortSentences exercise instance.
  */
-const RyddeSetninger = ({
+const SortSentences = ({
   id,
   showFeedback,
   progress,
@@ -131,7 +128,7 @@ const RyddeSetninger = ({
    * 5. Goes through all the wordclasses in the concatenatedWords array and returns their corresponding
    *    HEX color codes instead.
    * 6. Saves a copy of the concatenatedWords array into the wordWithColorCode state, that will be the state
-   *    used for displaying the words in the Rydde Setninger exercise.
+   *    used for displaying the words in the Sort Sentence exercise.
    * @param {object} data Object containing all the words and wordclasses used in the exercise.
    */
   const filterData = (data) => {
@@ -225,7 +222,7 @@ const RyddeSetninger = ({
 
   function fireAudio() {
     setDisabled(true);
-    playAudio(ryddaudio);
+    playAudio(sortAudio);
     setTimeout(() => {
       setDisabled(false);
     }, 5000);
@@ -310,4 +307,4 @@ const RyddeSetninger = ({
   );
 };
 
-export default RyddeSetninger;
+export default SortSentences;

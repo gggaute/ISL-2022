@@ -1,6 +1,6 @@
 import React from 'react'
-import useStyles from './drainn_style'
-import './drainn_style.css'
+import useStyles from './styles'
+import './general.css'
 
 /**
  * TODO

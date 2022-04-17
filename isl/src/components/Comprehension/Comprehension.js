@@ -7,7 +7,7 @@ import {
   Paper,
 } from '@mui/material';
 import ChatBubble from '../ChatBubble/ChatBubble';
-import forsaudio from '../../assets/audiofiles/forstaelseAudio.mp3';
+import compAudio from '../../assets/audiofiles/comprehensionAudio.mp3';
 import ProgressBar from '../ProgressBar';
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import axios from 'axios';
@@ -29,7 +29,7 @@ import "../exerciseStyle.css";
  * @property {function} playAudio Returns a new HTMLAudioElement.
  * @returns A forstaelse exercise instance.
  */
-const Forstaelse = ({
+const Comprehension = ({
   id,
   showFeedback,
   progress,
@@ -105,7 +105,7 @@ const Forstaelse = ({
   
   function fireAudio() {
     setDisabled(true);
-    playAudio(forsaudio);
+    playAudio(compAudio);
     setTimeout(() => {
       setDisabled(false);
     }, 4000);
@@ -179,4 +179,4 @@ const Forstaelse = ({
   );
 };
 
-export default Forstaelse;
+export default Comprehension;

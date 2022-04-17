@@ -1,5 +1,5 @@
 import React from 'react'
-import './drainn_style.css'
+import './general.css'
 import { Button } from '@mui/material';
 
 /**

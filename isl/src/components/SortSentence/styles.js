@@ -1,4 +1,4 @@
-// Styling for the RyddeSetninger-component
+// Styling for the SortSentences-component
 
 import { makeStyles } from '@material-ui/core/styles';
 
