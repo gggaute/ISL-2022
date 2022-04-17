@@ -3,16 +3,15 @@ import './drainn_style.css'
 import { Button } from '@mui/material';
 
 /**
- * TODO
  * This is a component for the check-answer-button in Fill-In-Word
- * @author 
+ * @author Gaute
  * @param {object} props
- * @property {function} onClick Function
- * @property {} disabled State
- * @property {} onload State
- * @returns The mui-button for check-answer
+ * @property {function} onClick Function executing on clicks on the buttons
+ * @property {boolean} disabled State to check if the buttons are disabled or not
+ * @property {boolean} onload Is true on first load of the exercise, false after clicks on buttons
+ * @returns The mui-instance for the check-answer-button
  */
-const CheckAnswer = ({ onClick, disabled, onload }) => {
+const CheckAnswer = ({ onClick, disabled, onload }) => {  
   return (
     <Button className="checkAnswerBtn" variant="contained" color='primary' onClick={onClick} disabled={onload ? true : disabled}>
       Sjekk svar

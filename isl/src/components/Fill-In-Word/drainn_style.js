@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '0.5rem',
   },
   
-  // TODO: Brukes denne ??
+  // TODO: Brukes denne ?? den er i Task.js
   // Task: The task sentence that is missing a word
   // task:{
   //   display: 'flex',

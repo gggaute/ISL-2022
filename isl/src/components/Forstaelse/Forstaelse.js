@@ -120,16 +120,11 @@ const Forstaelse = ({
     <>
       <NavBar></NavBar>
       <Paper className={classes.root} id="rootPaper">
-      {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
           <h1 className={classes.exerciseType}>Forståelse</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
        <Question question={question} fireAudio={fireAudio} disabled={disabled} />
-
-        {/* </CardContent>
-          </Card>
-        </div> */}
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={3}>
             <ChatBubble chat={formData[`chat`]} />

@@ -3,12 +3,12 @@ import useStyles from './drainn_style'
 import './drainn_style.css'
 
 /**
- * TODO
- * @authors 
+ * This is a component to generate each word-button in Fill-In-Word
+ * @author Gaute
  * @param {object} props
- * @property {string} word 
- * @property {function} onClick
- * @property {state} disabled 
+ * @property {string} word The word that was called with the instance by the Words-component (mapping through the button-words fetched from database).
+ * @property {function} onClick Function executing on clicks on the buttons
+ * @property {boolean} disabled State to check if the buttons are disabled or not
  * @returns A button containing the word
  */
 const Word = ({ word, onClick, disabled }) => {
