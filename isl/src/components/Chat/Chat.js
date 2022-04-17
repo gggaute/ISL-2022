@@ -232,9 +232,12 @@ const Chat = ({
               )}
             </Grid>
             {answerState !== null && (
-              <Typography className={classes.explanation}>
-                {formData[`explanation${taskStep-1}`]}
-              </Typography>
+              <>
+                <hr className={classes.hr} />
+                <Typography className={classes.explanation}>
+                  {formData[`explanation${taskStep-1}`]}
+                </Typography>
+              </>
             )}
             <NextExerciseBtn
               answerState={answerState}

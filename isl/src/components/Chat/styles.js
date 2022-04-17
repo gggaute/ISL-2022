@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
   //   overflowY: 'scroll',
   //   maxHeight: 'inherit',
   // },
+  hr: {
+    width: "200%",
+    marginLeft: "25px",
+    marginTop: "10px",
+  }
 }));
 
 export default useStyles;
