@@ -3,13 +3,13 @@ import axios from 'axios';
 import React from 'react';
 import { render, screen, act, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import SortSentences from './SortSentence';
+import SortSentence from './SortSentence';
 
 jest.mock('axios');
 jest.useFakeTimers();
 
 
-describe('SortSentences component', () => {
+describe('SortSentence component', () => {
     const resp = {
       id: 11,
       word1: 'Jeg',
@@ -48,7 +48,7 @@ describe('SortSentences component', () => {
         await act(async () =>
           render(
             <Router>
-              <SortSentences id={5} />
+              <SortSentence id={5} />
             </Router>
           )
         );
@@ -57,7 +57,7 @@ describe('SortSentences component', () => {
         See https://stackoverflow.com/questions/62026834/how-to-add-restore-the-value-of-process-env-react-app-api-url*/
         expect(axios.get).toHaveBeenCalledTimes(1);
         expect(axios.get).toHaveBeenCalledWith(
-          `http://localhost:8000/api/rydde_setninger/${5}`,
+          `http://localhost:8000/api/sort_sentence/${5}`,
           {
             headers: {
               'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ describe('SortSentences component', () => {
         await act(async () =>
           render(
             <Router>
-              <SortSentences id={5} />
+              <SortSentence id={5} />
             </Router>
           )
         );
@@ -91,7 +91,7 @@ describe('SortSentences component', () => {
         await act(async () =>
           render(
             <Router>
-              <SortSentences id={5} restartSet={() => <></>} />
+              <SortSentence id={5} restartSet={() => <></>} />
             </Router>
           )
         );
@@ -129,7 +129,7 @@ describe('SortSentences component', () => {
         await act(async () =>
         render(
             <Router>
-            <SortSentences id={5} restartSet={() => <></>} />
+            <SortSentence id={5} restartSet={() => <></>} />
             </Router>
         )
         );
@@ -167,7 +167,7 @@ describe('SortSentences component', () => {
         await act(async () =>
           render(
             <Router>
-              <SortSentences id={5} restartSet={() => <></>} />
+              <SortSentence id={5} restartSet={() => <></>} />
             </Router>
           )
         );
@@ -203,7 +203,7 @@ describe('SortSentences component', () => {
         await act(async () =>
         render(
             <Router>
-            <SortSentences
+            <SortSentence
                 id={5}
                 playAudio={() => <></>}
                 restartSet={() => <></>}
@@ -211,7 +211,7 @@ describe('SortSentences component', () => {
             </Router>
         )
         );
-        const button = screen.getByTestId('volumeSortSentences');
+        const button = screen.getByTestId('volumeSortSentence');
         fireEvent.click(button);
 
         expect(setTimeout).toHaveBeenCalledTimes(1);

@@ -1,4 +1,4 @@
-// Styling for the Forståelse-component
+// Styling for the Comprehension-component
 
 import { makeStyles } from '@mui/styles';
 

@@ -18,16 +18,16 @@ import Question from '../Question/Question';
 import "../exerciseStyle.css";
 
 /**
- * This is the forstaelse exercise component that is playable from Playsets.
+ * This is the comprehension exercise component that is playable from Playsets.
  * @author Old group
  * @param {object} props
- * @property {integer} id This is the id of the forstaelse exercise being played.
+ * @property {integer} id This is the id of the comprehension exercise being played.
  * @property {function} showFeedback Tracks a user's score when playing an exercise in a set and
  * which feedback case to show after finishing the exercise.
  * @property {integer} progress Counts how many exercises the user has played.
  * @property {integer} possible Total exercises in the set.
  * @property {function} playAudio Returns a new HTMLAudioElement.
- * @returns A forstaelse exercise instance.
+ * @returns A comprehension exercise instance.
  */
 const Comprehension = ({
   id,
@@ -36,7 +36,7 @@ const Comprehension = ({
   possible,
   playAudio,
 }) => {
-  // Data for the forstaelse exercise from backend.
+  // Data for the comprehension exercise from backend.
   const [formData, setFormData] = useState({});
 
   // Null if user hasn't given an answer, "correct" or "incorrect" if user has given an answer.
@@ -61,7 +61,7 @@ const Comprehension = ({
    */
   function getContent() {
     axios
-      .get(`/api/forstaelse/${id}`, {
+      .get(`/api/comprehension/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           accept: 'application/json',

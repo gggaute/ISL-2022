@@ -1,8 +1,8 @@
 from rest_framework import routers
-from .views import LåsOppMobilViewSet, GetLåsOppMobilView
+from .views import UnlockViewSet, GetUnlockView
 
 router = routers.DefaultRouter()
-router.register('unlock', LåsOppMobilViewSet, 'unlock')
-router.register('unlock/<int:pk>', GetLåsOppMobilView, 'unlockpk')
+router.register('unlock', UnlockViewSet, 'unlock')
+router.register('unlock/<int:pk>', GetUnlockView, 'unlockpk')
 
 urlpatterns = router.urls

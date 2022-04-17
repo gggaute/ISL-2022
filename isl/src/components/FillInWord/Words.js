@@ -1,6 +1,6 @@
 import React from 'react'
 import Word from './Word'
-import './drainn_style.css'
+import './general.css'
 
 /**
  * TODO

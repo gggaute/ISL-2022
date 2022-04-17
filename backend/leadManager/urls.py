@@ -15,11 +15,11 @@ It creates the complete url path by creating a url pattern consisting of api/ an
 urlpatterns = [
     path("", front, name="front"),
     path("sets", front, name="sets"),
-    path('api/', include('forstaelse.urls')),
+    path('api/', include('comprehension.urls')),
     path('api/', include('chat.urls')),
-    path('api/', include('rydde_setninger.urls')),
+    path('api/', include('sort_sentence.urls')),
     path('api/', include('sets.urls')),
     path("api/", include('unlock.urls')),
-    path("api/", include('dra_inn_manglende_ord.urls')),
+    path("api/", include('fill_in_word.urls')),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

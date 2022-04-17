@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/img/logo.png";
+import logo from "../../assets/images/logo.png";
 import HomeIcon from "@mui/icons-material/Home";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";

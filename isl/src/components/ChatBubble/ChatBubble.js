@@ -5,7 +5,7 @@ import useStyles from './styles';
 
 
 /**
- * This is the component that is used to display messages in the chat and forstaelse exercises.
+ * This is the component that is used to display messages in the chat and comprehension exercises.
  * @author Julie, Simen
  * @param {object} props
  * @property {string} chat The message being displayed.

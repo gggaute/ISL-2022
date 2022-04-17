@@ -3,11 +3,11 @@ import axios from 'axios';
 import React from 'react';
 import { render, screen, act, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Forstaelse from './Comprehension';
+import Comprehension from './Comprehension';
 
 jest.mock('axios');
 
-describe('Forstaelse exercise', () => {
+describe('Comprehension exercise', () => {
   const resp = {
     id: 5,
     chat: 'Ola har kjøpt middag, du trenger ikke handle.',
@@ -22,14 +22,14 @@ describe('Forstaelse exercise', () => {
     await act(async () =>
       render(
         <Router>
-          <Forstaelse id={5} />
+          <Comprehension id={5} />
         </Router>
       )
     );
 
     expect(axios.get).toHaveBeenCalledTimes(1);
     expect(axios.get).toHaveBeenCalledWith(
-      `http://localhost:8000/api/forstaelse/${5}`,
+      `http://localhost:8000/api/comprehension/${5}`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ describe('Forstaelse exercise', () => {
     await act(async () =>
       render(
         <Router>
-          <Forstaelse id={5} restartSet={() => <></>} />
+          <Comprehension id={5} restartSet={() => <></>} />
         </Router>
       )
     );
@@ -63,7 +63,7 @@ describe('Forstaelse exercise', () => {
     await act(async () =>
       render(
         <Router>
-          <Forstaelse id={5} restartSet={() => <></>} />
+          <Comprehension id={5} restartSet={() => <></>} />
         </Router>
       )
     );

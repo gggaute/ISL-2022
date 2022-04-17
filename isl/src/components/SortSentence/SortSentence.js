@@ -16,18 +16,18 @@ import Question from "../Question/Question";
 import "../exerciseStyle.css";
 
 /**
- * This is the sortSentences exercise component that is playable from Playsets.
+ * This is the sortSentence exercise component that is playable from Playsets.
  * @author Old group
  * @param {object} props
- * @property {integer} id This is the id of the sortSentences exercise being played.
+ * @property {integer} id This is the id of the sortSentence exercise being played.
  * @property {function} showFeedback Tracks a user's score when playing an exercise in a set and
  * which feedback case to show after finishing the exercise.
  * @property {integer} progress Counts how many exercises the user has played.
  * @property {integer} possible Total exercises in the set.
  * @property {function} playAudio Returns a new HTMLAudioElement.
- * @returns A sortSentences exercise instance.
+ * @returns A sortSentence exercise instance.
  */
-const SortSentences = ({
+const SortSentence = ({
   id,
   showFeedback,
   progress,
@@ -148,7 +148,7 @@ const SortSentences = ({
    */
   function getContent() {
     axios
-      .get(`/api/rydde_setninger/${id}`, {
+      .get(`/api/sort_sentence/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           accept: 'application/json',
@@ -295,4 +295,4 @@ const SortSentences = ({
   );
 };
 
-export default SortSentences;
+export default SortSentence;

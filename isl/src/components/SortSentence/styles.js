@@ -1,4 +1,4 @@
-// Styling for the SortSentences-component
+// Styling for the SortSentence-component
 
 import { makeStyles } from '@material-ui/core/styles';
 

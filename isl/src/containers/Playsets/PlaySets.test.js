@@ -9,8 +9,8 @@ import PlaySets from './PlaySets';
 import store from '../../store';
 import SetMock from './__mocks__/SetMock';
 import ChatMock from './__mocks__/ChatMock';
-import ForstaelseMock from './__mocks__/ForstaelseMock';
-import RyddeSetningerMock from './__mocks__/RyddeSetningerMock';
+import ComprehensionMock from './__mocks__/ComprehensionMock';
+import SortSentenceMock from './__mocks__/SortSentenceMock';
 
 jest.mock('axios');
 jest.mock('react-router-dom', () => ({
@@ -24,8 +24,8 @@ jest.mock('react-router-dom', () => ({
 describe('PlaySets component', () => {
   const respSet = SetMock();
   const respChat = ChatMock();
-  const respForstaelse = ForstaelseMock();
-  const respRydde = RyddeSetningerMock();
+  const respComprehension = ComprehensionMock();
+  const respSort = SortSentenceMock();
 
   test('playthrough', async () => {
     axios.get.mockImplementation((url) => {
@@ -44,13 +44,13 @@ describe('PlaySets component', () => {
       if (url === `http://localhost:8000/api/chat/${22}`) {
         return Promise.resolve({ data: respChat });
       }
-      if (url === `http://localhost:8000/api/forstaelse/${19}`) {
-        return Promise.resolve({ data: respForstaelse });
+      if (url === `http://localhost:8000/api/comprehension/${19}`) {
+        return Promise.resolve({ data: respComprehension });
       }
       if (
-        url === `http://localhost:8000/api/rydde_setninger/${11}`
+        url === `http://localhost:8000/api/sort_sentence/${11}`
       ) {
-        return Promise.resolve({ data: respRydde });
+        return Promise.resolve({ data: respSort });
       }
     });
 

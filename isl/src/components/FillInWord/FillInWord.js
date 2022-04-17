@@ -79,7 +79,7 @@ const FillInWord = ({
    */
   function getContent() {
     axios
-      .get(`/api/draInnManglendeOrd/${id}`, {
+      .get(`/api/fillInWord/${id}`, {
         headers: {
           "Content-Type": "application/json",
           accept: "application/json",
