@@ -53,7 +53,7 @@ const SortSentences = ({
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
   //A state that disables the audio button when the audio is displayed
-  const [disabled, setDisabled] = useState(false);
+  const [audioDisabled, setAudioDisabled] = useState(false);
 
   //A string with the question displayed for the task
   const question = "Trykk på ordene for å skrive setningen i riktig rekkefølge.";
@@ -221,10 +221,10 @@ const SortSentences = ({
   };
 
   function fireAudio() {
-    setDisabled(true);
+    setAudioDisabled(true);
     playAudio(sortAudio);
     setTimeout(() => {
-      setDisabled(false);
+      setAudioDisabled(false);
     }, 5000);
   }
 
@@ -241,7 +241,7 @@ const SortSentences = ({
           <h1 className={classes.exerciseType}>Rydd setningen</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Question question={question} fireAudio={fireAudio} disabled={disabled}></Question>
+        <Question question={question} fireAudio={fireAudio} disabled={audioDisabled}></Question>
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={1}>
             <Grid item xs={12}>

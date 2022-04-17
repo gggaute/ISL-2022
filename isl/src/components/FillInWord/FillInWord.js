@@ -14,7 +14,7 @@ import {
   Typography,
   Grid,
 } from '@mui/material';
-import fillaudio from "../../assets/audiofiles/fillInnAudio.mp3";
+import fillAudio from "../../assets/audiofiles/fillInnAudio.mp3";
 import useStyles from "./styles";
 import exerciseStyles from '../exerciseStyle';
 import './general.css'
@@ -176,7 +176,7 @@ const FillInWord = ({
 
   function fireAudio() {
     setAudioDisabled(true);
-    playAudio(fillaudio);
+    playAudio(fillAudio);
     setTimeout(() => {
       setAudioDisabled(false);
     }, 4000);

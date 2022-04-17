@@ -10,7 +10,7 @@ import {
   IconButton,
   Grid,
 } from '@mui/material';
-import unlockaudio from "../../assets/audiofiles/unlockAudio.mp3";
+import unlockAudio from "../../assets/audiofiles/unlockAudio.mp3";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import useStyles from "./styles";
 import exerciseStyles from '../exerciseStyle';
@@ -230,7 +230,7 @@ const UnlockPad = ({
 
   function fireAudio() {
     setAudioDisabled(true);
-    playAudio(unlockaudio);
+    playAudio(unlockAudio);
     setTimeout(() => {
       setAudioDisabled(false);
     }, 4000);

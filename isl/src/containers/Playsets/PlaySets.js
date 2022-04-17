@@ -54,13 +54,13 @@ const PlaySets = () => {
     Object.entries(sets).forEach(([exercise, id]) => {
       if (exercise.substring(0, 4) === "chat" && id) {
         formDataExercises.chat.push(id);
-      } else if (exercise.substring(0, 4) === "fors" && id) {
+      } else if (exercise.substring(0, 4) === "comp" && id) {
         formDataExercises.comprehension.push(id);
-      } else if (exercise.substring(0, 4) === "rydd" && id) {
+      } else if (exercise.substring(0, 4) === "sort" && id) {
         formDataExercises.sortsentence.push(id);
-      } else if (exercise.substring(0, 4) === "LåsO" && id) {
+      } else if (exercise.substring(0, 4) === "unlo" && id) {
         formDataExercises.unlock.push(id);
-      } else if (exercise.substring(0, 4) === "DraI" && id) {
+      } else if (exercise.substring(0, 4) === "fill" && id) {
         formDataExercises.fillinword.push(id);
       }
     });
