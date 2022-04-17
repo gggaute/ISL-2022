@@ -135,6 +135,11 @@
 }
 
 
+#numpadButton1:hover, #numpadButton2:hover, #numpadButton3:hover, #numpadButton4:hover, #numpadButton5:hover, #numpadButton6:hover, #numpadButton7:hover, #numpadButton8:hover, #numpadButton9:hover {
+    background-color: #7CA3EE;
+}
+
+
 @media only screen and (max-width: 500px) {
 
     #numpadButton1 {
