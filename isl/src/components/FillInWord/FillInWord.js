@@ -59,8 +59,6 @@ const FillInWord = ({
   const classesBase = exerciseStyles();
   const classes = { ...className, ...classesBase };
 
-  const [audioDisabled, setAudioDisabled] = useState(false);
-
   const [previousClickedWord, setPreviousClickedWord] = useState("");
   const [disabled, setDisabled] = useState(false);
   const [missingWord, setMissingWord] = useState("");
@@ -174,15 +172,6 @@ const FillInWord = ({
     showFeedback(score, totalPossibleScore);
   };
 
-  function fireAudio() {
-    setAudioDisabled(true);
-    playAudio(fillAudio);
-    setTimeout(() => {
-      setAudioDisabled(false);
-    }, 4000);
-  }
-
-
   return (
     <>
       <NavBar></NavBar>
@@ -191,7 +180,7 @@ const FillInWord = ({
           <h1 className={classes.exerciseType}>Fyll inn manglende ord</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Question question={question} fireAudio={fireAudio} disabled={audioDisabled}></Question>
+        <Question question={question} audio={fillAudio} playAudio={playAudio}></Question>
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={1} className={classes.overallGrid}>
             <div className={classes.gameWrapper}>

@@ -4,6 +4,7 @@ from .models import Sets
 
 """
  @author Maja, Simen
+ @revised by Guri
  This is the serializer for the all the models related to exercise sets.
 """
 

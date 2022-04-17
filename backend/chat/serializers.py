@@ -1,8 +1,17 @@
+# Imports
 from rest_framework import serializers
 from .models import Chat
 
+'''
+@Author Aksel
+This is the serializer for the chat exercise.
+It is responsible for converting the chat objekt into datatypes that is understandable by react front-end.
+After first validating the data, it allows parsed data to be converted back into complex types. 
+'''
 
+# Creates a ModelSerializer
 class ChatSerializer(serializers.ModelSerializer):
+    # Meta class that initializes  fields
     class Meta:
         model = Chat
         fields = ('id', 'sendericon', 'receivericon',

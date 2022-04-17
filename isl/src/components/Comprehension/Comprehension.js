@@ -45,9 +45,6 @@ const Comprehension = ({
   const [score, setScore] = useState(0);
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
-  // A state that disables the audio button when the audio is displayed
-  const [audioDisabled, setAudioDisabled] = useState(false);
-
   /* Objects that take both the component style and a common style between all
   exercises, to finally integrate both style objects into the classes object
   to be used in the component */
@@ -102,16 +99,6 @@ const Comprehension = ({
     showFeedback(score, totalPossibleScore);
   };
 
-  
-  function fireAudio() {
-    setAudioDisabled(true);
-    playAudio(compAudio);
-    setTimeout(() => {
-      setAudioDisabled(false);
-    }, 4000);
-  }
-
-
   useEffect(() => {
     getContent();
   }, []);
@@ -125,7 +112,7 @@ const Comprehension = ({
           <h1 className={classes.exerciseType}>Forståelse</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-       <Question question={question} fireAudio={fireAudio} disabled={audioDisabled} />
+       <Question question={question} audio={compAudio} playAudio={playAudio} />
 
         {/* </CardContent>
           </Card>

@@ -82,7 +82,7 @@ const UnlockPad = ({
   const classesBase = exerciseStyles();
   const classes = { ...className, ...classesBase };
 
-  const [audioDisabled, setAudioDisabled] = useState(false);
+  //const [audioDisabled, setAudioDisabled] = useState(false);
 
   const question = "Hva ser du på bildet? Skriv ordet!";
   /**
@@ -222,19 +222,9 @@ const UnlockPad = ({
     }
   };
 
-
   useEffect(() => {
     getContent()
   }, [])
-
-
-  function fireAudio() {
-    setAudioDisabled(true);
-    playAudio(unlockAudio);
-    setTimeout(() => {
-      setAudioDisabled(false);
-    }, 4000);
-  }
 
   return (
     <>
@@ -244,7 +234,7 @@ const UnlockPad = ({
           <h1 className={classes.exerciseType}>Skriv ordet</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Question question={question} fireAudio={fireAudio} disabeld={audioDisabled}></Question>
+        <Question question={question} audio={unlockAudio} playAudio={playAudio} ></Question>
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={1}>
             <div id='content' className={classes.content}>
