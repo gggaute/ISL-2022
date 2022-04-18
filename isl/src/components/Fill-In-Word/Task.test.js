@@ -10,6 +10,10 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 
+/**
+ * @author Gaute
+ * Test for Task component
+ */
 
 jest.mock('axios')
 jest.useFakeTimers();
