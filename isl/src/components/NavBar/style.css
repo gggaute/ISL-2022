@@ -1,58 +1,41 @@
+/* Styling for the NavBar-component */
 
-/* NAVBAR */
-
+/* Bar: The entire navbar, container for all */
 .bar {
-    /* border: 1px solid red; */
-    background-color: #8AA9E4;
-    height: 100%;
-    width: 100%;
-    margin-top: 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
-  }
-  
-  .left-div {
-    /* border: 1px solid purple; */
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    margin-left: 1rem;
-    align-items: center;
-    height: 100%;
-  }
-  
-  #logo {
-    cursor: pointer;
-  }
-  
-  .mid-div{
-    /* border: 1px solid pink; */
-    display: grid;
-    grid-template-columns: auto auto;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-  #navbarTitle {
-    /* border: 1px solid brown; */
-    font-size: 1.5rem;
-  }
-  
-  .right-div {
-    /* border: 1px solid pink; */
-    display: grid;
-    grid-template-columns: auto auto;
-    align-items: center;
-    justify-content: end;
-    height: 100%;
-  
-  }
-  
-  #previousQ, #nextQ {
-    /* box-shadow: 1px 1px 4px #8AA9E4; */
-    margin-right: 1rem;
-    background-color: #BDD3FC;
-    border: 0;
-    padding: 1vmin;
-    font-size: 1.25rem;
-  }
+  background-color: #8AA9E4;
+  height: 100%;
+  width: 100%;
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+}
+
+/* Left-Div: Left half of the navbar, containing the logo */
+.left-div {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  padding-left: 1rem;
+  align-items: center;
+  height: 100%;
+}
+
+/* Logo: The NfU logo */
+#logo {
+  cursor: pointer;
+}
+
+/* Right-Div: Right half of the navbar, containing the hjem-text and the home-button */
+.right-div {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: end;
+  height: 100%;
+  padding-right: 0.5rem;
+}
+
+/* NavbarTitle: Hjem-text in the right-div */
+#navbarTitle {
+  font-size: 1.5rem;
+}

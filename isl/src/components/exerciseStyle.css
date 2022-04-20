@@ -1,3 +1,5 @@
+/* RootPaper media queries: Controls the size of the exercises and feedback-component on smaller screens */
+
 @media only screen and (max-width: 650px) {
     #rootPaper {
         margin: auto;

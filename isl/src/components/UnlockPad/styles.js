@@ -2,50 +2,35 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => {
     return{
+        // Content: Exercise-content (img, guessRow, and numpad)
         content: {
             display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
             marginTop: "10px",
             marginBottom: "20px",
-            // border: "1px solid green",
         },
+        // UnlockImg: The image added for the exercise
         unlockImg: {
             width: '90%',
             height: '100%',
             margin: 'auto',
-            // border: "1px solid green",
         },
+        // ContentRow: Exercise-content excluding the picture (i.e. guessRow and numpad)
         contentRow: {
             display: 'flex',
             flexDirection: 'column',
             alignItems: "center",
-            // border: '#7CA3EE 2px solid',
             margin: "auto",
             width: '90%',
             height: '100%',
         },
-        gridButton: {
-            backgroundColor: 'white',
-            borderRadius: '100%',
-            padding: '10px',
-            boxShadow: '1px 1px 10px #7CA3EE',
-            margin: '5px',
-            border: '1px #7CA3EE',
-            height: '3.5em',
-            width: '3.5em',
-        },
-        gridButtonDisabled: {
-            backgroundColor: '#7CA3EE',
-            color: 'white',
-        },
-        tryAgainButton: {
-            backgroundColor: '#EC6F6F',
-            color: 'white',
-            fontWeight: 'bolder',
-            fontSize: 'large',
-            boxShadow: 'none',
-            width: '10em',
-        },
+        // TODO: Trenger vi en farge for disabled eller er det bra sånn det er nå?
+        //GridButtonDisabled: 
+        // gridButtonDisabled: {
+        //     backgroundColor: "white",
+        //     color: 'white',
+        // },
+        // GuessRow: Container for letters guessed and backArrow-button
         guessRow: {
             display: 'flex',
             flexDirection: 'row',
@@ -55,37 +40,34 @@ const useStyles = makeStyles((theme) => {
             border: "1px solid rgb(205, 220, 248)",
             padding: "10px",
         },
+        // Guess: Container for letters guessed (not including backArrow-button)
         guess: {
             display: "flex",
             justifyContent: "space-evenly",
             width: "100%",
-            // border: "1px solid red",
             marginTop: "3px",
         },
+        // GuessP: Each letter in the guess (i.e. letters guessed)
         guessP: {
             marginRight: "5px",
         },
+        // BackArrow: The button to delete last guessed letter
         backArrow: {
             backgroundColor: "rgb(124, 163, 238)",
             color: "white",
             width: "30px",
             height: "30px",
         },
+        // GridLetters: The numpad-grid containing all the letter-buttons
         gridLetters: {
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            // border: '1px black solid',
             rowGap: '10px',
             columnGap: '10px',
             alignItems: 'center',
             maxWidth: '90%',
             alignSelf: 'center',
-        },
-        feedbackAndReset: {
-            paddingLeft: '25px',
-            paddingRight: '25px',
-            paddingBottom: '25px',
-        },    
+        }, 
     }
 });
 

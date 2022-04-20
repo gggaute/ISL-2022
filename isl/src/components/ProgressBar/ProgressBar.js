@@ -1,6 +1,6 @@
 import React from 'react';
 import { LinearProgress } from '@mui/material/';
-import exerciseStyles from "./exerciseStyle";
+import exerciseStyles from "../exerciseStyle";
 
 /**
  * This is the progress bar displayed at the top of every exercise,
@@ -14,7 +14,8 @@ import exerciseStyles from "./exerciseStyle";
 const ProgressBar = ({ progress, possible }) => {
   const MIN = 1;
   const MAX = possible + 1;
-  /** Calculates how much of the progressBar is going to
+  /**
+   * Calculates how much of the progressBar is going to
    * be filled for each completed exercise.
    * Lets say that an exercise set has 6 exercises, then for
    * each completed exercise the bar should be filled 16,66 percent more.

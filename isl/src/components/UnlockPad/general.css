@@ -1,7 +1,9 @@
+/* BackArrow hover: Makes the backArrow-button look responsive on hover by changing  */
 #backArrow:hover {
     background-color: rgb(205, 220, 248);
 }
 
+/* Content media query: Converts the exercise-content in unlock to column when the screen is too small for row */
 @media only screen and (max-width: 750px) {
     #content{
         grid-template-columns: repeat(1, 1fr);
@@ -9,5 +11,4 @@
         margin-top: 10px;
         margin-bottom: 20px;
     }
-    
 }

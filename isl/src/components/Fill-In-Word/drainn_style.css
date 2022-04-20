@@ -1,3 +1,4 @@
+/* P: Text elements in the exercise (i.e. the task explanation above the HR-line and the words in the sentence that is missing a word) */
 p {
   display: inline;
   margin-bottom: 0;
@@ -6,6 +7,7 @@ p {
   margin-left: 0.3rem;
 }
 
+/* Task: The container/box around the sentence that is missing a word. Contains taskGrid which contains the sentence itself. */
 .task {
   display: flex;
   flex-direction: row;
@@ -14,10 +16,9 @@ p {
   padding: 1rem;
 }
 
+/* TaskPBorder: The selected word placed in the sentence */
 .taskPBorder {
-  /* border: 1px solid darkgrey; */
   background-color: #BCD0F7;
-  /* Lysere farge */
   border-radius: 10%;
   padding: 0.3rem;
   min-width: 2rem;
@@ -30,14 +31,14 @@ p {
   visibility: hidden
 }
 
+/* Vis: Toggles the visibility of the taskPBorder by using jQuery */
 .vis {
   visibility: visible;
 }
 
+/* WordContainer: The place in the sentence where a word is missing */
 .wordContainer {
-  /* border: 2px solid #7CA3EE; */
   border-bottom: 1px solid #7CA3EE;
-  /* border-radius: 15%; */
   min-width: 2rem;
   min-height: 1.5rem;
   max-width: 6rem;
@@ -47,7 +48,11 @@ p {
   align-items: center;
 }
 
-.checkAnswerBtn {
+/* TODO: Tror ikke denne brukes? */
+/* CheckAnswerBtn:  */
+/* .checkAnswerBtn {
+  border: 1px solid purple;
+  background-color: purple;
   margin: auto;
   width: 50%;
   display: flex;
@@ -56,13 +61,15 @@ p {
   padding: 1.2rem;
   text-decoration: underline;
   text-underline-offset: 0.3rem;
-}
+} */
 
+/* WordGrid: The grid containing all the word-buttons */
 .wordGrid {
-  /* max-width: 70%; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
+
+/* TaskGrid: The grid containing the sentence itself. Inside the Task-element. */
 .taskGrid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -71,22 +78,19 @@ p {
 }
 
 
+/* Media queries TaskGrid: Controls how the sentence that is missing a word is presented on smaller screens. */
 @media screen and (max-width: 850px) {
   .taskGrid {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     row-gap: 0;
   }
 }
-
-
 @media screen and (max-width: 650px) {
   .taskGrid {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     row-gap: 0;
   }
 }
-
-
 @media screen and (max-width: 530px) {
   .taskGrid {
     grid-template-columns: 1fr 1fr 1fr;
@@ -94,6 +98,8 @@ p {
   }
 }
 
+
+/* Media queries WordGrid: Controls how the word-button grid is presented on smaller screens. */
 @media screen and (max-width: 460px) {
   .wordGrid {
     grid-template-columns: 1fr 1fr; 

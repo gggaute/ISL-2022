@@ -1,6 +1,9 @@
+// Styling for the RyddeSetninger-component
+
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+  // ChosenWords: Area where chosen/clicked words are put
   chosenWords: {
     padding: "4px",
     minHeight: '2.5em',
@@ -8,13 +11,15 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '11px',
     boxShadow: 'inset 0px 1px 6px rgba(147, 145, 145, 0.48)',
   },
+  // WordBtn: Each button containing words
   wordBtn: {
     textTransform: 'none',
-    fontWeight: 'normal',
+    fontWeight: 'bold',
     '&:hover': {
       color: 'black',
     },
   },
+  // CheckAnswerBtn: Container for checkAnswerBtn
   checkAnswerBtn: {
     display: "flex",
     justifyContent: "center",

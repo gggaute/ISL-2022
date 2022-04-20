@@ -1,3 +1,5 @@
+// TODO: SetCard trengs ikke lenger ?
+
 import React from 'react';
 import { Avatar, Card, CardHeader, IconButton } from '@mui/material';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';

@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SetCard from "../../components/SetCard/SetCard";
-
 import NavBar from "../../components/NavBar/Navbar";
-import {
-  Paper,
-} from "@mui/material";
+import { Paper } from "@mui/material";
 import exerciseStyles from '../../components/exerciseStyle';
 import axios from 'axios';
 
@@ -14,8 +11,9 @@ import axios from 'axios';
  * @author Phajsi, Simen
  * @returns The user home page.
  */
+
 const StartPage = () => {
-  // Three lists that are updated with data from backend when the page renders.
+  // Two lists that are updated with data from backend when the page renders.
 
   // List of the users own sets.
   const [ExerciseSetList, setExerciseSetList] = useState([]);

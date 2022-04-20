@@ -9,7 +9,7 @@ import FillInWord from "../../components/Fill-In-Word/FillInWord";
 import UnlockPad from "../../components/UnlockPad/UnlockPad";
 /**
  * This is the container for playing exercise sets.
- * @author Maja, Julie, Simen
+ * @author Old group
  * @returns A set of exercises.
  */
 const PlaySets = () => {
@@ -22,6 +22,7 @@ const PlaySets = () => {
   const [exerciseId, setExerciseId] = useState(0);
   // Id for the exercise set containing the exercises.
   const [id, setId] = useState(null);
+
   // Trackers for progress bar and feedback pages
   const [totalScore, setTotalScore] = useState(0);
   const [totalExercises, setTotalExercises] = useState(0);
@@ -37,10 +38,6 @@ const PlaySets = () => {
     drainnmanglendeord: [],
   });
 
-  /*   // Hooks to get access to the Redux store and obtain user and auth info.
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const user = useSelector((state) => state.auth.user);
- */
   /**
    * The function will turn the response object from the API endpoint into a
    * playlist with exercise IDs. The playlist will be stored as an object with
@@ -49,7 +46,6 @@ const PlaySets = () => {
    * @param {object} sets An object containing sets from backend.
    */
   function createPlayList(sets) {
-    console.log(sets);
     formDataExercises.chat.length = 0;
     formDataExercises.forstaelse.length = 0;
     formDataExercises.ryddeSetninger.length = 0;
@@ -77,6 +73,11 @@ const PlaySets = () => {
     );
   }
 
+  /**
+   * Fetches content from backend based on the given id, and pushes it
+   * to createPlayList(), to make and play the set.
+   * @param {int} id The id of the set.
+   */
   function getContent(id) {
     axios
       .get(`/api/sets/${id}`, {
@@ -104,8 +105,6 @@ const PlaySets = () => {
    * the current exercise being played from the list.
    */
   function nextExercise() {
-    console.log(step);
-    setStep("");
     if (formDataExercises.chat[0]) {
       setExerciseProgress(exerciseProgress + 1);
       setExerciseId(formDataExercises.chat.shift());
@@ -129,10 +128,14 @@ const PlaySets = () => {
     } else {
       setStep("finish");
     }
-    console.log(step);
   }
+  
+  /**
+   * The function keeps track of scores and decides what feedback to show accordingly.
+   * @param {int} score Score from the current task.
+   * @param {int} totalPossibleScore The possible score from the current task.
+   */
 
-  // Keeps track of scores and decides what feedback to show accordingly.
   function showFeedback(score, totalPossibleScore) {
     if (score === totalPossibleScore) {
       setTotalScore(totalScore + 1);
@@ -146,24 +149,19 @@ const PlaySets = () => {
   }
 
   /**
-   * Retrieves the information related to the exercise set being played from backend
-   * and changes step to "overview" when the restart button is clicked. This enables the user to
-   * exit the exercise set currently being played. The user is redirected to the set's overviewpage.
+   * The function takes in an mp3 and plays it.
+   * @param {object} url - mp3 file.
    */
-
   function playAudio(url) {
     new Audio(url).play();
   }
 
-  /**
-   * Only runs if an id is passed as state/props while redirected to this page.
-   * I.e search bar on front page.
-   */
   useEffect(() => {
     getContent(location.state.playId);
     setId(location.state.playId);
   }, []);
 
+  // switch/case that returns the relevant component.
   switch (step) {
     case "forstaelse":
       return (
@@ -173,7 +171,6 @@ const PlaySets = () => {
           progress={exerciseProgress}
           possible={totalExercises}
           playAudio={(url) => playAudio(url)}
-          nextExercise={nextExercise}
         />
       );
     case "feedback":
@@ -197,7 +194,6 @@ const PlaySets = () => {
           progress={exerciseProgress}
           possible={totalExercises}
           playAudio={(url) => playAudio(url)}
-          nextExercise={nextExercise}
         />
       );
     case "ryddeSetninger":
@@ -208,7 +204,6 @@ const PlaySets = () => {
           progress={exerciseProgress}
           possible={totalExercises}
           playAudio={(url) => playAudio(url)}
-          nextExercise={nextExercise}
         />
       );
     case "lasoppmobil":
@@ -219,7 +214,6 @@ const PlaySets = () => {
           progress={exerciseProgress}
           possible={totalExercises}
           playAudio={(url) => playAudio(url)}
-          nextExercise={nextExercise}
         />
       );
     case "drainnmanglendeord":
@@ -230,7 +224,6 @@ const PlaySets = () => {
           progress={exerciseProgress}
           possible={totalExercises}
           playAudio={(url) => playAudio(url)}
-          nextExercise={nextExercise}
         />
       );
     case "finish":
