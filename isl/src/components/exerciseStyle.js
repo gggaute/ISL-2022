@@ -36,16 +36,28 @@ const exerciseStyles = makeStyles((theme) => ({
   textFeedback: {
     margin: '30px',
   },
+  // QuestionDiv: Div around the question text and the audio-button.
+  questionDiv: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
   // Question: The text in the question-component showing the exercise task/question/explanation
   question: {
     fontWeight: "bold",
     fontSize: "1.3em",
-    margin: "0 14px 5px 14px",
+    margin: "0 14px",
   },
   // QuestionLine: HR (horisontal rule / line) under question/audio
   questionLine: {
     borderTop: "1px solid #7CA3EE",
     margin: "5px 14px",
+  },
+  // AudioBtn: The button in the Question-component to press for audio
+  audioBtn: {
+    borderRadius: "5px",
+    width: "fit-content",
+    marginRight: "14px",
   },
   // Explanation: The typography containing the explanation for each exercise
   explanation: {

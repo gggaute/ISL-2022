@@ -16,7 +16,7 @@ import muslimWoman from '../../assets/images/muslimWoman.png';
 import defaultMan from '../../assets/images/defaultMan.png';
 import ChatBubble from '../ChatBubble/ChatBubble';
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
-import ProgressBar from '../ProgressBar';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import axios from 'axios';
 import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';

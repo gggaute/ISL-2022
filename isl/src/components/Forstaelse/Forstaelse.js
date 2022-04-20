@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import ChatBubble from '../ChatBubble/ChatBubble';
 import forsaudio from '../../assets/audiofiles/forstaelseAudio.mp3';
-import ProgressBar from '../ProgressBar';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import axios from 'axios';
 import useStyles from './styles';

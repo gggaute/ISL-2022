@@ -7,7 +7,7 @@ import CheckAnswer from "./CheckAnswer";
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import axios from "axios";
 import { useEffect } from "react";
-import ProgressBar from '../ProgressBar';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import NavBar from "../NavBar/Navbar";
 import {
   Paper,

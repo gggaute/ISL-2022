@@ -16,12 +16,11 @@ const useStyles = makeStyles((theme) => ({
     padding: "12px",
     backgroundColor: 'lightBlue',
   },
-  // AvatarLarge: ?
+  // AvatarLarge: The avatar-picture in the Forståelse-exercise
   avatarLarge: {
     width: "55px",
     height: "55px",
     margin: "5px",
-    backgroundColor: "yellow",
   },
   // Text: The text in the chatBubbles on both sides of the conversation
   text: {

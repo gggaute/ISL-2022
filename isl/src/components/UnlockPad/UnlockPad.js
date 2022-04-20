@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
-import ProgressBar from '../ProgressBar';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import NavBar from "../NavBar/Navbar";
 import Question from "../Question/Question";
 import {

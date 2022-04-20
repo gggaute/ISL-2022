@@ -7,7 +7,7 @@ import {
   Button,
 } from "@mui/material";
 import ryddaudio from "../../assets/audiofiles/ryddeAudio.mp3";
-import ProgressBar from "../ProgressBar";
+import ProgressBar from "../ProgressBar/ProgressBar";
 import NextExerciseBtn from "../NextExerciseBtn/NextExerciseBtn";
 import useStyles from './styles';
 import exerciseStyles from '../exerciseStyle';
