@@ -6,12 +6,11 @@ import exerciseStyles from '../../components/exerciseStyle';
 import axios from 'axios';
 
 
-/*
+/**
  * This is the container for the home page.
  * @author Phajsi, Simen
  * @returns The user home page.
  */
-
 const StartPage = () => {
   // Two lists that are updated with data from backend when the page renders.
 
@@ -72,7 +71,7 @@ const StartPage = () => {
   return (
     <div>
       <NavBar></NavBar>
-      <Paper className={classes.root} id="root">
+      <Paper className={classes.root} id="rootStart">
         {renderSwitch()}
       </Paper>
     </div>
