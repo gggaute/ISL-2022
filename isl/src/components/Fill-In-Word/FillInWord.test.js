@@ -8,6 +8,11 @@ import FillInWord from './FillInWord'
 import CheckAnswer from './CheckAnswer';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+/**
+ * @author Gaute
+ * Test for FillInWord component
+ */
+
 jest.mock('axios')
 jest.useFakeTimers();
 
@@ -58,6 +63,6 @@ describe('fill in word task', () => {
             }
         )
   })
-// dette er det eneste som bare wrapper classen gjør, resten testes i de andre komponentene.
+// This is the only thing the wrapper class does, the rest is done in other cimponents
   
 })
