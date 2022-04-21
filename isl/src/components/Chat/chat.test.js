@@ -40,7 +40,7 @@ describe('Chat exercise', () => {
 
     expect(axios.get).toHaveBeenCalledTimes(1);
     expect(axios.get).toHaveBeenCalledWith(
-      `http://localhost:8000/api/chat/${5}`,
+      `/api/chat/${5}`,
       {
         headers: {
           'Content-Type': 'application/json',

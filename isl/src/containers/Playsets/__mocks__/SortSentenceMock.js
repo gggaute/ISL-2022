@@ -1,5 +1,5 @@
-/* eslint-disable no-undef */
-export default jest.fn(() => {
+export const mockChat = jest.fn();
+const mock = jest.fn().mockImplementation(() => {
     return {
       id: 11,
       word1: 'Jeg',
@@ -21,7 +21,18 @@ export default jest.fn(() => {
       word9: '',
       wordClass9: '',
       word10: '',
-      wordClass10: '',
+      wordClass10: '',    
+      word11: '',
+      wordClass11: '',
+      word12: '',
+      wordClass12: '',
+      word13: '',
+      wordClass13: '',
+      word14: '',
+      wordClass14: '',
+      word15: '',
+      wordClass15: '',
     };
 });
   
+export default mock;

@@ -50,7 +50,7 @@ describe('fill in word task', () => {
         expect(axios.get).toHaveBeenCalledTimes(1);
 
         expect(axios.get).toHaveBeenCalledWith(
-            `http://localhost:8000/api/fill_in_word/${2}`, {
+            `/api/fill_in_word/${2}`, {
                 headers: {
                   "Content-Type": "application/json",
                   accept: "application/json",

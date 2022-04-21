@@ -29,7 +29,7 @@ describe('Comprehension exercise', () => {
 
     expect(axios.get).toHaveBeenCalledTimes(1);
     expect(axios.get).toHaveBeenCalledWith(
-      `http://localhost:8000/api/comprehension/${5}`,
+      `/api/comprehension/${5}`,
       {
         headers: {
           'Content-Type': 'application/json',

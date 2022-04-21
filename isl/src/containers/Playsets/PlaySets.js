@@ -50,7 +50,7 @@ const PlaySets = () => {
     formDataExercises.comprehension.length = 0;
     formDataExercises.sortsentence.length = 0;
     formDataExercises.unlock.length = 0;
-    formDataExercises.fillinn.length = 0;
+    formDataExercises.fillinword.length = 0;
     Object.entries(sets).forEach(([exercise, id]) => {
       if (exercise.substring(0, 4) === "chat" && id) {
         formDataExercises.chat.push(id);

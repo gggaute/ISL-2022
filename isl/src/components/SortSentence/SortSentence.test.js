@@ -57,7 +57,7 @@ describe('SortSentence component', () => {
         See https://stackoverflow.com/questions/62026834/how-to-add-restore-the-value-of-process-env-react-app-api-url*/
         expect(axios.get).toHaveBeenCalledTimes(1);
         expect(axios.get).toHaveBeenCalledWith(
-          `http://localhost:8000/api/sort_sentence/${5}`,
+          `/api/sort_sentence/${5}`,
           {
             headers: {
               'Content-Type': 'application/json',
@@ -211,12 +211,6 @@ describe('SortSentence component', () => {
             </Router>
         )
         );
-        const button = screen.getByTestId('volumeSortSentence');
-        fireEvent.click(button);
-
-        expect(setTimeout).toHaveBeenCalledTimes(1);
-        expect(button).toBeDisabled();
-        expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 6000);
     });
 
     
