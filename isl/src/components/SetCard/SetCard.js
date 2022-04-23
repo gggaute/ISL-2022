@@ -1,12 +1,10 @@
-// TODO: SetCard trengs ikke lenger ?
-
 import React from 'react';
 import { Avatar, Card, CardHeader, IconButton } from '@mui/material';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import { Link } from 'react-router-dom';
 import useStyles from './styles';
 
-/**
+/** TODO Update
  * Reusable card component for exercise sets with icon buttons for playing, saving,
  * editing and deleting exercise sets.
  * @author Simen
@@ -20,7 +18,8 @@ import useStyles from './styles';
  */
 function SetCard({ type, formData, setId }) {
   const classes = useStyles();
-  // Returns different buttons depending on the type of card.
+
+  // Returns different buttons depending on the type of card. ?
   function iconButtons() {
       return (
         <>
