@@ -7,6 +7,7 @@ import Feedback from "../../components/feedback/Feedback";
 import axios from "axios";
 import FillInWord from "../../components/Fill-In-Word/FillInWord";
 import UnlockPad from "../../components/UnlockPad/UnlockPad";
+import OverviewPage from '../../components/OverviewPage/OverviewPage'
 /**
  * This is the container for playing exercise sets.
  * @author Old group
@@ -16,7 +17,7 @@ const PlaySets = () => {
   const location = useLocation();
 
   // Stepper for switching between exercises in the set.
-  const [step, setStep] = useState("menu");
+  const [step, setStep] = useState("overview");
 
   // Id for the exercise being played.
   const [exerciseId, setExerciseId] = useState(0);
@@ -28,6 +29,7 @@ const PlaySets = () => {
   const [totalExercises, setTotalExercises] = useState(0);
   const [feedbackState, setFeedbackState] = useState(false);
   const [exerciseProgress, setExerciseProgress] = useState(0);
+  const listOfExerciseTypes = []
 
   // Lists of id's for the exercises in the set.
   const [formDataExercises] = useState({
@@ -54,14 +56,29 @@ const PlaySets = () => {
     Object.entries(sets).forEach(([exercise, id]) => {
       if (exercise.substring(0, 4) === "chat" && id) {
         formDataExercises.chat.push(id);
+        if (!listOfExerciseTypes.includes("Chat ")) {
+          listOfExerciseTypes.push("Chat ")
+        }
       } else if (exercise.substring(0, 4) === "fors" && id) {
         formDataExercises.forstaelse.push(id);
+        if (!listOfExerciseTypes.includes("Forståelse ")) {
+          listOfExerciseTypes.push("Forståelse ")
+        }
       } else if (exercise.substring(0, 4) === "rydd" && id) {
         formDataExercises.ryddeSetninger.push(id);
+        if (!listOfExerciseTypes.includes("Rydde setningen ")) {
+          listOfExerciseTypes.push("Rydde setningen ")
+        }
       } else if (exercise.substring(0, 4) === "LåsO" && id) {
         formDataExercises.lasoppmobil.push(id);
+        if (!listOfExerciseTypes.includes("Skriv ordet ")) {
+          listOfExerciseTypes.push("Skriv ordet ")
+        }
       } else if (exercise.substring(0, 4) === "DraI" && id) {
         formDataExercises.drainnmanglendeord.push(id);
+        if (!listOfExerciseTypes.includes("Fyll inn manglende ord ")) {
+          listOfExerciseTypes.push("Fyll inn mangelde ord ")
+        }
       }
     });
     setTotalExercises(
@@ -91,6 +108,7 @@ const PlaySets = () => {
         setTotalScore(0);
         setExerciseProgress(0);
         nextExercise()
+        setStep('overview')
       })
       .catch((e) => {
         return e;
@@ -105,6 +123,7 @@ const PlaySets = () => {
    * the current exercise being played from the list.
    */
   function nextExercise() {
+    console.log("NEXT EXERCISE")
     if (formDataExercises.chat[0]) {
       setExerciseProgress(exerciseProgress + 1);
       setExerciseId(formDataExercises.chat.shift());
@@ -163,6 +182,17 @@ const PlaySets = () => {
 
   // switch/case that returns the relevant component.
   switch (step) {
+    case 'overview':
+      return (
+        <div>
+            <OverviewPage 
+            setId={id} 
+            totalExercises={totalExercises} 
+            listOfExerciseTypes={listOfExerciseTypes}
+            nextExercise={nextExercise}
+            />
+        </div>
+      )
     case "forstaelse":
       return (
         <Forstaelse
