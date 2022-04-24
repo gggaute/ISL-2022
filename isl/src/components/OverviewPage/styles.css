@@ -1,3 +1,4 @@
+/* RootPaper: Paper-component containing the overviewComponent */
 #rootPaper {
     background-color: #F5F5F5;
     max-width: 70%;
@@ -10,6 +11,7 @@
     padding: 4px;
 }
 
+/* OverviewContent: A div containing the header, number of exercises, type of exercises, and the button to start the set */
 #overviewContent {
     padding: 18px;
     width: 70%;
@@ -18,25 +20,44 @@
     align-self: center;
 }
 
+/* SetHeader: The header, title of the set */
 #setHeader {
     font-size: 2em;
     margin-bottom: 20px;
 }
 
+/* NoOfEx: Paragraph listing number of exercises in the set */
 #noOfEx {
     font-size: 1em;
     margin-bottom: 10px;
 }
 
+/* TypeEx: Paragraph listing the different types of exercises in the set */
 #typeEx {
     font-size: 1em;
     margin-bottom: 25px;
 }
 
+/* SpillBtn: The button to start playing the set */
 #spillBtn {
     background-color: #7CA3EE;
     color: white;
     font-size: 1.1em;
     width: 80%;
     margin: auto;
+}
+
+
+/* RootPaper media queries: Controls the size of the overviewPage-component on smaller screens */
+@media only screen and (max-width: 650px) {
+    #rootPaper {
+        margin: 20px auto;
+        min-width: 88%;
+    }
+}
+@media only screen and (max-width: 450px) {
+    #rootPaper {
+        margin: 10px auto;
+        min-width: 94%;
+    }  
 }
