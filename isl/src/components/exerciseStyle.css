@@ -14,18 +14,14 @@
 /* RootPaper media queries: Controls the size of the exercises and feedback-component on smaller screens */
 @media only screen and (max-width: 650px) {
     #rootPaper {
-        margin: auto;
+        margin: 20px auto;
         min-width: 88%;
-        margin-top: 20px;
-        margin-bottom: 20px;
     }
 }
 
 @media only screen and (max-width: 450px) {
     #rootPaper {
-        margin: auto;
+        margin: 10px auto;
         min-width: 94%;
-        margin-top: 10px;
-        margin-bottom: 10px;
     }  
 }
