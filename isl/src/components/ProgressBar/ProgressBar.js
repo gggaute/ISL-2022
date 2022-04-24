@@ -1,6 +1,6 @@
 import React from 'react';
 import { LinearProgress } from '@mui/material/';
-import exerciseStyles from "./exerciseStyle";
+import exerciseStyles from "../exerciseStyle";
 
 /**
  * This is the progress bar displayed at the top of every exercise,

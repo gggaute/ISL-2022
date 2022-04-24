@@ -2,6 +2,12 @@
 
 import { it, beforeEach, before } from 'mocha';
 
+/**
+ * @author Gaute
+ * E2E test for application
+ * Dependent on specific order related to specific content. If content changes, test will not work
+ */
+
 describe('App loop', () => {
 
     before(() => {

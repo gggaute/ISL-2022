@@ -1,21 +1,22 @@
 import React from "react";
 import { Paper, Typography, Button } from "@mui/material";
 import NavBar from "../NavBar/Navbar";
-import ProgressBar from '../ProgressBar';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import exerciseStyles from '../exerciseStyle';
 import useStyles from "./styles";
 import "./poengsum.css";
 import "../exerciseStyle.css";
 
 /**
- * TODO
+ * This is component for the pages between exercises and the final page of the set.
+ * @author Jasmina
  * @param {object} props 
- * @property {} totalExercises
- * @property {} totalScore
- * @property {} progress
- * @property {} possible
- * @property {} feedbackState
- * @property {} nextExercise
+ * @property {integer} totalExercises Number of exercises in the set being played.
+ * @property {integer} totalScore Number of exercises the player has gotten correct.
+ * @property {integer} progress How many exercises of the set the player has done. Used for the progressbar.
+ * @property {integer} possible The total number of exercises in the set. Used for the progressbar.
+ * @property {string} feedbackState State of the set being played. Returns either 'playing' or 'finished', used in cases below to determine which feedback-page is shown.
+ * @property {function} nextExercise Function in Playsets.js
  * @returns 
  */
 const Feedback = ({
@@ -27,6 +28,7 @@ const Feedback = ({
   nextExercise,
 }) => {
 
+
   /* Objects that take both the component style and a common style between all
   exercises, to finally integrate both style objects into the classes object
   to be used in the component */
@@ -34,7 +36,7 @@ const Feedback = ({
   const classesBase = exerciseStyles();
   const classes = { ...className, ...classesBase };
 
-  // Returns a different feedback page if the player succeeded or not.
+  // Returns a different feedback page depending on the state of the progress in the set. Playing vs finished.
   switch (feedbackState) {
     case 'playing':
       return (

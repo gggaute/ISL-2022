@@ -7,7 +7,7 @@ import CheckAnswer from "./CheckAnswer";
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import axios from "axios";
 import { useEffect } from "react";
-import ProgressBar from '../ProgressBar';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import NavBar from "../NavBar/Navbar";
 import {
   Paper,
@@ -40,15 +40,21 @@ const FillInWord = ({
   playAudio,
 }) => {
 
-  /* answerState: TODO */
+  /* The state of the answered question, correct or incorrect answered */
   const [answerState, setAnswerState] = useState(null);
-
+  
+  /* The sentence and individual words for the buttons, fetched from the api-input and backend */ 
   let backendSentence = []
-  let backendwords = []
+  let backendWords = []
 
   const [onload, setOnload] = useState(true);
+
+  /* List of words in buttons, fetched from backend. Updated on user interaction */
   const [words, setWords] = useState([]);
+
+  /* List of words in the sentence, fetched from backend. Updated on user interaction */
   const [sentence, setSentence] = useState([]);
+
   const [score, setScore] = useState(0);
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
@@ -61,6 +67,8 @@ const FillInWord = ({
 
   const [previousClickedWord, setPreviousClickedWord] = useState("");
   const [disabled, setDisabled] = useState(false);
+  
+  /* The correct solution as string and its position (index) in the sentence */
   const [missingWord, setMissingWord] = useState("");
   const [missingWordIndex, setMissingWordIndex] = useState(-1);
 
@@ -72,10 +80,11 @@ const FillInWord = ({
 
 
   /**
-   * Funciton to fetch content from database
-   * Sets @variable backendLetters to contain the letters from database,
-   * then sets letters to contain content from backendLetters, and
-   * sets Image to fetched image from database
+   * Function to fetch content from database
+   * Sets @variable backendSentence to contain the sentence-words from database,
+   * then sets @variable backendWords to contain the answer-words from database.
+   * Pops unused/empty fields from backendSentence.
+   * Sets @variable missingWord and @variable missingWordIndex.
    */
   function getContent() {
     axios
@@ -101,12 +110,13 @@ const FillInWord = ({
         backendSentence.push(res.data.sentenceWord13)
         backendSentence.push(res.data.sentenceWord14)
         backendSentence.push(res.data.sentenceWord15)
-        backendwords.push(res.data.answerWord1)
-        backendwords.push(res.data.answerWord2)
-        backendwords.push(res.data.answerWord3)
-        backendwords.push(res.data.answerWord4)
-        backendwords.push(res.data.answerWord5)
-        backendwords.push(res.data.answerWord6)
+        backendWords.push(res.data.answerWord1)
+        backendWords.push(res.data.answerWord2)
+        backendWords.push(res.data.answerWord3)
+        backendWords.push(res.data.answerWord4)
+        backendWords.push(res.data.answerWord5)
+        backendWords.push(res.data.answerWord6)
+        
         let count = 0
         for (let index = 0; index < backendSentence.length; index++) {
           if (backendSentence[index] === '') {
@@ -116,8 +126,9 @@ const FillInWord = ({
         for (let i = 0; i < count; i++) {
           backendSentence.pop()
         }
+        
         setSentence(backendSentence)
-        setWords(backendwords)
+        setWords(backendWords)
         setMissingWord(backendSentence[res.data.correctSolutionIndex])
         setMissingWordIndex(res.data.correctSolutionIndex);
       });
@@ -125,15 +136,16 @@ const FillInWord = ({
 
 
   /**
-   * TODO
-   * @param {} clickedWord 
+   * Function to handle click on word-buttons,
+   * updates the sentence with the clickedWord, and sets @variable previousClickedWord
+   * @param {string} clickedWord The word that was clicked to trigger the function, and is put into the sentence
    */
   const onClickedWord = (clickedWord) => {
     setOnload(false);
     if (previousClickedWord === "") {
-      //remove the word that was chosen from list of words
+      // Remove the word that was chosen from list of words
       setWords(words.filter((word) => word !== clickedWord));
-      // if the index of the word is the same as missingWordIndex, then the clicked word will take the place of the missing word
+      // If the index of the word is the same as missingWordIndex, then the clicked word will take the place of the missing word
       setSentence(
         sentence.map((word, index) => (index === missingWordIndex ? (word = clickedWord) : word)))
     }
@@ -149,8 +161,12 @@ const FillInWord = ({
 
   }
 
+
   /**
-   *  TODO
+   * Function to check if the sentence is correct. 
+   * Sets @variable answerState based on if the word in the sentence
+   * at the index @variable missingWordIndex is the same as @variable missingWord.
+   * Sets @variable score and @variable totalPossibleScore. Updates @variable disabled.
    */
   const checkAnswer = () => {
     if (sentence[missingWordIndex] === missingWord) {
@@ -164,8 +180,11 @@ const FillInWord = ({
     setDisabled(true);
   };
 
+
   /**
-   * TODO
+   * Function to take the parent state to the next step, which is feedback
+   * Gives an amount of points to show during the feeback step; 1 if the answer was correct, 0 if incorrect.
+   * Sets @variable answerState and @variable feedback.
    */
   const handleNextTask = () => {
     setAnswerState(null);

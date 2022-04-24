@@ -1,23 +1,22 @@
-// TODO: SetCard trengs ikke lenger ?
-
-// Styling for the SetCard-component
-
 import { makeStyles } from '@mui/styles';
 
+/**
+ * Styling for the SetCard-component
+ */
 const useStyles = makeStyles((theme) => ({
-  // CardHeader: 
-  cardHeader: {
-    padding: '12px',
-  },
-  // Card: 
-  card: {
-    marginTop: '3px',
-    marginRight: "4px",
-    marginLeft: "4px",
-  },
-  // Link: 
+  // Link: Makes the card clickable. Contains card.
   link: {
     textDecoration: 'none',
-  }
+  },
+  // Card: Contains CardHeader.
+  card: {
+    marginBottom: "8px",
+    border: "1px solid #8aa9e4",
+  },
+  // CardHeader: Card for set. Contains id and title.
+  cardHeader: {
+    // backgroundColor: "#F2F2F2", //grey
+    backgroundColor: "#eaf0fa", //blue
+  },
 }));
 export default useStyles;

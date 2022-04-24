@@ -6,8 +6,9 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 /**
- * TODO
- * @returns 
+ * This is a component for the navigation bar at the top of the page.
+ * @author Synne, Guri
+ * @returns Component containing the "Norsk for Ungdom" logo and the home-text and button.
  */
 const Navbar = () => {
   return (
@@ -22,7 +23,7 @@ const Navbar = () => {
               "_blank"
             );
           }}
-          alt="Norsk for Ungdom logo"
+          alt="Norsk for Ungdom logo."
           width="130"
         ></img>
       </div>
@@ -30,7 +31,7 @@ const Navbar = () => {
           <Link to='/' className="link" style={{ textDecoration: 'none', color: '#2261a8' }}>
           <h3 id="navbarTitle"> Hjem </h3>
           </Link>
-          <IconButton className="routeButton" data-testid="idButton" component={Link} to="/">
+          <IconButton alt="An icon of a house." className="routeButton" data-testid="idButton" component={Link} to="/">
             <HomeIcon style={{color: '#2261a8'}}/>
           </IconButton>
       </div>

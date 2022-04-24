@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import ChatBubble from '../ChatBubble/ChatBubble';
 import compAudio from '../../assets/audiofiles/comprehensionAudio.mp3';
-import ProgressBar from '../ProgressBar';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import axios from 'axios';
 import useStyles from './styles';
@@ -107,16 +107,11 @@ const Comprehension = ({
     <>
       <NavBar></NavBar>
       <Paper className={classes.root} id="rootPaper">
-      {/* <ContentHeader></ContentHeader> */}
         <div className={classes.progresscontainer}>
           <h1 className={classes.exerciseType}>Forståelse</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
        <Question question={question} audio={compAudio} playAudio={playAudio} />
-
-        {/* </CardContent>
-          </Card>
-        </div> */}
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={3}>
             <ChatBubble chat={formData[`chat`]} />
