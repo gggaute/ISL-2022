@@ -10,7 +10,7 @@ import {
   IconButton,
   Grid,
 } from '@mui/material';
-import unlockaudio from "../../assets/audiofiles/unlockAudio.mp3";
+import unlockAudio from "../../assets/audiofiles/unlockAudio.mp3";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import useStyles from "./styles";
 import exerciseStyles from '../exerciseStyle';
@@ -82,7 +82,7 @@ const Unlock = ({
   const classesBase = exerciseStyles();
   const classes = { ...className, ...classesBase };
 
-  const [audioDisabled, setAudioDisabled] = useState(false);
+  //const [audioDisabled, setAudioDisabled] = useState(false);
 
   // A string with the question displayed for the task
   const question = "Hva ser du på bildet? Skriv ordet!";
@@ -224,19 +224,9 @@ const Unlock = ({
     }
   };
 
-
   useEffect(() => {
     getContent()
   }, [])
-
-
-  function fireAudio() {
-    setAudioDisabled(true);
-    playAudio(unlockaudio);
-    setTimeout(() => {
-      setAudioDisabled(false);
-    }, 4000);
-  }
 
   return (
     <>
@@ -246,7 +236,7 @@ const Unlock = ({
           <h1 className={classes.exerciseType}>Skriv ordet</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Question question={question} fireAudio={fireAudio} disabeld={audioDisabled}></Question>
+        <Question question={question} audio={unlockAudio} playAudio={playAudio} ></Question>
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={1}>
             <div id='content' className={classes.content}>

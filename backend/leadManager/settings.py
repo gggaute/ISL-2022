@@ -40,13 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'forstaelse',
+    'comprehension',
     'chat',
-    'rydde_setninger',
+    'sort_sentence',
     'sets',
     'rest_framework',
     'core',
-    'dra_inn_manglende_ord',
+    'fill_in_word',
     'unlock'
 ]
 

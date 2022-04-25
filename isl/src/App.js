@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import PlaySets from "./containers/Playsets/PlaySets";
+import PlaySets from "./containers/PlaySets/PlaySets";
 import StartPage from './containers/StartPage/StartPage';
 import { createTheme } from '@mui/material/styles'
 import { ThemeProvider } from "@emotion/react";

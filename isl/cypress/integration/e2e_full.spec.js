@@ -77,14 +77,14 @@ describe('App loop', () => {
         cy.contains('Neste oppgave')
     })
 
-    // INTERMEDIARY PAGE TO FORSTÅELSE
+    // INTERMEDIARY PAGE TO COMPREHENSION
     it('clicks on neste oppgave', () => {
         cy.get('button:first').click()
         cy.contains(/JA|NEI/g)
     })
 
 
-    // FORSTÅELSE
+    // COMPREHENSION
     it('clicks JA or NEI', () => {
         cy.get('.MuiButton-root:first').click()
         cy.contains(/Riktig!|Feil!/g)
@@ -94,14 +94,14 @@ describe('App loop', () => {
         cy.contains('Neste oppgave')
     })
 
-    // INTERMEDIARY PAGE TO RYDD SETNINGER
+    // INTERMEDIARY PAGE TO SORT SENTENCE
     it('clicks on neste oppgave', () => {
         cy.get('button:first').click()
         cy.contains('Sjekk svar')
     })
 
-    //RYDD SETNINGER
-    it('clicks on words in rydde-setninger', () => {
+    //SORT SENTENCE
+    it('clicks on words in sortSentence', () => {
         // click all words in and 1 back out
         cy.get('.jss2:first').click()
         cy.get('.jss2:first').click()
@@ -149,15 +149,15 @@ describe('App loop', () => {
         cy.contains('Neste oppgave')
     })
 
-    // INTERMEDIARY PAGE TO DRA INN MANGLENDE ORD
+    // INTERMEDIARY PAGE TO FILL IN WORD
     it('clicks on neste oppgave', () => {
         cy.get('button:first').click()
         cy.contains('Sjekk svar')
     })
 
-    // DRA INN MANGLENDE ORD
+    // FILL IN WORD
 
-    it('clicks through drainnmanglendeord', () => {
+    it('clicks through fillInWord', () => {
         //click a word
         cy.get('button:first').click()
         

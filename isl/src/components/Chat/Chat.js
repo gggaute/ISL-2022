@@ -6,7 +6,7 @@ import {
   Button,
   Paper,
 } from '@mui/material';
-import chataudio from '../../assets/audiofiles/chatAudio.mp3';
+import chatAudio from '../../assets/audiofiles/chatAudio.mp3';
 import gingerMan from '../../assets/images/gingerMan.png';
 import capsMan from '../../assets/images/capsMan.png';
 import frenchMan from '../../assets/images/frenchMan.png';
@@ -58,9 +58,6 @@ const Chat = ({
 
   // List that keeps track of conversation history in the chat exercise.
   const [chatHistory] = useState([]);
-
-  // A state that disables the audio button when the audio is displayed
-  const [disabled, setDisabled] = useState(false);
 
   /* Objects that take both the component style and a common style between all
   exercises, to finally integrate both style objects into the classes object
@@ -185,14 +182,6 @@ const Chat = ({
     });
   }
 
-  
-  function fireAudio() {
-    setDisabled(true);
-    playAudio(chataudio);
-    setTimeout(() => setDisabled(false), 7000);
-  }
-  
-
   useEffect(() => {
     getContent();
   }, []);
@@ -205,7 +194,7 @@ const Chat = ({
           <h1 className={classes.exerciseType}>CHAT</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-        <Question question={question} fireAudio={fireAudio} disabled={disabled} />
+        <Question question={question} audio={chatAudio} playAudio={playAudio} />
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={3}>
             {chatHistory.map((chat, i) => {

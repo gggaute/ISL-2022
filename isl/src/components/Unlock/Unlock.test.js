@@ -35,7 +35,7 @@ describe('Unlock component', () => {
         expect(axios.get).toHaveBeenCalledTimes(1);
 
         expect(axios.get).toHaveBeenCalledWith(
-            `http://localhost:8000/api/unlock/${2}`, {
+            `/api/unlock/${2}`, {
                 headers: {
                   "Content-Type": "application/json",
                   accept: "application/json",

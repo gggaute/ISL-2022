@@ -1,9 +1,9 @@
 from django.db import models
-from forstaelse.models import Forstaelse
+from comprehension.models import Comprehension
 from chat.models import Chat
-from rydde_setninger.models import RyddeSetninger
-from unlock.models import LåsOppMobil
-from dra_inn_manglende_ord.models import DraInnManglendeOrd
+from sort_sentence.models import SortSentence
+from unlock.models import Unlock
+from fill_in_word.models import FillInWord
 
 
 """
@@ -19,18 +19,18 @@ from dra_inn_manglende_ord.models import DraInnManglendeOrd
 """
 class Sets(models.Model):
     title = models.CharField(max_length=50)
-    forstaelse1 = models.ForeignKey(
-        Forstaelse, on_delete=models.SET_NULL, related_name='forstaelse1', blank=True, null=True)
-    forstaelse2 = models.ForeignKey(
-        Forstaelse, on_delete=models.SET_NULL, related_name='forstaelse2', blank=True, null=True)
-    forstaelse3 = models.ForeignKey(
-        Forstaelse, on_delete=models.SET_NULL, related_name='forstaelse3', blank=True, null=True)
-    forstaelse4 = models.ForeignKey(
-        Forstaelse, on_delete=models.SET_NULL, related_name='forstaelse4', blank=True, null=True)
-    forstaelse5 = models.ForeignKey(
-        Forstaelse, on_delete=models.SET_NULL, related_name='forstaelse5', blank=True, null=True)
-    forstaelse6 = models.ForeignKey(
-        Forstaelse, on_delete=models.SET_NULL, related_name='forstaelse6', blank=True, null=True)
+    comprehension1 = models.ForeignKey(
+        Comprehension, on_delete=models.SET_NULL, related_name='comprehension1', blank=True, null=True)
+    comprehension2 = models.ForeignKey(
+        Comprehension, on_delete=models.SET_NULL, related_name='comprehension2', blank=True, null=True)
+    comprehension3 = models.ForeignKey(
+        Comprehension, on_delete=models.SET_NULL, related_name='comprehension3', blank=True, null=True)
+    comprehension4 = models.ForeignKey(
+        Comprehension, on_delete=models.SET_NULL, related_name='comprehension4', blank=True, null=True)
+    comprehension5 = models.ForeignKey(
+        Comprehension, on_delete=models.SET_NULL, related_name='comprehension5', blank=True, null=True)
+    comprehension6 = models.ForeignKey(
+        Comprehension, on_delete=models.SET_NULL, related_name='comprehension6', blank=True, null=True)
 
 
     chat1 = models.ForeignKey(
@@ -46,42 +46,42 @@ class Sets(models.Model):
     chat6 = models.ForeignKey(
         Chat, on_delete=models.SET_NULL, related_name='chat6', blank=True, null=True)
 
-    ryddeSetninger1 = models.ForeignKey(
-        RyddeSetninger, on_delete=models.SET_NULL, related_name='ryddeSetninger1', blank=True, null=True)
-    ryddeSetninger2 = models.ForeignKey(
-        RyddeSetninger, on_delete=models.SET_NULL, related_name='ryddeSetninger2', blank=True, null=True)
-    ryddeSetninger3 = models.ForeignKey(
-        RyddeSetninger, on_delete=models.SET_NULL, related_name='ryddeSetninger3', blank=True, null=True)
-    ryddeSetninger4 = models.ForeignKey(
-        RyddeSetninger, on_delete=models.SET_NULL, related_name='ryddeSetninger4', blank=True, null=True)
-    ryddeSetninger5 = models.ForeignKey(
-        RyddeSetninger, on_delete=models.SET_NULL, related_name='ryddeSetninger5', blank=True, null=True)
-    ryddeSetninger6 = models.ForeignKey(
-        RyddeSetninger, on_delete=models.SET_NULL, related_name='ryddeSetninger6', blank=True, null=True)
+    sortSentence1 = models.ForeignKey(
+        SortSentence, on_delete=models.SET_NULL, related_name='sortSentence1', blank=True, null=True)
+    sortSentence2 = models.ForeignKey(
+        SortSentence, on_delete=models.SET_NULL, related_name='sortSentence2', blank=True, null=True)
+    sortSentence3 = models.ForeignKey(
+        SortSentence, on_delete=models.SET_NULL, related_name='sortSentence3', blank=True, null=True)
+    sortSentence4 = models.ForeignKey(
+        SortSentence, on_delete=models.SET_NULL, related_name='sortSentence4', blank=True, null=True)
+    sortSentence5 = models.ForeignKey(
+        SortSentence, on_delete=models.SET_NULL, related_name='sortSentence5', blank=True, null=True)
+    sortSentence6 = models.ForeignKey(
+        SortSentence, on_delete=models.SET_NULL, related_name='sortSentence6', blank=True, null=True)
 
-    LåsOppMobil1 = models.ForeignKey(
-        LåsOppMobil, on_delete=models.SET_NULL, related_name='LåsOppMobil1', blank=True, null=True)
-    LåsOppMobil2 = models.ForeignKey(
-        LåsOppMobil, on_delete=models.SET_NULL, related_name='LåsOppMobil2', blank=True, null=True)
-    LåsOppMobil3 = models.ForeignKey(
-        LåsOppMobil, on_delete=models.SET_NULL, related_name='LåsOppMobil3', blank=True, null=True)
-    LåsOppMobil4 = models.ForeignKey(
-        LåsOppMobil, on_delete=models.SET_NULL, related_name='LåsOppMobil4', blank=True, null=True)
-    LåsOppMobil5 = models.ForeignKey(
-        LåsOppMobil, on_delete=models.SET_NULL, related_name='LåsOppMobil5', blank=True, null=True)
-    LåsOppMobil6 = models.ForeignKey(
-        LåsOppMobil, on_delete=models.SET_NULL, related_name='LåsOppMobil6', blank=True, null=True)
+    unlock1 = models.ForeignKey(
+        Unlock, on_delete=models.SET_NULL, related_name='unlock1', blank=True, null=True)
+    unlock2 = models.ForeignKey(
+        Unlock, on_delete=models.SET_NULL, related_name='unlock2', blank=True, null=True)
+    unlock3 = models.ForeignKey(
+        Unlock, on_delete=models.SET_NULL, related_name='unlock3', blank=True, null=True)
+    unlock4 = models.ForeignKey(
+        Unlock, on_delete=models.SET_NULL, related_name='unlock4', blank=True, null=True)
+    unlock5 = models.ForeignKey(
+        Unlock, on_delete=models.SET_NULL, related_name='unlock5', blank=True, null=True)
+    unlock6 = models.ForeignKey(
+        Unlock, on_delete=models.SET_NULL, related_name='unlock6', blank=True, null=True)
 
-    DraInnManglendeOrd1 = models.ForeignKey(
-        DraInnManglendeOrd, on_delete=models.SET_NULL, related_name='DraInnManglendeOrd1', blank=True, null=True)
-    DraInnManglendeOrd2 = models.ForeignKey(
-        DraInnManglendeOrd, on_delete=models.SET_NULL, related_name='DraInnManglendeOrd2', blank=True, null=True)
-    DraInnManglendeOrd3 = models.ForeignKey(
-        DraInnManglendeOrd, on_delete=models.SET_NULL, related_name='DraInnManglendeOrd3', blank=True, null=True)
-    DraInnManglendeOrd4 = models.ForeignKey(
-        DraInnManglendeOrd, on_delete=models.SET_NULL, related_name='DraInnManglendeOrd4', blank=True, null=True)
-    DraInnManglendeOrd5 = models.ForeignKey(
-        DraInnManglendeOrd, on_delete=models.SET_NULL, related_name='DraInnManglendeOrd5', blank=True, null=True)
-    DraInnManglendeOrd6 = models.ForeignKey(
-        DraInnManglendeOrd, on_delete=models.SET_NULL, related_name='DraInnManglendeOrd6', blank=True, null=True)
+    fillInWord1 = models.ForeignKey(
+        FillInWord, on_delete=models.SET_NULL, related_name='fillInWord1', blank=True, null=True)
+    fillInWord2 = models.ForeignKey(
+        FillInWord, on_delete=models.SET_NULL, related_name='fillInWord2', blank=True, null=True)
+    fillInWord3 = models.ForeignKey(
+        FillInWord, on_delete=models.SET_NULL, related_name='fillInWord3', blank=True, null=True)
+    fillInWord4 = models.ForeignKey(
+        FillInWord, on_delete=models.SET_NULL, related_name='fillInWord4', blank=True, null=True)
+    fillInWord5 = models.ForeignKey(
+        FillInWord, on_delete=models.SET_NULL, related_name='fillInWord5', blank=True, null=True)
+    fillInWord6 = models.ForeignKey(
+        FillInWord, on_delete=models.SET_NULL, related_name='fillInWord6', blank=True, null=True)
 
