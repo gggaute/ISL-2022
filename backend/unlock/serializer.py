@@ -1,10 +1,10 @@
 from pyexpat import model
 from rest_framework import serializers
-from .models import LåsOppMobil
+from .models import Unlock
 
-class LåsOppMobilSerializer(serializers.ModelSerializer):
+class UnlockSerializer(serializers.ModelSerializer):
     class Meta:
-        model = LåsOppMobil
+        model = Unlock
         fields = ('id','correctSolution', 'solutionImage', 
         'letter1', 'letter2', 'letter3', 
         'letter4', 'letter5', 'letter6', 

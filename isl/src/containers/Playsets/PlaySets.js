@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import Forstaelse from "../../components/Forstaelse/Forstaelse";
+import Comprehension from "../../components/Comprehension/Comprehension";
 import Chat from "../../components/Chat/Chat";
-import RyddeSetninger from "../../components/RyddeSetninger/RyddeSetninger";
-import Feedback from "../../components/feedback/Feedback";
+import SortSentence from "../../components/SortSentence/SortSentence";
+import Feedback from "../../components/Feedback/Feedback";
 import axios from "axios";
-import FillInWord from "../../components/Fill-In-Word/FillInWord";
+import FillInWord from "../../components/FillInWord/FillInWord";
 import UnlockPad from "../../components/UnlockPad/UnlockPad";
 /**
  * This is the container for playing exercise sets.
@@ -32,10 +32,10 @@ const PlaySets = () => {
   // Lists of id's for the exercises in the set.
   const [formDataExercises] = useState({
     chat: [],
-    forstaelse: [],
-    ryddeSetninger: [],
-    lasoppmobil: [],
-    drainnmanglendeord: [],
+    comprehension: [],
+    sortsentence: [],
+    unlock: [],
+    fillinword: [],
   });
 
   /**
@@ -47,29 +47,29 @@ const PlaySets = () => {
    */
   function createPlayList(sets) {
     formDataExercises.chat.length = 0;
-    formDataExercises.forstaelse.length = 0;
-    formDataExercises.ryddeSetninger.length = 0;
-    formDataExercises.lasoppmobil.length = 0;
-    formDataExercises.drainnmanglendeord.length = 0;
+    formDataExercises.comprehension.length = 0;
+    formDataExercises.sortsentence.length = 0;
+    formDataExercises.unlock.length = 0;
+    formDataExercises.fillinword.length = 0;
     Object.entries(sets).forEach(([exercise, id]) => {
       if (exercise.substring(0, 4) === "chat" && id) {
         formDataExercises.chat.push(id);
-      } else if (exercise.substring(0, 4) === "fors" && id) {
-        formDataExercises.forstaelse.push(id);
-      } else if (exercise.substring(0, 4) === "rydd" && id) {
-        formDataExercises.ryddeSetninger.push(id);
-      } else if (exercise.substring(0, 4) === "LåsO" && id) {
-        formDataExercises.lasoppmobil.push(id);
-      } else if (exercise.substring(0, 4) === "DraI" && id) {
-        formDataExercises.drainnmanglendeord.push(id);
+      } else if (exercise.substring(0, 4) === "comp" && id) {
+        formDataExercises.comprehension.push(id);
+      } else if (exercise.substring(0, 4) === "sort" && id) {
+        formDataExercises.sortsentence.push(id);
+      } else if (exercise.substring(0, 4) === "unlo" && id) {
+        formDataExercises.unlock.push(id);
+      } else if (exercise.substring(0, 4) === "fill" && id) {
+        formDataExercises.fillinword.push(id);
       }
     });
     setTotalExercises(
       formDataExercises.chat.length +
-      formDataExercises.forstaelse.length +
-      formDataExercises.ryddeSetninger.length +
-      formDataExercises.lasoppmobil.length +
-      formDataExercises.drainnmanglendeord.length
+      formDataExercises.comprehension.length +
+      formDataExercises.sortsentence.length +
+      formDataExercises.unlock.length +
+      formDataExercises.fillinword.length
     );
   }
 
@@ -109,22 +109,22 @@ const PlaySets = () => {
       setExerciseProgress(exerciseProgress + 1);
       setExerciseId(formDataExercises.chat.shift());
       setStep("chat");
-    } else if (formDataExercises.forstaelse[0]) {
+    } else if (formDataExercises.comprehension[0]) {
       setExerciseProgress(exerciseProgress + 1);
-      setExerciseId(formDataExercises.forstaelse.shift());
-      setStep("forstaelse");
-    } else if (formDataExercises.ryddeSetninger[0]) {
+      setExerciseId(formDataExercises.comprehension.shift());
+      setStep("comprehension");
+    } else if (formDataExercises.sortsentence[0]) {
       setExerciseProgress(exerciseProgress + 1);
-      setExerciseId(formDataExercises.ryddeSetninger.shift());
-      setStep("ryddeSetninger");
-    } else if (formDataExercises.lasoppmobil[0]) {
+      setExerciseId(formDataExercises.sortsentence.shift());
+      setStep("sortsentence");
+    } else if (formDataExercises.unlock[0]) {
       setExerciseProgress(exerciseProgress + 1);
-      setExerciseId(formDataExercises.lasoppmobil.shift());
-      setStep("lasoppmobil");
-    } else if (formDataExercises.drainnmanglendeord[0]) {
+      setExerciseId(formDataExercises.unlock.shift());
+      setStep("unlock");
+    } else if (formDataExercises.fillinword[0]) {
       setExerciseProgress(exerciseProgress + 1);
-      setExerciseId(formDataExercises.drainnmanglendeord.shift());
-      setStep("drainnmanglendeord");
+      setExerciseId(formDataExercises.fillinword.shift());
+      setStep("fillinword");
     } else {
       setStep("finish");
     }
@@ -163,9 +163,9 @@ const PlaySets = () => {
 
   // switch/case that returns the relevant component.
   switch (step) {
-    case "forstaelse":
+    case "comprehension":
       return (
-        <Forstaelse
+        <Comprehension
           id={exerciseId}
           showFeedback={showFeedback}
           progress={exerciseProgress}
@@ -196,9 +196,9 @@ const PlaySets = () => {
           playAudio={(url) => playAudio(url)}
         />
       );
-    case "ryddeSetninger":
+    case "sortsentence":
       return (
-        <RyddeSetninger
+        <SortSentence
           id={exerciseId}
           showFeedback={showFeedback}
           progress={exerciseProgress}
@@ -206,7 +206,7 @@ const PlaySets = () => {
           playAudio={(url) => playAudio(url)}
         />
       );
-    case "lasoppmobil":
+    case "unlock":
       return (
         <UnlockPad
           id={exerciseId}
@@ -216,7 +216,7 @@ const PlaySets = () => {
           playAudio={(url) => playAudio(url)}
         />
       );
-    case "drainnmanglendeord":
+    case "fillinword":
       return (
         <FillInWord
           id={exerciseId}

@@ -4,6 +4,7 @@ from .models import Sets
 
 """
  @author Maja, Simen
+ @revised by Guri
  This is the serializer for the all the models related to exercise sets.
 """
 
@@ -12,8 +13,8 @@ class SetsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sets
         fields = ('id', 'title',
-                  'forstaelse1', 'forstaelse2', 'forstaelse3', 'forstaelse4', 'forstaelse5', 'forstaelse6',
+                  'comprehension1', 'comprehension2', 'comprehension3', 'comprehension4', 'comprehension5', 'comprehension6',
                   'chat1', 'chat2', 'chat3', 'chat4', 'chat5', 'chat6',
-                  'ryddeSetninger1', 'ryddeSetninger2', 'ryddeSetninger3', 'ryddeSetninger4', 'ryddeSetninger5', 'ryddeSetninger6',
-                  'DraInnManglendeOrd1', 'DraInnManglendeOrd2', 'DraInnManglendeOrd3', 'DraInnManglendeOrd4', 'DraInnManglendeOrd5', 'DraInnManglendeOrd6',
-                  'LåsOppMobil1', 'LåsOppMobil2', 'LåsOppMobil3', 'LåsOppMobil4', 'LåsOppMobil5', 'LåsOppMobil6')
+                  'sortSentence1', 'sortSentence2', 'sortSentence3', 'sortSentence4', 'sortSentence5', 'sortSentence6',
+                  'fillInWord1', 'fillInWord2', 'fillInWord3', 'fillInWord4', 'fillInWord5', 'fillInWord6',
+                  'unlock1', 'unlock2', 'unlock3', 'unlock4', 'unlock5', 'unlock6')

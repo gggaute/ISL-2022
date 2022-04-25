@@ -40,7 +40,7 @@ describe('Chat exercise', () => {
 
     expect(axios.get).toHaveBeenCalledTimes(1);
     expect(axios.get).toHaveBeenCalledWith(
-      `http://localhost:8000/api/chat/${5}`,
+      `/api/chat/${5}`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -107,23 +107,4 @@ describe('Chat exercise', () => {
     expect(screen.getByText('Hva er klokka?')).toBeVisible();
     expect(screen.getByText('Hvilken dag er det i dag?')).toBeVisible();
   });
-
-  test('audio play should play once after click and be disabled', async () => {
-    axios.get.mockResolvedValue({ data: {} });
-
-    await act(async () =>
-      render(
-        <Router>
-          <Chat id={5} playAudio={() => <></>} restartSet={() => <></>} />
-        </Router>
-      )
-    );
-    const button = screen.getByTestId('volumeChat');
-    fireEvent.click(button);
-
-    expect(setTimeout).toHaveBeenCalledTimes(1);
-    expect(button).toBeDisabled();
-    expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 6000);
-  });
-
 });
