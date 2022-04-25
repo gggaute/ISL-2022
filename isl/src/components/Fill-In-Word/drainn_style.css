@@ -1,3 +1,5 @@
+/* Styling for the DraInn-component */
+
 /* P: Text elements in the exercise (i.e. the task explanation above the HR-line and the words in the sentence that is missing a word) */
 p {
   display: inline;
@@ -47,21 +49,6 @@ p {
   justify-content: center;
   align-items: center;
 }
-
-/* TODO: Tror ikke denne brukes? */
-/* CheckAnswerBtn:  */
-/* .checkAnswerBtn {
-  border: 1px solid purple;
-  background-color: purple;
-  margin: auto;
-  width: 50%;
-  display: flex;
-  justify-self: center;
-  justify-content: center;
-  padding: 1.2rem;
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
-} */
 
 /* WordGrid: The grid containing all the word-buttons */
 .wordGrid {

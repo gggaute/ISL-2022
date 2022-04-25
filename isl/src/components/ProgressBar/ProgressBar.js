@@ -5,7 +5,7 @@ import exerciseStyles from "../exerciseStyle";
 /**
  * This is the progress bar displayed at the top of every exercise,
  * keeping track of the overall progress in a set.
- * @author Julie
+ * @author Group 2021
  * @param {object} props
  * @property {integer} progress Counts how many exercises the user has played.
  * @property {integer} possible Total exercises in the set.
@@ -14,6 +14,7 @@ import exerciseStyles from "../exerciseStyle";
 const ProgressBar = ({ progress, possible }) => {
   const MIN = 1;
   const MAX = possible + 1;
+  
   /**
    * Calculates how much of the progressBar is going to
    * be filled for each completed exercise.
@@ -21,6 +22,7 @@ const ProgressBar = ({ progress, possible }) => {
    * each completed exercise the bar should be filled 16,66 percent more.
    */
   const normalise = (progress) => ((progress - MIN) * 100) / (MAX - MIN);
+
   const classes = exerciseStyles();
 
   return (

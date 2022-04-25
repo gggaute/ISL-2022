@@ -1,9 +1,13 @@
+/* ExerciseStyle: Global stylesheet that can be referred to from any component */
+
+/* RootStart: Div/Paper to contain the sets on the startPage menu */
 #rootStart {
     background-color: white;
     border: none;
     box-shadow: none;
 }
 
+/* Media query for rootStart: Controls the width of the div containing the sets on startPage */
 @media only screen and (min-width: 800px) {
     #rootStart {
         max-width: 50%;

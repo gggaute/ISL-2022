@@ -3,14 +3,14 @@ import { Navigate, useLocation } from "react-router-dom";
 import Forstaelse from "../../components/Forstaelse/Forstaelse";
 import Chat from "../../components/Chat/Chat";
 import RyddeSetninger from "../../components/RyddeSetninger/RyddeSetninger";
-import Feedback from "../../components/feedback/Feedback";
+import Feedback from "../../components/Feedback/Feedback";
 import axios from "axios";
 import FillInWord from "../../components/Fill-In-Word/FillInWord";
-import UnlockPad from "../../components/UnlockPad/UnlockPad";
+import Unlock from "../../components/Unlock/Unlock";
 import OverviewPage from '../../components/OverviewPage/OverviewPage'
 /**
  * This is the container for playing exercise sets.
- * @author Old group
+ * @author Group 2021
  * @returns A set of exercises.
  */
 const PlaySets = () => {
@@ -125,7 +125,6 @@ const PlaySets = () => {
    * the current exercise being played from the list.
    */
   function nextExercise() {
-    // console.log("NEXT EXERCISE");
     if (formDataExercises.chat[0]) {
       setExerciseProgress(exerciseProgress + 1);
       setExerciseId(formDataExercises.chat.shift());
@@ -241,7 +240,7 @@ const PlaySets = () => {
       );
     case "lasoppmobil":
       return (
-        <UnlockPad
+        <Unlock
           id={exerciseId}
           showFeedback={showFeedback}
           progress={exerciseProgress}

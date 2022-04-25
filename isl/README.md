@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# TODO !
+# ISL-2022
+github project for our ISL task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+1. **Prerequisites**  
+   Make sure you have the following technologies installed:
 
-### `npm start`
+   - Python
+   - Pip
+   - Node.js
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Clone the project**  
+   Create a local folder and clone the project:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   - `git clone https://github.com/phajsi/LIM01.git`
 
-### `npm test`
+3. **Create virtual environment and activation**  
+   Create a virtual environment. It can be inside the project folder or somewhere else on your computer. If you are making it inside the project folder then make sure to not push it to github.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   - `python3 -m venv name_of_environment`
 
-### `npm run build`
+   After creating the environment it has to be activated. You do this by going into /env/Scripts/, then write activate in the terminal. In Git Bash, you have to write `source activate` in the terminal from /env/Scripts/.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. **Install requirements.txt**  
+   If you have startet the virtual environment then go into the project backend folder LIM01/backend and install the requirements from requirements.txt
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   - `pip install -r requirements.txt`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   you can check if it downloaded correctly by running pip freeze and comparing to the requirements.txt file. Remember to activate the virtual environment every time you are running the project as all the backend libraries are downloaded there.
 
-### `npm run eject`
+5. **Install frontend packages**  
+   Next we need to install the frontend packages located in package.json. Cd into LIM01/frontend and run:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   - `npm install`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+6. **Building the project**  
+   When all the packages are installed you should be able to run the website. While in the frontend folder run:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   - `npm run build`  
+     This will create a build folder in backend so that backend and frontend can work togheter. Remember to build everytime you have made changes to the frontend.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+7. **Run the project**  
+   After building the project, cd back to the project folder and into LIM01/backend and then run:
 
-## Learn More
+   - `python manage.py runserver`  
+     While the server is running, open your browser and go to:
+     http://localhost:8000/
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   _Alternatively you can run the project from the frontend folder by running `npm start` However this will not run the backend server, but it can be useful if working with UI/UX._
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Remark**  
+The commands may vary depening on the os that you are using. The installation guide is based on Windows and Git bash command line.

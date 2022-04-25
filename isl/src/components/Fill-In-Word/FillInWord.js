@@ -75,6 +75,7 @@ const FillInWord = ({
   const [missingWord, setMissingWord] = useState("");
   const [missingWordIndex, setMissingWordIndex] = useState(-1);
 
+  // A string with the question displayed for the task
   const question = "Trykk på ordet som mangler i setningen.";
 
   useEffect(() => {

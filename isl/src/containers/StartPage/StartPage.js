@@ -8,7 +8,7 @@ import axios from 'axios';
 
 /**
  * This is the container for the home page.
- * @author Phajsi, Simen
+ * @author Group 2021
  * @returns The user home page.
  */
 const StartPage = () => {
@@ -17,9 +17,18 @@ const StartPage = () => {
   // List of the users own sets.
   const [ExerciseSetList, setExerciseSetList] = useState([]);
 
+
+  /* Objects that take both the global style between all
+  exercises, to integrate style objects into the classes object
+  to be used in the component */
   const classesBase = exerciseStyles();
   const classes = {...classesBase };
 
+  /**
+   * Fetches content, i.e. all sets, from backend.
+   * @variable data is then added to the state setExerciseSetList().
+   * @param {object} data The data of all sets.
+   */
   function getContent() {
     axios
       .get(`/api/sets`, {
@@ -35,17 +44,6 @@ const StartPage = () => {
       });
   }
   
-  /*
-  function getContent() {
-    fetch('http://localhost:8000/api/sets')
-      .then((response) => response.json())
-      .then((data) => setExerciseSetList(data))
-      .catch((e) => {
-        return e;
-      });
-  }
-  */
-
   // Only runs once when the page renders and gets the necessary content from backend.
   useEffect(() => {
     getContent();

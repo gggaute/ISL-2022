@@ -1,11 +1,7 @@
 import axios from 'axios'
 import React from 'react'
-import { render, screen, act, fireEvent } from '@testing-library/react';
-import Task from './Task'
-import Word from './Word'
-import Words from './Words'
+import { render } from '@testing-library/react';
 import FillInWord from './FillInWord'
-import CheckAnswer from './CheckAnswer';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 /**
@@ -44,25 +40,25 @@ describe('fill in word task', () => {
   }
 
   test('should fetch with getContent once', async () => {
-    axios.get.mockResolvedValue({data: resp});
+    axios.get.mockResolvedValue({ data: resp });
 
-        await render(
-                    <Router>
-                        <FillInWord id={2} progress={0} possible={1} showFeedback={() => console.log('lo')}/>
-                    </Router>
-                )
-        
-        expect(axios.get).toHaveBeenCalledTimes(1);
+    await render(
+      <Router>
+        <FillInWord id={2} progress={0} possible={1} showFeedback={() => console.log('lo')} />
+      </Router>
+    )
 
-        expect(axios.get).toHaveBeenCalledWith(
-            `http://localhost:8000/api/draInnManglendeOrd/${2}`, {
-                headers: {
-                  "Content-Type": "application/json",
-                  accept: "application/json",
-                },
-            }
-        )
+    expect(axios.get).toHaveBeenCalledTimes(1);
+
+    expect(axios.get).toHaveBeenCalledWith(
+      `http://localhost:8000/api/draInnManglendeOrd/${2}`, {
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+    }
+    )
   })
-// This is the only thing the wrapper class does, the rest is done in other cimponents
-  
+  // This is the only thing the wrapper class does, the rest is done in other components
+
 })

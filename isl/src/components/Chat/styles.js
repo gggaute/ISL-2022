@@ -3,7 +3,7 @@
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
-  // Styling for the horisontal-rule (line)
+  // Hr: Styling for the horisontal-rule (line)
   hr: {
     width: "200%",
     marginLeft: "25px",

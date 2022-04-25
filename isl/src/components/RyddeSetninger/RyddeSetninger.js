@@ -16,11 +16,9 @@ import Question from "../Question/Question";
 import "../exerciseStyle.css";
 
 
-
-
 /**
  * This is the ryddeSetninger exercise component that is playable from Playsets.
- * @author Old group
+ * @author Group 2021
  * @param {object} props
  * @property {integer} id This is the id of the ryddeSetninger exercise being played.
  * @property {function} showFeedback Tracks a user's score when playing an exercise in a set and
@@ -55,10 +53,10 @@ const RyddeSetninger = ({
   const [score, setScore] = useState(0);
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
-  //A state that disables the audio button when the audio is displayed
+  // A state that disables the audio button when the audio is displayed
   const [disabled, setDisabled] = useState(false);
 
-  //A string with the question displayed for the task
+  // A string with the question displayed for the task
   const question = "Trykk på ordene for å skrive setningen i riktig rekkefølge.";
 
   /* Objects that take both the component style and a common style between all
@@ -74,7 +72,7 @@ const RyddeSetninger = ({
 
   /**
    * Splits the words in the sentence from their wordclasses and into their respective states.
-   * @param {*} el 
+   * @param {string} el 
    */
   const splitData = (el) => {
     counter += 1;

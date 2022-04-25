@@ -67,7 +67,7 @@ const Feedback = ({
           </Paper>
         </>
       );
-    
+
     case 'finished':
       return (
         <>
@@ -102,7 +102,7 @@ const Feedback = ({
           </Paper>
         </>
       );
-    
+
     default:
       return (
         <Paper className={classes.root} id="rootPaper">

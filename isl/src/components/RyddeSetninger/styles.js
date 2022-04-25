@@ -10,14 +10,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'white',
     borderRadius: '11px',
     boxShadow: 'inset 0px 1px 6px rgba(147, 145, 145, 0.48)',
+    margin: "10px 0",
   },
   // WordBtn: Each button containing words
   wordBtn: {
     textTransform: 'none',
     fontWeight: 'bold',
-    '&:hover': {
-      color: 'black',
-    },
   },
   // CheckAnswerBtn: Container for checkAnswerBtn
   checkAnswerBtn: {

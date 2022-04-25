@@ -31,7 +31,7 @@ import "../exerciseStyle.css";
  * @property {function} playAudio Returns a new HTMLAudioElement.
  * @returns A Unlock exercise instance.
  */
-const UnlockPad = ({
+const Unlock = ({
   id,
   showFeedback,
   progress,
@@ -84,7 +84,9 @@ const UnlockPad = ({
 
   const [audioDisabled, setAudioDisabled] = useState(false);
 
+  // A string with the question displayed for the task
   const question = "Hva ser du på bildet? Skriv ordet!";
+
   /**
    * Funciton to fetch content from database
    * Sets @variable backendLetters to contain the letters from database,
@@ -287,4 +289,4 @@ const UnlockPad = ({
   )
 }
 
-export default UnlockPad;
+export default Unlock;

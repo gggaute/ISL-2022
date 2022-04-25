@@ -1,3 +1,5 @@
+/* Styling for the Unlock-component */
+
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => {
@@ -24,12 +26,6 @@ const useStyles = makeStyles((theme) => {
             width: '90%',
             height: '100%',
         },
-        // TODO: Trenger vi en farge for disabled eller er det bra sånn det er nå?
-        //GridButtonDisabled: 
-        // gridButtonDisabled: {
-        //     backgroundColor: "white",
-        //     color: 'white',
-        // },
         // GuessRow: Container for letters guessed and backArrow-button
         guessRow: {
             display: 'flex',

@@ -1,4 +1,3 @@
-// import React, { useState, useEffect } from "react";
 import { Typography, Button, Paper } from "@mui/material";
 import NavBar from "../NavBar/Navbar";
 import "./styles.css";

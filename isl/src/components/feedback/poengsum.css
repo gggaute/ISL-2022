@@ -1,3 +1,5 @@
+/* Styling for the Feedback-component */
+
 /* PoengsumText: Text around the point score (i.e. 'Dine poeng' and 'Poengsummen din er..') */
 #poengsumText {
     display: flex;

@@ -1,4 +1,4 @@
-// ExerciseStyle: Styling that can be referred to from any component
+// ExerciseStyle: Global stylesheet that can be referred to from any component
 
 import { makeStyles } from '@mui/styles';
 
