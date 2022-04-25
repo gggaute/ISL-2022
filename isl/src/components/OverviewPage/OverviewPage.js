@@ -22,6 +22,7 @@ export default function OverviewPage({ setId, setTitle, totalExercises, listOfEx
                     <Typography id="setHeader" variant="h1" component="div">
                         {setTitle}
                     </Typography>
+                    <hr id="questionLine" ></hr>
                     <Typography id="noOfEx" variant="h2" component="div">
                         Antall oppgaver: {totalExercises}
                     </Typography>

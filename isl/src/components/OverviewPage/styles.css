@@ -23,7 +23,12 @@
 /* SetHeader: The header, title of the set */
 #setHeader {
     font-size: 2em;
-    margin-bottom: 20px;
+}
+
+/* QuestionLine:  */
+#questionLine {
+    border-top: 1px solid #7CA3EE;
+    margin: 10px 0 20px 0;
 }
 
 /* NoOfEx: Paragraph listing number of exercises in the set */
