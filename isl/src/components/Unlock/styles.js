@@ -3,7 +3,7 @@
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => {
-    return{
+    return {
         // Content: Exercise-content (img, guessRow, and numpad)
         content: {
             display: 'grid',
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => {
             alignItems: 'center',
             maxWidth: '90%',
             alignSelf: 'center',
-        }, 
+        },
     }
 });
 

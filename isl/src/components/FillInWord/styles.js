@@ -1,4 +1,4 @@
-// Styling for the DraInn-component
+// Styling for the Fill in Word-component
 
 import { makeStyles } from '@mui/styles'
 
