@@ -11,7 +11,7 @@ import useStyles from './styles';
  * @property {object} formData Contains information about the set.
  * @returns Card component for given exercise set.
  */
-function SetCard({ type, formData, setId }) {
+function SetCard({ formData, setId }) {
   const classes = useStyles();
 
   return (
@@ -20,7 +20,7 @@ function SetCard({ type, formData, setId }) {
       <CardHeader className={classes.cardHeader}
         avatar={
           <Avatar sx={{ bgcolor: '#8AA9E4'}}>
-            {type === 'mySet' ? formData.id : formData.sets }
+            {formData.id}
           </Avatar>
         }
         title={formData.title}

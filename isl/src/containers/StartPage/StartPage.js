@@ -56,7 +56,6 @@ const StartPage = () => {
         {ExerciseSetList.map((set) => {
           return (
             <SetCard
-              type="mySet"
               formData={set}
               setId={set.id}
             />
