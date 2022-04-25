@@ -17,7 +17,7 @@ import "../exerciseStyle.css";
 
 
 /**
- * This is the ryddeSetninger exercise component that is playable from Playsets.
+ * This is the SortSentence exercise component that is playable from Playsets.
  * @author Group 2021
  * @param {object} props
  * @property {integer} id This is the id of the sortSentence exercise being played.

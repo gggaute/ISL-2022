@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "12px",
     backgroundColor: 'lightBlue',
   },
-  // AvatarLarge: The avatar-picture in the Forståelse-exercise
+  // AvatarLarge: The avatar-picture in the Comprehension-exercise
   avatarLarge: {
     width: "55px",
     height: "55px",
