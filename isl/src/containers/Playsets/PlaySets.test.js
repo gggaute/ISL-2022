@@ -57,6 +57,10 @@ describe('PlaySets component', () => {
       )
     );
 
+    await screen.findByText('Hverdagsliv');
+    const playButton = screen.getByText('SPILL');
+    fireEvent.click(playButton);
+
     await screen.findByText('Hvilken dag er det i dag?');
     const button = screen.getByText('Torsdag');
     fireEvent.click(button);

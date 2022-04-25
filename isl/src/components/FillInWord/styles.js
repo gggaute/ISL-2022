@@ -1,4 +1,5 @@
-import React from 'react'
+// Styling for the DraInn-component
+
 import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles((theme) => ({
@@ -27,16 +28,6 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     borderRadius: '0.5rem',
   },
-  
-  // TODO: Brukes denne ?? den er i Task.js
-  // Task: The task sentence that is missing a word
-  // task:{
-  //   display: 'flex',
-  //   flexDirection: 'row',
-  //   maxWidth: '100%',
-  //   padding: '0.5rem',
-  // },
-
   // WordGridWrapper: Contains the word-button grid and the check answer button
   wordGridWrapper:{
     display: 'flex',

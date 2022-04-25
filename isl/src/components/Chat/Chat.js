@@ -27,7 +27,7 @@ import "../exerciseStyle.css";
 
 /**
  * This is the chat exercise component that is playable from Playsets.
- * @author Old group
+ * @author Group 2021
  * @param {object} props
  * @property {integer} id This is the id of the chat exercise being played.
  * @property {function} showFeedback Tracks a user's score when playing an exercise in a set and
@@ -70,7 +70,7 @@ const Chat = ({
   const [formData, setFormData] = useState({});
 
 
-  //A string with the question displayed for the task
+  // A string with the question displayed for the task
   const question = 'Du har fått en melding! Svar på meldingen ved å trykke på riktig svar.';
 
 
@@ -80,7 +80,6 @@ const Chat = ({
    * @param {string} iconName Icon name from the database.
    * @returns The image object corresponding the input argument.
    */
-
   const transformIcon = (iconName) => {
     switch (iconName) {
       case 'gingerMan':
@@ -159,9 +158,8 @@ const Chat = ({
   }
 
   /**
-   * TODO
-   * Function for randomizing the answers so the correct answer isn't always the same button.
-   * @returns 
+   * Function to generate a list of buttons, randomizing the answers so the correct answer isn't always the same button
+   * @returns A list of buttons
    */
   function random() {
     const buttonList = [

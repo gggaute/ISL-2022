@@ -8,14 +8,12 @@ import useStyles from './styles';
 /**
  * Button used to go to next exercise in set. It changes color depending on whether right or
  * wrong answer was given.
- * @author Simen
+ * @author Group 2021
  * @param {object} props
  * @property {function} handleNextTask OnClick function for component button.
- * @property {boolean} answerState Decides what type of component will be returned depending on
- * user answer.
+ * @property {boolean} answerState Decides what type of component will be returned depending on user answer.
  * @returns Card component with onClick button.
  */
-
  function NextExerciseBtn({ handleNextTask, answerState }) {
   const classes = useStyles();
   switch (answerState) {

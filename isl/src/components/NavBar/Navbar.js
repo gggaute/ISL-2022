@@ -29,7 +29,7 @@ const Navbar = () => {
       </div>
       <div className="right-div">
           <Link to='/' className="link" style={{ textDecoration: 'none', color: '#2261a8' }}>
-          <h3 id="navbarTitle"> Hjem </h3>
+          <h3 id="navbarTitle">Hjem</h3>
           </Link>
           <IconButton alt="An icon of a house." className="routeButton" data-testid="idButton" component={Link} to="/">
             <HomeIcon style={{color: '#2261a8'}}/>

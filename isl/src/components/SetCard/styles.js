@@ -1,8 +1,7 @@
+/* Styling for the SetCard-component */
+
 import { makeStyles } from '@mui/styles';
 
-/**
- * Styling for the SetCard-component
- */
 const useStyles = makeStyles((theme) => ({
   // Link: Makes the card clickable. Contains card.
   link: {
@@ -15,8 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
   // CardHeader: Card for set. Contains id and title.
   cardHeader: {
-    // backgroundColor: "#F2F2F2", //grey
-    backgroundColor: "#eaf0fa", //blue
+    backgroundColor: "#eaf0fa",
   },
 }));
 export default useStyles;

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
-import { render, screen, act, fireEvent } from '@testing-library/react';
-import UnlockPad from './UnlockPad';
+import { render, screen, fireEvent } from '@testing-library/react';
+import Unlock from './Unlock';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 jest.mock('axios')
@@ -28,7 +28,7 @@ describe('Unlock component', () => {
 
         await render(
                     <Router>
-                        <UnlockPad id={2} progress={0} possible={1} showFeedback={() => console.log('lo')}/>
+                        <Unlock id={2} progress={0} possible={1} showFeedback={() => console.log('lo')}/>
                     </Router>
                 )
         
@@ -49,7 +49,7 @@ describe('Unlock component', () => {
 
         await render(
             <Router>
-                <UnlockPad id={2} progress={0} possible={1} showFeedback={() => console.log('lo')}/>
+                <Unlock id={2} progress={0} possible={1} showFeedback={() => console.log('lo')}/>
             </Router>
         )
 
@@ -72,7 +72,7 @@ describe('Unlock component', () => {
 
         await render(
             <Router>
-                <UnlockPad id={2} progress={0} possible={1} showFeedback={() => console.log('lo')}/>
+                <Unlock id={2} progress={0} possible={1} showFeedback={() => console.log('lo')}/>
             </Router>
         )
 
@@ -92,7 +92,7 @@ describe('Unlock component', () => {
 
         await render(
             <Router>
-                <UnlockPad id={2} progress={0} possible={1} showFeedback={() => console.log('lo')}/>
+                <Unlock id={2} progress={0} possible={1} showFeedback={() => console.log('lo')}/>
             </Router>
         )
 
@@ -115,7 +115,7 @@ describe('Unlock component', () => {
 
         await render(
             <Router>
-                <UnlockPad id={2} progress={0} possible={1} showFeedback={() => console.log('lo')}/>
+                <Unlock id={2} progress={0} possible={1} showFeedback={() => console.log('lo')}/>
             </Router>
         )
 
@@ -135,7 +135,7 @@ describe('Unlock component', () => {
 
         await render(
             <Router>
-                <UnlockPad id={2} progress={0} possible={1} showFeedback={() => console.log('lo')}/>
+                <Unlock id={2} progress={0} possible={1} showFeedback={() => console.log('lo')}/>
             </Router>
         )
 
@@ -155,7 +155,7 @@ describe('Unlock component', () => {
 
         await render(
             <Router>
-                <UnlockPad id={2} progress={0} possible={1} showFeedback={() => console.log('lo')}/>
+                <Unlock id={2} progress={0} possible={1} showFeedback={() => console.log('lo')}/>
             </Router>
         )
 

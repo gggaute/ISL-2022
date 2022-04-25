@@ -1,14 +1,7 @@
-import axios from 'axios'
-import React from 'react'
-import { render, screen, act, fireEvent, cleanup } from '@testing-library/react';
-import Task from './Task'
-import Word from './Word'
-import Words from './Words'
-import FillInWord from './FillInWord'
-import CheckAnswer from './CheckAnswer';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React from "react";
+import Task from "./Task";
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 
 /**
  * @author Gaute

@@ -15,7 +15,6 @@ import { useState } from "react";
 * @property {boolean} disabled State to check if the audiobutton is disabled or not
 * @returns The question-component with an audio-button and a hr-line.
 */
-
 const Question = ({ question, audio, playAudio }) => {
 
   /* Objects that take both the component style and a common style between all
@@ -24,6 +23,7 @@ const Question = ({ question, audio, playAudio }) => {
   const className = useStyles();
   const classesBase = exerciseStyle();
   const classes = { ...className, ...classesBase };
+  
   const [disabled, setDisabled] = useState(false);
 
   function fireAudio() {
@@ -36,7 +36,6 @@ const Question = ({ question, audio, playAudio }) => {
 
   return (
     <>
-      <hr className={classes.questionLine}></hr>
       <div className={classes.questionDiv}>
         <p className={classes.question}>{question}</p>
         <IconButton

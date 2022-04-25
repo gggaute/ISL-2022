@@ -6,28 +6,33 @@ import SortSentence from "../../components/SortSentence/SortSentence";
 import Feedback from "../../components/Feedback/Feedback";
 import axios from "axios";
 import FillInWord from "../../components/FillInWord/FillInWord";
-import UnlockPad from "../../components/UnlockPad/UnlockPad";
+import Unlock from "../../components/Unlock/Unlock";
+import OverviewPage from '../../components/OverviewPage/OverviewPage'
+
 /**
  * This is the container for playing exercise sets.
- * @author Old group
+ * @author Group 2021
  * @returns A set of exercises.
  */
 const PlaySets = () => {
   const location = useLocation();
 
   // Stepper for switching between exercises in the set.
-  const [step, setStep] = useState("menu");
+  const [step, setStep] = useState("overview");
 
   // Id for the exercise being played.
   const [exerciseId, setExerciseId] = useState(0);
-  // Id for the exercise set containing the exercises.
+
+  // Id and title for the exercise set containing the exercises.
   const [id, setId] = useState(null);
+  const [title, setTitle] = useState(null);
 
   // Trackers for progress bar and feedback pages
   const [totalScore, setTotalScore] = useState(0);
   const [totalExercises, setTotalExercises] = useState(0);
   const [feedbackState, setFeedbackState] = useState(false);
   const [exerciseProgress, setExerciseProgress] = useState(0);
+  const [listOfExerciseTypes, setExerciseTypes] = useState([]);
 
   // Lists of id's for the exercises in the set.
   const [formDataExercises] = useState({
@@ -54,14 +59,29 @@ const PlaySets = () => {
     Object.entries(sets).forEach(([exercise, id]) => {
       if (exercise.substring(0, 4) === "chat" && id) {
         formDataExercises.chat.push(id);
+        if (!listOfExerciseTypes.includes(" Chat")) {
+          setExerciseTypes(listOfExerciseTypes => [...listOfExerciseTypes, " Chat"]);
+        }
       } else if (exercise.substring(0, 4) === "comp" && id) {
         formDataExercises.comprehension.push(id);
+        if (!listOfExerciseTypes.includes(" Forståelse")) {
+          setExerciseTypes(listOfExerciseTypes => [...listOfExerciseTypes, " Forståelse"]);
+        }
       } else if (exercise.substring(0, 4) === "sort" && id) {
         formDataExercises.sortsentence.push(id);
+        if (!listOfExerciseTypes.includes(" Rydde setningen")) {
+          setExerciseTypes(listOfExerciseTypes => [...listOfExerciseTypes, " Rydd setningen"]);
+        }
       } else if (exercise.substring(0, 4) === "unlo" && id) {
         formDataExercises.unlock.push(id);
+        if (!listOfExerciseTypes.includes(" Skriv ordet")) {
+          setExerciseTypes(listOfExerciseTypes => [...listOfExerciseTypes, " Skriv ordet"]);
+        }
       } else if (exercise.substring(0, 4) === "fill" && id) {
         formDataExercises.fillinword.push(id);
+        if (!listOfExerciseTypes.includes(" Fyll inn manglende ord")) {
+          setExerciseTypes(listOfExerciseTypes => [...listOfExerciseTypes, " Fyll inn manglende ord"]);
+        }
       }
     });
     setTotalExercises(
@@ -90,7 +110,8 @@ const PlaySets = () => {
         createPlayList(res.data);
         setTotalScore(0);
         setExerciseProgress(0);
-        nextExercise()
+        setStep('overview');
+        setTitle(res.data.title);
       })
       .catch((e) => {
         return e;
@@ -129,13 +150,12 @@ const PlaySets = () => {
       setStep("finish");
     }
   }
-  
+
   /**
    * The function keeps track of scores and decides what feedback to show accordingly.
    * @param {int} score Score from the current task.
    * @param {int} totalPossibleScore The possible score from the current task.
    */
-
   function showFeedback(score, totalPossibleScore) {
     if (score === totalPossibleScore) {
       setTotalScore(totalScore + 1);
@@ -163,15 +183,17 @@ const PlaySets = () => {
 
   // switch/case that returns the relevant component.
   switch (step) {
-    case "comprehension":
+    case 'overview':
       return (
-        <Comprehension
-          id={exerciseId}
-          showFeedback={showFeedback}
-          progress={exerciseProgress}
-          possible={totalExercises}
-          playAudio={(url) => playAudio(url)}
-        />
+        <div>
+          <OverviewPage
+            setId={id}
+            setTitle={title}
+            totalExercises={totalExercises}
+            listOfExerciseTypes={listOfExerciseTypes}
+            nextExercise={nextExercise}
+          />
+        </div>
       );
     case "feedback":
       return (
@@ -185,6 +207,16 @@ const PlaySets = () => {
             nextExercise={nextExercise}
           />
         </div>
+      );
+    case "comprehension":
+      return (
+        <Comprehension
+          id={exerciseId}
+          showFeedback={showFeedback}
+          progress={exerciseProgress}
+          possible={totalExercises}
+          playAudio={(url) => playAudio(url)}
+        />
       );
     case "chat":
       return (
@@ -208,7 +240,7 @@ const PlaySets = () => {
       );
     case "unlock":
       return (
-        <UnlockPad
+        <Unlock
           id={exerciseId}
           showFeedback={showFeedback}
           progress={exerciseProgress}

@@ -1,4 +1,4 @@
-// ExerciseStyle: Styling that can be referred to from any component
+// ExerciseStyle: Global stylesheet that can be referred to from any component
 
 import { makeStyles } from '@mui/styles';
 
@@ -7,11 +7,11 @@ const exerciseStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: '#F5F5F5',
     maxWidth: '70%',
+    borderRadius: '15px',
     display: 'flex',
     flexDirection: 'column',
     margin: 'auto',
     marginTop: "20px",
-    borderRadius: '15px',
     marginBottom: '20px',
     padding: "4px",
   },

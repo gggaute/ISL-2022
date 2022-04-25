@@ -1,3 +1,5 @@
+/* Styling for the Unlock-component */
+
 /* Numpad-buttons: Each button in the numpad-grid */
 /* Media queries for size of buttons on smaller screens further down the document */
 
@@ -134,12 +136,13 @@
     justify-self: center;
 }
 
-
+/* Sets color on hover over button */
 #numpadButton1:hover, #numpadButton2:hover, #numpadButton3:hover, #numpadButton4:hover, #numpadButton5:hover, #numpadButton6:hover, #numpadButton7:hover, #numpadButton8:hover, #numpadButton9:hover {
     background-color: #7CA3EE;
 }
 
 
+/* Media queries regulate size of buttons on smaller screens */
 @media only screen and (max-width: 500px) {
 
     #numpadButton1 {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import {
   Button,
   Grid,
@@ -18,8 +17,8 @@ import Question from '../Question/Question';
 import "../exerciseStyle.css";
 
 /**
- * This is the comprehension exercise component that is playable from Playsets.
- * @author Old group
+ * This is the forstaelse exercise component that is playable from Playsets.
+ * @author Group 2021
  * @param {object} props
  * @property {integer} id This is the id of the comprehension exercise being played.
  * @property {function} showFeedback Tracks a user's score when playing an exercise in a set and
@@ -42,6 +41,7 @@ const Comprehension = ({
   // Null if user hasn't given an answer, "correct" or "incorrect" if user has given an answer.
   const [answerState, setAnswerState] = useState(null);
 
+  // States to keep track of the score
   const [score, setScore] = useState(0);
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
@@ -52,7 +52,7 @@ const Comprehension = ({
   const classesBase = exerciseStyles();
   const classes = { ...className, ...classesBase };
 
-  //A string with the question displayed for the task
+  // A string with the question displayed for the task
   const question = 'Les hva meldingen sier. Svar på spørsmålet under.';
 
   /**
