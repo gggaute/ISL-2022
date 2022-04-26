@@ -264,9 +264,11 @@ const Unlock = ({
               </div>
             </div>
             {feedback === 'incorrect' && (
-              <Typography className={classes.explanation}>
-                <strong>Fasit: </strong>{correctSolution}
-              </Typography>
+              <Grid className={classes.gridText} item xs={12}>
+                <Typography className={classes.explanation}>
+                  <strong>Fasit: </strong>{correctSolution}
+                </Typography>
+              </Grid>
             )}
             <NextExerciseBtn
               answerState={feedback}

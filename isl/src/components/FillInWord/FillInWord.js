@@ -222,13 +222,15 @@ const FillInWord = ({
               </div>
             </div>
             {answerState === 'incorrect' && (
-              <Typography className={classes.explanation}>
-                <strong>Fasit: </strong> {sentence.map((sentenceWord, index) => {
-                  if (index === missingWordIndex) {
-                    return (<strong>{missingWord + " "} </strong>)
-                  } else { return (sentenceWord + " ") }
-                })}
-              </Typography>
+              <Grid className={classes.gridText} item xs={12}>
+                <Typography className={classes.explanation}>
+                  <strong>Fasit: </strong> {sentence.map((sentenceWord, index) => {
+                    if (index === missingWordIndex) {
+                      return (<strong>{missingWord + " "} </strong>)
+                    } else { return (sentenceWord + " ") }
+                  })}
+                </Typography>
+              </Grid>
             )}
             <NextExerciseBtn
               answerState={answerState}

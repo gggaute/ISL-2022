@@ -1,6 +1,7 @@
 import React from 'react'
 import './general.css'
 import { Button } from '@mui/material';
+import useStyles from "./styles";
 
 /**
  * This is a component for the check-answer-button in Fill-In-Word
@@ -12,8 +13,12 @@ import { Button } from '@mui/material';
  * @returns The mui-instance for the check-answer-button
  */
 const CheckAnswer = ({ onClick, disabled, onload }) => {  
+  const className = useStyles();
+  const classes = { ...className };
+
+  
   return (
-    <Button className="checkAnswerBtn" variant="contained" color='primary' onClick={onClick} disabled={onload ? true : disabled}>
+    <Button className={classes.checkAnswerBtn} variant="contained" color='primary' onClick={onClick} disabled={onload ? true : disabled}>
       Sjekk svar
     </Button>
   )

@@ -4,7 +4,7 @@ import NavBar from "../../components/NavBar/Navbar";
 import { Paper } from "@mui/material";
 import exerciseStyles from '../../components/exerciseStyle';
 import axios from 'axios';
-
+import "./style.css";
 
 /**
  * This is the container for the home page.
@@ -22,7 +22,7 @@ const StartPage = () => {
   exercises, to integrate style objects into the classes object
   to be used in the component */
   const classesBase = exerciseStyles();
-  const classes = {...classesBase };
+  const classes = { ...classesBase };
 
   /**
    * Fetches content, i.e. all sets, from backend.
@@ -37,13 +37,13 @@ const StartPage = () => {
           accept: 'application/json',
         },
       }).then((res) => {
-          setExerciseSetList(res.data);
-        })
+        setExerciseSetList(res.data);
+      })
       .catch((e) => {
         return e;
       });
   }
-  
+
   // Only runs once when the page renders and gets the necessary content from backend.
   useEffect(() => {
     getContent();
@@ -56,6 +56,7 @@ const StartPage = () => {
         {ExerciseSetList.map((set) => {
           return (
             <SetCard
+              id="setCard"
               formData={set}
               setId={set.id}
             />
@@ -69,7 +70,9 @@ const StartPage = () => {
     <div>
       <NavBar></NavBar>
       <Paper className={classes.root} id="rootStart">
-        {renderSwitch()}
+        <div id="divSetCards">
+          {renderSwitch()}
+        </div>
       </Paper>
     </div>
   );

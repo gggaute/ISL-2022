@@ -13,9 +13,7 @@ const useStyles = makeStyles((theme) => ({
     flex: '1',
     margin: 'auto',
     width: '90%',
-    paddingRight: "8px",
-    paddingLeft: "8px",
-    paddingBottom: "30px",
+    padding: "30px 8px",
   },
 }));
 

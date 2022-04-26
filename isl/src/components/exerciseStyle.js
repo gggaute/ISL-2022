@@ -34,7 +34,7 @@ const exerciseStyles = makeStyles((theme) => ({
   },
   // TextFeedback: The text in the feedbackComponent
   textFeedback: {
-    margin: '30px',
+    margin: '15px',
   },
   // QuestionDiv: Div around the question text and the audio-button.
   questionDiv: {
@@ -61,8 +61,15 @@ const exerciseStyles = makeStyles((theme) => ({
   },
   // Explanation: The typography containing the explanation for each exercise
   explanation: {
-    width: "70%",
-    margin: "30px",
+    width: "100%",
+    padding: 0,
+    margin: 0,
+    marginTop:  "10px",
+  },
+  // GridText: Grid container, containing a HR (horisontal rule) and the question-text
+  gridText: {
+    paddingBottom: 0,
+    padding: 0,
   },
   // ExerciseType: Name of exercise (exercise-header)
   exerciseType: {

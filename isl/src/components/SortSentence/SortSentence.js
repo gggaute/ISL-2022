@@ -43,7 +43,7 @@ const SortSentence = ({
   const [wordWithColorCode, setWordWithColorCode] = useState([]);
   // List of the wordclasses corresponding to the words displayed.
   const [wordClasses] = useState([]);
-  
+
   // State that keeps track of the correct sentence, which needs 
   // to be checked against when the user is satisfied with their answer.
   const [rightAnswer, setRightAnswer] = useState();
@@ -284,9 +284,11 @@ const SortSentence = ({
               </Button>
             </Grid>
             {answerState === 'incorrect' && (
-              <Typography className={classes.explanation}>
-                <strong>Fasit: </strong>{rightAnswer.map(function (e, i) { return [words[i] + " "]; })}
-              </Typography>
+              <Grid className={classes.gridText} item xs={12}>
+                <Typography className={classes.explanation}>
+                  <strong>Fasit: </strong>{rightAnswer.map(function (e, i) { return [words[i] + " "]; })}
+                </Typography>
+              </Grid>
             )}
             <NextExerciseBtn
               answerState={answerState}
