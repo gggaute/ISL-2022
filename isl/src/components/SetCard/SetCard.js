@@ -1,11 +1,11 @@
 import React from 'react';
 import { Avatar, Card, CardHeader } from '@mui/material';
 import { Link } from 'react-router-dom';
-import useStyles from './styles';
+import useStyles from './setCardStyle';
 
 /**
  * This card component generates a card for each exercise set on the startPage menu.
- * @author Group 2021
+ * @author Guri, Gaute, Aksel
  * @param {object} props
  * @property {string} type Decides which type of card to display.
  * @property {object} formData Contains information about the set.

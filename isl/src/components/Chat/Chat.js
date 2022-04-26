@@ -18,16 +18,17 @@ import ChatBubble from '../ChatBubble/ChatBubble';
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import axios from 'axios';
-import useStyles from './styles';
-import exerciseStyles from '../exerciseStyle';
-import NavBar from "../NavBar/Navbar";
+import useStyles from './chatStyle';
+import globalStyles from '../globalStyle';
+import NavBar from "../NavBar/NavBar";
 import Question from '../Question/Question';
-import "../exerciseStyle.css";
+import "../globalStyle.css";
 
 
 /**
  * This is the chat exercise component that is playable from Playsets.
  * @author Group 2021
+ * Revised by Guri
  * @param {object} props
  * @property {integer} id This is the id of the chat exercise being played.
  * @property {function} showFeedback Tracks a user's score when playing an exercise in a set and
@@ -63,7 +64,7 @@ const Chat = ({
   exercises, to finally integrate both style objects into the classes object
   to be used in the component */
   const className = useStyles();
-  const classesBase = exerciseStyles();
+  const classesBase = globalStyles();
   const classes = { ...className, ...classesBase };
 
   // Data for the chat exercise from backend.

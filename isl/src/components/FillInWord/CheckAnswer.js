@@ -1,5 +1,5 @@
 import React from 'react'
-import './general.css'
+import './fillInWordStyle.css'
 import { Button } from '@mui/material';
 
 /**

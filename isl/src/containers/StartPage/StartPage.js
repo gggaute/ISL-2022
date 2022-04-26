@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import SetCard from "../../components/SetCard/SetCard";
-import NavBar from "../../components/NavBar/Navbar";
+import NavBar from "../../components/NavBar/NavBar";
 import { Paper } from "@mui/material";
-import exerciseStyles from '../../components/exerciseStyle';
+import globalStyles from '../../components/globalStyle';
 import axios from 'axios';
 
 
@@ -21,7 +21,7 @@ const StartPage = () => {
   /* Objects that take both the global style between all
   exercises, to integrate style objects into the classes object
   to be used in the component */
-  const classesBase = exerciseStyles();
+  const classesBase = globalStyles();
   const classes = {...classesBase };
 
   /**

@@ -9,16 +9,17 @@ import {
 import sortAudio from "../../assets/audiofiles/sortAudio.mp3";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import NextExerciseBtn from "../NextExerciseBtn/NextExerciseBtn";
-import useStyles from './styles';
-import exerciseStyles from '../exerciseStyle';
-import NavBar from "../NavBar/Navbar";
+import useStyles from './sortSentenceStyle';
+import globalStyles from '../globalStyle';
+import NavBar from "../NavBar/NavBar";
 import Question from "../Question/Question";
-import "../exerciseStyle.css";
+import "../globalStyle.css";
 
 
 /**
  * This is the SortSentence exercise component that is playable from Playsets.
  * @author Group 2021
+ * Revised by Guri
  * @param {object} props
  * @property {integer} id This is the id of the sortSentence exercise being played.
  * @property {function} showFeedback Tracks a user's score when playing an exercise in a set and
@@ -53,9 +54,6 @@ const SortSentence = ({
   const [score, setScore] = useState(0);
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
-  // A state that disables the audio button when the audio is displayed
-  const [disabled, setDisabled] = useState(false);
-
   // A string with the question displayed for the task
   const question = "Trykk på ordene for å skrive setningen i riktig rekkefølge.";
 
@@ -63,7 +61,7 @@ const SortSentence = ({
   exercises, to finally integrate both style objects into the classes object
   to be used in the component */
   const className = useStyles();
-  const classesBase = exerciseStyles();
+  const classesBase = globalStyles();
   const classes = { ...className, ...classesBase };
 
   // List of the the words gotten from the database and assembled together with their respective worldclasses.

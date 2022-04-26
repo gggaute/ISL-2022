@@ -3,7 +3,7 @@ import { Button, Card, Grid, CardHeader } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import useStyles from './styles';
+import useStyles from './nextExerciseBtnStyle';
 
 /**
  * Button used to go to next exercise in set. It changes color depending on whether right or

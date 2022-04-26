@@ -1,6 +1,6 @@
 /* Styling for the NavBar-component */
 
-/* Bar: The entire navbar, container for all */
+/* Bar: The entire navBar, container for all */
 .bar {
   background-color: #8AA9E4;
   height: 100%;
@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-/* Left-Div: Left half of the navbar, containing the logo */
+/* Left-Div: Left half of the navBar, containing the logo */
 .left-div {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -25,7 +25,7 @@
   cursor: pointer;
 }
 
-/* Right-Div: Right half of the navbar, containing the hjem-text and the home-button */
+/* Right-Div: Right half of the navBar, containing the hjem-text and the home-button */
 .right-div {
   display: grid;
   grid-template-columns: auto auto;
@@ -35,7 +35,7 @@
   padding-right: 0.5rem;
 }
 
-/* NavbarTitle: Hjem-text in the right-div */
-#navbarTitle {
+/* NavBarTitle: Hjem-text in the right-div */
+#navBarTitle {
   font-size: 1.5rem;
 }

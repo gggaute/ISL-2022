@@ -1,6 +1,6 @@
 import { Typography, Button, Paper } from "@mui/material";
-import NavBar from "../NavBar/Navbar";
-import "./styles.css";
+import NavBar from "../NavBar/NavBar";
+import "./overviewPageStyle.css";
 
 /**
  * A component with some information about the set clicked on StartPage, and a button to start playing

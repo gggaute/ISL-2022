@@ -1,11 +1,12 @@
 import React from 'react';
 import { LinearProgress } from '@mui/material/';
-import exerciseStyles from "../exerciseStyle";
+import globalStyles from "../globalStyle";
 
 /**
  * This is the progress bar displayed at the top of every exercise,
  * keeping track of the overall progress in a set.
  * @author Group 2021
+ * Revised by Guri
  * @param {object} props
  * @property {integer} progress Counts how many exercises the user has played.
  * @property {integer} possible Total exercises in the set.
@@ -23,7 +24,7 @@ const ProgressBar = ({ progress, possible }) => {
    */
   const normalise = (progress) => ((progress - MIN) * 100) / (MAX - MIN);
 
-  const classes = exerciseStyles();
+  const classes = globalStyles();
 
   return (
     <LinearProgress

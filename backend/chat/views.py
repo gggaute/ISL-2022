@@ -6,7 +6,7 @@ from .serializers import ChatSerializer
 '''
 @author Aksel, Guri
 This is the chat view.
-It uses viewSets for viewing and editing Chat instances. 
+It uses viewSets for viewing Chat instances. 
 '''
 
 # Chat Viewset

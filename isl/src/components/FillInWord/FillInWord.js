@@ -8,17 +8,17 @@ import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import axios from "axios";
 import { useEffect } from "react";
 import ProgressBar from '../ProgressBar/ProgressBar';
-import NavBar from "../NavBar/Navbar";
+import NavBar from "../NavBar/NavBar";
 import {
   Paper,
   Typography,
   Grid,
 } from '@mui/material';
 import fillAudio from "../../assets/audiofiles/fillInnAudio.mp3";
-import useStyles from "./styles";
-import exerciseStyles from '../exerciseStyle';
-import './general.css'
-import "../exerciseStyle.css";
+import useStyles from "./fillInWordStyle";
+import globalStyles from '../globalStyle';
+import './fillInWordStyle.css'
+import "../globalStyle.css";
 
 /**
  * This is the FillInWord exercise component that is playable from Playsets.
@@ -62,7 +62,7 @@ const FillInWord = ({
   exercises, to finally integrate both style objects into the classes object
   to be used in the component */
   const className = useStyles()
-  const classesBase = exerciseStyles();
+  const classesBase = globalStyles();
   const classes = { ...className, ...classesBase };
 
   const [previousClickedWord, setPreviousClickedWord] = useState("");

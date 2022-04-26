@@ -1,7 +1,7 @@
 import React from "react";
-import "../FillInWord/styles";
-import useStyles from "../FillInWord/styles";
-import exerciseStyle from "../exerciseStyle";
+import "../FillInWord/fillInWordStyle";
+import useStyles from "../FillInWord/fillInWordStyle";
+import globalStyle from "../globalStyle";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import { IconButton } from "@mui/material";
 import { useState } from "react";
@@ -21,7 +21,7 @@ const Question = ({ question, audio, playAudio }) => {
   exercises, to finally integrate both style objects into the classes object
   to be used in the component */
   const className = useStyles();
-  const classesBase = exerciseStyle();
+  const classesBase = globalStyle();
   const classes = { ...className, ...classesBase };
   
   const [disabled, setDisabled] = useState(false);

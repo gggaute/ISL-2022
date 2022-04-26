@@ -2,7 +2,7 @@
 
 import { makeStyles } from '@mui/styles';
 
-const exerciseStyles = makeStyles((theme) => ({
+const globalStyle = makeStyles((theme) => ({
   // Root: Paper behind every exercise and feedback-component
   root: {
     backgroundColor: '#F5F5F5',
@@ -72,4 +72,4 @@ const exerciseStyles = makeStyles((theme) => ({
   },
 }));
 
-export default exerciseStyles;
+export default globalStyle;

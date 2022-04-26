@@ -2,7 +2,11 @@ from distutils.command.upload import upload
 from pyexpat import model
 from django.db import models
 
-# Create your models here.
+"""
+ @author Ingvild
+ This is the model for the unlock exercise. It determines all the fields and the constraints.
+ Each unlock exercise consists a solution with max 9 letters, and 9 letters forming a num pad.
+"""
 
 class Unlock(models.Model):
     solutionImage = models.ImageField(upload_to='images/')

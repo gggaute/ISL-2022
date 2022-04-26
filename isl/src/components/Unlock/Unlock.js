@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NextExerciseBtn from '../NextExerciseBtn/NextExerciseBtn';
 import ProgressBar from '../ProgressBar/ProgressBar';
-import NavBar from "../NavBar/Navbar";
+import NavBar from "../NavBar/NavBar";
 import Question from "../Question/Question";
 import {
   Typography,
@@ -12,11 +12,11 @@ import {
 } from '@mui/material';
 import unlockAudio from "../../assets/audiofiles/unlockAudio.mp3";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import useStyles from "./styles";
-import exerciseStyles from '../exerciseStyle';
-import './general.css';
-import "./buttons.css";
-import "../exerciseStyle.css";
+import useStyles from "./unlockStyle";
+import globalStyles from '../globalStyle';
+import './unlockStyle.css';
+import "./buttonsUnlockStyle.css";
+import "../globalStyle.css";
 
 
 /**
@@ -79,7 +79,7 @@ const Unlock = ({
   exercises, to finally integrate both style objects into the classes object
   to be used in the component */
   const className = useStyles();
-  const classesBase = exerciseStyles();
+  const classesBase = globalStyles();
   const classes = { ...className, ...classesBase };
 
   //const [audioDisabled, setAudioDisabled] = useState(false);

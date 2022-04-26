@@ -1,15 +1,15 @@
 import React from "react";
 import { Paper, Typography, Button } from "@mui/material";
-import NavBar from "../NavBar/Navbar";
+import NavBar from "../NavBar/NavBar";
 import ProgressBar from '../ProgressBar/ProgressBar';
-import exerciseStyles from '../exerciseStyle';
-import useStyles from "./styles";
-import "./poengsum.css";
-import "../exerciseStyle.css";
+import globalStyle from '../globalStyle';
+import useStyles from "./feedbackStyle";
+import "./poengsumFeedbackStyle.css";
+import "../globalStyle.css";
 
 /**
  * This is component for the pages between exercises and the final page of the set.
- * @author Jasmina
+ * @author Jasmina, Guri
  * @param {object} props 
  * @property {integer} totalExercises Number of exercises in the set being played.
  * @property {integer} totalScore Number of exercises the player has gotten correct.
@@ -33,7 +33,7 @@ const Feedback = ({
   exercises, to finally integrate both style objects into the classes object
   to be used in the component */
   const className = useStyles();
-  const classesBase = exerciseStyles();
+  const classesBase = globalStyle();
   const classes = { ...className, ...classesBase };
 
   // Returns a different feedback page depending on the state of the progress in the set. Playing vs finished.

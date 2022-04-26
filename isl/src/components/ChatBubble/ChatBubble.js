@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, Card, Grid, Typography } from '@mui/material';
 import defaultMan from '../../assets/images/defaultMan.png';
-import useStyles from './styles';
+import useStyles from './chatBubbleStyle';
 
 
 /**

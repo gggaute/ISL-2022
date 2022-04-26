@@ -1,12 +1,12 @@
 from rest_framework import routers
 from .views import GetSortSentenceView, SortSentenceViewSet
 
+router = routers.DefaultRouter()
+
 '''
 @author Aksel, Guri
 This is the urls for the sortSentence exercise. 
 '''
-
-router = routers.DefaultRouter()
 
 # url for getting all sortSentence exercises
 router.register('sort_sentence', SortSentenceViewSet, 'sortSentence')

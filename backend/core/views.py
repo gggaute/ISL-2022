@@ -1,6 +1,10 @@
 from django.shortcuts import render
 
-# Create your views here.
+'''
+@author Guri
+This is the Core view.
+It renders the index.html through backend.
+'''
 
 def front(request):
     context = { }

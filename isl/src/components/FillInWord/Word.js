@@ -1,6 +1,6 @@
 import React from 'react'
-import useStyles from './styles'
-import './general.css'
+import useStyles from './fillInWordStyle'
+import './fillInWordStyle.css'
 
 /**
  * This is a component to generate each word-button in Fill-In-Word

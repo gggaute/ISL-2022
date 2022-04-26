@@ -3,14 +3,14 @@ import logo from "../../assets/images/logo.png";
 import HomeIcon from "@mui/icons-material/Home";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
-import "./style.css";
+import "./navBarStyle.css";
 
 /**
  * This is a component for the navigation bar at the top of the page.
  * @author Synne, Guri
  * @returns Component containing the "Norsk for Ungdom" logo and the home-text and button.
  */
-const Navbar = () => {
+const NavBar = () => {
   return (
     <div className="bar">
       <div className="left-div">
@@ -29,7 +29,7 @@ const Navbar = () => {
       </div>
       <div className="right-div">
           <Link to='/' className="link" style={{ textDecoration: 'none', color: '#2261a8' }}>
-          <h3 id="navbarTitle">Hjem</h3>
+          <h3 id="navBarTitle">Hjem</h3>
           </Link>
           <IconButton alt="An icon of a house." className="routeButton" data-testid="idButton" component={Link} to="/">
             <HomeIcon style={{color: '#2261a8'}}/>
@@ -39,4 +39,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;

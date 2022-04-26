@@ -5,9 +5,9 @@ from rest_framework.response import Response
 from .serializer import FillInWordSerializer
 
 '''
-@author  Guri
+@author Synne
 This is the FillInWord view.
-It uses viewSets for viewing and editing FillInWord instances. 
+It uses viewSets for viewing FillInWord instances. 
 '''
 
 # FillInWord Viewset

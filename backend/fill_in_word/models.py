@@ -2,7 +2,12 @@ from django.db import models
 from distutils.command.upload import upload
 from pyexpat import model
 
-# Create your models here.
+"""
+ @author Synne
+ This is the model for the fill_in_word exercise. It determines all the fields and the constraints.
+ Each fill_in_word exercise may have up to 15 words in the sentence, but only 2 is required.
+ The correctSolutionIndex points to which word of the 15 (index 0-14) given, that the user needs to fill in.
+"""
 
 class FillInWord(models.Model):
     correctSolutionIndex = models.IntegerField(default=1,blank=False)

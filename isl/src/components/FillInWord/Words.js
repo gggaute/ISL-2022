@@ -1,6 +1,6 @@
 import React from 'react'
 import Word from './Word'
-import './general.css'
+import './fillInWordStyle.css'
 
 /**
  * This is a component to generate the grid containing the word-buttons in Fill-In-Word
