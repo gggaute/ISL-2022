@@ -3,12 +3,6 @@
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
-  // HrDirection: TODO brukes denne lenger?
-  hrDirection: {
-    display: "flex",
-    flexDirection: "row",
-    width: "100%",
-  },
   // Text: The question-text
   textQ: {
     fontWeight: '600',
