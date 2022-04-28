@@ -69,7 +69,7 @@ const PlaySets = () => {
         }
       } else if (exercise.substring(0, 4) === "sort" && id) {
         formDataExercises.sortsentence.push(id);
-        if (!listOfExerciseTypes.includes(" Rydde setningen")) {
+        if (!listOfExerciseTypes.includes(" Rydd setningen")) {
           setExerciseTypes(listOfExerciseTypes => [...listOfExerciseTypes, " Rydd setningen"]);
         }
       } else if (exercise.substring(0, 4) === "unlo" && id) {
