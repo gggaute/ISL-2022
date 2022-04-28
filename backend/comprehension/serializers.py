@@ -2,9 +2,9 @@ from rest_framework import serializers
 from .models import Comprehension
 
 '''
-@Author Aksel
+@author Aksel, Guri
 This is the serializer for the comprehension exercise.
-It is responsible for converting the comprehension objekt into datatypes that is understandable by react front-end.
+It is responsible for converting the comprehension object into datatypes that is understandable by react front-end.
 After first validating the data, it allows parsed data to be converted back into complex types. 
 '''
 

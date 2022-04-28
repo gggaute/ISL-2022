@@ -6,7 +6,7 @@ from .serializers import SortSentenceSerializer
 '''
 @author Aksel, Guri
 This is the SortSentence view.
-It uses viewSets for viewing and editing sortSentence instances. 
+It uses viewSets for viewing sortSentence instances. 
 '''
 
 

@@ -5,8 +5,13 @@ from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response 
 from .serializer import UnlockSerializer
 
-# Create your views here.
+'''
+@author Ingvild
+This is the Unlock view.
+It uses viewSets for viewing Unlock instances. 
+'''
 
+# Unlock Viewset
 class UnlockViewSet(viewsets.ModelViewSet):
     queryset = Unlock.objects.all()
     permissions_classes = [ permissions.AllowAny ]

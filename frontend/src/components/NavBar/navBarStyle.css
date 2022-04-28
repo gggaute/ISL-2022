@@ -1,0 +1,41 @@
+/* Styling for the NavBar-component */
+
+/* Bar: The entire navBar, container for all */
+.bar {
+  background-color: #8AA9E4;
+  height: 100%;
+  width: 100%;
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+}
+
+/* Left-Div: Left half of the navBar, containing the logo */
+.left-div {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  padding-left: 1rem;
+  align-items: center;
+  height: 100%;
+}
+
+/* Logo: The NfU logo */
+#logo {
+  cursor: pointer;
+}
+
+/* Right-Div: Right half of the navBar, containing the hjem-text and the home-button */
+.right-div {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: end;
+  height: 100%;
+  padding-right: 0.5rem;
+}
+
+/* NavBarTitle: Hjem-text in the right-div */
+#navBarTitle {
+  font-size: 1.5rem;
+}

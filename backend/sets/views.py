@@ -4,13 +4,11 @@ from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 
 """
- @author Maja, Simen
+ @author Group 2021
 """
 
-
 """
- Set view without permission class meaning it is accessible to anyone. 
- Only allows get requests.
+ Set view that only allows get requests.
 """
 class SetsView(viewsets.ModelViewSet):
     queryset = Sets.objects.all()

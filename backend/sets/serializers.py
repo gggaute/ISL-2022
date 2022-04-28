@@ -3,11 +3,10 @@ from .models import Sets
 
 
 """
- @author Maja, Simen
- @revised by Guri
+ @author Group 2021
+ Revised by Guri
  This is the serializer for the all the models related to exercise sets.
 """
-
 
 class SetsSerializer(serializers.ModelSerializer):
     class Meta:

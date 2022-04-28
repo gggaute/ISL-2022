@@ -3,8 +3,8 @@ from django.db import models
 
 
 """
- @author Phajsi, Simen
- @revised by Aksel
+ @author Group 2021
+ Revised by Aksel, Guri
  This is the model for the comprehension exercise. It determines all the fields and the constraints.
  Each comprehension exercise consists of one task.
 """
