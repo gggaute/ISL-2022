@@ -70,9 +70,7 @@ const StartPage = () => {
     <div>
       <NavBar></NavBar>
       <Paper className={classes.root} id="rootStart">
-        <div id="divSetCards">
-          {renderSwitch()}
-        </div>
+        {renderSwitch()}
       </Paper>
     </div>
   );

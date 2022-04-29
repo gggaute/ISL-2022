@@ -1,4 +1,4 @@
-/* Styling for the StartPage-component */
+/* Styling for the StartPage-component
 
 /* RootStart: Div/Paper to contain the sets on the startPage menu */
 #rootStart {
@@ -6,37 +6,11 @@
     border: none;
     box-shadow: none;
 }
- 
-/* DivSetCards: Div in StartPage, contains all SetCards (SetCards are styled in the SetCard-component)  */
-#divSetCards {
-    border: none;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 10px;
-    column-gap: 10px;
-    align-items: center;
-    width: 100%;
-    align-self: center;
-}
 
 
 /* Media query for rootStart: Controls the width of the div containing the sets on startPage */
-@media only screen and (max-width: 800px) {
+/* @media only screen and (max-width: 800px) {
     #rootStart {
         width: 100%;
     }
-}
-
-
-/* Media queries for divSetCards: Controls the number of columns in the grid on smaller screens */
-@media only screen and (max-width: 900px) {
-    #divSetCards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    #divSetCards {
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
+} */
