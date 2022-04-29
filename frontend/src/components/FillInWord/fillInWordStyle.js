@@ -3,7 +3,7 @@
 import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles((theme) => ({
-  // OverallGrid: Grid containing the overall exercise-content (i.e. everything efter the HR-line)
+  // OverallGrid: Grid containing the overall exercise-content (i.e. everything after the HR-line)
   overallGrid: {
     display: "flex",
     flexDirection: "column",
@@ -35,6 +35,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-}))
+  // CheckAnswerBtn: 
+  checkAnswerBtn: {
+    margin: "15px",
+  },
+}));
 
 export default useStyles;

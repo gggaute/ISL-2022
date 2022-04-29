@@ -94,7 +94,7 @@ const Comprehension = ({
   /**
    * The function calls showFeedback(int,int) and sends the user to the feedback page, 
    * after the user has played the current task.
-   */ 
+   */
   const handleNextTask = () => {
     setAnswerState(null);
     showFeedback(score, totalPossibleScore);
@@ -112,13 +112,13 @@ const Comprehension = ({
           <h1 className={classes.exerciseType}>Forståelse</h1>
           <ProgressBar progress={progress} possible={possible} />
         </div>
-       <Question question={question} audio={compAudio} playAudio={playAudio} />
+        <Question question={question} audio={compAudio} playAudio={playAudio} />
         <Paper className={classes.layout} elevation={0}>
           <Grid container spacing={3}>
             <ChatBubble chat={formData[`chat`]} />
             <Grid className={classes.gridText} item xs={12}>
               <hr />
-              <Typography className={classes.text}>
+              <Typography className={classes.textQ}>
                 {formData[`question`]}
               </Typography>
             </Grid>
@@ -147,9 +147,11 @@ const Comprehension = ({
               </>
             )}
             {answerState !== null && (
-              <Typography className={classes.explanation}>
-                {formData[`explanation`]}
-              </Typography>
+              <Grid className={classes.gridText} item xs={12}>
+                <Typography className={classes.explanation}>
+                  {formData[`explanation`]}
+                </Typography>
+              </Grid>
             )}
             <NextExerciseBtn
               answerState={answerState}

@@ -224,12 +224,12 @@ const Chat = ({
               )}
             </Grid>
             {answerState !== null && (
-              <>
+              <Grid className={classes.gridText} item xs={12}>
                 <hr className={classes.hr} />
                 <Typography className={classes.explanation}>
                   {formData[`explanation${taskStep-1}`]}
                 </Typography>
-              </>
+              </Grid>
             )}
             <NextExerciseBtn
               answerState={answerState}
