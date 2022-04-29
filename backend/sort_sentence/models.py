@@ -3,10 +3,10 @@ from django.db import models
 
 
 """
- @author Phajsi, Julie
- @revised by aksel
- This is the model for the sortSentence exercise. It determines all the fields and the constraints.
- Each sortSentence exercise may have up to 15 words, but have to have at least three. 
+ @author Group 2021
+ Revised by Aksel
+ This is the model for the SortSentence exercise. It determines all the fields and the constraints.
+ Each sort_sentence exercise may have up to 15 words, but have to have at least three. 
 """
 
 
@@ -25,17 +25,17 @@ class SortSentence(models.Model):
     )
 
 
-    word1 = models.CharField(max_length=40)
+    word1 = models.CharField(max_length=40, blank=False)
     wordClass1 = models.CharField(
-        max_length=12, choices=WORD_CLASSES, blank=True)
+        max_length=12, choices=WORD_CLASSES, blank=False)
 
-    word2 = models.CharField(max_length=40)
+    word2 = models.CharField(max_length=40, blank=False)
     wordClass2 = models.CharField(
-        max_length=12, choices=WORD_CLASSES, blank=True)
+        max_length=12, choices=WORD_CLASSES, blank=False)
 
-    word3 = models.CharField(max_length=40)
+    word3 = models.CharField(max_length=40, blank=False)
     wordClass3 = models.CharField(
-        max_length=12, choices=WORD_CLASSES, blank=True)
+        max_length=12, choices=WORD_CLASSES, blank=False)
 
     word4 = models.CharField(max_length=40, blank=True)
     wordClass4 = models.CharField(

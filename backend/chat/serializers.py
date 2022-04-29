@@ -3,9 +3,9 @@ from rest_framework import serializers
 from .models import Chat
 
 '''
-@Author Aksel
+@author Aksel
 This is the serializer for the chat exercise.
-It is responsible for converting the chat objekt into datatypes that is understandable by react front-end.
+It is responsible for converting the chat object into datatypes that is understandable by react front-end.
 After first validating the data, it allows parsed data to be converted back into complex types. 
 '''
 

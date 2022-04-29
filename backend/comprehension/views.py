@@ -6,7 +6,7 @@ from .serializers import ComprehensionSerializer
 '''
 @author Aksel, Guri
 This is the Comprehension view.
-It uses viewSets for viewing and editing Comprehension instances. 
+It uses viewSets for viewing Comprehension instances. 
 '''
 
 # Comprehension Viewset

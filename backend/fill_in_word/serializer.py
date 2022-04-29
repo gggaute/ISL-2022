@@ -2,7 +2,15 @@ from pyexpat import model
 from rest_framework import serializers
 from .models import FillInWord
 
+'''
+@author Synne, Ingvild
+This is the serializer for the FillInWord exercise.
+It is responsible for converting the fill_in_word object into datatypes that is understandable by react front-end.
+After first validating the data, it allows parsed data to be converted back into complex types. 
+'''
+# Creates a ModelSerializer
 class FillInWordSerializer(serializers.ModelSerializer):
+     # Meta class that initializes  fields
     class Meta:
         model = FillInWord
         fields = ('id', 'correctSolutionIndex',

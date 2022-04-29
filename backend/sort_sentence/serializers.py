@@ -3,9 +3,10 @@ from rest_framework import serializers
 from .models import SortSentence
 
 '''
-@Author Aksel
-This is the serializer for the sortSentence exercise.
-It is responsible for converting the sortSentence objekt into datatypes that is understandable by react front-end.
+@author Group 2021
+Revised by Aksel
+This is the serializer for the SortSentence exercise.
+It is responsible for converting the sort_sentence object into datatypes that is understandable by react front-end.
 After first validating the data, it allows parsed data to be converted back into complex types. 
 '''
 
