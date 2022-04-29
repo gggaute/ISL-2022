@@ -1,7 +1,7 @@
 import React from 'react'
 import './fillInWordStyle.css'
 import { Button } from '@mui/material';
-import useStyles from "./styles";
+import useStyles from "./fillInWordStyle";
 
 /**
  * This is a component for the check-answer-button in Fill-In-Word

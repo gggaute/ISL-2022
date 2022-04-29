@@ -4,7 +4,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import { Paper } from "@mui/material";
 import globalStyles from '../../components/globalStyle';
 import axios from 'axios';
-import "./style.css";
+import "./startPageStyle.css";
 
 /**
  * This is the container for the home page.
