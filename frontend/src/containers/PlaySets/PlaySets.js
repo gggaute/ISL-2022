@@ -60,27 +60,27 @@ const PlaySets = () => {
       if (exercise.substring(0, 4) === "chat" && id) {
         formDataExercises.chat.push(id);
         if (!listOfExerciseTypes.includes(" Chat")) {
-          setExerciseTypes(listOfExerciseTypes => [...listOfExerciseTypes, " Chat"]);
+          listOfExerciseTypes.push(" Chat")
         }
       } else if (exercise.substring(0, 4) === "comp" && id) {
         formDataExercises.comprehension.push(id);
         if (!listOfExerciseTypes.includes(" Forståelse")) {
-          setExerciseTypes(listOfExerciseTypes => [...listOfExerciseTypes, " Forståelse"]);
+          listOfExerciseTypes.push(" Forståelse")
         }
       } else if (exercise.substring(0, 4) === "sort" && id) {
         formDataExercises.sortsentence.push(id);
         if (!listOfExerciseTypes.includes(" Rydd setningen")) {
-          setExerciseTypes(listOfExerciseTypes => [...listOfExerciseTypes, " Rydd setningen"]);
+          listOfExerciseTypes.push(" Rydd setningen")
         }
       } else if (exercise.substring(0, 4) === "unlo" && id) {
         formDataExercises.unlock.push(id);
         if (!listOfExerciseTypes.includes(" Skriv ordet")) {
-          setExerciseTypes(listOfExerciseTypes => [...listOfExerciseTypes, " Skriv ordet"]);
+          listOfExerciseTypes.push(" Skriv ordet")
         }
       } else if (exercise.substring(0, 4) === "fill" && id) {
         formDataExercises.fillinword.push(id);
         if (!listOfExerciseTypes.includes(" Fyll inn manglende ord")) {
-          setExerciseTypes(listOfExerciseTypes => [...listOfExerciseTypes, " Fyll inn manglende ord"]);
+          listOfExerciseTypes.push(" Fyll inn manglende ord")
         }
       }
     });
