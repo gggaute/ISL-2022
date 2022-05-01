@@ -35,6 +35,7 @@ const globalStyle = makeStyles((theme) => ({
   // TextFeedback: The text in the feedbackComponent
   textFeedback: {
     margin: '15px',
+    fontSize: 'xx-large'
   },
   // QuestionDiv: Div around the question text and the audio-button.
   questionDiv: {

@@ -238,7 +238,7 @@ const Unlock = ({
         </div>
         <Question question={question} audio={unlockAudio} playAudio={playAudio} ></Question>
         <Paper className={classes.layout} elevation={0}>
-          <Grid container spacing={1}>
+          {/* <Grid container spacing={1}> */}
             <div id='content' className={classes.content}>
               <img src={image} alt="solutionImage" className={classes.unlockImg}></img>
               <div className={classes.contentRow}>
@@ -274,7 +274,7 @@ const Unlock = ({
               answerState={feedback}
               handleNextTask={handleNextTask}
             />
-          </Grid>
+          {/* </Grid> */}
         </Paper>
       </Paper>
     </>
