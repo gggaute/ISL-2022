@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
     width: '90%',
     padding: "30px 8px",
   },
+  pointsText: {
+    fontSize: "xx-large"
+  }
 }));
 
 export default useStyles;

@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   // WordBtn: Each button containing words
   wordBtn: {
     textTransform: 'none',
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
   },
   // CheckAnswerBtn: Container for checkAnswerBtn
   checkAnswerBtn: {

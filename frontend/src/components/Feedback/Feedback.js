@@ -47,7 +47,7 @@ const Feedback = ({
               <ProgressBar progress={progress} possible={possible} />
             </div>
             <div id="divPointsText">
-              <Typography variant="h1" align="center" id="pointsText">
+              <Typography variant="h1" align="center" id="pointsText" className={classes.pointsText}>
                 Poengsummen din er
                 {` ${totalScore} `}
                 av totalt
