@@ -46,14 +46,15 @@ const Feedback = ({
             <div className={classes.progresscontainer}>
               <ProgressBar progress={progress} possible={possible} />
             </div>
-            <Typography variant="h4" align="center" className={classes.textFeedback} id="poengsumText">
-              Poengsummen din er
-              {` ${totalScore} `}
-              av totalt
-              {` ${totalExercises} `}
-              mulige!
-            </Typography>
-
+            <div id="divPointsText">
+              <Typography variant="h1" align="center" id="pointsText">
+                Poengsummen din er
+                {` ${totalScore} `}
+                av totalt
+                {` ${totalExercises} `}
+                mulige!
+              </Typography>
+            </div>
             <div className={classes.btnParent}>
               <Button
                 variant="contained"
@@ -77,15 +78,15 @@ const Feedback = ({
               <ProgressBar progress={2} possible={1} />
             </div>
 
-            <Typography variant="h4" align="center" className={classes.textFeedback}>
+            <Typography variant="h1" align="center" className={classes.textFeedback} id="exclamationText">
               Du har gjort alle oppgavene!
             </Typography>
 
-            <Typography variant="h4" align="center" className={classes.textFeedback} id="poengsumText">
+            <Typography variant="h2" align="center" className={classes.textFeedback} id="pointsText">
               Dine poeng:
             </Typography>
 
-            <Typography variant="h4" align="center" className={classes.textFeedback} id="poengsum">
+            <Typography variant="h2" align="center" className={classes.textFeedback} id="points">
               <div className={classes.points}>
                 {` ${totalScore} `}
                 /
@@ -107,7 +108,7 @@ const Feedback = ({
       return (
         <Paper className={classes.root} id="rootPaper">
           <div>
-            <Typography variant="h3">Noe gikk galt</Typography>
+            <Typography variant="h1">Noe gikk galt</Typography>
           </div>
         </Paper>
       );
