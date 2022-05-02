@@ -1,4 +1,3 @@
-# TODO !
 # ISL-2022
 github project for our ISL task. This is a react frontend, django backend app. If you have any questions pass any of us an email
 
