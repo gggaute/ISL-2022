@@ -32,6 +32,7 @@ import useStyles from './nextExerciseBtnStyle';
                 className={classes.answerBtn}
                 fullWidth
                 size="small"
+                data-cy="arrow-button"
               >
                 <TrendingFlatIcon fontSize="large" />
               </Button>
