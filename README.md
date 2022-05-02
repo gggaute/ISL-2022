@@ -17,7 +17,7 @@ github project for our ISL task. This is a react frontend, django backend app. I
    - `git clone https://github.com/gggaute/ISL-2022.git`
 
 3. **Create virtual environment and activation**  
-   Create a virtual environment. It can be inside the project folder or somewhere else on your computer(i would reccomend just doing cd .. from project folder and doing it there). If you are making it inside the project folder then make sure to not push it to github.
+   Create a virtual environment(use a Git Bash terminal). It can be inside the project folder or somewhere else on your computer(i would reccomend just doing cd .. from project folder and doing it there). If you are making it inside the project folder then make sure to not push it to github.
 
    - `python3 -m venv name_of_environment`
 
