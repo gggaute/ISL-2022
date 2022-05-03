@@ -59,10 +59,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'leadManager.urls'
 
+# Remove to use browsable API for development
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication'
-    ]
+    'DEFAULT_RENDERER_CLASSES': (
+         'rest_framework.renderers.JSONRenderer',
+     )
 }
 
 TEMPLATES = [
