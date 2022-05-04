@@ -42,7 +42,7 @@ The NfU - Spill project revolves around developing exciting and immersive Norweg
    you can check if it downloaded correctly by running pip freeze and comparing to the requirements.txt file. Remember to activate the virtual environment every time you are running the project as all the backend libraries are downloaded there.
 
 5. **Install frontend packages**  
-   Next we need to install the frontend packages located in package.json. Cd into LIM01/frontend and run:
+   Next we need to install the frontend packages located in package.json. Cd into ISL-2022/frontend and run:
 
    - `npm install`
 
