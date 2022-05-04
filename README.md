@@ -1,6 +1,17 @@
 # ISL-2022
-github project for our ISL task. This is a react frontend, django backend app. If you have any questions pass any of us an email
 
+## About
+This is the repository for "NfU - Spill" at the "Norsk for Ungdom" website. The project is apart of the Language, Integration and Media Project (LIM). LIM is a project under the Institute for Language and Literature (ISL) at NTNU. NfU - Spill was developed by a group of IDI students in the course IT2901 "Informatics Project II" at NTNU, Spring 2022.
+
+The NfU - Spill project revolves around developing exciting and immersive Norwegian language exercises for young migrants. The code is deployed in connection to Norsk For Ungdom (https://www.ntnu.edu/learnnowyouth/) at https://nfu-spill.hf.ntnu.no/.
+
+## Developers
+   - Brandser, Gaute
+   - Jenssen, Synne
+   - Kristiansen, Guri Skagsoset
+   - Naseri, Jasmina Elizabeth
+   - Skattum, Aksel
+   - Søvik, Ingvild
 
 ## Installation
 
@@ -24,7 +35,7 @@ github project for our ISL task. This is a react frontend, django backend app. I
    After creating the environment it has to be activated. You do this by going into /env/Scripts/, then write activate in the terminal. In Git Bash, you have to write `source activate` in the terminal from /env/Scripts/.
 
 4. **Install requirements.txt**  
-   If you have startet the virtual environment then go into the project backend folder LIM01/backend and install the requirements from requirements.txt
+   If you have startet the virtual environment then go into the project backend folder ISL-2022/backend and install the requirements from requirements.txt
 
    - `pip install -r requirements.txt`
 
