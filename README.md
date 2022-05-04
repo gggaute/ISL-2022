@@ -53,7 +53,7 @@ The NfU - Spill project revolves around developing exciting and immersive Norweg
      This will create a build folder in backend so that backend and frontend can work togheter. Remember to build everytime you have made changes to the frontend.
 
 7. **Run the project**  
-   After building the project, cd back to the project folder and into LIM01/backend and then run:
+   After building the project, cd back to the project folder and into ISL-2022/backend and then run:
 
    - `python manage.py runserver`  
      While the server is running, open your browser and go to:
